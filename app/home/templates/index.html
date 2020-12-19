@@ -1,0 +1,748 @@
+{% extends "base-site.html" %}
+
+{% block title %} Login {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="row">
+
+      <div class="col-12">
+        <div class="card card-chart">
+          <div class="card-header ">
+            <div class="row">
+              <div class="col-sm-6 text-left">
+                <h5 class="card-category">Total Data Transmission Latency</h5>
+                <h2 class="card-title">Latency</h2>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="chart-area">
+              <canvas id="chartBig1"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card card-chart">
+          <div class="card-header">
+            <h5 class="card-category">Data Packages</h5>
+            <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i> 100,000</h3>
+          </div>
+          <div class="card-body">
+            <div class="chart-area">
+              <canvas id="chartLinePurple"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+	  <div class="col-lg-4">
+        <div class="card card-chart">
+          <div class="card-header">
+            <h5 class="card-category">Daily Clients</h5>
+            <h3 class="card-title"><i class="tim-icons icon-delivery-fast text-info"></i> 100</h3>
+          </div>
+          <div class="card-body">
+            <div class="chart-area"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+              <canvas id="CountryChart" width="322" height="220" class="chartjs-render-monitor" style="display: block; width: 322px; height: 220px;"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card card-chart">
+			<div class="card-header">
+				<h5 class="card-category">FTS Configuration</h5>
+				<h3 class="card-title"><i class="tim-icons icon-delivery-fast text-info"></i> Config</h3>
+			</div>
+			<style>
+			#ip {				
+				width: 100%;
+				height: calc(2.25rem + 2px);
+				font-weight: 400;
+				line-height: 1.428571;
+				color: rgba(255, 255, 255, 0.8);
+				background-color: transparent;
+				background-clip: padding-box;
+				border: 1px solid #cad1d7;
+				box-shadow: none;
+				border-color: #2b3553;
+				border-radius: 0.25rem;
+				margin-bottom: 10px;
+			}
+
+			#port1 {
+				display: inline-block;
+				width: 30%;
+				height: calc(2.25rem + 2px);
+				font-weight: 400;
+				line-height: 1.428571;
+				color: rgba(255, 255, 255, 0.8);
+				background-color: transparent;
+				background-clip: padding-box;
+				border: 1px solid #cad1d7;
+				box-shadow: none;
+				border-color: #2b3553;
+				border-radius: 0.25rem;
+				text-align: left;
+				margin-left: 30px;
+				margin-right: 30px;
+			}
+			#port2 {
+				display: inline-block;
+				width: 30%;
+				height: calc(2.25rem + 2px);
+				font-weight: 400;
+				line-height: 1.428571;
+				color: rgba(255, 255, 255, 0.8);
+				background-color: transparent;
+				background-clip: padding-box;
+				border: 1px solid #cad1d7;
+				box-shadow: none;
+				border-color: #2b3553;
+				border-radius: 0.25rem;
+				text-align: right;
+				margin-right: 30px;
+			}
+			#portText{
+				margin-left: 30px;
+				margin-right: 30px;
+			}
+			#serverText{
+				margin-left: 30px;
+				
+			}
+			.devider{
+				margin-left:30px;
+				height:auto;
+				display:inline-block;
+			
+			}
+			/* The switch - the box around the slider */
+			.switch {
+			  position: relative;
+			  display: inline-block;
+			  width: 60px;
+			  height: 34px;
+			  padding-left: 10px;
+			  margin: 30px;
+			}
+
+			/* Hide default HTML checkbox */
+			.switch input {
+			  opacity: 0;
+			  width: 0;
+			  height: 0;
+			}
+
+			/* The slider */
+			.slider {
+			  position: absolute;
+			  cursor: pointer;
+			  top: 0;
+			  left: 0;
+			  right: 0;
+			  bottom: 0;
+			  background-color: #ccc;
+			  -webkit-transition: .4s;
+			  transition: .4s;
+			}
+
+			.slider:before {
+			  position: absolute;
+			  content: "";
+			  height: 26px;
+			  width: 26px;
+			  left: 4px;
+			  bottom: 4px;
+			  background-color: white;
+			  -webkit-transition: .4s;
+			  transition: .4s;
+			}
+
+			input:checked + .slider {
+			  background-color: #2196F3;
+			}
+
+			input:focus + .slider {
+			  box-shadow: 0 0 1px #2196F3;
+			}
+
+			input:checked + .slider:before {
+			  -webkit-transform: translateX(26px);
+			  -ms-transform: translateX(26px);
+			  transform: translateX(26px);
+			}
+
+			/* Rounded sliders */
+			.slider.round {
+				padding-left: 30px;
+				display: inline-block;
+				border-radius: 34px;
+			}
+
+			.slider.round:before {
+			  border-radius: 50%;
+			}
+			.button5 {background-color: #000000;border: none;color: white;} /* Black */
+			</style>
+			<form>
+				<label for="IP">IP or HOSTNAME</label><br>
+				<input type="text" id="ip" name="IP_address" value="0.0.0.0"><br>
+                <input type="text" id="CoTIP" name="CoTIP_address" value="0.0.0.0"><br>
+				<label id="portText">TCP PORT1</label><label id="portText" for="HTTPport">HTTP PORT</label><label id="portText" for="SSLPort">SSL Port</label><br>
+				<input type="int" id="port1" name="tcp_port_number" value="15777"><input type="int" id="port2" name="http_port_number" value="8080"><input type="int" id="SSLPort" name="SSL_port_number" value="8089"><br>
+                <label id="serverText">Turn CoT service On/Off</label>
+                <label class="switch"><input type="checkbox", id="CoTOnOffSwitch"><span class="slider round"></span></label><br>
+                <label id="serverText">Turn DataPackage service On/Off</label>
+                <label class="switch"><input type="checkbox", id="DPOnOffSwitch"><span class="slider round"></span></label><br>
+                <label id="serverText">Turn SSL Service service On/Off</label>
+                <label class="switch"><input type="checkbox", id="SSLCoTOnOffSwitch"><span class="slider round"></span></label><br>
+                <label id="serverText">Turn Server On/Off</label>
+				<label class="switch"><input type="checkbox", id="OnOffSwitch"><span class="slider round"></span></label><br>
+                <p id="CoTServiceStatus">CoT service status: stoped</p>
+                <p id="DataPackageServiceStatus">DP service status: stoped</p>
+                <p id="SSLCoTServiceStatus">SSL CoT service status: stoped</p>
+				<button class="button5" type="button">Apply Changes</button>
+			</form>
+        </div>
+      </div>
+	  
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-md-12">
+        <div class="card card-tasks">
+          <div class="card-header ">
+            <h6 class="title d-inline">Active Missions(312)</h6>
+            <p class="card-category d-inline">today</p>
+            <div class="dropdown">
+              <button type="button" class="btn btn-link dropdown-toggle btn-icon" data-toggle="dropdown">
+                <i class="tim-icons icon-settings-gear-63"></i>
+              </button>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#pablo">Action</a>
+                <a class="dropdown-item" href="#pablo">Another action</a>
+                <a class="dropdown-item" href="#pablo">Something else</a>
+              </div>
+            </div>
+          </div>
+          <div class="card-body ">
+            <div class="table-full-width table-responsive">
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" value="">
+                          <span class="form-check-sign">
+                            <span class="check"></span>
+                          </span>
+                        </label>
+                      </div>
+                    </td>
+                    <td>
+                      <p class="title">find a bald eagle</p>
+                      <p class="text-muted">merica</p>
+                    </td>
+                    <td class="td-actions text-right">
+                      <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
+                        <i class="tim-icons icon-pencil"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" value="" checked="">
+                          <span class="form-check-sign">
+                            <span class="check"></span>
+                          </span>
+                        </label>
+                      </div>
+                    </td>
+                    <td>
+                      <p class="title">fight a fire</p>
+                      <p class="text-muted">dont get burned.</p>
+                    </td>
+                    <td class="td-actions text-right">
+                      <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
+                        <i class="tim-icons icon-pencil"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" value="">
+                          <span class="form-check-sign">
+                            <span class="check"></span>
+                          </span>
+                        </label>
+                      </div>
+                    </td>
+                    <td>
+                      <p class="title">spy on citizens</p>
+                      <p class="text-muted"> thx snowden</p>
+                    </td>
+                    <td class="td-actions text-right">
+                      <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
+                        <i class="tim-icons icon-pencil"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" value="">
+                          <span class="form-check-sign">
+                            <span class="check"></span>
+                          </span>
+                        </label>
+                      </div>
+                    </td>
+                    <td>
+                      <p class="title">Release v1.0.0</p>
+                      <p class="text-muted">soon enough</p>
+                    </td>
+                    <td class="td-actions text-right">
+                      <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
+                        <i class="tim-icons icon-pencil"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" value="">
+                          <span class="form-check-sign">
+                            <span class="check"></span>
+                          </span>
+                        </label>
+                      </div>
+                    </td>
+                    <td>
+                      <p class="title">other stuff</p>
+                      <p class="text-muted">loren ipsum</p>
+                    </td>
+                    <td class="td-actions text-right">
+                      <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
+                        <i class="tim-icons icon-pencil"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" value="">
+                          <span class="form-check-sign">
+                            <span class="check"></span>
+                          </span>
+                        </label>
+                      </div>
+                    </td>
+                    <td>
+                      <p class="title">another task</p>
+                      <p class="text-muted">Capitol Hill, Seattle, WA 12:34 AM</p>
+                    </td>
+                    <td class="td-actions text-right">
+                      <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="Edit Task">
+                        <i class="tim-icons icon-pencil"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12">
+        <div class="card ">
+          <div class="card-header">
+            <h4 class="card-title"> users</h4>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table tablesorter " id="ClientList">
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12">
+        <div class="card ">
+          <div class="card-header">
+            <h4 class="card-title"> send server message</h4>
+          </div>
+          <div class="card-body">
+            <form onsubmit="sendGeoChat()">
+              Enter message content: <input type="text" name="messageContent", id="GeoChatText">
+              <input type="submit" value="Submit">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+  <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+  <script>
+    //the ip or dns which the FTS instances REST api is accessible
+    var ip = '127.0.0.1'
+
+    function sendGeoChat() {
+      //retrieve geochat content
+      var text = document.getElementById("GeoChatText").value
+
+      //convert to JSON which can be read by server
+      var GeoChatJson = {
+                          "detail": {
+                            "remarks": {
+                              "INTAG": text
+                            }
+                          }
+                        }
+
+      //connect to the server
+      const url=`http://${ip}/SendGeoChat`;
+      const Http = new XMLHttpRequest();
+      Http.open("POST", url, false); // false for synchronous request
+      Http.setRequestHeader("Content-Type", "application/json");
+
+      //send json to server
+      Http.send(GeoChatJson);
+
+    }
+
+    //this gets current server data
+    function establishConnection() {
+      console.log('connecting')
+      var socket = io.connect(`http://${ip}:80`);
+      socket.on('data', function (msg) {
+        //begin user update listener
+        console.log(msg)
+        retrieveUpdates(socket)
+      })
+    }
+    //listen for and apply updates
+    function retrieveUpdates(socket) {
+      console.log(socket);
+      //confirm connection and then receive json from server
+      socket.emit('Update', 'confirm connection');
+      socket.on('up', function (msg) {
+        var jsonData = JSON.parse(msg);
+        //use update user data to recreate table
+        CreateTableFromJSON(jsonData);
+      })
+    }
+
+    //convert json to
+    function CreateTableFromJSON(Users) {
+
+        // EXTRACT VALUE FOR HTML HEADER.
+        // ('Book ID', 'Book Name', 'Category' and 'Price')
+        var col = [];
+        for (var i = 0; i < Users.length; i++) {
+            for (var key in Users[i]) {
+                if (col.indexOf(key) === -1) {
+                    col.push(key);
+                }
+            }
+        }
+
+        // CREATE DYNAMIC TABLE.
+        var table = document.getElementById("ClientList");
+        table.innerHTML = ''
+
+        // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+        var tr = table.insertRow(-1);                   // TABLE ROW.
+
+        for (var i = 0; i < col.length; i++) {
+            var th = document.createElement("th");      // TABLE HEADER.
+            th.innerHTML = col[i];
+            tr.appendChild(th);
+        }
+
+        // ADD JSON DATA TO THE TABLE AS ROWS.
+        for (var i = 0; i < Users.length; i++) {
+
+            tr = table.insertRow(-1);
+
+            for (var j = 0; j < col.length; j++) {
+                var tabCell = tr.insertCell(-1);
+                tabCell.innerHTML = Users[i][col[j]];
+            }
+        }
+
+        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+        //var divContainer = document.getElementById("showData");
+        //divContainer.innerHTML = "1";
+        //divContainer.appendChild(table);
+    }
+
+    function retrieveServerData() {
+
+      //open connection to server
+      const url=`http://${ip}/checkStatus`;
+      const Http = new XMLHttpRequest();
+      Http.open( "GET", url, false ); // false for synchronous request
+      Http.send( null );
+
+      //this parses the json sent from the servers restapi containing details about the various services which are active.
+      var currentServerStatus = JSON.parse(Http.responseText);
+
+      var CoTService = currentServerStatus.CoTService;
+      var DataPackageService = currentServerStatus.DataPackageService;
+      var SSLCoTService = currentServerStatus.SSLCoTService;
+
+      //if a service has been neither started nor stopped it's status will remain none and therefor interpreted as stopped
+      if (CoTService.CoTServiceStatus != ''){
+        //pass
+      }
+      else{
+        CoTService.CoTServiceStatus = 'stopped'
+      }
+      if (DataPackageService.DataPackageServiceStatus != ''){
+        //pass
+      }
+      else{
+        DataPackageService.DataPackageServiceStatus = 'stopped'
+      }
+      if (SSLCoTService.SSLServiceStatus != ''){
+        SSLCoTService.SSLServiceStatus = 'stopped'
+      }
+
+      document.getElementById("port1").value = CoTService.CoTServicePort;
+      document.getElementById("port2").value = DataPackageService.DataPackageServicePort;
+      document.getElementById("SSLCoTPort").value = SSLCoTService.SSLServicePort;
+
+      document.getElementById("ip").value = DataPackageService.DataPackageServiceIP;
+      document.getElementById("CoTIP").value = CoTService.CoTServiceIP;
+      document.getElementById("SSLCoTIP").value = SSLCoTService.SSLServiceIP;
+
+      document.getElementById("CoTServiceStatus").innerHTML = `CoT service status: ${CoTService.CoTServiceStatus}`;
+      document.getElementById("DataPackageServiceStatus").innerHTML = `DP service status: ${DataPackageService.DataPackageServiceStatus}`;
+      document.getElementById("SSLCoTServiceStatus").innerHTML = `SSL CoT service status: ${DataPackageService.DataPackageServiceStatus}`;
+      //document.getElementById("OnOffSwitch").checked =
+    }
+
+    //get start all on off switch
+    var StartAllcheckbox = document.querySelector("input[id=OnOffSwitch]");
+
+    //get CoT service on off switch
+    var CoTServiceCheckbox = document.querySelector("input[id=CoTOnOffSwitch]")
+
+    //get start all on off switch
+    var DPServiceCheckbox = document.querySelector("input[id=DPOnOffSwitch]")
+
+    //get start all on off switch
+    var SSLCoTServiceCheckbox = document.querySelector("input[id=SSLCoTOnOffSwitch]")
+
+    //define server all off Json
+    var OffJson = JSON.stringify({"CoTService": {"STATUS": "stop"}, "DataPackageService": {"STATUS":"stop"}, "SSLCoTService": {"STATUS": "stop"}})
+
+    //define server CoT off Json
+    var CoTServiceOffJson = JSON.stringify({"CoTService": {"STATUS": "stop"}, "DataPackageService": {"STATUS":"stop"}, "SSLCoTService": {"STATUS": "stop"}})
+
+    //define server SSL off Json
+    var SSLCoTServiceOffJson = JSON.stringify({"SSLCoTService": {"STATUS": "stop"}})
+
+    //define server DP off Json
+    var DPServiceOffJson = JSON.stringify({"DataPackageService": {"STATUS":"stop"}})
+
+    //listen to main on off switches
+    StartAllcheckbox.addEventListener( 'change', function() {
+        if(this.checked) {
+
+            //check set ports
+            var CoTPort = document.getElementById("port1").value;
+            var DataPackagePort = document.getElementById("port2").value;
+            var SSLCoTPort = document.getElementById("SSLPort").value;
+            var DataPackageIP = document.getElementById("ip").value;
+
+            //add ports to dictionary and convert to
+            var OnJson = JSON.stringify({"CoTService": {"IP": "0.0.0.0", "PORT": CoTPort, "STATUS": "start"}, "SSLService": {"IP": "0.0.0.0", "PORT": CoTPort, "STATUS": "start"}, "DataPackageService":{ "IP": DataPackageIP, "PORT": DataPackagePort, "STATUS":"start"}});
+            const url=`http://${ip}/changeStatus`;
+            const Http = new XMLHttpRequest();
+            Http.open("POST", url, true);
+            Http.setRequestHeader("Content-Type", "application/json");
+            console.log(OnJson);
+            Http.send(OnJson);
+            Http.onreadystatechange = (e) => {
+                console.log(Http.responseText);
+            }
+            document.getElementById("ip").disabled = true;
+            document.getElementById("port1").disabled = true;
+            document.getElementById("port2").disabled = true;
+        } else {
+            const url=`http://${ip}/changeStatus`;
+            const Http = new XMLHttpRequest();
+            Http.open("POST", url, true);
+            Http.setRequestHeader("Content-Type", "application/json");
+            console.log(OffJson);
+            Http.send(OffJson);
+            Http.onreadystatechange = (e) => {
+                console.log(Http.responseText);
+            }
+            document.getElementById("ip").disabled = false;
+            document.getElementById("port1").disabled = false;
+            document.getElementById("port2").disabled = false;
+        }
+    });
+    
+    //listen to CoT service on off switch
+    CoTServiceCheckbox.addEventListener( 'change', function() {
+        if(this.checked) {
+
+            //check set ports
+            var CoTPort = document.getElementById("port1").value;
+
+            //add ports to dictionary and convert to
+            var OnJson = JSON.stringify({"CoTService": {"IP": "0.0.0.0", "PORT": CoTPort, "STATUS": "start"}});
+            
+            //establish connection to api
+            const url=`http://${ip}/changeStatus`;
+            const Http = new XMLHttpRequest();
+            Http.open("POST", url, true);
+            Http.setRequestHeader("Content-Type", "application/json");
+            
+            //send json to api
+            Http.send(OnJson);
+            Http.onreadystatechange = (e) => {
+                console.log(Http.responseText);
+            }
+          
+            //lock port value
+            document.getElementById("port1").disabled = true;
+        
+        } else {
+            //establish connection to api
+            const url=`http://${ip}/changeStatus`;
+            const Http = new XMLHttpRequest();
+            Http.open("POST", url, true);
+            Http.setRequestHeader("Content-Type", "application/json");
+            
+            //send json to api
+            Http.send(CoTServiceOffJson);
+            Http.onreadystatechange = (e) => {
+                console.log(Http.responseText);
+            }
+            //unlock port value
+            document.getElementById("port1").disabled = false;
+        }
+    });
+    
+    //listen to DPService on off switch
+    DPServiceCheckbox.addEventListener( 'change', function() {
+        if(this.checked) {
+
+            //check set ports
+            var DataPackagePort = document.getElementById("port2").value;
+            var DataPackageIP = document.getElementById("ip").value;
+
+            //add ports to dictionary and convert to
+            var OnJson = JSON.stringify({"DataPackageService":{ "IP": DataPackageIP, "PORT": DataPackagePort, "STATUS":"start"}});
+            
+            //establish connection to api
+            const url=`http://${ip}/changeStatus`;
+            const Http = new XMLHttpRequest();
+            Http.open("POST", url, true);
+            Http.setRequestHeader("Content-Type", "application/json");
+            
+            //send json to api
+            Http.send(OnJson);
+            Http.onreadystatechange = (e) => {
+                console.log(Http.responseText);
+            }
+          
+            //lock port and ip values
+            document.getElementById("ip").disabled = true;
+            document.getElementById("port2").disabled = true;
+        
+        } else {
+            //establish connection to api
+            const url=`http://${ip}/changeStatus`;
+            const Http = new XMLHttpRequest();
+            Http.open("POST", url, true);
+            Http.setRequestHeader("Content-Type", "application/json");
+            
+            //send json to api
+            Http.send(DPServiceOffJson);
+            Http.onreadystatechange = (e) => {
+                console.log(Http.responseText);
+            }
+
+            //unlock port and ip values
+            document.getElementById("ip").disabled = false;
+            document.getElementById("port2").disabled = false;
+        }
+    });
+    SSLCoTServiceCheckbox.addEventListener( 'change', function() {
+        if(this.checked) {
+
+            //check set ports
+            var CoTPort = document.getElementById("SSLPort").value;
+
+            //add ports to dictionary and convert to
+            var OnJson = JSON.stringify({"SSLCoTService": {"IP": "0.0.0.0", "PORT": CoTPort, "STATUS": "start"},});
+
+            //establish connection to api
+            const url=`http://${ip}/changeStatus`;
+            const Http = new XMLHttpRequest();
+            Http.open("POST", url, true);
+            Http.setRequestHeader("Content-Type", "application/json");
+
+            //send json to api
+            Http.send(OnJson);
+            Http.onreadystatechange = (e) => {
+                console.log(Http.responseText);
+            }
+
+            //lock port value
+            document.getElementById("SSLPort").disabled = true;
+
+        } else {
+            //establish connection to api
+            const url=`http://${ip}/changeStatus`;
+            const Http = new XMLHttpRequest();
+            Http.open("POST", url, true);
+            Http.setRequestHeader("Content-Type", "application/json");
+
+            //send json to api
+            Http.send(SSLCoTServiceOffJson);
+            Http.onreadystatechange = (e) => {
+                console.log(Http.responseText);
+            }
+            //unlock port value
+            document.getElementById("SSLPort").disabled = false;
+        }
+    });
+    establishConnection()
+    retrieveServerData()
+  </script>
+  <script>
+    
+    $(document).ready(function() {
+      // Javascript method's body can be found in assets/js/demos.js
+      demo.initDashboardPageCharts();
+
+    });
+  </script>
+
+{% endblock javascripts %}
