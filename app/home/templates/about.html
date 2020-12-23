@@ -1,0 +1,89 @@
+{% extends "base-site.html" %} {% block title %} About {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %} {% block content %}
+
+
+<!-- ======= Header tools ======= -->
+<div style="display: grid; grid-template-columns: 1fr;">
+<div class="card" style="padding: 16px;">
+	<div class="header-tools" style="display: grid; padding: 16px; justify-content: flex-start; font-size: 20px; color: #278aed">
+		[About FTS]
+	</div>
+	<div style="font-size: 1rem; color: #fff; padding: 16px;">
+		FTS is a Python3 implementation of the TAK Server for devices like CiVTAK, WinTAK and ITAK, it is cross-platform. We use the Flask 
+		framework for web services. It's free and open source (released under the Eclipse Public License).
+	</div>
+	</div>
+	
+</div>
+
+
+<div style="display: grid; grid-template-columns: 1fr 1fr;gap: 30px">
+
+
+<div class="card card-stats">
+	<div class="card-body">
+	  <div style="display: grid; grid-template-columns: 1fr 3fr;">
+		<div >
+		  <div class="info-icon text-center icon-warning">
+			<i class="tim-icons icon-time-alarm" style="font-size: 40px; color: #278AED""></i>
+		  </div>
+		</div>
+		<div >
+		  <div class="numbers">
+			<p class="card-category" style="font-size: 20px; color: #278aed;">[FTS VERSION]</p>
+			<h3 class="card-title">1.4</h3>
+		  </div>
+		</div>
+	  </div>
+	</div>
+   
+  </div>
+
+  <div class="card card-stats">
+	<div class="card-body">
+	  <div style="display: grid; grid-template-columns: 1fr 3fr;">
+		<div >
+		  <div class="info-icon text-center icon-warning">
+			<i class="tim-icons icon-time-alarm" style="font-size: 40px; color: #278AED""></i>
+		  </div>
+		</div>
+		<div >
+		  <div class="numbers">
+			<p class="card-category" style="font-size: 20px; color: #278aed">[UI VERSION]</p>
+			<h3 class="card-title">1.0</h3>
+		  </div>
+		</div>
+	  </div>
+	</div>
+   
+  </div>
+  </div>
+
+  <div class="card" style="padding: 16px;">
+	<div class="header-tools" style="display: grid; padding: 16px; justify-content: flex-start; font-size: 20px; color: #278aed">
+		[About FTS]
+	</div>
+	<div style="font-size: 1rem; color: #fff; padding: 16px;">
+		FTS is provided to you by the FTS team. If you like this project and you can please consider a donation.
+		<br>
+		We like to thanks the following individuals and organization for provide crucial support, making FTS possible.
+		<ul>
+			<li>Air Force Research Laboratory</li>
+		<li>Sparx Services North America</li>
+		<li>Ralph "ATAK release"</li>
+		<li>Jay "Field Mapper"</li>
+		<li>Wesley "GHOST_DA-B6"</li>
+		<li>Largo Usagi</li>
+		<li>Allan "Pinzgauer"</li>
+	</div>
+	</div>
+
+</div>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
+<!-- color: #3ea1ec;
+border-color: #3ea1ec; -->

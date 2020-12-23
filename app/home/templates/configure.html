@@ -1,0 +1,182 @@
+{% extends "base-site.html" %} {% block title %} Configure {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %} {% block content %}
+
+
+<!-- ======= Header tools ======= -->
+<div style="display: grid; grid-template-columns: 1fr;">
+<div class="card" style="padding: 16px;">
+	<div class="header-tools" style="display: grid; padding: 0px 100px; justify-content: flex-end; font-size: 20px; color: #278aed">
+		[SYSTEM Configuration]
+	</div>
+	<div style="font-size: 1rem; color: #fff; margin: 0 auto;
+	gap: 30px; border: 0px solid #fff;
+	padding: 16px; display: grid; grid-template-columns: 140px 110px 70px 105px 70px 70px 70px">
+
+<div style="display: grid; grid-template-columns: 1fr;">
+	<div class="cols" style="padding: 5px;">
+		<input type="text" 
+		class="form-control"
+		id="ip" name="IP_address" value="0.0.0.0">
+	</div>
+	<div class="cols" style="padding: 5px;">
+		<button class="btn btn-simple btn-twitter" style="color: #278aed; border-color: #278aed">Apply</button>
+	</div>
+	
+
+</div>
+	
+	<div class="cols">
+		<div style="padding: 10px 0px 10px 10px;">
+			<label>
+				<input type="radio" name="cotradio" checked/>
+				<span>TCP COT</span>
+			</label>
+		</div>
+		<div style="padding: 10px 0px 10px 10px;">
+		<label>
+			<input type="radio" name="cotradio"/>
+			<span>SSL COT</span>
+		</label>
+	</div>
+		
+	</div>
+	<div>
+		<div class="cols" style="padding: 5px;">
+			<input type="text" 
+			class="form-control" style="width: 70px;"
+			id="ip" name="IP_address" value="8080">
+		</div>
+		<div class="cols" style="padding: 5px;">
+			<input type="text" 
+			class="form-control" style="width: 70px;"
+			id="ip" name="IP_address" value="">
+		</div>
+	</div>
+	
+	<div class="cols">
+		<div style="padding: 10px 0px 10px 10px;">
+		<label>
+			<input type="radio" name="dpradio" checked/>
+			<span>HTTP DP</span>
+		</label>
+		</div>
+		<div style="padding: 10px 0px 10px 10px;">
+		<label>
+			<input type="radio" name="dpradio"/>
+			<span>SSL DP</span>
+		</label>
+	</div>
+	</div>
+	<div class="cols" >
+		<div class="cols" style="padding: 5px;">
+			<input type="text" 
+			class="form-control" style="width: 70px;"
+			id="ip" name="IP_address" value="">
+		</div>
+		<div class="cols" style="padding: 5px;">
+			<input type="text" 
+			class="form-control" style="width: 70px;"
+			id="ip" name="IP_address" value="">
+		</div>
+	</div>
+	<div class="cols">
+		<div style="padding: 10px 0px 10px 10px;">
+		<label>
+			<input type="radio" name="radio" checked/>
+			<span>API</span>
+		</label>
+	</div><div style="padding: 10px 0px 10px 10px;">
+	
+		<label>
+			<input type="radio" name="radio"/>
+			<span>FED</span>
+		</label>
+	</div>
+	</div>
+	<div class="cols">
+		<div class="cols" style="padding: 5px;">
+			<input type="text" 
+			class="form-control" style="width: 70px;"
+			id="ip" name="IP_address" value="">
+		</div>
+		<div class="cols" style="padding: 5px;">
+			<input type="text" 
+			class="form-control" style="width: 70px;"
+			id="ip" name="IP_address" value="">
+		</div>
+	</div>
+	
+	</div>
+	</div>
+
+	<div class="card" style="padding: 16px;">
+		
+		<div class="card">
+			<div class="card-body">
+				<div style="width: 80%; display: grid; margin: 0 auto">
+					<form>
+						<div class="header-tools" style="display: grid; justify-content: flex-end; font-size: 20px; color: #278aed">[Team Member]</div>
+						<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
+							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
+								<div style="font-size: 16px; color: #b5b5b5">Name</div>
+								<div><input type="text" class="form-control" value="Doe" /></div>
+							</div>
+
+							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
+								<div style="font-size: 16px; color: #b5b5b5">IP</div>
+								<div><input type="text" class="form-control" value="" /></div>
+							</div>
+						</div>
+
+						<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
+							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
+								<div style="font-size: 16px; color: #b5b5b5">Reconnect</div>
+								<div><input type="text" class="form-control" value="30" /></div>
+							</div>
+
+							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
+								<div style="font-size: 16px; color: #b5b5b5">Port</div>
+								<div><input type="text" class="form-control" style="width: 70px;" value="" /></div>
+							</div>
+						</div>
+
+						<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
+							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
+								<div style="font-size: 16px; color: #b5b5b5">Max Retries</div>
+								<div><input type="text" class="form-control" value="38.889" /></div>
+							</div>
+
+							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
+								<div style="font-size: 16px; color: #b5b5b5">Fallback</div>
+								<div class="select">
+									<select name="format" id="format">
+										<option selected>Select a Value</option>
+										<option value="pdf">PDF</option>
+										<option value="txt">txt</option>
+										<option value="epub">ePub</option>
+										<option value="fb2">fb2</option>
+										<option value="mobi">mobi</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		</div>
+	
+</div>
+
+
+
+
+</div>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
+<!-- color: #3ea1ec;
+border-color: #3ea1ec; -->

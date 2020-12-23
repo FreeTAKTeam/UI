@@ -1,0 +1,268 @@
+{% extends "base-site.html" %} {% block title %} Mission {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %} {% block content %}
+
+<!-- mission code here -->
+<!-- 
+<div style="width: 90%; display: grid; 
+padding: 5px;
+margin: 0 auto; background-color: #27293d;">
+	
+	<div class="header-tools" style="justify-self: flex-end; font-size: 20px; color: #278aed">[DATA PACKAGE]</div>
+
+	
+	<div style="padding: 5px; " class="datatable-container">
+		<table class="datatable">
+			<thead>
+				<tr>
+					<th>Keywords</th>
+					<th>Name</th>
+					<th>Author</th>
+					<th>Index</th>
+					<th>Privacy</th>
+					<th>Size</th>
+					<th>Submitted</th>
+				</tr>
+			</thead>
+
+			<tbody >
+				<tr>
+                    <td colspan="8">
+                        <div style="max-height: 300px; overflow-y: scroll" class="datatable-container">
+                            <table class="datatable">
+                                {% for dict_item in package_data_list1 %}
+                                <tr>
+                                {% for key, value in dict_item.items() %}
+                                    <td>{{value}}</td>
+                                {% endfor %}
+                            </tr>
+                             {% endfor %} 
+
+                </tr>
+               
+                            </table>
+			</tbody>
+		</table>
+	</div>
+	
+	<div class="footer-tools" style="background-color: #27293d; padding: 0px 10px;">
+		<button class="btn btn-simple btn-twitter" style="color: #278aed80; border-color: #278aed80">DELETE</button>
+		&nbsp;&nbsp;&nbsp;
+		<button class="btn btn-simple btn-twitter" style="color: #278aed; border-color: #278aed">ADD</button>
+	</div>
+</div> -->
+
+<!-- ======= Header tools ======= -->
+<div class="card">
+	<div class="header-tools" style="display: grid; padding: 10px 100px; justify-content: flex-end; font-size: 20px; color: #278aed">
+		[Data Package]
+	</div>
+	<!-- ======= Table ======= -->
+	<div class="datatable-container" style="width: 90%">
+		<table class="datatable">
+			<thead>
+				<tr>
+					<th style="font-size: 16px; color: #b5b5b5">Keywords</th>
+					<th style="font-size: 16px; color: #b5b5b5">Name</th>
+					<th style="font-size: 16px; color: #b5b5b5">Author</th>
+					<th style="font-size: 16px; color: #b5b5b5">Index</th>
+					<th style="font-size: 16px; color: #b5b5b5">Privacy</th>
+					<th style="font-size: 16px; color: #b5b5b5">Size</th>
+					<th style="font-size: 16px; color: #b5b5b5">Submitted</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td style="font-size: 14px; opacity: 0.8">row 1</td>
+					<td style="font-size: 14px; opacity: 0.8">name 1</td>
+					<td style="font-size: 14px; opacity: 0.8">author 1</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+				</tr>
+
+				<tr>
+					<td style="font-size: 14px; opacity: 0.8">row 2</td>
+					<td style="font-size: 14px; opacity: 0.8">name 2</td>
+					<td style="font-size: 14px; opacity: 0.8">author 2</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+				</tr>
+				<tr>
+					<td style="font-size: 14px; opacity: 0.8">row 3</td>
+					<td style="font-size: 14px; opacity: 0.8">name 3</td>
+					<td style="font-size: 14px; opacity: 0.8">author 3</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+				</tr>
+
+				<tr>
+					<td style="font-size: 14px; opacity: 0.8">row 4</td>
+					<td style="font-size: 14px; opacity: 0.8">name 4</td>
+					<td style="font-size: 14px; opacity: 0.8">author 4</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<!-- ======= Footer tools ======= -->
+	<div class="footer-tools" style="background-color: #27293d; padding: 16px 16px 16px 50px; display: grid; grid-template-columns: 1fr 1fr">
+		<div>
+			<button class="btn btn-simple btn-twitter" style="color: #278aed80; border-color: #278aed80">DELETE</button>
+			&nbsp;&nbsp;&nbsp;
+			<button class="btn btn-simple btn-twitter" style="color: #278aed; border-color: #278aed">ADD</button>
+		</div>
+		<div style="display: grid; grid-template-columns: 1fr 40px">
+			<div><input type="text" class="form-control" value="/usr/fts/wwwii.zip" /></div>
+			<div
+				style="
+					font-size: 16px;
+					color: #b5b5b5;
+					padding: 5px 10px 5px 5px;
+					place-self: center;
+					border: 1px solid #383c44;
+					border-radius: 5px;
+					align-self: baseline;
+				"
+			>
+				...
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="card">
+	<div class="header-tools" style="display: grid; padding: 10px 100px; justify-content: flex-end; font-size: 20px; color: #278aed">[Mission]</div>
+	<!-- ======= Table ======= -->
+	<div class="datatable-container" style="width: 90%">
+		<table class="datatable">
+			<thead>
+				<tr>
+					<th style="font-size: 16px; color: #b5b5b5">Name</th>
+					<th style="font-size: 16px; color: #b5b5b5">Description</th>
+					<th style="font-size: 16px; color: #b5b5b5">Keywords</th>
+					<th style="font-size: 16px; color: #b5b5b5">Creator</th>
+					<th style="font-size: 16px; color: #b5b5b5">Groups</th>
+					<th style="font-size: 16px; color: #b5b5b5">Created</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td style="font-size: 14px; opacity: 0.8">row 1</td>
+					<td style="font-size: 14px; opacity: 0.8">name 1</td>
+					<td style="font-size: 14px; opacity: 0.8">author 1</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+				</tr>
+
+				<tr>
+					<td style="font-size: 14px; opacity: 0.8">row 2</td>
+					<td style="font-size: 14px; opacity: 0.8">name 2</td>
+					<td style="font-size: 14px; opacity: 0.8">author 2</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+				</tr>
+				<tr>
+					<td style="font-size: 14px; opacity: 0.8">row 3</td>
+					<td style="font-size: 14px; opacity: 0.8">name 3</td>
+					<td style="font-size: 14px; opacity: 0.8">author 3</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+				</tr>
+
+				<tr>
+					<td style="font-size: 14px; opacity: 0.8">row 4</td>
+					<td style="font-size: 14px; opacity: 0.8">name 4</td>
+					<td style="font-size: 14px; opacity: 0.8">author 4</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<!-- ======= Footer tools ======= -->
+	<div class="footer-tools" style="background-color: #27293d; padding: 16px 0px 16px 50px">
+		<button class="btn btn-simple btn-twitter" style="color: #278aed80; border-color: #278aed80">DELETE</button>
+		&nbsp;&nbsp;&nbsp;
+		<button class="btn btn-simple btn-twitter" style="color: #278aed; border-color: #278aed">ADD</button>
+	</div>
+</div>
+
+<div class="card">
+	<div class="header-tools" style="display: grid; padding: 10px 100px; justify-content: flex-end; font-size: 20px; color: #278aed">[Ex Check]</div>
+	<!-- ======= Table ======= -->
+	<div class="datatable-container" style="width: 90%">
+		<table class="datatable">
+			<thead>
+				<tr>
+					<th style="font-size: 16px; color: #b5b5b5">Name</th>
+					<th style="font-size: 16px; color: #b5b5b5">Submitter</th>
+					<th style="font-size: 16px; color: #b5b5b5">Type</th>
+					<th style="font-size: 16px; color: #b5b5b5">Size</th>
+					<th style="font-size: 16px; color: #b5b5b5">Submitted</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td style="font-size: 14px; opacity: 0.8">row 1</td>
+					<td style="font-size: 14px; opacity: 0.8">name 1</td>
+					<td style="font-size: 14px; opacity: 0.8">author 1</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+				</tr>
+
+				<tr>
+					<td style="font-size: 14px; opacity: 0.8">row 2</td>
+					<td style="font-size: 14px; opacity: 0.8">name 2</td>
+					<td style="font-size: 14px; opacity: 0.8">author 2</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+				</tr>
+				<tr>
+					<td style="font-size: 14px; opacity: 0.8">row 3</td>
+					<td style="font-size: 14px; opacity: 0.8">name 3</td>
+					<td style="font-size: 14px; opacity: 0.8">author 3</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+				</tr>
+
+				<tr>
+					<td style="font-size: 14px; opacity: 0.8">row 4</td>
+					<td style="font-size: 14px; opacity: 0.8">name 4</td>
+					<td style="font-size: 14px; opacity: 0.8">author 4</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+					<td style="font-size: 14px; opacity: 0.8">text</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<!-- ======= Footer tools ======= -->
+	<div class="footer-tools" style="background-color: #27293d; padding: 16px 0px 16px 50px">
+		<button class="btn btn-simple btn-twitter" style="color: #278aed80; border-color: #278aed80">DELETE</button>
+		&nbsp;&nbsp;&nbsp;
+		<button class="btn btn-simple btn-twitter" style="color: #278aed; border-color: #278aed">ADD</button>
+	</div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
+<!-- color: #3ea1ec;
+border-color: #3ea1ec; -->

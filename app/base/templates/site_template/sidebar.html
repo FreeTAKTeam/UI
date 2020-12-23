@@ -1,67 +1,65 @@
+<div class="sidebar" style="background-color: #27293d">
+	<div class="sidebar-wrapper" style="background-color: #27293d">
+		<div style="display: grid; justify-content: center; align-content: center; padding: 8px 8px 0px 8px">
+			<img src="/static/assets/img/FreeTakServer3.png" width="150px" alt="Profile Photo" />
 
+			<!-- <a
+				target="_blank"
+				rel="sponsored noopener noreferrer"
+				href="https://appseed.us/admin-dashboards/flask-dashboard-black"
+				class="simple-text logo-normal"
+			>
+				Flask Black
+			</a> -->
+		</div>
 
-    <div class="sidebar">
-      <div class="sidebar-wrapper">
+		<ul class="nav">
+			{% if current_user.is_authenticated %}
+			<li class="{% if 'index' in segment %} active {% endif %}">
+				<a href="/">
+					<i class="tim-icons icon-components"></i>
+					<p style="font-size: 16px">Home</p>
+				</a>
+			</li>
+			<li class="{% if 'icons' in segment %} active {% endif %}">
+				<a href="/mission">
+					<i class="tim-icons icon-spaceship"></i>
+					<p style="font-size: 16px">Mission</p>
+				</a>
+			</li>
+			<li class="{% if 'maps' in segment %} active {% endif %}">
+				<a href="/ui-maps.html">
+					<i class="tim-icons icon-single-02"></i>
+					<p style="font-size: 16px">User</p>
+				</a>
+			</li>
+			<li class="{% if 'notifications' in segment %} active {% endif %}">
+				<a href="/connect">
+					<i class="tim-icons icon-vector"></i>
+					<p style="font-size: 16px">Connect</p>
+				</a>
+			</li>
+			<li class="{% if 'page-user' in segment %} active {% endif %}">
+				<a href="/configure">
+					<i class="tim-icons icon-settings-gear-63"></i>
+					<p style="font-size: 16px">Configure</p>
+				</a>
+			</li>
+			<li class="{% if 'tables' in segment %} active {% endif %}">
+				<a href="/about">
+					<i class="tim-icons icon-light-3"></i>
+					<p style="font-size: 16px">About</p>
+				</a>
+			</li>
 
-        {% if current_user.is_authenticated %}
-        <ul class="nav">
-          <li class="active ">
-            <a href="/">
-              <i class="tim-icons icon-chart-pie-36"></i>
-              <p>Dashboard</p>
-            </a>
-          </li>
-          <li>
-            <a href="/ui-icons">
-              <i class="tim-icons icon-atom"></i>
-              <p>Icons</p>
-            </a>
-          </li>
-          <li>
-            <a href="/ui-maps">
-              <i class="tim-icons icon-pin"></i>
-              <p>Maps</p>
-            </a>
-          </li>
-          <li>
-            <a href="/ui-notifications">
-              <i class="tim-icons icon-bell-55"></i>
-              <p>Notifications</p>
-            </a>
-          </li>
-          <li>
-            <a href="/page-user">
-              <i class="tim-icons icon-single-02"></i>
-              <p>User Profile</p>
-            </a>
-          </li>
-          <li>
-            <a href="/ui-tables">
-              <i class="tim-icons icon-puzzle-10"></i>
-              <p>Table List</p>
-            </a>
-          </li>
-          <li>
-            <a href="/ui-typography">
-              <i class="tim-icons icon-align-center"></i>
-              <p>Typography</p>
-            </a>
-          </li>
-
-          <li>
-            <a href="/page-rtl-support">
-              <i class="tim-icons icon-world"></i>
-              <p>RTL Support</p>
-            </a>
-          </li>
-          <li>
-            <a href={{ url_for('base_blueprint.logout') }} >
-              <i class="tim-icons icon-user-run"></i>
-              <p>Logout</p>
-            </a>
-          </li>
-        </ul>
-        {% endif %}
-        
-      </div>
-    </div>
+			{% else %}
+			<li class="active">
+				<a target="_blank" href="https://appseed.us/admin-dashboards/flask-dashboard-black-pro">
+					<i class="tim-icons icon-spaceship"></i>
+					<p style="font-size: 16px">PRO Version</p>
+				</a>
+			</li>
+			{% endif %}
+		</ul>
+	</div>
+</div>
