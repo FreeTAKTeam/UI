@@ -22,31 +22,43 @@ def index():
     return render_template('index.html')
 
 
-
 @blueprint.route('/mission')
 @login_required
 def missionApi():
-   # response = requests.get('https://jsonplaceholder.typicode.com/posts')
-    response = requests.get('http://localhost:3000/dataPackage')
-
-    #headers = {'userAuthorizationname': 'Bearer a@v{5]MQU><waQ;Z'}
-
-    #response = requests.get('http://204.48.30.216:19023/DataPackageTable', headers)
-    #print('test..ZZ' + response)
-
-    #return render_template('mission.html')    
-
-    if response.status_code != 200:
-        # This means something went wrong.
-        print('{} {}'.format(response.status_code))
+    # response = requests.get('https://jsonplaceholder.typicode.com/posts')
+    #response = requests.get('http://localhost:3000/dataPackage')
     
-    #package_data_list = response.json()
+    headers = {'Authorization': 'Bearer a@v{5]MQU><waQ;Z'}
 
-    #package_data_list1 = response.json()
+    json_data = requests.get('http://204.48.30.216:19023/DataPackageTable', headers= headers).json()
     
+    mission_json_data = requests.get('http://204.48.30.216:19023/MissionTable', headers= headers).json()
 
-    #return render_template('mission.html', package_data_list = package_data_list,  package_data_list1 = package_data_list1 )
-    return render_template('mission.html')
+    excheck_json_data = requests.get('http://204.48.30.216:19023/ExCheckTable', headers= headers).json()
+    
+    # print('Name' + json_data['json_list'][0]['Name'])    
+     
+
+    return render_template('mission.html', json_data = json_data['json_list'], 
+    mission_json_data = mission_json_data['data'],
+    excheck_json_data = excheck_json_data['ExCheck']['Templates']
+     )
+
+
+
+
+
+@blueprint.route('/connect')
+@login_required
+def connectApi():
+    
+    
+    headers = {'Authorization': 'Bearer a@v{5]MQU><waQ;Z'}
+
+    json_data = requests.get('http://204.48.30.216:19023/ManageEmergency/getEmergency', headers= headers).json()
+    
+    return render_template('connect.html', json_data = json_data['json_list'])     
+  
 
 
 @blueprint.route('/<template>')

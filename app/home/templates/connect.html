@@ -10,215 +10,133 @@
 		<div class="card">
 			<div class="card-body">
 				<div style="width: 80%; display: grid; margin: 0 auto">
-					<form>
-						<div class="header-tools" style="display: grid; justify-content: flex-end; font-size: 20px; color: #278aed">[Send COT]</div>
-						<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
-							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-								<div style="font-size: 16px; color: #b5b5b5">Name</div>
-								<div><input type="text" class="form-control" value="John" /></div>
-							</div>
-
-							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-								<div style="font-size: 16px; color: #b5b5b5">Attitude</div>
-								<div class="select">
-									<select name="format" id="format">
-										<option selected>Select a Value</option>
-										<option value="Friend">Friend</option>
-										<option value="Friendly">Friendly</option>
-										<option value="Hostile">Hostile</option>
-										<option value="Unknown">Unknown</option>
-										<option value="Pending">Pending</option>
-										<option value="Assumed">Assumed</option>
-										<option value="Neutral">Neutral</option>
-										<option value="Suspect">Suspect</option>
-									</select>
-								</div>
-							</div>
+					<div class="header-tools" style="display: grid; justify-content: flex-end; font-size: 20px; color: #278aed">[SEND COT]</div>
+					<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
+						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
+							<div style="font-size: 16px; color: #b5b5b5">Name</div>
+							<div><input type="text" class="form-control" id="name1" value="" /></div>
 						</div>
 
-						<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
-							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-								<div style="font-size: 16px; color: #b5b5b5">Longitude</div>
-								<div><input type="text" class="form-control" value="-77.0104" /></div>
-							</div>
-
-							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-								<div style="font-size: 16px; color: #b5b5b5">GeoObject</div>
-								<div class="select">
-									<select name="format" id="format">
-										<option selected>Select a Value</option>
-										<option value="Gnd Combat Infantry Rifleman">Gnd Combat Infantry Rifleman</option>
-										<option value="Gnd Combat Infantry Grenadier">Gnd Combat Infantry Grenadier</option>
-										<option value="Gnd Combat Infantry Mortar">Gnd Combat Infantry Mortar</option>
-										<option value="Gnd Combat Infantry MachineGunner(LMG)">Gnd Combat Infantry MachineGunner(LMG)</option>
-										<option value="Gnd Combat Infantry Medic">Gnd Combat Infantry Medic</option>
-										<option value="Gnd Combat Infantry Sniper">Gnd Combat Infantry Sniper</option>
-										<option value="Gnd Combat Infantry Recon">Gnd Combat Infantry Recon</option>
-										<option value="Gnd Combat Infantry anti Tank">Gnd Combat Infantry anti Tank</option>
-										<option value="Gnd Combat Infantry air defense">Gnd Combat Infantry air defense</option>
-										<option value="Gnd Combat Infantry Engineer">Gnd Combat Infantry Engineer</option>
-										<option value="Ground">Ground</option>
-									</select>
-								</div>
+						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
+							<div style="font-size: 16px; color: #b5b5b5">Attitude</div>
+							<div class="select">
+								<select name="format" id="attitude1">
+									<option value="friend">Friend</option>
+									<option selected value="friendly">Friendly</option>
+									<option value="hostile">Hostile</option>
+									<option value="unknown">Unknown</option>
+									<option value="pending">Pending</option>
+									<option value="assumed">Assumed</option>
+									<option value="neutral">Neutral</option>
+									<option value="suspect">Suspect</option>
+								</select>
 							</div>
 						</div>
+					</div>
 
-						<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
-							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-								<div style="font-size: 16px; color: #b5b5b5">Latitude</div>
-								<div><input type="text" class="form-control" value="38.889" /></div>
-							</div>
-
-							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-								<div style="font-size: 16px; color: #b5b5b5">Timeout</div>
-								<div><input type="number" class="form-control" value="600" /></div>
-							</div>
+					<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
+						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
+							<div style="font-size: 16px; color: #b5b5b5">Longitude</div>
+							<div><input type="text" class="form-control" id="longitude1" placeholder="-00.0000" value="" /></div>
 						</div>
 
-						<div style="background-color: #27293d; padding: 10px 0px; display: grid; justify-content: end">
-							<button class="btn btn-simple btn-twitter" style="color: #278aed; border-color: #278aed">Send</button>
+						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
+							<div style="font-size: 16px; color: #b5b5b5">GeoObject</div>
+							<div class="select">
+								<select name="format" id="geoobject1">
+									<option value="Gnd Combat Infantry Rifleman">Gnd Combat Infantry Rifleman</option>
+									<option value="Gnd Combat Infantry Grenadier">Gnd Combat Infantry Grenadier</option>
+									<option value="Gnd Combat Infantry Mortar">Gnd Combat Infantry Mortar</option>
+									<option value="Gnd Combat Infantry MachineGunner (LMG)">Gnd Combat Infantry MachineGunner(LMG)</option>
+									<option value="Gnd Combat Infantry Medic">Gnd Combat Infantry Medic</option>
+									<option value="Gnd Combat Infantry Sniper">Gnd Combat Infantry Sniper</option>
+									<option value="Gnd Combat Infantry Recon">Gnd Combat Infantry Recon</option>
+									<option value="Gnd Combat Infantry anti Tank">Gnd Combat Infantry anti Tank</option>
+									<option value="Gnd Combat Infantry air defense">Gnd Combat Infantry air defense</option>
+									<option value="Gnd Combat Infantry Engineer">Gnd Combat Infantry Engineer</option>
+									<option selected value="Ground">Ground</option>
+								</select>
+							</div>
 						</div>
-					</form>
+					</div>
+
+					<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
+						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
+							<div style="font-size: 16px; color: #b5b5b5">Latitude</div>
+							<div><input type="text" class="form-control" id="latitude1" placeholder="00.000" value="" /></div>
+						</div>
+
+						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
+							<div style="font-size: 16px; color: #b5b5b5">Timeout</div>
+							<div><input type="number" class="form-control" id="timeout1" value="600" /></div>
+						</div>
+					</div>
+
+					<div style="background-color: #27293d; padding: 10px 0px; display: grid; justify-content: end">
+						<button class="btn btn-simple btn-twitter" onclick="postGeoObject()" style="color: #278aed; border-color: #278aed">Send</button>
+					</div>
 				</div>
 			</div>
 		</div>
 		<!-- ======= Header tools ======= -->
 		<div class="card">
 			<div class="header-tools" style="display: grid; padding: 10px 100px; justify-content: flex-end; font-size: 20px; color: #278aed">
-				[Emergency]
+				[EMERGENCY]
 			</div>
 			<!-- ======= Table ======= -->
 			<div class="datatable-container" style="width: 90%">
-				<table class="datatable">
-					<thead>
-						<tr>
-							<th style="font-size: 16px; color: #b5b5b5">Name</th>
-							<th style="font-size: 16px; color: #b5b5b5">Latitude</th>
-							<th style="font-size: 16px; color: #b5b5b5">Longitude</th>
-							<th style="font-size: 16px; color: #b5b5b5">Type</th>
-							<th style="font-size: 16px; color: #b5b5b5">UID</th>
-							<th>&nbsp;</th>
-						</tr>
-					</thead>
+				<div class="datatable">
+					<div>
+						<div style="display: grid; grid-template-columns: 240px 100px 100px 180px 240px">
+							<div style="font-size: 16px; color: #b5b5b5">Name</div>
+							<div style="font-size: 16px; color: #b5b5b5">Latitude</div>
+							<div style="font-size: 16px; color: #b5b5b5">Longitude</div>
+							<div style="font-size: 16px; color: #b5b5b5">Type</div>
+							<div style="font-size: 16px; color: #b5b5b5">UID</div>
+							<div>&nbsp;</div>
+						</div>
+					</div>
 
-					<tbody>
-						<tr>
-							<td style="font-size: 14px; opacity: 0.8">Team 1</td>
-							<td style="font-size: 14px; opacity: 0.8">38.889</td>
-							<td style="font-size: 14px; opacity: 0.8">-77.0134</td>
-							<td style="font-size: 14px; opacity: 0.8">911 Alert</td>
-							<td style="font-size: 14px; opacity: 0.8">Text</td>
-							<td style="font-size: 14px; opacity: 0.8">Text</td>
-						</tr>
+					<div style="max-height: 300px; overflow: auto">
+						{% for dict_items in json_data %} {% if loop.index == 1 %} {% endif %}
 
-						<tr>
-							<td style="font-size: 14px; opacity: 0.8">Team 1</td>
-							<td style="font-size: 14px; opacity: 0.8">38.889</td>
-							<td style="font-size: 14px; opacity: 0.8">-77.0134</td>
-							<td style="font-size: 14px; opacity: 0.8">911 Alert</td>
-							<td style="font-size: 14px; opacity: 0.8">Text</td>
-							<td style="font-size: 14px; opacity: 0.8">Text</td>
-						</tr>
-						<tr>
-							<td style="font-size: 14px; opacity: 0.8">Team 1</td>
-							<td style="font-size: 14px; opacity: 0.8">38.889</td>
-							<td style="font-size: 14px; opacity: 0.8">-77.0134</td>
-							<td style="font-size: 14px; opacity: 0.8">911 Alert</td>
-							<td style="font-size: 14px; opacity: 0.8">Text</td>
-							<td style="font-size: 14px; opacity: 0.8">Text</td>
-						</tr>
-
-						<tr>
-							<td style="font-size: 14px; opacity: 0.8">Team 1</td>
-							<td style="font-size: 14px; opacity: 0.8">38.889</td>
-							<td style="font-size: 14px; opacity: 0.8">-77.0134</td>
-							<td style="font-size: 14px; opacity: 0.8">911 Alert</td>
-							<td style="font-size: 14px; opacity: 0.8">Text</td>
-							<td style="font-size: 14px; opacity: 0.8">Text</td>
-						</tr>
-					</tbody>
-				</table>
+						<div
+							class="row-color-nohover row-class"
+							style="display: grid; grid-template-columns: 240px 100px 100px 180px 240px; padding: 10px; color: #fff; opacity: 0.8"
+							onclick="captureClick('{{dict_items.Hash}}')"
+						>
+							<div>{{dict_items['PrimaryKey']}}</div>
+							<div>&nbsp;</div>
+							<div>&nbsp;</div>
+							<div style="text-align: center">&nbsp;</div>
+							<div style="text-align: center">{{dict_items['uid']}}</div>
+						</div>
+					</div>
+					<div>{% endfor %} {% if json_data|length == 0 %} No Records. {% endif %}</div>
+				</div>
 			</div>
 			<!-- ======= Footer tools ======= -->
 			<div class="footer-tools" style="background-color: #27293d; padding: 16px 0px 16px 50px">
 				<button class="btn btn-simple btn-twitter" style="color: #278aed80; border-color: #278aed80">DELETE</button>
 				&nbsp;&nbsp;&nbsp;
-				<button class="btn btn-simple btn-twitter" style="color: #278aed; border-color: #278aed">ADD</button>
+				<button class="btn btn-simple btn-twitter" onclick="addEmergencyToggle()" style="color: #278aed; border-color: #278aed">ADD</button>
 			</div>
-		</div>
-
-		<div class="card">
-			<div class="card-body">
-				<div style="width: 80%; display: grid; margin: 0 auto">
-					<form>
-						<div class="header-tools" style="display: grid; justify-content: flex-end; font-size: 20px; color: #278aed">[Team Member]</div>
-						<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
-							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-								<div style="font-size: 16px; color: #b5b5b5">Name</div>
-								<div><input type="text" class="form-control" value="Doe" /></div>
-							</div>
-
-							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-								<div style="font-size: 16px; color: #b5b5b5">Role</div>
-								<div class="select">
-									<select name="format" id="format">
-										<option selected>Select a Value</option>
-										<option value="Team Member">Team Member</option>
-										<option value="Team Lead">Team Lead</option>
-										<option value="HQ">HQ</option>
-										<option value="Sniper">Sniper</option>
-										<option value="Medic">Medic</option>
-										<option value="Forward Observer">Forward Observer</option>
-										<option value="RTO">RTO</option>
-										<option value="K9">K9</option>
-									</select>
-								</div>
-							</div>
-						</div>
-
-						<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
-							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-								<div style="font-size: 16px; color: #b5b5b5">Longitude</div>
-								<div><input type="text" class="form-control" value="-77.0104" /></div>
-							</div>
-
-							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-								<div style="font-size: 16px; color: #b5b5b5">Team</div>
-								<div class="select">
-									<select name="format" id="format">
-										<option selected>Select a Value</option>
-										<option value="Yellow">Yellow</option>
-										<option value="Red">Red</option>
-										<option value="Blue">Blue</option>
-										<option value="Orange">Orange</option>
-										<option value="Magenta">Magenta</option>
-										<option value="Maroon">Maroon</option>
-										<option value="Purple">Purple</option>
-										<option value="Dark Blue">Dark Blue</option>
-										<option value="Cyan">Cyan</option>
-										<option value="Teal">Teal</option>
-										<option value="Green">Green</option>
-										<option value="Dark Green">Dark Green</option>
-										<option value="Brown">Brown</option>
-									</select>
-								</div>
-							</div>
-						</div>
-
-						<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
-							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-								<div style="font-size: 16px; color: #b5b5b5">Latitude</div>
-								<div><input type="text" class="form-control" value="38.889" /></div>
-							</div>
-
-							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-								<div style="font-size: 16px; color: #b5b5b5">Timeout</div>
-								<div>
-									<button class="btn btn-simple btn-twitter" style="color: #278aed; border-color: #278aed">Send</button>
-								</div>
-							</div>
-						</div>
-					</form>
+			<div style="display: none" id="addEmergency">
+				<div style="display: grid; width: 80%; margin: 0 auto; grid-template-columns: 1fr 100px 100px 180px 1fr; gap: 20px">
+					<div><input type="text" class="form-control" id="name2" value="" placeholder="Name" /></div>
+					<div><input type="text" class="form-control" id="latitude2" value="" placeholder="Latitude" /></div>
+					<div><input type="text" class="form-control" id="longitude2" value="" placeholder="Longitude" /></div>
+					<div class="select">
+						<select name="format" id="emergencytype2">
+							<option value="911 Alert">911 Alert</option>
+							<option value="Ring The Bell">Ring The Bell</option>
+							<option value="Geo-fence Breached">Geo-fence Breached</option>
+							<option selected value="In Contact">In Contact</option>
+						</select>
+					</div>
+				</div>
+				<div style="background-color: #27293d; padding: 10px 20px; display: grid; justify-content: end">
+					<button class="btn btn-simple btn-twitter" onclick="postEmergency()" style="color: #278aed; border-color: #278aed">Send</button>
 				</div>
 			</div>
 		</div>
@@ -226,53 +144,334 @@
 		<div class="card">
 			<div class="card-body">
 				<div style="width: 80%; display: grid; margin: 0 auto">
-					<form>
-						<div class="header-tools" style="display: grid; justify-content: flex-end; font-size: 20px; color: #278aed">[Message]</div>
-						<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
-							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-								<div>
-									<textarea
-										name="comment"
-										class="form-control"
-										style="
-											max-height: 80px !important;
-											padding: 10px !important;
-											resize: none !important;
-											border: 1px solid #2b3553 !important;
-											border-radius: 0 !important;
-											line-height: 2 !important;
-											width: 500px !important;
-										"
-										form="usrform"
-									>
-The server will shutdown in 5 minutes...</textarea
-									>
-								</div>
-							</div>
+					<div class="header-tools" style="display: grid; justify-content: flex-end; font-size: 20px; color: #278aed">[OUTGOING FEDERATION]</div>
+					<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
+						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
+							<div style="font-size: 16px; color: #b5b5b5">Name</div>
+							<div><input type="text" class="form-control" value="" id="name3" /></div>
 						</div>
 
-						<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
-							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-								<div style="font-size: 16px; color: #b5b5b5">Sender</div>
-								<div><input type="text" class="form-control" value="Admin" /></div>
-							</div>
-
-							<div style="display: grid; grid-template-columns: 1fr; justify-items: flex-end">
-								<div>
-									<button class="btn btn-simple btn-twitter" style="color: #278aed; border-color: #278aed">Send</button>
-								</div>
+						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
+							<div style="font-size: 16px; color: #b5b5b5">Role</div>
+							<div class="select">
+								<select name="format" id="role3">
+									<option selected value="Team Member">Team Member</option>
+									<option value="Team Lead">Team Lead</option>
+									<option value="HQ">HQ</option>
+									<option value="Sniper">Sniper</option>
+									<option value="Medic">Medic</option>
+									<option value="Forward Observer">Forward Observer</option>
+									<option value="RTO">RTO</option>
+									<option value="K9">K9</option>
+								</select>
 							</div>
 						</div>
-					</form>
+					</div>
+
+					<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
+						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
+							<div style="font-size: 16px; color: #b5b5b5">Longitude</div>
+							<div><input type="text" class="form-control" id="longitude3" value="" /></div>
+						</div>
+
+						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
+							<div style="font-size: 16px; color: #b5b5b5">Team</div>
+							<div class="select">
+								<select name="format" id="team3">
+									<option value="Yellow">Yellow</option>
+									<option value="Red">Red</option>
+									<option selected value="Blue">Blue</option>
+									<option value="Orange">Orange</option>
+									<option value="Magenta">Magenta</option>
+									<option value="Maroon">Maroon</option>
+									<option value="Purple">Purple</option>
+									<option value="Dark Blue">Dark Blue</option>
+									<option value="Cyan">Cyan</option>
+									<option value="Teal">Teal</option>
+									<option value="Green">Green</option>
+									<option value="Dark Green">Dark Green</option>
+									<option value="Brown">Brown</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
+						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
+							<div style="font-size: 16px; color: #b5b5b5">Latitude</div>
+							<div><input type="text" class="form-control" value="" id="latitude3" /></div>
+						</div>
+
+						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
+							<div>
+								<button class="btn btn-simple btn-twitter" onclick="postPresence()" style="color: #278aed; border-color: #278aed">Send</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="card">
+			<div class="card-body">
+				<div style="width: 80%; display: grid; margin: 0 auto">
+					<div class="header-tools" style="display: grid; justify-content: flex-end; font-size: 20px; color: #278aed">[MESSAGE]</div>
+					<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
+						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
+							<div>
+								<textarea
+									name="comment"
+									class="form-control"
+									style="
+										max-height: 80px !important;
+										padding: 10px !important;
+										resize: none !important;
+										border: 1px solid #2b3553 !important;
+										border-radius: 0 !important;
+										line-height: 2 !important;
+										width: 500px !important;
+									"
+									id="message1"
+									placeholder="ex:The server will shutdown in 5 minutes..."
+								></textarea>
+							</div>
+						</div>
+					</div>
+
+					<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
+						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
+							<div style="font-size: 16px; color: #b5b5b5">Sender</div>
+							<div><input type="text" class="form-control" value="" id="sendername1" /></div>
+						</div>
+
+						<div style="display: grid; grid-template-columns: 1fr; justify-items: flex-end">
+							<div>
+								<button class="btn btn-simple btn-twitter" onclick="postGeoChat()" style="color: #278aed; border-color: #278aed">Send</button>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
+<div id="snackbar">&nbsp;</div>
 {% endblock content %}
 
 <!-- Specific Page JS goes HERE  -->
-{% block javascripts %}{% endblock javascripts %}
-<!-- color: #3ea1ec;
-border-color: #3ea1ec; -->
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<script>
+	function snackFunction(message) {
+		// Get the snackbar DIV
+		var x = document.getElementById("snackbar");
+		document.getElementById("snackbar").textContent = message;
+
+		// Add the "show" class to DIV
+		x.className = "show";
+
+		// After 3 seconds, remove the show class from DIV
+		setTimeout(function () {
+			x.className = x.className.replace("show", "");
+		}, 3000);
+	}
+
+	const postGeoObject = () => {
+		if (document.getElementById("name1").value === "") {
+			snackFunction("Name field is mandatory");
+			return false;
+		} else if (document.getElementById("longitude1").value === "") {
+			snackFunction("Longitude field is mandatory");
+			return false;
+		} else if (document.getElementById("attitude1").value === "") {
+			snackFunction("Attitude field is mandatory");
+			return false;
+		} else if (document.getElementById("latitude1").value === "") {
+			snackFunction("Latitude field is mandatory");
+			return false;
+		} else if (document.getElementById("geoobject1").value === "") {
+			snackFunction("GeoObject field is mandatory");
+			return false;
+		} else if (document.getElementById("timeout1").value === "") {
+			snackFunction("Timeout field is mandatory");
+			return false;
+		}
+
+		let obj = {
+			longitude: +document.getElementById("longitude1").value,
+			latitude: +document.getElementById("latitude1").value,
+			attitude: document.getElementById("attitude1").value,
+			geoObject: document.getElementById("geoobject1").value,
+			how: "nonCoT",
+			name: document.getElementById("name1").value,
+			timeout: +document.getElementById("timeout1").value,
+		};
+
+		headers = { "Content-Type": "application/json", Authorization: "Bearer a@v{5]MQU><waQ;Z" };
+		fetch("http://204.48.30.216:19023/ManageGeoObject/postGeoObject", {
+			method: "post",
+			headers: headers,
+			body: JSON.stringify(obj),
+		}).then((response) => {
+			if (response.status === 500) {
+				snackFunction("Error !!! contact administrator");
+				document.getElementById("name1").value = "";
+				document.getElementById("longitude1").value = "";
+				document.getElementById("attitude1").value = "Friendly";
+				document.getElementById("latitude1").value = "";
+				document.getElementById("geoobject1").value === "Ground";
+				document.getElementById("timeout1").value === "600";
+			} else if (response.status === 200) {
+				snackFunction("GeoObject add successful");
+				document.getElementById("name1").value = "";
+				document.getElementById("longitude1").value = "";
+				document.getElementById("attitude1").value = "Friendly";
+				document.getElementById("latitude1").value = "";
+				document.getElementById("geoobject1").value === "Ground";
+				document.getElementById("timeout1").value === "600";
+			}
+		});
+	};
+
+	const postGeoChat = () => {
+		debugger;
+		if (document.getElementById("message1").value === "") {
+			snackFunction("Message field is mandatory");
+			return false;
+		} else if (document.getElementById("sendername1").value === "") {
+			snackFunction("Sender field is mandatory");
+			return false;
+		}
+
+		let obj = {
+			message: document.getElementById("message1").value,
+			sender: document.getElementById("sendername1").value,
+		};
+
+		headers = { "Content-Type": "application/json", Authorization: "Bearer a@v{5]MQU><waQ;Z" };
+		fetch("http://204.48.30.216:19023/ManageChat/postChatToAll", {
+			method: "post",
+			headers: headers,
+			body: JSON.stringify(obj),
+		}).then((response) => {
+			if (response.status === 500) {
+				snackFunction("Error !!! contact administrator");
+				document.getElementById("message1").value = "";
+				document.getElementById("sendername1").value = "";
+			} else if (response.status === 200) {
+				snackFunction("Sending Geo Chat successful");
+				document.getElementById("message1").value = "";
+				document.getElementById("sendername1").value = "";
+			}
+		});
+	};
+
+	const postEmergency = () => {
+		debugger;
+		if (document.getElementById("name2").value === "") {
+			snackFunction("Name field is mandatory");
+			return false;
+		} else if (document.getElementById("longitude2").value === "") {
+			snackFunction("Longitude field is mandatory");
+			return false;
+		} else if (document.getElementById("latitude2").value === "") {
+			snackFunction("Latitude field is mandatory");
+			return false;
+		}
+
+		let obj = {
+			name: document.getElementById("name2").value,
+			emergencyType: document.getElementById("emergencytype2").value,
+			longitude: +document.getElementById("longitude2").value,
+			latitude: +document.getElementById("latitude2").value,
+		};
+
+		headers = { "Content-Type": "application/json", Authorization: "Bearer a@v{5]MQU><waQ;Z" };
+		fetch("http://204.48.30.216:19023/ManageEmergency/postEmergency", {
+			method: "post",
+			headers: headers,
+			body: JSON.stringify(obj),
+		}).then((response) => {
+			if (response.status === 500) {
+				snackFunction("Error !!! contact administrator");
+				document.getElementById("name2").value = "";
+				document.getElementById("longitude2").value = "";
+				document.getElementById("latitude2").value = "";
+				document.getElementById("emergencytype2").value = "In Contact";
+			} else if (response.status === 200) {
+				snackFunction("Sending emergency message successful");
+				document.getElementById("name2").value = "";
+				document.getElementById("longitude2").value = "";
+				document.getElementById("latitude2").value = "";
+				document.getElementById("emergencytype2").value = "In Contact";
+			}
+		});
+	};
+
+	const postPresence = () => {
+		debugger;
+		if (document.getElementById("name3").value === "") {
+			snackFunction("Name field is mandatory");
+			return false;
+		} else if (document.getElementById("longitude3").value === "") {
+			snackFunction("Longitude field is mandatory");
+			return false;
+		} else if (document.getElementById("latitude3").value === "") {
+			snackFunction("Latitude field is mandatory");
+			return false;
+		}
+
+		let obj = {
+			how: "nonCoT",
+			name: document.getElementById("name3").value,
+			role: document.getElementById("role3").value,
+			longitude: +document.getElementById("longitude3").value,
+			latitude: +document.getElementById("latitude3").value,
+			team: document.getElementById("team3").value,
+		};
+
+		headers = { "Content-Type": "application/json", Authorization: "Bearer a@v{5]MQU><waQ;Z" };
+		fetch("http://204.48.30.216:19023/ManagePresence/postPresence", {
+			method: "post",
+			headers: headers,
+			body: JSON.stringify(obj),
+		}).then((response) => {
+			if (response.status === 500) {
+				snackFunction("Error !!! contact administrator");
+				document.getElementById("name3").value = "";
+				document.getElementById("longitude3").value = "";
+				document.getElementById("latitude3").value = "";
+				document.getElementById("team3").value = "Blue";
+				document.getElementById("role3").value = "Team Member";
+			} else if (response.status === 200) {
+				snackFunction("Manage Presence successful");
+				document.getElementById("name3").value = "";
+				document.getElementById("longitude3").value = "";
+				document.getElementById("latitude3").value = "";
+				document.getElementById("team3").value = "Blue";
+				document.getElementById("role3").value = "Team Member";
+			}
+		});
+	};
+
+	function addEmergencyToggle() {
+		var x = document.getElementById("addEmergency");
+		if (x.style.display === "none") {
+			x.style.display = "block";
+		} else {
+			x.style.display = "none";
+		}
+	}
+</script>
+{% endblock javascripts %}
+
+<!-- {
+    "how": "nonCoT",
+    "name": "POTUS",
+"longitude": -77.01385,
+"latitude": 38.889,
+    "role": "Team Member",
+    "team": "Yellow"
+} -->

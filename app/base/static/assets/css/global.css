@@ -322,3 +322,204 @@ label span:before {
 	transition: 0.25s ease;
 	box-shadow: inset 0 0 0 0.125em #00005c;
 }
+
+.row-style {
+	border: 0px solid #444444;
+}
+
+.table-style-hdr {
+	border-collapse: collapse;
+	background-color: #27293d;
+	display: block;
+	width: 100%;
+	max-width: 100%;
+	overflow: hidden;
+	border: 0px solid #626262;
+}
+
+.table-style {
+	border-collapse: collapse;
+	background-color: #27293d;
+	display: block;
+	height: 400px;
+	max-height: 400px !important;
+	max-width: 675px !important;
+	width: 100%;
+	max-width: 100%;
+	overflow: auto;
+}
+
+.cell-style-1 {
+	color: #fff;
+	opacity: 0.8;
+	padding: 5px;
+	width: 90px;
+}
+
+.cell-style-2 {
+	color: #fff;
+	opacity: 0.8;
+	padding: 5px;
+	width: 90px;
+}
+
+.cell-style-3 {
+	color: #fff;
+	opacity: 0.8;
+	padding: 5px;
+	width: 150px;
+}
+
+.cell-style-4 {
+	color: #fff;
+	opacity: 0.8;
+	padding: 5px;
+	width: calc(100% - 330px);
+}
+
+.hdr_c1 {
+	color: #d6d6d6;
+	width: 90px;
+	padding: 5px;
+}
+.hdr_c2 {
+	color: #d6d6d6;
+	width: 90px;
+	padding: 5px;
+}
+.hdr_c3 {
+	color: #d6d6d6;
+	width: 150px;
+	padding: 5px;
+}
+.hdr_c4 {
+	color: #d6d6d6;
+	width: 250px !important;
+	padding: 5px;
+
+	width: calc(100% - 330px);
+}
+
+.rowselected {
+	background-color: #0f84d6 !important;
+	color: #fff !important;
+}
+
+.row-class:hover {
+	border-left: 2px solid #0f84d6;
+	color: #fff !important;
+}
+
+.enable-delete {
+	color: #278aed;
+	border-color: #278aed;
+}
+
+.disable-delete {
+	color: #278aed80;
+	border-color: #278aed80;
+}
+
+input[type="file"] {
+	display: none;
+}
+.custom-file-upload {
+	display: inline-block;
+	cursor: pointer;
+
+	font-size: 16px;
+	color: #b5b5b5;
+	padding: 5px 10px 5px 5px;
+	place-self: center;
+	border: 1px solid #383c44;
+	border-radius: 5px;
+	align-self: baseline;
+}
+
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+	visibility: hidden; /* Hidden by default. Visible on click */
+	min-width: 250px; /* Set a default minimum width */
+	margin-left: -125px; /* Divide value of min-width by 2 */
+	background-color: #333; /* Black background color */
+	color: #278aed; /* White text color */
+	text-align: center; /* Centered text */
+	border-radius: 2px; /* Rounded borders */
+	padding: 16px; /* Padding */
+	position: fixed; /* Sit on top of the screen */
+	z-index: 1; /* Add a z-index if needed */
+	left: 50%; /* Center the snackbar */
+	bottom: 30px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+	visibility: visible; /* Show the snackbar */
+	/* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+	However, delay the fade out process for 2.5 seconds */
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+	from {
+		bottom: 0;
+		opacity: 0;
+	}
+	to {
+		bottom: 30px;
+		opacity: 1;
+	}
+}
+
+@keyframes fadein {
+	from {
+		bottom: 0;
+		opacity: 0;
+	}
+	to {
+		bottom: 30px;
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes fadeout {
+	from {
+		bottom: 30px;
+		opacity: 1;
+	}
+	to {
+		bottom: 0;
+		opacity: 0;
+	}
+}
+
+@keyframes fadeout {
+	from {
+		bottom: 30px;
+		opacity: 1;
+	}
+	to {
+		bottom: 0;
+		opacity: 0;
+	}
+}
+
+.row-color {
+	background: #27293d;
+}
+.row-color:nth-of-type(even) {
+	background: rgb(226, 226, 226);
+}
+.row-color:hover {
+	background: rgb(195, 194, 194);
+	cursor: pointer;
+}
+
+.row-color-nohover {
+	background: #27293d;
+}
+.row-color-nohover:nth-of-type(even) {
+	background: #323242;
+}

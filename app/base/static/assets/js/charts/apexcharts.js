@@ -1,5 +1,5 @@
 var options = {
-	series: [35, 20, 60],
+	series: [0, 0, 0],
 	chart: {
 		height: 390,
 		type: "radialBar",
@@ -59,5 +59,5 @@ var options = {
 	],
 };
 
-var chart = new ApexCharts(document.querySelector("#chart"), options);
-chart.render();
+// var chart = new ApexCharts(document.querySelector("#chart"), options);
+// chart.render();

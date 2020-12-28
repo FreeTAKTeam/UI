@@ -1,12 +1,8 @@
 {% extends "base-site.html" %}
 
-
 <!-- Specific Page CSS goes HERE  -->
 
-{% block stylesheets %}{% endblock stylesheets %}
-
-{% block content %}
-
+{% block stylesheets %}{% endblock stylesheets %} {% block content %}
 
 <div class="row">
 	<!-- ... existing HTML ... -->
@@ -15,330 +11,357 @@
 	<div id="like1"></div>
 	<!-- ... existing HTML ... -->
 
-	<div style="padding: 0px 0px 10px 0px; font-size: 20px; color: #278AED;">
-		[SYSTEM STATUS]
-	</div>
-		<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; width: 100%; gap: 10px;">
-			<div class="card" style="display: grid; grid-template-columns: 1fr 1fr;">
-				<div style="display: grid; grid-column: 1/-1; padding: 5px;">	<h3 class="card-title" style="color: #278AED;"> Data Package</h3></div>
-				<div class="case_container">
-					<div class="e7">
-						<div class="semi_arc_3 e5_1">
-							<div class="semi_arc_3 e5_2">
-								<div class="semi_arc_3 e5_3">
-									<div class="semi_arc_3 e5_4"></div>
-								</div>
+	<div style="padding: 0px 0px 10px 0px; font-size: 20px; color: #278aed">[SYSTEM STATUS]</div>
+	<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; width: 100%; gap: 10px">
+		<div class="card" style="display: grid; grid-template-columns: 1fr 1fr">
+			<div style="display: grid; grid-column: 1/-1; padding: 5px"><h3 class="card-title" style="color: #278aed">Data Package</h3></div>
+			<div class="case_container">
+				<div class="e7">
+					<div class="semi_arc_3 e5_1">
+						<div class="semi_arc_3 e5_2">
+							<div class="semi_arc_3 e5_3">
+								<div class="semi_arc_3 e5_4"></div>
 							</div>
 						</div>
-						<div class="core2">TCP</div>
 					</div>
+					<div class="core2">TCP</div>
 				</div>
+			</div>
 
-				<div class="r_case_container">
-					<div class="r_e7">
-						<div class="r_semi_arc_3 r_e5_1">
-							<div class="r_semi_arc_3 r_e5_2">
-								<div class="r_semi_arc_3 r_e5_3">
-									<div class="r_semi_arc_3 r_e5_4"></div>
-								</div>
+			<div class="r_case_container">
+				<div class="r_e7">
+					<div class="r_semi_arc_3 r_e5_1">
+						<div class="r_semi_arc_3 r_e5_2">
+							<div class="r_semi_arc_3 r_e5_3">
+								<div class="r_semi_arc_3 r_e5_4"></div>
 							</div>
 						</div>
-						<div class="r_core2">SSL</div>
 					</div>
-				</div>
-			</div>
-			<div class="card" style="display: grid; grid-template-columns: 1fr 1fr;">
-				<div style="display: grid; grid-column: 1/-1; padding: 5px;">	<h3 class="card-title" style="color: #278AED;"> API & Federations</h3></div>
-				<div class="g_case_container">
-					<div class="g_e7">
-						<div class="g_semi_arc_3 g_e5_1">
-							<div class="g_semi_arc_3 g_e5_2">
-								<div class="g_semi_arc_3 g_e5_3">
-									<div class="g_semi_arc_3 g_e5_4"></div>
-								</div>
-							</div>
-						</div>
-						<div class="g_core2">TCP</div>
-					</div>
-				</div>
-
-				<div class="case_container">
-					<div class="e7">
-						<div class="semi_arc_3 e5_1">
-							<div class="semi_arc_3 e5_2">
-								<div class="semi_arc_3 e5_3">
-									<div class="semi_arc_3 e5_4"></div>
-								</div>
-							</div>
-						</div>
-						<div class="core2">SSL</div>
-					</div>
-				</div>
-			</div>
-			<div class="card" style="display: grid; grid-template-columns: 1fr 1fr;">
-				<div style="display: grid; grid-column: 1/-1; padding: 5px;">	<h3 class="card-title" style="color: #278AED;"> COT</h3></div>
-				<div class="case_container">
-					<div class="e7">
-						<div class="semi_arc_3 e5_1">
-							<div class="semi_arc_3 e5_2">
-								<div class="semi_arc_3 e5_3">
-									<div class="semi_arc_3 e5_4"></div>
-								</div>
-							</div>
-						</div>
-						<div class="core2">TCP</div>
-					</div>
-				</div>
-
-				<div class="case_container">
-					<div class="e7">
-						<div class="semi_arc_3 e5_1">
-							<div class="semi_arc_3 e5_2">
-								<div class="semi_arc_3 e5_3">
-									<div class="semi_arc_3 e5_4"></div>
-								</div>
-							</div>
-						</div>
-						<div class="core2">SSL</div>
-					</div>
-				</div>
-			</div>
-		
-		</div>
-
-		<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; width: 100%; gap: 10px;">
-
-		<div >
-			<div class="card card-stats">
-			  <div class="card-body">
-				<div style="display: grid; grid-template-columns: 1fr 3fr;">
-				  <div >
-					<div class="info-icon text-center icon-warning">
-					  <i class="tim-icons icon-time-alarm" style="font-size: 40px; color: #278AED""></i>
-					</div>
-				  </div>
-				  <div >
-					<div class="numbers">
-					  <p class="card-category" style="font-size: 0.8rem;">[UP TIME]</p>
-					  <h3 class="card-title">14H 7M 34S</h3>
-					</div>
-				  </div>
-				</div>
-			  </div>
-			 
-			</div>
-		  </div>
-		  <div >
-			<div class="card card-stats">
-			  <div class="card-body">
-				<div style="display: grid; grid-template-columns: 1fr 3fr;">
-				  <div >
-					<div class="info-icon text-center icon-warning">
-						<i class="tim-icons icon-user-run" style="font-size: 40px; color: #278AED""></i>
-					</div>
-				  </div>
-				  <div >
-					<div class="numbers">
-					  <p class="card-category" style="font-size: 0.8rem;">[START TIME]</p>
-					  <h3 class="card-title" id="start-time">15/12/2020 20: 24 UCT</h3>
-					</div>
-				  </div>
-				</div>
-			  </div>
-			 
-			</div>
-		  </div>
-		  <div >
-			<div class="card card-stats">
-			  <div class="card-body">
-				<div style="display: grid; grid-template-columns: 1fr 3fr;">
-				  <div >
-					<div class="info-icon text-center icon-warning">
-						<i class="tim-icons icon-support-17" style="font-size: 40px; color: #278AED"></i>
-					</div>
-				  </div>
-				  <div >
-					<div class="numbers">
-					  <p class="card-category" style="font-size: 0.8rem;">[CONNECTED CLIENTS]</p>
-					  <h3 class="card-title">8</h3>
-					</div>
-				  </div>
-				</div>
-			  </div>
-			 
-			</div>
-		  </div>
-		</div>
-		
-		<div style="padding: 0px 0px 10px 0px; font-size: 20px; color: #278AED;">
-			[HEALTH]
-		</div>
-		<div style="display: grid; grid-template-columns: 1fr 1fr; width: 100%; gap: 20px;">
-			<div>
-				<div id="chart"></div>
-			</div>
-			<div >
-				<div class="card">
-					<div class="card-header">
-						<h4 class="card-title">Logs</h4>
-					</div>
-					<div class="card-body">
-						<div class="table-responsive">
-							<table class="table tablesorter" id="">
-								<thead class="text-primary">
-									<tr>
-										<th>Time</th>
-										<th>Level</th>
-										<th>Text</th>
-										<th class="text-center">Column</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>15:25</td>
-										<td>ERROR</td>
-										<td>ERROR1</td>
-										<td class="text-center">Text</td>
-									</tr>
-									<tr>
-										<td>15:25</td>
-										<td>ERROR</td>
-										<td>ERROR1</td>
-										<td class="text-center">Text</td>
-									</tr>
-									<tr>
-										<td>15:25</td>
-										<td>ERROR</td>
-										<td>ERROR1</td>
-										<td class="text-center">Text</td>
-									</tr>
-									
-								</tbody>
-							</table>
-						</div>
-					</div>
+					<div class="r_core2">SSL</div>
 				</div>
 			</div>
 		</div>
-		
+		<div class="card" style="display: grid; grid-template-columns: 1fr 1fr">
+			<div style="display: grid; grid-column: 1/-1; padding: 5px"><h3 class="card-title" style="color: #278aed">API & Federations</h3></div>
+			<div class="g_case_container">
+				<div class="g_e7">
+					<div class="g_semi_arc_3 g_e5_1">
+						<div class="g_semi_arc_3 g_e5_2">
+							<div class="g_semi_arc_3 g_e5_3">
+								<div class="g_semi_arc_3 g_e5_4"></div>
+							</div>
+						</div>
+					</div>
+					<div class="g_core2">TCP</div>
+				</div>
+			</div>
+
+			<div class="case_container">
+				<div class="e7">
+					<div class="semi_arc_3 e5_1">
+						<div class="semi_arc_3 e5_2">
+							<div class="semi_arc_3 e5_3">
+								<div class="semi_arc_3 e5_4"></div>
+							</div>
+						</div>
+					</div>
+					<div class="core2">SSL</div>
+				</div>
+			</div>
+		</div>
+		<div class="card" style="display: grid; grid-template-columns: 1fr 1fr">
+			<div style="display: grid; grid-column: 1/-1; padding: 5px"><h3 class="card-title" style="color: #278aed">COT</h3></div>
+			<div class="case_container">
+				<div class="e7">
+					<div class="semi_arc_3 e5_1">
+						<div class="semi_arc_3 e5_2">
+							<div class="semi_arc_3 e5_3">
+								<div class="semi_arc_3 e5_4"></div>
+							</div>
+						</div>
+					</div>
+					<div class="core2">TCP</div>
+				</div>
+			</div>
+
+			<div class="case_container">
+				<div class="e7">
+					<div class="semi_arc_3 e5_1">
+						<div class="semi_arc_3 e5_2">
+							<div class="semi_arc_3 e5_3">
+								<div class="semi_arc_3 e5_4"></div>
+							</div>
+						</div>
+					</div>
+					<div class="core2">SSL</div>
+				</div>
+			</div>
+		</div>
 	</div>
 
-	
+	<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; width: 100%; gap: 10px">
+		<div>
+			<div class="card card-stats">
+				<div class="card-body">
+					<div style="display: grid; grid-template-columns: 1fr 3fr">
+						<div>
+							<div class="info-icon text-center icon-warning">
+								<i class="tim-icons icon-time-alarm" style="font-size: 40px; color: #278aed"></i>
+							</div>
+						</div>
+						<div>
+							<div class="numbers">
+								<p class="card-category" style="font-size: 0.8rem">[UP TIME]</p>
+								<h3 class="card-title" id="up-time">&nbsp;</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div>
+			<div class="card card-stats">
+				<div class="card-body">
+					<div style="display: grid; grid-template-columns: 1fr 3fr">
+						<div>
+							<div class="info-icon text-center icon-warning">
+								<i class="tim-icons icon-user-run" style="font-size: 40px; color: #278aed"></i>
+							</div>
+						</div>
+						<div>
+							<div class="numbers">
+								<p class="card-category" style="font-size: 0.8rem">[START TIME]</p>
+								<h3 class="card-title" id="start-time">&nbsp;</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div>
+			<div class="card card-stats">
+				<div class="card-body">
+					<div style="display: grid; grid-template-columns: 1fr 3fr">
+						<div>
+							<div class="info-icon text-center icon-warning">
+								<i class="tim-icons icon-support-17" style="font-size: 40px; color: #278aed"></i>
+							</div>
+						</div>
+						<div>
+							<div class="numbers">
+								<p class="card-category" style="font-size: 0.8rem">[CONNECTED CLIENTS]</p>
+								<h3 class="card-title" id="connected-users">&nbsp;</h3>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-    
-    
+	<div style="padding: 0px 0px 10px 0px; width: 100%; display: flex; justify-content: space-between">
+		<div style="font-size: 20px; color: #278aed">[HEALTH]</div>
+		<div style="font-size: 20px; color: #278aed">[LOGS]</div>
+	</div>
+	<div style="display: grid; grid-template-columns: 1fr 1.5fr; width: 100%; gap: 20px">
+		<div>
+			<div id="chart"></div>
+		</div>
+		<div>
+			<div id="log-table-hdr"></div>
+			<div id="log-table"></div>
+		</div>
+	</div>
+</div>
 
 {% endblock content %}
 <!-- http://204.48.30.216:19023 -->
 <!-- Specific Page JS goes HERE  -->
 {% block javascripts %}
-  <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
-  <script>
-    //the ip or dns which the FTS instances REST api is accessible
-    var ip = '204.48.30.216'
-    var now = moment();
-    console.log("time now " + now.format("DD-MM-YYYY"));
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+<script>
+	//the ip or dns which the FTS instances REST api is accessible
+	var ip = "204.48.30.216";
+	var now = moment();
+	console.log("time now " + now.format("DD-MM-YYYY"));
 
-    
-   
-    // this gets current server data
-    async function establishConnection() {
-      console.log('Make connection')
-      var socket = io.connect(`http://${ip}:19023`);
+	// this gets current server data
+	async function establishConnection() {
+		console.log("Make connection");
+		var socket = io.connect(`http://${ip}:19023`);
+		getConnectInfo(socket);
 
-      console.log('Emit event authenticate...');
-      
-      let isAuth = await authenticate(socket);
+		console.log("Emit event authenticate...");
 
-      if(isAuth === 'True') {
-        getUsers(socket);
-        getLogs(socket);
-        getServiceInfo(socket);
-        getServerHealth(socket);
-        getSystemStatus(socket);
-      } else {
-        // throw error
-      }
+		let isAuth = await authenticate(socket);
 
-      
-    }
+		if (isAuth === "True") {
+			getUsers(socket);
+			getLogs(socket);
+			getServiceInfo(socket);
+			getServerHealth(socket);
+			getSystemStatus(socket);
+		} else {
+			// throw error
+		}
+	}
 
+	const authenticate = (socket) => {
+		// socket.emit('authenticate',  '{"Authenticate": "a@v{5]MQU><waQ;Z"}');
+		socket.emit("authenticate", JSON.stringify({ Authenticate: "a@v{5]MQU><waQ;Z" }));
 
-    const authenticate = (socket) => {
-      // socket.emit('authenticate',  '{"Authenticate": "a@v{5]MQU><waQ;Z"}');
-      socket.emit('authenticate',  JSON.stringify({"Authenticate": "a@v{5]MQU><waQ;Z"}));
-      
-      return new Promise(function (resolve, reject) {
+		return new Promise(function (resolve, reject) {
+			socket.on("authentication", function (data) {
+				let authenticateObject = JSON.parse(data);
 
-        socket.on('authentication', function (data) {
-          let authenticateObject = JSON.parse(data);
-          
-          if(authenticateObject.successful === "True") {
-            resolve("True");
-          } else {
-            reject("False");
-          }
+				if (authenticateObject.successful === "True") {
+					resolve("True");
+				} else {
+					reject("False");
+				}
+			});
+		});
+	};
 
-        });
+	// {"starttime":"2020-12-23 13:07:09.917285","version":"FreeTAKServer-1.3 RC 5"}
 
-      });
+	const getConnectInfo = (socket) => {
+		// socket.emit('connect');
+		socket.on("connectUpdate", function (data) {
+			let connectObject = JSON.parse(data);
 
-     
-    }
+			let now = moment();
+			let start_time = moment(connectObject.starttime);
 
-   
-    const getUsers = (socket) => {
-      socket.emit('users');
-       socket.on('userUpdate', function (data) {
-        let userObject = JSON.parse(data);
-        console.log('Print 1 users Response:' + JSON.stringify(userObject));
-      });
-    }
+			let up_time = moment(moment().diff(moment(connectObject.starttime))).format("HH MM SS");
 
-    const getLogs = (socket) => {
-      socket.emit('logs');
-       socket.on('logUpdate', function (data) {
-        let logsObject = JSON.parse(data);
-        console.log('Print 2 logs Response:' + JSON.stringify(logsObject));
-      });
+			var durationX = moment.duration(now.diff(start_time));
 
-    }
+			var hours = Math.floor(durationX.asHours()); //hours instead of asHours
+			var minutes = durationX.minutes();
+			var seconds = durationX.seconds();
 
-    const getServiceInfo = (socket) => {
+			document.getElementById("start-time").innerText = moment(connectObject.starttime).format("DD/MM/YYYY HH:MM z");
+			document.getElementById("up-time").innerText = [hours + "H", minutes + "M", seconds + "S"].join(" ");
 
-     // setInterval(() => { 
-        socket.emit('serviceInfo');
-        socket.on('serviceInfoUpdate', function (data) {
-        let serviceInfoObject = JSON.parse(data);
-        console.log('Print 3 serviceInfoUpdate Response:' + JSON.stringify(serviceInfoObject));
-        
-      });
- //     }, 3000);
-    }
+			console.log("Print 0 connectUpdate Response:" + JSON.stringify(connectObject));
+		});
+	};
 
-    const getServerHealth = (socket) => {
-      socket.emit('serverHealth');
-       socket.on('serverHealthUpdate', function (data) {
-        let serverHealthObject = JSON.parse(data);
-        console.log('Print 4 serverHealthUpdate Response:' + JSON.stringify(serverHealthObject));
-      });
-    }
+	// [{"ip":"","callsign":"","team":""}]
 
-    const getSystemStatus = (socket) => {
-      socket.emit('systemStatus');
-       socket.on('systemStatusUpdate', function (data) {
-        let systemStatusObject = JSON.parse(data);
-        console.log('Print 5 systemStatusUpdate Response:' + JSON.stringify(systemStatusObject));
-      });
-    }
+	const getUsers = (socket) => {
+		socket.emit("users");
+		socket.on("userUpdate", function (data) {
+			let userObject = JSON.parse(data);
 
+			let len = Object.keys(userObject).length;
+			if (len === 1) {
+				if (userObject[0].ip === "") {
+					len = 0;
+				}
+			}
+			document.getElementById("connected-users").innerText = len;
 
+			console.log("Print 1 users Response:" + JSON.stringify(userObject));
+		});
+	};
 
+	const getLogs = (socket) => {
+		socket.emit("logs", '{ "time": "2020-12-22 18:08:40,328" }');
+		socket.on("logUpdate", function (data) {
+			let logsObject = JSON.parse(data);
 
-  </script>
-  <script>
-    establishConnection();
-  </script>
- 
+			let tableArr = JSON.parse(data).log_data;
+
+			//create a Table Object
+			let tablehdr = document.createElement("table");
+			tablehdr.className = "table-style-hdr";
+
+			let headerRow = tablehdr.insertRow();
+			let timeHdr = headerRow.insertCell();
+			timeHdr.textContent = "TIME";
+			timeHdr.className = "hdr_c1";
+			let typeHdr = headerRow.insertCell();
+			typeHdr.textContent = "TYPE";
+			typeHdr.className = "hdr_c2";
+			let fileHdr = headerRow.insertCell();
+			fileHdr.textContent = "FILE";
+			fileHdr.className = "hdr_c3";
+			let messageHdr = headerRow.insertCell();
+			messageHdr.textContent = "MESSAGE";
+			messageHdr.className = "hdr_c4";
+
+			document.getElementById("log-table-hdr").appendChild(tablehdr);
+
+			let table = document.createElement("table");
+			table.className = "table-style";
+
+			for (let [index, row] of tableArr.entries()) {
+				let t_row = table.insertRow(index);
+				t_row.className = "row-color-nohover";
+
+				let timeCell = t_row.insertCell();
+				timeCell.textContent = moment(row.time).format("HH:MM");
+				timeCell.className = "cell-style-1";
+
+				let typeCell = t_row.insertCell();
+				typeCell.textContent = row.type;
+				typeCell.className = "cell-style-2";
+
+				let fileCell = t_row.insertCell();
+				fileCell.textContent = row.file;
+				fileCell.className = "cell-style-3";
+
+				let messageCell = t_row.insertCell();
+				messageCell.textContent = row.message;
+				messageCell.className = "cell-style-4";
+			}
+
+			//append the compiled table to the DOM
+			//document.body.appendChild(table);
+
+			document.getElementById("log-table").appendChild(table);
+
+			//	console.log("Print 2 logs Response:" + JSON.stringify(logsObject));
+		});
+	};
+
+	const getServiceInfo = (socket) => {
+		// setInterval(() => {
+		socket.emit("serviceInfo");
+		socket.on("serviceInfoUpdate", function (data) {
+			let serviceInfoObject = JSON.parse(data);
+			console.log("Print 3 serviceInfoUpdate Response:" + JSON.stringify(serviceInfoObject));
+		});
+		//     }, 3000);
+	};
+
+	const getServerHealth = (socket) => {
+		var chart = new ApexCharts(document.querySelector("#chart"), options);
+		chart.render();
+		setInterval(() => {
+			socket.emit("serverHealth");
+			socket.on("serverHealthUpdate", function (data) {
+				let serverHealthObject = JSON.parse(data);
+
+				chart.updateOptions({ series: [serverHealthObject.CPU, serverHealthObject.memory, serverHealthObject.disk] });
+
+				console.log("Print 4 serverHealthUpdate Response:" + JSON.stringify(serverHealthObject));
+			});
+		}, 3000);
+	};
+
+	const getSystemStatus = (socket) => {
+		socket.emit("systemStatus");
+		socket.on("systemStatusUpdate", function (data) {
+			let systemStatusObject = JSON.parse(data);
+			console.log("Print 5 systemStatusUpdate Response:" + JSON.stringify(systemStatusObject));
+		});
+	};
+</script>
+<script>
+	establishConnection();
+</script>
 
 {% endblock javascripts %}

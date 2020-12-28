@@ -4,265 +4,330 @@
 {% block stylesheets %}{% endblock stylesheets %} {% block content %}
 
 <!-- mission code here -->
-<!-- 
-<div style="width: 90%; display: grid; 
-padding: 5px;
-margin: 0 auto; background-color: #27293d;">
-	
+
+<div style="width: 90%; display: grid; padding: 5px; margin: 0 auto; background-color: #27293d">
 	<div class="header-tools" style="justify-self: flex-end; font-size: 20px; color: #278aed">[DATA PACKAGE]</div>
 
-	
-	<div style="padding: 5px; " class="datatable-container">
-		<table class="datatable">
-			<thead>
-				<tr>
-					<th>Keywords</th>
-					<th>Name</th>
-					<th>Author</th>
-					<th>Index</th>
-					<th>Privacy</th>
-					<th>Size</th>
-					<th>Submitted</th>
-				</tr>
-			</thead>
+	<div style="width: 100%; padding: 5px">
+		<div
+			style="
+				display: grid;
 
-			<tbody >
-				<tr>
-                    <td colspan="8">
-                        <div style="max-height: 300px; overflow-y: scroll" class="datatable-container">
-                            <table class="datatable">
-                                {% for dict_item in package_data_list1 %}
-                                <tr>
-                                {% for key, value in dict_item.items() %}
-                                    <td>{{value}}</td>
-                                {% endfor %}
-                            </tr>
-                             {% endfor %} 
+				grid-template-columns: 100px 240px 180px 50px 70px 60px 240px;
+				padding: 10px;
+				font-size: 16px;
+				color: #fff;
+				opacity: 0.9;
+			"
+		>
+			<div>Keywords</div>
+			<div>Name</div>
+			<div>Author</div>
+			<div>Index</div>
+			<div>Privacy</div>
+			<div style="text-align: center">Size</div>
+			<div>Submitted</div>
+		</div>
+		<div style="max-height: 300px; overflow-y: scroll">
+			{% for dict_items in json_data %} {% if loop.index == 1 %} {% endif %}
 
-                </tr>
-               
-                            </table>
-			</tbody>
-		</table>
+			<div
+				class="row-color-nohover row-class"
+				style="display: grid; grid-template-columns: 100px 240px 180px 50px 70px 60px 240px; padding: 10px; color: #fff; opacity: 0.8"
+				onclick="captureClick('{{dict_items.Hash}}')"
+			>
+				<div>{{dict_items['Keywords']}}</div>
+				<div>{{dict_items['Name']}}</div>
+				<div>{{dict_items['SubmissionUser']}}</div>
+				<div style="text-align: center">{{dict_items['PrimaryKey']}}</div>
+				<div style="text-align: center">{{dict_items['Privacy']}}</div>
+				<div style="text-align: right; padding-right: 10px">{{dict_items['Size']}}</div>
+				<div>{{dict_items['SubmissionDateTime']}}</div>
+			</div>
+
+			{% endfor %}
+		</div>
 	</div>
-	
-	<div class="footer-tools" style="background-color: #27293d; padding: 0px 10px;">
-		<button class="btn btn-simple btn-twitter" style="color: #278aed80; border-color: #278aed80">DELETE</button>
-		&nbsp;&nbsp;&nbsp;
-		<button class="btn btn-simple btn-twitter" style="color: #278aed; border-color: #278aed">ADD</button>
-	</div>
-</div> -->
 
-<!-- ======= Header tools ======= -->
-<div class="card">
-	<div class="header-tools" style="display: grid; padding: 10px 100px; justify-content: flex-end; font-size: 20px; color: #278aed">
-		[Data Package]
-	</div>
-	<!-- ======= Table ======= -->
-	<div class="datatable-container" style="width: 90%">
-		<table class="datatable">
-			<thead>
-				<tr>
-					<th style="font-size: 16px; color: #b5b5b5">Keywords</th>
-					<th style="font-size: 16px; color: #b5b5b5">Name</th>
-					<th style="font-size: 16px; color: #b5b5b5">Author</th>
-					<th style="font-size: 16px; color: #b5b5b5">Index</th>
-					<th style="font-size: 16px; color: #b5b5b5">Privacy</th>
-					<th style="font-size: 16px; color: #b5b5b5">Size</th>
-					<th style="font-size: 16px; color: #b5b5b5">Submitted</th>
-				</tr>
-			</thead>
+	<!-- <div class="footer-tools" style="background-color: #27293d; padding: 0px 10px;">
+        <button class="btn btn-simple btn-twitter disable-delete" 
+        onclick="deleteDataPackage()"
+        id="data-package-delete"
+        >DELETE</button>
+        &nbsp;&nbsp;&nbsp;
+        <button class="btn btn-simple btn-twitter" style="color: #278aed; border-color: #278aed">ADD</button>
+        <input type="file" id="fileinput">
+        <button onclick="onSelectFile()">Try it</button>
+    </div> -->
 
-			<tbody>
-				<tr>
-					<td style="font-size: 14px; opacity: 0.8">row 1</td>
-					<td style="font-size: 14px; opacity: 0.8">name 1</td>
-					<td style="font-size: 14px; opacity: 0.8">author 1</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-				</tr>
-
-				<tr>
-					<td style="font-size: 14px; opacity: 0.8">row 2</td>
-					<td style="font-size: 14px; opacity: 0.8">name 2</td>
-					<td style="font-size: 14px; opacity: 0.8">author 2</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-				</tr>
-				<tr>
-					<td style="font-size: 14px; opacity: 0.8">row 3</td>
-					<td style="font-size: 14px; opacity: 0.8">name 3</td>
-					<td style="font-size: 14px; opacity: 0.8">author 3</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-				</tr>
-
-				<tr>
-					<td style="font-size: 14px; opacity: 0.8">row 4</td>
-					<td style="font-size: 14px; opacity: 0.8">name 4</td>
-					<td style="font-size: 14px; opacity: 0.8">author 4</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	<!-- ======= Footer tools ======= -->
 	<div class="footer-tools" style="background-color: #27293d; padding: 16px 16px 16px 50px; display: grid; grid-template-columns: 1fr 1fr">
 		<div>
-			<button class="btn btn-simple btn-twitter" style="color: #278aed80; border-color: #278aed80">DELETE</button>
+			<div
+				class="btn btn-simple btn-twitter"
+				id="data-package-delete"
+				onclick="deleteDataPackage()"
+				style="color: #278aed80; border-color: #278aed80; display: inline-flex"
+			>
+				<span>DELETE</span> <span id="del-count">&nbsp;</span>
+			</div>
+			&nbsp;&nbsp;&nbsp;
+			<button class="btn btn-simple btn-twitter" onclick="onSelectFile()" style="color: #278aed; border-color: #278aed">ADD</button>
+		</div>
+		<div style="display: grid; grid-template-columns: 1fr 40px">
+			<div><input type="text" id="filename" readonly class="form-control" value="" /></div>
+			<label for="fileinput" class="custom-file-upload"> ... </label>
+			<input id="fileinput" type="file" />
+		</div>
+	</div>
+</div>
+
+<br /><br />
+
+<div style="width: 90%; display: grid; padding: 5px; margin: 0 auto; background-color: #27293d">
+	<div class="header-tools" style="justify-self: flex-end; font-size: 20px; color: #278aed">[MISSION]</div>
+
+	<div style="max-width: 1000px; padding: 5px">
+		<div style="max-height: 300px; max-width: 100%; overflow-y: scroll; overflow-x: scroll">
+			{% for items in mission_json_data %} {% if loop.index == 1 %}
+			<div
+				style="
+					display: grid;
+
+					grid-template-columns: 100px 240px 240px 200px 200px 200px;
+					padding: 10px;
+					font-size: 16px;
+					color: #fff;
+					opacity: 0.9;
+				"
+			>
+				<div>Name</div>
+				<div>Description</div>
+				<div>Keywords</div>
+
+				<div>Creator</div>
+				<div>Groups</div>
+
+				<div>Created</div>
+			</div>
+			{% endif %}
+
+			<div
+				class="row-color-nohover row-class"
+				style="display: grid; grid-template-columns: 100px 240px 240px 200px 200px 200px; padding: 10px; color: #fff; opacity: 0.8"
+			>
+				<div>{{items['name']}}</div>
+				<div>{{items['description']}}</div>
+				<div>{{items['keywords']}}</div>
+				<div>{{items['creatorUid']}}</div>
+				<div>{{items['groups']}}</div>
+				<div>{{items['createTime']}}</div>
+			</div>
+
+			{% endfor %}
+		</div>
+	</div>
+
+	<div class="footer-tools" style="background-color: #27293d; padding: 16px 16px 16px 50px; display: grid; grid-template-columns: 1fr 1fr">
+		<div>
+			<div class="btn btn-simple btn-twitter" id="data-package-delete" style="color: #278aed80; border-color: #278aed80; display: inline-flex">
+				<span>DELETE</span> <span id="del-count">&nbsp;</span>
+			</div>
 			&nbsp;&nbsp;&nbsp;
 			<button class="btn btn-simple btn-twitter" style="color: #278aed; border-color: #278aed">ADD</button>
 		</div>
-		<div style="display: grid; grid-template-columns: 1fr 40px">
-			<div><input type="text" class="form-control" value="/usr/fts/wwwii.zip" /></div>
+	</div>
+</div>
+
+<div style="width: 90%; display: grid; padding: 5px; margin: 0 auto; background-color: #27293d">
+	<div class="header-tools" style="justify-self: flex-end; font-size: 20px; color: #278aed">[EXCHECK]</div>
+
+	<div style="max-width: 1000px; padding: 5px">
+		<div style="max-height: 300px; max-width: 100%; overflow-y: scroll; overflow-x: scroll">
+			{% for items in excheck_json_data %} {% if loop.index == 1 %}
 			<div
 				style="
+					display: grid;
+
+					grid-template-columns: 200px 240px 240px 200px 200px 200px;
+					padding: 10px;
 					font-size: 16px;
-					color: #b5b5b5;
-					padding: 5px 10px 5px 5px;
-					place-self: center;
-					border: 1px solid #383c44;
-					border-radius: 5px;
-					align-self: baseline;
+					color: #fff;
+					opacity: 0.9;
 				"
 			>
-				...
+				<div>Name</div>
+				<div>Submitter</div>
+				<div>Type</div>
+
+				<div>Size</div>
+				<div>Submitted</div>
+
+				<div>&nbsp;</div>
 			</div>
+			{% endif %}
+			<div
+				class="row-color-nohover row-class"
+				style="display: grid; grid-template-columns: 200px 240px 240px 200px 200px 200px; padding: 10px; color: #fff; opacity: 0.8"
+			>
+				<div>{{items['name']}}</div>
+				<div>{{items['submitter']}}</div>
+				<div>{{items['filename']}}</div>
+				<div>{{items['size']}}</div>
+				<div>{{items['submissionTime']}}</div>
+				<div>&nbsp;</div>
+			</div>
+
+			{% endfor %}
+		</div>
+	</div>
+
+	<div class="footer-tools" style="background-color: #27293d; padding: 16px 16px 16px 50px; display: grid; grid-template-columns: 1fr 1fr">
+		<div>
+			<div class="btn btn-simple btn-twitter" id="data-package-delete" style="color: #278aed80; border-color: #278aed80; display: inline-flex">
+				<span>DELETE</span> <span id="del-count">&nbsp;</span>
+			</div>
+			&nbsp;&nbsp;&nbsp;
+			<button class="btn btn-simple btn-twitter" style="color: #278aed; border-color: #278aed">ADD</button>
 		</div>
 	</div>
 </div>
 
-<div class="card">
-	<div class="header-tools" style="display: grid; padding: 10px 100px; justify-content: flex-end; font-size: 20px; color: #278aed">[Mission]</div>
-	<!-- ======= Table ======= -->
-	<div class="datatable-container" style="width: 90%">
-		<table class="datatable">
-			<thead>
-				<tr>
-					<th style="font-size: 16px; color: #b5b5b5">Name</th>
-					<th style="font-size: 16px; color: #b5b5b5">Description</th>
-					<th style="font-size: 16px; color: #b5b5b5">Keywords</th>
-					<th style="font-size: 16px; color: #b5b5b5">Creator</th>
-					<th style="font-size: 16px; color: #b5b5b5">Groups</th>
-					<th style="font-size: 16px; color: #b5b5b5">Created</th>
-				</tr>
-			</thead>
-
-			<tbody>
-				<tr>
-					<td style="font-size: 14px; opacity: 0.8">row 1</td>
-					<td style="font-size: 14px; opacity: 0.8">name 1</td>
-					<td style="font-size: 14px; opacity: 0.8">author 1</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-				</tr>
-
-				<tr>
-					<td style="font-size: 14px; opacity: 0.8">row 2</td>
-					<td style="font-size: 14px; opacity: 0.8">name 2</td>
-					<td style="font-size: 14px; opacity: 0.8">author 2</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-				</tr>
-				<tr>
-					<td style="font-size: 14px; opacity: 0.8">row 3</td>
-					<td style="font-size: 14px; opacity: 0.8">name 3</td>
-					<td style="font-size: 14px; opacity: 0.8">author 3</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-				</tr>
-
-				<tr>
-					<td style="font-size: 14px; opacity: 0.8">row 4</td>
-					<td style="font-size: 14px; opacity: 0.8">name 4</td>
-					<td style="font-size: 14px; opacity: 0.8">author 4</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	<!-- ======= Footer tools ======= -->
-	<div class="footer-tools" style="background-color: #27293d; padding: 16px 0px 16px 50px">
-		<button class="btn btn-simple btn-twitter" style="color: #278aed80; border-color: #278aed80">DELETE</button>
-		&nbsp;&nbsp;&nbsp;
-		<button class="btn btn-simple btn-twitter" style="color: #278aed; border-color: #278aed">ADD</button>
-	</div>
-</div>
-
-<div class="card">
-	<div class="header-tools" style="display: grid; padding: 10px 100px; justify-content: flex-end; font-size: 20px; color: #278aed">[Ex Check]</div>
-	<!-- ======= Table ======= -->
-	<div class="datatable-container" style="width: 90%">
-		<table class="datatable">
-			<thead>
-				<tr>
-					<th style="font-size: 16px; color: #b5b5b5">Name</th>
-					<th style="font-size: 16px; color: #b5b5b5">Submitter</th>
-					<th style="font-size: 16px; color: #b5b5b5">Type</th>
-					<th style="font-size: 16px; color: #b5b5b5">Size</th>
-					<th style="font-size: 16px; color: #b5b5b5">Submitted</th>
-				</tr>
-			</thead>
-
-			<tbody>
-				<tr>
-					<td style="font-size: 14px; opacity: 0.8">row 1</td>
-					<td style="font-size: 14px; opacity: 0.8">name 1</td>
-					<td style="font-size: 14px; opacity: 0.8">author 1</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-				</tr>
-
-				<tr>
-					<td style="font-size: 14px; opacity: 0.8">row 2</td>
-					<td style="font-size: 14px; opacity: 0.8">name 2</td>
-					<td style="font-size: 14px; opacity: 0.8">author 2</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-				</tr>
-				<tr>
-					<td style="font-size: 14px; opacity: 0.8">row 3</td>
-					<td style="font-size: 14px; opacity: 0.8">name 3</td>
-					<td style="font-size: 14px; opacity: 0.8">author 3</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-				</tr>
-
-				<tr>
-					<td style="font-size: 14px; opacity: 0.8">row 4</td>
-					<td style="font-size: 14px; opacity: 0.8">name 4</td>
-					<td style="font-size: 14px; opacity: 0.8">author 4</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-					<td style="font-size: 14px; opacity: 0.8">text</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	<!-- ======= Footer tools ======= -->
-	<div class="footer-tools" style="background-color: #27293d; padding: 16px 0px 16px 50px">
-		<button class="btn btn-simple btn-twitter" style="color: #278aed80; border-color: #278aed80">DELETE</button>
-		&nbsp;&nbsp;&nbsp;
-		<button class="btn btn-simple btn-twitter" style="color: #278aed; border-color: #278aed">ADD</button>
-	</div>
-</div>
-
+<div id="snackbar">&nbsp;</div>
 {% endblock content %}
 
 <!-- Specific Page JS goes HERE  -->
-{% block javascripts %}{% endblock javascripts %}
+{% block javascripts %}
+<!-- arr.some(item => item.a === 'b') -->
+<!-- const updatedHero = hero.filter(item => item.id !== 1); -->
+<script>
+	// this is a global variable
+	var gArr;
+	var updatedGARR;
+	// var obj = {key1: "value1", key2: "value2"};
+	function captureClick(param) {
+		if (!gArr.some((item) => item.hash === param)) {
+			let vv = { hash: param };
+			gArr.push(vv);
+		} else {
+			gArr = gArr.filter((item) => item.hash !== param);
+		}
+
+		// classList
+		if (gArr.length > 0) {
+			document.getElementById("del-count").innerHTML = `&nbsp;[${gArr.length}]`;
+			document.getElementById("data-package-delete").classList.add("btn", "btn-simple", "btn-twitter", "enable-delete");
+		} else {
+			document.getElementById("del-count").innerHTML = ``;
+			document.getElementById("data-package-delete").classList.add("btn", "btn-simple", "btn-twitter", "disable-delete");
+		}
+	}
+
+	function snackFunction(message) {
+		// Get the snackbar DIV
+		var x = document.getElementById("snackbar");
+		document.getElementById("snackbar").textContent = message;
+
+		// Add the "show" class to DIV
+		x.className = "show";
+
+		// After 3 seconds, remove the show class from DIV
+		setTimeout(function () {
+			x.className = x.className.replace("show", "");
+		}, 3000);
+	}
+
+	// Select your input type file and store it in a variable
+	const input = document.getElementById("fileinput");
+
+	// This will upload the file after having read it
+	const upload = (file) => {
+		if (file === undefined) {
+			snackFunction("Select a file to Add");
+			return false;
+		}
+
+		if (!checkExtn(file.name)) {
+			return false;
+		}
+
+		var formData = new FormData();
+		formData.append("assetfile", file);
+
+		headers = { Authorization: "Bearer a@v{5]MQU><waQ;Z" };
+		fetch("http://204.48.30.216:19023/DataPackageTable?filename=testfile.zip&creator", {
+			method: "POST",
+			headers: headers,
+			body: formData,
+		}).then(
+			(response) => response.json(), // if the response is a JSON object
+		);
+	};
+
+	// Event handler executed when a file is selected
+	const onSelectFile = () => upload(input.files[0]);
+
+	// Add a listener on your input
+	// It will be triggered when a file will be selected
+	// input.addEventListener('change', onSelectFile, false);
+
+	document.getElementById("fileinput").addEventListener("change", function () {
+		document.getElementById("filename").value = input.files[0].name;
+		// checkExtn(input.files[0].name);
+	});
+
+	function checkExtn(filename) {
+		let extn = filename.substring(filename.lastIndexOf(".") + 1, filename.length) || filename;
+
+		if (extn !== "zip" || extn !== ".gz" || extn !== ".rar") {
+			snackFunction("Only Zip files allowed.");
+			return false;
+		}
+	}
+
+	function deleteDataPackage() {
+		if (gArr.length > 0) {
+			let newMap = gArr.map((e) => {
+				return "hash" + e;
+			});
+		}
+
+		headers = { Authorization: "Bearer a@v{5]MQU><waQ;Z" };
+		fetch("http://204.48.30.216:19023/DataPackageTable", {
+			method: "DELETE",
+			headers: headers,
+			body: JSON.stringify({
+				DataPackages: gArr,
+			}),
+		}).then((response) => {
+			console.log("delete response...");
+			response.json();
+			console.log("delete response...XX " + response.json());
+		});
+	}
+
+	$(document).ready(function () {
+		console.log("hell");
+
+		$(".row-class").on("click", function () {
+			$(this).toggleClass("rowselected");
+		});
+	});
+</script>
+<script>
+	$(window).on("load", function () {
+		console.log("window loaded");
+		gArr = [];
+	});
+</script>
+{% endblock javascripts %}
 <!-- color: #3ea1ec;
 border-color: #3ea1ec; -->
+
+<!-- {
+    "DataPackages":[
+       {"hash": "194728885783f87ws84888943fjew"},
+       {"hash": "19472mw45783f7ws848758943fjegr"}
+    ]
+    } -->
+
+<!-- https://stackoverflow.com/questions/36067767/how-do-i-upload-a-file-with-the-js-fetch-api -->
