@@ -6,7 +6,7 @@
 <!-- mission code here -->
 
 <div style="width: 90%; display: grid; padding: 5px; margin: 0 auto; background-color: #27293d">
-	<div class="header-tools" style="justify-self: flex-end; font-size: 20px; color: #278aed">[DATA PACKAGE]</div>
+	<div class="header-tools" style="justify-self: flex-end; font-size: 20px; padding-right: 20px; color: #278aed">[DATA PACKAGE]</div>
 
 	<div style="width: 100%; padding: 5px">
 		<div
@@ -84,7 +84,7 @@
 <br /><br />
 
 <div style="width: 90%; display: grid; padding: 5px; margin: 0 auto; background-color: #27293d">
-	<div class="header-tools" style="justify-self: flex-end; font-size: 20px; color: #278aed">[MISSION]</div>
+	<div class="header-tools" style="justify-self: flex-end; font-size: 20px; padding-right: 20px; color: #278aed">[MISSION]</div>
 
 	<div style="max-width: 1000px; padding: 5px">
 		<div style="max-height: 300px; max-width: 100%; overflow-y: scroll; overflow-x: scroll">
@@ -137,9 +137,9 @@
 		</div>
 	</div>
 </div>
-
+<br /><br />
 <div style="width: 90%; display: grid; padding: 5px; margin: 0 auto; background-color: #27293d">
-	<div class="header-tools" style="justify-self: flex-end; font-size: 20px; color: #278aed">[EXCHECK]</div>
+	<div class="header-tools" style="justify-self: flex-end; font-size: 20px; padding-right: 20px; color: #278aed">[EXCHECK]</div>
 
 	<div style="max-width: 1000px; padding: 5px">
 		<div style="max-height: 300px; max-width: 100%; overflow-y: scroll; overflow-x: scroll">
@@ -188,6 +188,54 @@
 			</div>
 			&nbsp;&nbsp;&nbsp;
 			<button class="btn btn-simple btn-twitter" style="color: #278aed; border-color: #278aed">ADD</button>
+		</div>
+	</div>
+</div>
+<br /><br />
+<div style="width: 90%; display: grid; padding: 5px; margin: 0 auto; background-color: #27293d">
+	<div class="header-tools" style="justify-self: flex-end; font-size: 20px; padding-right: 20px; color: #278aed">[OUTGOING FEDERATIONS]</div>
+	<div style="max-width: 1000px; padding: 5px">
+		<div style="max-height: 300px; max-width: 100%; overflow-y: scroll; overflow-x: scroll">
+			{% for items in outgoing_federation_json_data %} {% if loop.index == 1 %}
+			<div
+				style="
+					display: grid;
+
+					grid-template-columns: 200px 240px 240px 200px 200px 200px 200px 200px;
+					padding: 10px;
+					font-size: 16px;
+					color: #fff;
+					opacity: 0.9;
+				"
+			>
+				<div>Name</div>
+				<div>Address</div>
+				<div>Port</div>
+				<div>Fallback</div>
+
+				<div>Status</div>
+				<div>Rec. Interval</div>
+
+				<div>Max Retries</div>
+
+				<div>Last Error</div>
+			</div>
+			{% endif %}
+			<div
+				class="row-color-nohover row-class"
+				style="display: grid; grid-template-columns: 200px 240px 240px 200px 200px 200px 200px 200px; padding: 10px; color: #fff; opacity: 0.8"
+			>
+				<div>{{items['Name']}}</div>
+				<div>{{items['Address']}}</div>
+				<div>{{items['Port']}}</div>
+				<div>{{items['FallBack']}}</div>
+				<div>{{items['Status']}}</div>
+				<div>{{items['ReconnectInterval']}}</div>
+				<div>{{items['MaxRetries']}}</div>
+				<div>{{items['LastError']}}</div>
+			</div>
+
+			{% endfor %}
 		</div>
 	</div>
 </div>

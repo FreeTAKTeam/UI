@@ -269,60 +269,6 @@ select::-ms-expand {
 	box-sizing: border-box;
 }
 
-label {
-	display: -webkit-box;
-	display: flex;
-	cursor: pointer;
-	font-weight: 500;
-	position: relative;
-	overflow: hidden;
-	margin-bottom: 0.375em;
-	/* Accessible outline */
-	/* Remove comment to use */
-	/*
-  	&:focus-within {
-  			outline: .125em solid $primary-color;
-  	}
-  */
-}
-label input {
-	position: absolute;
-	left: -9999px;
-}
-label input:checked + span {
-	background-color: #6b6b6b;
-}
-label input:checked + span:before {
-	box-shadow: inset 0 0 0 0.4375em #00005c;
-}
-label span {
-	display: -webkit-box;
-	display: flex;
-	-webkit-box-align: center;
-	align-items: center;
-	padding: 0.375em 0.75em 0.375em 0.375em;
-	border-radius: 99em;
-	-webkit-transition: 0.25s ease;
-	transition: 0.25s ease;
-}
-label span:hover {
-	background-color: #6b6b6b;
-}
-label span:before {
-	display: -webkit-box;
-	display: flex;
-	flex-shrink: 0;
-	content: "";
-	background-color: #fff;
-	width: 1.5em;
-	height: 1.5em;
-	border-radius: 50%;
-	margin-right: 0.375em;
-	-webkit-transition: 0.25s ease;
-	transition: 0.25s ease;
-	box-shadow: inset 0 0 0 0.125em #00005c;
-}
-
 .row-style {
 	border: 0px solid #444444;
 }
@@ -523,3 +469,40 @@ input[type="file"] {
 .row-color-nohover:nth-of-type(even) {
 	background: #323242;
 }
+
+/* USER PAGE CSS */
+
+.user_c1 {
+	color: #d6d6d6;
+	width: 200px;
+	padding: 5px;
+}
+
+.user-table-hdr {
+	border-collapse: collapse;
+	background-color: #27293d;
+	display: block;
+	width: 100%;
+	max-width: 100%;
+	overflow: hidden;
+	border: 0px solid #626262;
+}
+
+.user-table-style {
+	border-collapse: collapse;
+	background-color: #27293d;
+	display: block;
+	height: 300px;
+	max-height: 400px !important;
+
+	width: 100%;
+	max-width: 100%;
+	overflow: auto;
+}
+/* 
+.cell-style-1 {
+	color: #fff;
+	opacity: 0.8;
+	padding: 5px;
+	width: 90px;
+} */

@@ -255,7 +255,8 @@
 		socket.on("userUpdate", function (data) {
 			let userObject = JSON.parse(data);
 
-			let len = Object.keys(userObject).length;
+			let len = userObject.Users.length;
+			//let len = Object.keys(userObject).length;
 			if (len === 1) {
 				if (userObject[0].ip === "") {
 					len = 0;

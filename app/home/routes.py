@@ -35,13 +35,16 @@ def missionApi():
     mission_json_data = requests.get('http://204.48.30.216:19023/MissionTable', headers= headers).json()
 
     excheck_json_data = requests.get('http://204.48.30.216:19023/ExCheckTable', headers= headers).json()
+
+    outgoing_federation_json_data = requests.get('http://204.48.30.216:19023/FederationTable', headers= headers).json()
     
-    # print('Name' + json_data['json_list'][0]['Name'])    
+    #  print('Name' + json_data['json_list'][0]['Name'])    
      
 
     return render_template('mission.html', json_data = json_data['json_list'], 
     mission_json_data = mission_json_data['data'],
-    excheck_json_data = excheck_json_data['ExCheck']['Templates']
+    excheck_json_data = excheck_json_data['ExCheck']['Templates'],
+    outgoing_federation_json_data = outgoing_federation_json_data['outgoingFederations']
      )
 
 
@@ -58,8 +61,27 @@ def connectApi():
     json_data = requests.get('http://204.48.30.216:19023/ManageEmergency/getEmergency', headers= headers).json()
     
     return render_template('connect.html', json_data = json_data['json_list'])     
-  
 
+
+
+
+@blueprint.route('/users')
+@login_required
+def usersApi():
+    return render_template('users.html')     
+      
+  
+# @blueprint.route('/connect')
+# @login_required
+# def connectApi():
+    
+    
+#     headers = {'Authorization': 'Bearer a@v{5]MQU><waQ;Z'}
+
+#     json_data = requests.get('http://204.48.30.216:19023/ManageEmergency/getEmergency', headers= headers).json()
+    
+#     return render_template('connect.html', json_data = json_data['json_list'])     
+  
 
 @blueprint.route('/<template>')
 def route_template(template):
