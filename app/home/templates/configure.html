@@ -4,68 +4,8 @@
 {% block stylesheets %}{% endblock stylesheets %} {% block content %}
 
 <style>
-	#ip {				
-		width: 100%;
-		height: calc(2.25rem + 2px);
-		font-weight: 400;
-		line-height: 1.428571;
-		color: rgba(255, 255, 255, 0.8);
-		background-color: transparent;
-		background-clip: padding-box;
-		border: 1px solid #cad1d7;
-		box-shadow: none;
-		border-color: #2b3553;
-		border-radius: 0.25rem;
-		margin-bottom: 10px;
-	}
 
-	#port1 {
-		display: inline-block;
-		width: 30%;
-		height: calc(2.25rem + 2px);
-		font-weight: 400;
-		line-height: 1.428571;
-		color: rgba(255, 255, 255, 0.8);
-		background-color: transparent;
-		background-clip: padding-box;
-		border: 1px solid #cad1d7;
-		box-shadow: none;
-		border-color: #2b3553;
-		border-radius: 0.25rem;
-		text-align: left;
-		margin-left: 30px;
-		margin-right: 30px;
-	}
-	#port2 {
-		display: inline-block;
-		width: 30%;
-		height: calc(2.25rem + 2px);
-		font-weight: 400;
-		line-height: 1.428571;
-		color: rgba(255, 255, 255, 0.8);
-		background-color: transparent;
-		background-clip: padding-box;
-		border: 1px solid #cad1d7;
-		box-shadow: none;
-		border-color: #2b3553;
-		border-radius: 0.25rem;
-		text-align: right;
-		margin-right: 30px;
-	}
-	#portText{
-		margin-left: 30px;
-		margin-right: 30px;
-	}
-	#serverText{
-		margin-left: 30px;
-		
-	}
-	.devider{
-		margin-left:30px;
-		height:auto;
-		display:inline-block;
-	
-	}
+
 	/* The switch - the box around the slider */
 	.switch {
 	  position: relative;
@@ -154,9 +94,9 @@
 	<div class="config-rows">
 		<div style="display: flex;justify-content: center;
 		align-items: center;">
-			<label style="padding: 0px 5px;">TCP COT</label>
+			<label style="padding: 0px 5px; font-size: 1rem;">TCP COT</label>
 			<label class="switch">
-				<input type="checkbox", id="SSLCoTOnOffSwitch">
+				<input type="checkbox" id="TCPCoTOnOffSwitch">
 				<span class="slider round"></span></label>
 		</div>
 	</div>
@@ -170,9 +110,9 @@
 	<div class="config-rows">
 		<div style="display: flex;justify-content: center;
 		align-items: center;">
-			<label style="padding: 0px 5px;">HTTP DP</label>
+			<label style="padding: 0px 5px; font-size: 1rem">HTTP DP</label>
 			<label class="switch">
-				<input type="checkbox", id="SSLCoTOnOffSwitch">
+				<input type="checkbox", id="HTTPDPOnOffSwitch">
 				<span class="slider round"></span></label>
 		</div>
 	</div>
@@ -185,9 +125,9 @@
 	<div class="config-rows">
 		<div style="display: flex;justify-content: center;
 		align-items: center;">
-			<label style="padding: 0px 5px;" >HTTP DP</label>
+			<label style="padding: 0px 5px; font-size: 1rem" >API</label>
 			<label class="switch">
-				<input type="checkbox", id="SSLCoTOnOffSwitch">
+				<input type="checkbox", id="APIOnOffSwitch">
 				<span class="slider round"></span></label>
 		</div>
 	</div>
@@ -209,7 +149,7 @@
 	<div class="config-rows">
 		<div style="display: flex;justify-content: center;
 		align-items: center;">
-			<label style="padding: 0px 5px;">SSL COT</label>
+			<label style="padding: 0px 5px; font-size: 1rem">SSL COT</label>
 			<label class="switch">
 				<input type="checkbox", id="SSLCoTOnOffSwitch">
 				<span class="slider round"></span></label>
@@ -225,9 +165,9 @@
 	<div class="config-rows">
 		<div style="display: flex;justify-content: center;
 		align-items: center;">
-			<label style="padding: 0px 5px;">SSL DP</label>
+			<label style="padding: 0px 5px; font-size: 1rem">SSL DP</label>
 			<label class="switch">
-				<input type="checkbox", id="SSLCoTOnOffSwitch">
+				<input type="checkbox", id="SSLDPOnOffSwitch">
 				<span class="slider round"></span></label>
 		</div>
 	</div>
@@ -239,9 +179,9 @@
 	<div class="config-rows">
 		<div style="display: flex;justify-content: center;
 		align-items: center;">
-			<label style="padding: 0px 5px;">FED</label>
+			<label style="padding: 0px 5px; font-size: 1rem">FED</label>
 			<label class="switch">
-				<input type="checkbox", id="SSLCoTOnOffSwitch">
+				<input type="checkbox", id="FEDOnOffSwitch">
 				<span class="slider round"></span></label>
 		</div>
 	</div>
@@ -253,103 +193,11 @@
 		</div>
 	</div>
 
-<!-- <div style="display: grid; grid-template-columns: 1fr;">
-	<div class="cols" style="padding: 5px;">
-		<input type="text" 
-		class="form-control"
-		id="ip" name="IP_address" value="0.0.0.0">
-	</div>
-	<div class="cols" style="padding: 5px;">
-		<button class="btn btn-simple btn-twitter" style="color: #278aed; border-color: #278aed">Apply</button>
-	</div>
-	
-
-</div> -->
-	
-	<!-- <div class="cols">
-		<div style="padding: 10px 0px 10px 10px;">
-			<label id="serverText">TCP COT</label>
-			<label class="switch">
-				<input type="checkbox", id="SSLCoTOnOffSwitch">
-				<span class="slider round"></span></label>
-		</div>
-		<div style="padding: 10px 0px 10px 10px;">
-			<label id="serverText">SSL COT</label>
-			<label class="switch">
-				<input type="checkbox", id="SSLCoTOnOffSwitch">
-				<span class="slider round"></span></label>
-	</div> -->
 
 	</div>
-	<!-- <div>
-		
-		
-		<div class="cols" style="padding: 5px;">
-			<input type="text" 
-			class="form-control" style="width: 70px;"
-			id="tcp_cot_port" value="">
-		</div>
-		<div class="cols" style="padding: 5px;">
-			<input type="text" 
-			class="form-control" style="width: 70px;"
-			id="ssl_cot_port"  value="">
-		</div>
-	</div> -->
-	
-	<!-- <div class="cols">
-		<div style="padding: 10px 0px 10px 10px;">
-		<label>
-			<input type="radio" name="http_dp_port" />
-			<span>HTTP DP</span>
-		</label>
-		</div>
-		<div style="padding: 10px 0px 10px 10px;">
-		<label>
-			<input type="radio" name="ssl_dp_port"/>
-			<span>SSL DP</span>
-		</label>
-	</div> -->
+
 	</div>
-	<!-- <div class="cols" >
-		<div class="cols" style="padding: 5px;">
-			<input type="text" 
-			class="form-control" style="width: 70px;"
-			id="http_dp_port"  value="">
-		</div>
-		<div class="cols" style="padding: 5px;">
-			<input type="text" 
-			class="form-control" style="width: 70px;"
-			id="ssl_dp_port"  value="">
-		</div>
-	</div> -->
-	
-<!-- 
-	<div class="cols">
-		<div style="padding: 10px 0px 10px 10px;">
-		<label>
-			<input type="radio" name="api_port" />
-			<span>API</span>
-		</label>
-	</div><div style="padding: 10px 0px 10px 10px;">
-	
-		<label>
-			<input type="radio" name="fed_port"/>
-			<span>FED</span>
-		</label>
-	</div>
-	</div> -->
-	<!-- <div class="cols">
-		<div class="cols" style="padding: 5px;">
-			<input type="text" 
-			class="form-control" style="width: 70px;"
-			id="api_port"  value="">
-		</div>
-		<div class="cols" style="padding: 5px;">
-			<input type="text" 
-			class="form-control" style="width: 70px;"
-			id="fed_port"  value="">
-		</div>
-	</div> -->
+
 	
 	</div>
 
@@ -394,15 +242,16 @@
 								<div style="font-size: 16px; color: #b5b5b5">Fallback</div>
 								<div class="select">
 									<select name="format" id="format">
-										<option selected>Select a Value</option>
-										<option value="pdf">PDF</option>
-										<option value="txt">txt</option>
-										<option value="epub">ePub</option>
-										<option value="fb2">fb2</option>
-										<option value="mobi">mobi</option>
+										{% for items in outgoing_federation_json_data %} 
+										<option >{{items['FallBack']}}</option>
+										
+										{% endfor %}
 									</select>
 								</div>
 							</div>
+						</div>
+						<div  style="padding: 5px; text-align: right;">
+							<button class="btn btn-simple btn-twitter" style="color: #278aed; border-color: #278aed">Apply</button>
 						</div>
 					
 				</div>
@@ -483,6 +332,43 @@ const getServiceInfo = (socket) => {
 		document.getElementById("fed_port").value = serviceInfoObject.services.Federation_server_service.port;
 
 		document.getElementById("ip").value = serviceInfoObject.ip;
+
+		
+		if(serviceInfoObject.services.TCP_CoT_service.status == "on") {
+			document.getElementById("TCPCoTOnOffSwitch").checked = true;
+		} else {
+			document.getElementById("TCPCoTOnOffSwitch").checked = false;
+		}
+
+		if(serviceInfoObject.services.SSL_CoT_service.status == "on") {
+			document.getElementById("SSLCoTOnOffSwitch").checked = true;
+		} else {
+			document.getElementById("SSLCoTOnOffSwitch").checked = false;
+		}
+
+		if(serviceInfoObject.services.TCP_DataPackage_service.status == "on") {
+			document.getElementById("HTTPDPOnOffSwitch").checked = true;
+		} else {
+			document.getElementById("HTTPDPOnOffSwitch").checked = false;
+		}
+
+		if(serviceInfoObject.services.SSL_DataPackage_service.status == "on") {
+			document.getElementById("SSLDPOnOffSwitch").checked = true;
+		} else {
+			document.getElementById("SSLDPOnOffSwitch").checked = false;
+		}
+
+		if(serviceInfoObject.services.Rest_API_service.status == "on") {
+			document.getElementById("APIOnOffSwitch").checked = true;
+		} else {
+			document.getElementById("APIOnOffSwitch").checked = false;
+		}
+
+		if(serviceInfoObject.services.Federation_server_service.status == "on") {
+			document.getElementById("FEDOnOffSwitch").checked = true;
+		} else {
+			document.getElementById("FEDOnOffSwitch").checked = false;
+		}
 
 
 	});

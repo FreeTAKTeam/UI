@@ -49,17 +49,6 @@
 		</div>
 	</div>
 
-	<!-- <div class="footer-tools" style="background-color: #27293d; padding: 0px 10px;">
-        <button class="btn btn-simple btn-twitter disable-delete" 
-        onclick="deleteDataPackage()"
-        id="data-package-delete"
-        >DELETE</button>
-        &nbsp;&nbsp;&nbsp;
-        <button class="btn btn-simple btn-twitter" style="color: #278aed; border-color: #278aed">ADD</button>
-        <input type="file" id="fileinput">
-        <button onclick="onSelectFile()">Try it</button>
-    </div> -->
-
 	<div class="footer-tools" style="background-color: #27293d; padding: 16px 16px 16px 50px; display: grid; grid-template-columns: 1fr 1fr">
 		<div>
 			<div
@@ -294,6 +283,11 @@
 			return false;
 		}
 
+		if (document.getElementById("filename").value == "") {
+			snackFunction("Select a file to Add");
+			return false;
+		}
+
 		if (!checkExtn(file.name)) {
 			return false;
 		}
@@ -302,13 +296,20 @@
 		formData.append("assetfile", file);
 
 		headers = { Authorization: "Bearer a@v{5]MQU><waQ;Z" };
-		fetch("http://204.48.30.216:19023/DataPackageTable?filename=testfile.zip&creator", {
+
+		fetch(`http://204.48.30.216:19023/DataPackageTable?filename=${file.name}&creator`, {
 			method: "POST",
 			headers: headers,
 			body: formData,
-		}).then(
-			(response) => response.json(), // if the response is a JSON object
-		);
+		})
+			.then(
+				(response) => response.json(), // if the response is a JSON object
+			)
+			.catch((error) => {
+				console.log("log error.." + error);
+				snackFunction("Add Datapackage Failed. Contact Administrator!");
+				document.getElementById("filename").value = "";
+			});
 	};
 
 	// Event handler executed when a file is selected
@@ -326,7 +327,9 @@
 	function checkExtn(filename) {
 		let extn = filename.substring(filename.lastIndexOf(".") + 1, filename.length) || filename;
 
-		if (extn !== "zip" || extn !== ".gz" || extn !== ".rar") {
+		if (extn === "zip" || extn === "gz" || extn === "rar") {
+			return true;
+		} else {
 			snackFunction("Only Zip files allowed.");
 			return false;
 		}
@@ -350,6 +353,8 @@
 			console.log("delete response...");
 			response.json();
 			console.log("delete response...XX " + response.json());
+			snackFunction("Delete Successful. Refreshing data.");
+			refresh();
 		});
 	}
 
@@ -360,6 +365,12 @@
 			$(this).toggleClass("rowselected");
 		});
 	});
+
+	function refresh() {
+		setTimeout(function () {
+			location.reload(true);
+		}, 3000);
+	}
 </script>
 <script>
 	$(window).on("load", function () {

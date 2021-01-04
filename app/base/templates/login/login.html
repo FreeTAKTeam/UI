@@ -25,7 +25,11 @@
                       <span>
                         Use default credentials: test / pass
                         <br />
-                        OR <a href={{ url_for('base_blueprint.create_user') }} >create your own user</a>
+                        OR <a href={{ url_for('base_blueprint.create_user') }} >
+                        <span style="color: #278aed;">
+                          create your own user
+                        </span>
+                        </a>
                       </span>
                       {% endif %}  
                   </h6>
@@ -56,7 +60,7 @@
                     
                 </div>
                 <div class="card-footer">
-                  <button type="submit" name="login" class="btn btn-fill btn-primary">Login</button>
+                  <button type="submit" name="login" class="btn btn-primary">Login</button>
                   &nbsp; &nbsp;
                   Don't have an account? <a href={{ url_for('base_blueprint.create_user') }} class="text-primary">Create</a>
                 </div>

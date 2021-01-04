@@ -1,16 +1,7 @@
 <div class="sidebar" style="background-color: #27293d">
 	<div class="sidebar-wrapper" style="background-color: #27293d">
 		<div style="display: grid; justify-content: center; align-content: center; padding: 8px 8px 0px 8px">
-			<img src="/static/assets/img/FreeTakServer3.png" width="150px" alt="Profile Photo" />
-
-			<!-- <a
-				target="_blank"
-				rel="sponsored noopener noreferrer"
-				href="https://appseed.us/admin-dashboards/flask-dashboard-black"
-				class="simple-text logo-normal"
-			>
-				Flask Black
-			</a> -->
+			<img src="/static/assets/img/FreeTakServer3.png" width="150px" alt="FreeTak Server" />
 		</div>
 
 		<ul class="nav">
@@ -21,31 +12,31 @@
 					<p style="font-size: 16px">Home</p>
 				</a>
 			</li>
-			<li class="{% if 'icons' in segment %} active {% endif %}">
+			<li class="{% if 'mission' in segment %} active {% endif %}">
 				<a href="/mission">
 					<i class="tim-icons icon-spaceship"></i>
 					<p style="font-size: 16px">Mission</p>
 				</a>
 			</li>
-			<li class="{% if 'maps' in segment %} active {% endif %}">
+			<li class="{% if 'users' in segment %} active {% endif %}">
 				<a href="/users">
 					<i class="tim-icons icon-single-02"></i>
 					<p style="font-size: 16px">User</p>
 				</a>
 			</li>
-			<li class="{% if 'notifications' in segment %} active {% endif %}">
+			<li class="{% if 'connect' in segment %} active {% endif %}">
 				<a href="/connect">
 					<i class="tim-icons icon-vector"></i>
 					<p style="font-size: 16px">Connect</p>
 				</a>
 			</li>
-			<li class="{% if 'page-user' in segment %} active {% endif %}">
+			<li class="{% if 'configure' in segment %} active {% endif %}">
 				<a href="/configure">
 					<i class="tim-icons icon-settings-gear-63"></i>
 					<p style="font-size: 16px">Configure</p>
 				</a>
 			</li>
-			<li class="{% if 'tables' in segment %} active {% endif %}">
+			<li class="{% if 'about' in segment %} active {% endif %}">
 				<a href="/about">
 					<i class="tim-icons icon-light-3"></i>
 					<p style="font-size: 16px">About</p>
@@ -53,12 +44,12 @@
 			</li>
 
 			{% else %}
-			<li class="active">
+			<!-- <li class="active">
 				<a target="_blank" href="https://appseed.us/admin-dashboards/flask-dashboard-black-pro">
 					<i class="tim-icons icon-spaceship"></i>
 					<p style="font-size: 16px">PRO Version</p>
 				</a>
-			</li>
+			</li> -->
 			{% endif %}
 		</ul>
 	</div>

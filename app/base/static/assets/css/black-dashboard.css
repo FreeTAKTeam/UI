@@ -2668,8 +2668,8 @@ fieldset:disabled a.btn {
 
 .btn-primary:hover {
   color: #ffffff;
-  background-color: #db2dc0;
-  border-color: #d725bb;
+  background-color: #278aed;
+  border-color: #278aed;
 }
 
 .btn-primary:focus,
@@ -13088,10 +13088,10 @@ fieldset[disabled] .navbar .navbar-nav>a.btn.active {
 
 .btn-primary {
   background: #278aed;
-  background-image: -webkit-linear-gradient(to bottom left, #278aed, #ba54f5, #278aed);
-  background-image: -o-linear-gradient(to bottom left, #278aed, #ba54f5, #278aed);
-  background-image: -moz-linear-gradient(to bottom left, #278aed, #ba54f5, #278aed);
-  background-image: linear-gradient(to bottom left, #278aed, #ba54f5, #278aed);
+  background-image: -webkit-linear-gradient(to bottom left, #278aed, #278aed, #278aed);
+  background-image: -o-linear-gradient(to bottom left, #278aed, #278aed, #278aed);
+  background-image: -moz-linear-gradient(to bottom left, #278aed, #278aed, #278aed);
+  background-image: linear-gradient(to bottom left, #278aed, #278aed, #278aed);
   background-size: 210% 210%;
   background-position: top right;
   background-color: #278aed;
@@ -13113,11 +13113,11 @@ fieldset[disabled] .navbar .navbar-nav>a.btn.active {
 .btn-primary:active:hover,
 .btn-primary.active:focus,
 .btn-primary.active:hover {
-  background-color: #ba54f5 !important;
-  background-image: linear-gradient(to bottom left, #278aed, #ba54f5, #278aed) !important;
-  background-image: -webkit-linear-gradient(to bottom left, #278aed, #ba54f5, #278aed) !important;
-  background-image: -o-linear-gradient(to bottom left, #278aed, #ba54f5, #278aed) !important;
-  background-image: -moz-linear-gradient(to bottom left, #278aed, #ba54f5, #278aed) !important;
+  background-color: #278aed !important;
+  background-image: linear-gradient(to bottom left, #278aed, #278aed, #278aed) !important;
+  background-image: -webkit-linear-gradient(to bottom left, #278aed, #278aed, #278aed) !important;
+  background-image: -o-linear-gradient(to bottom left, #278aed, #278aed, #278aed) !important;
+  background-image: -moz-linear-gradient(to bottom left, #278aed, #278aed, #278aed) !important;
   color: #ffffff;
   box-shadow: none;
 }
@@ -13189,11 +13189,11 @@ fieldset[disabled] .btn-primary.active {
 .btn-primary.btn-simple.active:not(:disabled):not(.disabled):active {
   color: #ffffff;
   border-color: #278aed;
-  background-image: linear-gradient(to bottom left, #278aed, #ba54f5, #278aed) !important;
-  background-image: -webkit-linear-gradient(to bottom left, #278aed, #ba54f5, #278aed) !important;
-  background-image: -o-linear-gradient(to bottom left, #278aed, #ba54f5, #278aed) !important;
-  background-image: -moz-linear-gradient(to bottom left, #278aed, #ba54f5, #278aed) !important;
-  background-color: #ba54f5 !important;
+  background-image: linear-gradient(to bottom left, #278aed, #278aed, #278aed) !important;
+  background-image: -webkit-linear-gradient(to bottom left, #278aed, #278aed, #278aed) !important;
+  background-image: -o-linear-gradient(to bottom left, #278aed, #278aed, #278aed) !important;
+  background-image: -moz-linear-gradient(to bottom left, #278aed, #278aed, #278aed) !important;
+  background-color: #278aed !important;
   box-shadow: none;
 }
 
@@ -13856,13 +13856,13 @@ fieldset[disabled] .btn-neutral.active {
 .show>.btn-neutral.dropdown-toggle:focus,
 .show>.btn-neutral.dropdown-toggle:hover {
   background-color: #ffffff;
-  color: #ba54f5;
+  color: #278aed;
   box-shadow: none;
 }
 
 .btn-neutral:hover,
 .btn-neutral:focus {
-  color: #ba54f5;
+  color: #278aed;
 }
 
 .btn-neutral:hover:not(.nav-link),
@@ -16498,7 +16498,7 @@ h6 {
 }
 
 a {
-  color: #ba54f5;
+  color: #278aed;
   font-weight: 300;
 }
 

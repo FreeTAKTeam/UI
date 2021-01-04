@@ -32,7 +32,7 @@ var options = {
 		floating: true,
 		fontSize: "16px",
 		position: "left",
-		offsetX: 90,
+		offsetX: 50,
 		offsetY: 15,
 		labels: {
 			useSeriesColors: true,

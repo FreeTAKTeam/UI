@@ -281,6 +281,7 @@ select::-ms-expand {
 	max-width: 100%;
 	overflow: hidden;
 	border: 0px solid #626262;
+	padding: 8px;
 }
 
 .table-style {
@@ -293,55 +294,63 @@ select::-ms-expand {
 	width: 100%;
 	max-width: 100%;
 	overflow: auto;
+	padding: 8px;
 }
 
 .cell-style-1 {
 	color: #fff;
 	opacity: 0.8;
-	padding: 5px;
+	/* padding: 5px; */
+	width: 90px;
+}
+
+.user-cell-style-1 {
+	color: #fff;
+	opacity: 0.8;
+	/* padding: 5px; */
 	width: 90px;
 }
 
 .cell-style-2 {
 	color: #fff;
 	opacity: 0.8;
-	padding: 5px;
+	/* padding: 5px; */
 	width: 90px;
 }
 
 .cell-style-3 {
 	color: #fff;
 	opacity: 0.8;
-	padding: 5px;
+	/* padding: 5px; */
 	width: 150px;
 }
 
 .cell-style-4 {
 	color: #fff;
 	opacity: 0.8;
-	padding: 5px;
+	/* padding: 5px; */
 	width: calc(100% - 330px);
 }
 
 .hdr_c1 {
 	color: #d6d6d6;
 	width: 90px;
-	padding: 5px;
+	/* padding: 5px; */
 }
 .hdr_c2 {
 	color: #d6d6d6;
 	width: 90px;
-	padding: 5px;
+	/* padding: 5px; */
 }
 .hdr_c3 {
 	color: #d6d6d6;
 	width: 150px;
-	padding: 5px;
+	/* padding: 5px; */
 }
 .hdr_c4 {
 	color: #d6d6d6;
 	width: 250px !important;
-	padding: 5px;
+	/* padding: 5px; */
 
 	width: calc(100% - 330px);
 }
@@ -475,7 +484,7 @@ input[type="file"] {
 .user_c1 {
 	color: #d6d6d6;
 	width: 200px;
-	padding: 5px;
+	padding: 10px;
 }
 
 .user-table-hdr {
@@ -486,19 +495,29 @@ input[type="file"] {
 	max-width: 100%;
 	overflow: hidden;
 	border: 0px solid #626262;
+	padding: 8px;
 }
 
 .user-table-style {
 	border-collapse: collapse;
 	background-color: #27293d;
 	display: block;
-	height: 300px;
+	height: auto;
 	max-height: 400px !important;
 
 	width: 100%;
 	max-width: 100%;
 	overflow: auto;
+	padding: 8px;
 }
+
+.user-cell-style-1 {
+	color: #fff;
+	width: 200px;
+	padding: 10px;
+	opacity: 0.8;
+}
+
 /* 
 .cell-style-1 {
 	color: #fff;

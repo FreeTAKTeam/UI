@@ -17,8 +17,8 @@
 		<div>
 			<div
 				class="btn btn-simple btn-twitter"
-				id="data-package-delete"
-				onclick="deleteDataPackage()"
+				id="user-delete"
+				onclick="removeUsers()"
 				style="color: #278aed80; border-color: #278aed80; display: inline-flex"
 			>
 				<span>DELETE</span> <span id="del-count">&nbsp;</span>
@@ -32,7 +32,7 @@
 
 	<div style="display: none" id="addUser">
 		<div style="display: grid; width: 80%; padding: 10px 0px;
-		margin: 0 auto; grid-template-columns: 1fr 100px 100px 180px 1fr; gap: 20px">
+		margin: 0 auto; grid-template-columns: 1fr 120px 120px 180px 1fr; gap: 20px">
 			<div><input type="text" class="form-control" id="name1" value="" placeholder="Name" /></div>
 			<div><input type="text" class="form-control" id="group1" value="" placeholder="Group" /></div>
 			<div><input type="text" class="form-control" id="token1" value="" placeholder="Token" /></div>
@@ -96,7 +96,7 @@ console.log('object' + authenticateObject.successful);
 			});
 		});
 	};
-
+	
 const getUserInfo = (socket) => {
 	console.log('calling...')
 	socket.emit("systemUsers");
@@ -136,7 +136,7 @@ const getUserInfo = (socket) => {
 			if(tableArr.length == 0) {
 				
 				let no_recs = table.insertRow();
-				no_recs.className = "row-color-nohover";
+				no_recs.className = "row-color-nohover row-class";
 
 				let noRecsCell = no_recs.insertCell();
 				noRecsCell.textContent = "No Records";
@@ -144,10 +144,20 @@ const getUserInfo = (socket) => {
 
 				document.getElementById("user-table").appendChild(table);
 			} else {
-
+				// removeUsers
 				for (let [index, row] of tableArr.entries()) {
 				let t_row = table.insertRow(index);
-				t_row.className = "row-color-nohover";
+				t_row.className = "row-color-nohover row-class";
+				t_row.setAttribute("data-myID", row.Uid);
+	// 			t_row.onclick = (function() {
+    //     console.log(this.getAttribute("data-myID"));
+	// });
+	
+	t_row.onclick = (function() {
+		$(this).toggleClass("rowselected");
+		captureClick(this.getAttribute("data-myID"));
+        
+    });
 
 				let nameCell = t_row.insertCell();
 				nameCell.textContent = row.Name;
@@ -166,7 +176,7 @@ const getUserInfo = (socket) => {
 				passwordCell.className = "user-cell-style-1";
 
 				let certsCell = t_row.insertCell();
-				certsCell.textContent = row.Password;
+				certsCell.textContent = row.Certs;
 				certsCell.className = "user-cell-style-1";
 
 			}
@@ -194,6 +204,50 @@ function addUserToggle() {
 		}
 	}
 
+	
+
+	var uArr;
+	var updatedGARR;
+	// var obj = {key1: "value1", key2: "value2"};
+	function captureClick(param) {
+		
+		if (!uArr.some((item) => item.uid === param)) {
+		
+			let vv = { uid: param };
+			uArr.push(vv);
+		} else {
+		
+			uArr = uArr.filter((item) => item.uid !== param);
+		}
+
+		
+		// classList
+		if (uArr.length > 0) {
+			document.getElementById("del-count").innerHTML = `&nbsp;[${uArr.length}]`;
+			document.getElementById("user-delete").classList.add("btn", "btn-simple", "btn-twitter", "enable-delete");
+		} else {
+			document.getElementById("del-count").innerHTML = ``;
+			document.getElementById("user-delete").classList.add("btn", "btn-simple", "btn-twitter", "disable-delete");
+		}
+	}
+
+	const removeUsers = async () => {
+		
+		var socket = io.connect(`http://${ip}:19023`);
+		
+		let obj = {
+			"systemUsers": uArr
+		};
+
+		let isAuth = await authenticate(socket);
+
+		if (isAuth === "True") {
+			debugger;
+			socket.emit("removeSystemUser", JSON.stringify(obj));
+			snackFunction("User Removed, refreshing data");
+			refresh();
+		}	
+	}
 
 	const addUser = async () => {
 		
@@ -216,7 +270,7 @@ function addUserToggle() {
 
 
 		let obj = {
-	"SystemUsers": [
+	"systemUsers": [
 		  {
 			  Name: document.getElementById("name1").value, 
 			  Group: document.getElementById("group1").value, 
@@ -242,7 +296,13 @@ function addUserToggle() {
 			document.getElementById("password1").value = "";
 			document.getElementById("cert1").value = "";
 			addUserToggle();
-			getUserInfo(socket);
+			
+			snackFunction("User Added, refreshing data");
+			refresh();
+			// check
+			document.getElementById("user-table-hdr").removeChild(tablehdr);
+			document.getElementById("user-table").removeChild(table);
+			
 			
 		} else {
 			// throw error
@@ -264,21 +324,21 @@ function addUserToggle() {
 		}, 3000);
 	}
 
+	function refresh() {
+		debugger;
+		setTimeout(function () {
+			location.reload(true);
+		}, 3000);
+	}
+
 </script>
 <script>
 	establishConnection();
 </script>
+<script>
+	$(window).on("load", function () {
+		
+		uArr = [];
+	});
+</script>
 {% endblock javascripts %}
-<!-- color: #3ea1ec;
-border-color: #3ea1ec; -->
-
-
-<!-- {
-	"SystemUsers": [
-		  {"Name": "Dan", "Group": "Yellow", "Token": "", "Password": "", "Certs": "true"},
-		  {"Name": "Joe", "Group": "Blue", "Token": "", "Password": "", "Certs": "true"},
-		  {"Name": "Bill", "Group": "Red", "Token": "", "Password": "", "Certs": "true"}
-	]
- } -->
-
- <!-- Event: addSystemUser -->
