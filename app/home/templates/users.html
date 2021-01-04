@@ -52,12 +52,19 @@
 	</div>
 
 	<div style="display: none" id="addUser">
-		<div style="display: grid; width: 80%; padding: 10px 0px; margin: 0 auto; grid-template-columns: 1fr 120px 120px 180px 1fr; gap: 20px">
+		<div style="display: grid; width: 80%; padding: 10px 0px; margin: 0 auto; grid-template-columns: 1fr 120px 120px 180px 50px 1fr; gap: 20px">
 			<div><input type="text" class="form-control" id="name1" value="" placeholder="Name" /></div>
 			<div><input type="text" class="form-control" id="group1" value="" placeholder="Group" /></div>
 			<div><input type="text" class="form-control" id="token1" value="" placeholder="Token" /></div>
 			<div><input type="text" class="form-control" id="password1" value="" placeholder="Password" /></div>
-			<div><input type="text" class="form-control" id="cert1" value="" placeholder="Cert" /></div>
+
+			<div style="font-size: 16px; color: #b5b5b5; line-height: 40px">Certs</div>
+			<div class="select" style="width: 120px">
+				<select name="format" id="certbool">
+					<option selected value="true">True</option>
+					<option value="false">False</option>
+				</select>
+			</div>
 		</div>
 		<div style="background-color: #27293d; padding: 10px 20px; display: grid; justify-content: end">
 			<button class="btn btn-simple btn-twitter" onclick="addUser()" style="color: #278aed; border-color: #278aed">Submit</button>
@@ -311,7 +318,7 @@
 		} else if (document.getElementById("password1").value === "") {
 			snackFunction("Password field is mandatory");
 			return false;
-		} else if (document.getElementById("cert1").value === "") {
+		} else if (document.getElementById("certbool").value === "") {
 			snackFunction("Certification field is mandatory");
 			return false;
 		}
@@ -323,11 +330,11 @@
 					Group: document.getElementById("group1").value,
 					Token: document.getElementById("token1").value,
 					Password: document.getElementById("password1").value,
-					Certs: document.getElementById("cert1").value,
+					Certs: document.getElementById("certbool").value,
 				},
 			],
 		};
-
+		debugger;
 		var socket = io.connect(`http://${ip}:19023`);
 
 		console.log("Emit event authenticate...");
@@ -340,7 +347,7 @@
 			document.getElementById("group1").value = "";
 			document.getElementById("token1").value = "";
 			document.getElementById("password1").value = "";
-			document.getElementById("cert1").value = "";
+			document.getElementById("certbool").value = "";
 			addUserToggle();
 
 			snackFunction("User Added, refreshing data");

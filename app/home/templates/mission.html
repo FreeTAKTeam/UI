@@ -12,37 +12,45 @@
 		<div
 			style="
 				display: grid;
-
-				grid-template-columns: 100px 240px 180px 50px 70px 60px 240px;
+				grid-template-columns: 100px 240px 180px 50px 120px 60px 1fr;
+				gap: 10px;
 				padding: 10px;
 				font-size: 16px;
 				color: #fff;
 				opacity: 0.9;
 			"
 		>
-			<div>Keywords</div>
-			<div>Name</div>
-			<div>Author</div>
-			<div>Index</div>
-			<div>Privacy</div>
-			<div style="text-align: center">Size</div>
-			<div>Submitted</div>
+			<div style="color: #fff; font-weight: 600; padding: 5px">Keywords</div>
+			<div style="color: #fff; font-weight: 600; padding: 5px">Name</div>
+			<div style="color: #fff; font-weight: 600; padding: 5px">Author</div>
+			<div style="color: #fff; font-weight: 600; padding: 5px">Index</div>
+			<div style="color: #fff; font-weight: 600; padding: 5px; text-align: center">Is Privacy</div>
+			<div style="color: #fff; font-weight: 600; padding: 5px">Size</div>
+			<div style="color: #fff; font-weight: 600; padding: 5px">Submitted</div>
 		</div>
 		<div style="max-height: 300px; overflow-y: scroll">
 			{% for dict_items in json_data %} {% if loop.index == 1 %} {% endif %}
 
 			<div
 				class="row-color-nohover row-class"
-				style="display: grid; grid-template-columns: 100px 240px 180px 50px 70px 60px 240px; padding: 10px; color: #fff; opacity: 0.8"
+				style="display: grid; grid-template-columns: 100px 240px 180px 50px 120px 60px 1fr; gap: 10px; padding: 10px; color: #fff; opacity: 0.8"
 				onclick="captureClick('{{dict_items.Hash}}')"
 			>
-				<div>{{dict_items['Keywords']}}</div>
-				<div>{{dict_items['Name']}}</div>
-				<div>{{dict_items['SubmissionUser']}}</div>
-				<div style="text-align: center">{{dict_items['PrimaryKey']}}</div>
-				<div style="text-align: center">{{dict_items['Privacy']}}</div>
-				<div style="text-align: right; padding-right: 10px">{{dict_items['Size']}}</div>
-				<div>{{dict_items['SubmissionDateTime']}}</div>
+				<div >{{dict_items['Keywords']}}</div>
+				<div >{{dict_items['Name']}}</div>
+				<div >
+					{{dict_items['SubmissionUser'] | replace("[", "") | replace("(", "") | replace("'", "") | replace("'", "") | replace(")", "") | replace("]",
+					"") | replace(",", "") }}
+				</div>
+				<div  style="text-align: center">{{dict_items['PrimaryKey']}}</div>
+
+				<div style="text-align: center">
+					<input style="padding: 3px;" onclick='handlePrivacy(this, "{{dict_items.PrimaryKey}}");' type="checkbox" {{'checked' if
+					dict_items['Privacy'] == 1 else ''}} />
+				</div>
+
+				<div  style="text-align: right; padding-right: 10px">{{dict_items['Size']}}</div>
+				<div >{{dict_items['SubmissionDateTime']}}</div>
 			</div>
 
 			{% endfor %}
@@ -55,7 +63,7 @@
 				class="btn btn-simple btn-twitter"
 				id="data-package-delete"
 				onclick="deleteDataPackage()"
-				style="color: #278aed80; border-color: #278aed80; display: inline-flex"
+				style="color: #278aed80; border-color: #278aed; color: #278aed; display: inline-flex"
 			>
 				<span>DELETE</span> <span id="del-count">&nbsp;</span>
 			</div>
@@ -75,14 +83,14 @@
 <div style="width: 90%; display: grid; padding: 5px; margin: 0 auto; background-color: #27293d">
 	<div class="header-tools" style="justify-self: flex-end; font-size: 20px; padding-right: 20px; color: #278aed">[MISSION]</div>
 
-	<div style="max-width: 1000px; padding: 5px">
-		<div style="max-height: 300px; max-width: 100%; overflow-y: scroll; overflow-x: scroll">
+	<div style="max-width: 100%; padding: 5px; display: contents">
+		<div style="max-height: 300px; max-width: 100%; overflow-y: scroll; overflow-x: scroll; display: table-cell">
 			{% for items in mission_json_data %} {% if loop.index == 1 %}
 			<div
 				style="
 					display: grid;
 
-					grid-template-columns: 100px 240px 240px 200px 200px 200px;
+					grid-template-columns: 100px 240px 240px 240px 240px 240px;
 					padding: 10px;
 					font-size: 16px;
 					color: #fff;
@@ -102,7 +110,7 @@
 
 			<div
 				class="row-color-nohover row-class"
-				style="display: grid; grid-template-columns: 100px 240px 240px 200px 200px 200px; padding: 10px; color: #fff; opacity: 0.8"
+				style="display: grid; grid-template-columns: 100px 240px 240px 240px 240px 240px; padding: 10px; color: #fff; opacity: 0.8"
 			>
 				<div>{{items['name']}}</div>
 				<div>{{items['description']}}</div>
@@ -118,11 +126,11 @@
 
 	<div class="footer-tools" style="background-color: #27293d; padding: 16px 16px 16px 50px; display: grid; grid-template-columns: 1fr 1fr">
 		<div>
-			<div class="btn btn-simple btn-twitter" id="data-package-delete" style="color: #278aed80; border-color: #278aed80; display: inline-flex">
+			<div class="btn btn-simple btn-twitter" id="data-package-delete" style="color: #484848; border-color: #484848; display: inline-flex">
 				<span>DELETE</span> <span id="del-count">&nbsp;</span>
 			</div>
 			&nbsp;&nbsp;&nbsp;
-			<button class="btn btn-simple btn-twitter" style="color: #278aed; border-color: #278aed">ADD</button>
+			<button class="btn btn-simple btn-twitter" style="color: #484848; border-color: #484848">ADD</button>
 		</div>
 	</div>
 </div>
@@ -130,8 +138,8 @@
 <div style="width: 90%; display: grid; padding: 5px; margin: 0 auto; background-color: #27293d">
 	<div class="header-tools" style="justify-self: flex-end; font-size: 20px; padding-right: 20px; color: #278aed">[EXCHECK]</div>
 
-	<div style="max-width: 1000px; padding: 5px">
-		<div style="max-height: 300px; max-width: 100%; overflow-y: scroll; overflow-x: scroll">
+	<div style="max-width: 100%; padding: 5px; display: contents">
+		<div style="max-height: 300px; max-width: 100%; overflow-y: scroll; overflow-x: scroll; display: table-cell">
 			{% for items in excheck_json_data %} {% if loop.index == 1 %}
 			<div
 				style="
@@ -159,7 +167,8 @@
 				style="display: grid; grid-template-columns: 200px 240px 240px 200px 200px 200px; padding: 10px; color: #fff; opacity: 0.8"
 			>
 				<div>{{items['name']}}</div>
-				<div>{{items['submitter']}}</div>
+				<div>{{items['submitter'] | replace("[", "") | replace("(", "") | replace("'", "") | replace("'", "") | replace(")", "") | replace("]",
+					"") | replace(",", "")}}</div>
 				<div>{{items['filename']}}</div>
 				<div>{{items['size']}}</div>
 				<div>{{items['submissionTime']}}</div>
@@ -172,19 +181,19 @@
 
 	<div class="footer-tools" style="background-color: #27293d; padding: 16px 16px 16px 50px; display: grid; grid-template-columns: 1fr 1fr">
 		<div>
-			<div class="btn btn-simple btn-twitter" id="data-package-delete" style="color: #278aed80; border-color: #278aed80; display: inline-flex">
+			<div class="btn btn-simple btn-twitter" id="data-package-delete" style="color: #484848; border-color: #484848; display: inline-flex">
 				<span>DELETE</span> <span id="del-count">&nbsp;</span>
 			</div>
 			&nbsp;&nbsp;&nbsp;
-			<button class="btn btn-simple btn-twitter" style="color: #278aed; border-color: #278aed">ADD</button>
+			<button class="btn btn-simple btn-twitter" style="color: #484848; border-color: #484848">ADD</button>
 		</div>
 	</div>
 </div>
 <br /><br />
 <div style="width: 90%; display: grid; padding: 5px; margin: 0 auto; background-color: #27293d">
 	<div class="header-tools" style="justify-self: flex-end; font-size: 20px; padding-right: 20px; color: #278aed">[OUTGOING FEDERATIONS]</div>
-	<div style="max-width: 1000px; padding: 5px">
-		<div style="max-height: 300px; max-width: 100%; overflow-y: scroll; overflow-x: scroll">
+	<div style="max-width: 100%; padding: 5px; display: contents"">
+		<div style="max-height: 300px; max-width: 100%; overflow-y: scroll; overflow-x: scroll; display: table-cell">
 			{% for items in outgoing_federation_json_data %} {% if loop.index == 1 %}
 			<div
 				style="
@@ -370,6 +379,29 @@
 		setTimeout(function () {
 			location.reload(true);
 		}, 3000);
+	}
+
+	function jsfunction() {
+		//you code
+		return false;
+	}
+
+	function handlePrivacy(cb, primarykey) {
+		let obj = {
+			DataPackages: [{ PrimaryKey: primarykey, Privacy: cb === true ? "1" : "0" }],
+		};
+		debugger;
+		headers = { Authorization: "Bearer a@v{5]MQU><waQ;Z" };
+		fetch("http://204.48.30.216:19023/DataPackageTable", {
+			method: "PUT",
+			headers: headers,
+			body: JSON.stringify(obj),
+		}).then((response) => {
+			response.json();
+			console.log("privacy updated " + response.json());
+			snackFunction("Privacy updated. Refreshing data.");
+			refresh();
+		});
 	}
 </script>
 <script>

@@ -26,7 +26,7 @@ var options = {
 		},
 	},
 	colors: ["#278AED", "#2c75ff", "#004C9A"],
-	labels: ["CPU", "RAM1", "DISK"],
+	labels: ["CPU", "RAM", "DISK"],
 	legend: {
 		show: true,
 		floating: true,

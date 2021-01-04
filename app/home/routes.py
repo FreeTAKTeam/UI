@@ -11,6 +11,7 @@ from flask_login import login_required, current_user
 from app import login_manager
 from jinja2 import TemplateNotFound
 import requests
+from flask import current_app as app
 
 @blueprint.route('/index')
 @login_required
@@ -78,7 +79,7 @@ def usersApi():
 @blueprint.route('/about')
 @login_required
 def aboutApi():
-    return render_template('about.html', segment="about")     
+    return render_template('about.html', segment="about", uiversion=app.config['UIVERSION'])     
 
 # @blueprint.route('/connect')
 # @login_required

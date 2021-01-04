@@ -17235,3 +17235,1670 @@ INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 17:09:59] "[37mGET /static/assets/css/
 INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 17:09:59] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
 INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 17:09:59] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
 INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 17:09:59] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:47:51] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:47:51] "[37mGET /login HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:47:51] "[36mGET /static/assets/css/nucleo-icons.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:47:51] "[37mGET /static/assets/css/black-dashboard.css?v=1.0.10 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:47:51] "[37mGET /static/assets/img/FreeTakServer3.png HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:47:51] "[37mGET /static/assets/js/core/jquery.min.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:47:51] "[36mGET /static/assets/demo/demo.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:47:51] "[36mGET /static/assets/js/core/popper.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:47:51] "[37mGET /static/assets/js/core/bootstrap.min.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:47:51] "[37mGET /static/assets/js/plugins/chartjs.min.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:47:51] "[36mGET /static/assets/js/plugins/perfect-scrollbar.jquery.min.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:47:51] "[36mGET /static/assets/js/plugins/bootstrap-notify.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:47:51] "[36mGET /static/assets/js/black-dashboard.min.js?v=1.0.16.15 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:47:51] "[36mGET /static/assets/demo/demo.js?v=1.0.16.15 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:47:51] "[36mGET /static/assets/js/charts/apexcharts.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:47:51] "[37mGET /static/assets/js/moment/moment.min.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:47:53] "[37mGET /login HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:47:53] "[37mGET /static/assets/css/jarvis_grey.css?r=28 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:47:53] "[37mGET /static/assets/css/jarvis.css?r=90 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:47:53] "[37mGET /static/assets/css/jarvis_red.css?r=17 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:47:53] "[37mGET /static/assets/css/global.css?r=78 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:48:01] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:48:01] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:48:01] "[32mGET /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:48:01] "[37mGET /index HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:48:01] "[37mGET /static/assets/css/jarvis_red.css?r=63 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:48:01] "[37mGET /static/assets/css/jarvis_grey.css?r=11 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:48:01] "[37mGET /static/assets/css/global.css?r=71 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:48:01] "[36mGET /static/assets/css/jarvis.css?r=69 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:48:01] "[37mGET /static/assets/img/spinner.svg HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:48:01] "[37mGET /static/assets/img/spinner1.svg HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:48:02] "[36mGET /static/assets/fonts/nucleo.woff2 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:49:39] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:49:39] "[37mGET /login HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:49:39] "[37mGET /static/assets/css/nucleo-icons.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:49:39] "[37mGET /static/assets/css/black-dashboard.css?v=1.0.10 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:49:39] "[37mGET /static/assets/demo/demo.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:49:40] "[37mGET /static/assets/js/core/jquery.min.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:49:40] "[37mGET /static/assets/js/core/popper.min.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:49:40] "[37mGET /static/assets/js/core/bootstrap.min.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:49:40] "[37mGET /static/assets/js/plugins/perfect-scrollbar.jquery.min.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:49:40] "[37mGET /static/assets/js/plugins/chartjs.min.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:49:40] "[37mGET /static/assets/js/plugins/bootstrap-notify.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:49:40] "[37mGET /static/assets/js/black-dashboard.min.js?v=1.0.16.15 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:49:40] "[37mGET /static/assets/demo/demo.js?v=1.0.16.15 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:49:40] "[37mGET /static/assets/js/charts/apexcharts.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:49:40] "[37mGET /static/assets/js/moment/moment.min.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:49:40] "[37mGET /static/assets/img/FreeTakServer3.png HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:49:40] "[37mGET /static/assets/css/jarvis_grey.css?r=63 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:49:40] "[37mGET /static/assets/css/jarvis_red.css?r=45 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:49:40] "[37mGET /static/assets/css/jarvis.css?r=82 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:49:40] "[37mGET /static/assets/css/global.css?r=5 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:50:23] "[37mGET /index HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:50:23] "[36mGET /static/assets/css/jarvis.css?r=57 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:50:23] "[36mGET /static/assets/css/jarvis_red.css?r=9 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:50:23] "[37mGET /static/assets/css/global.css?r=55 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:50:23] "[37mGET /static/assets/css/jarvis_grey.css?r=51 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:50:24] "[37mGET /static/assets/img/favicon.png HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:52:05] "[37mGET /index HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:52:05] "[36mGET /static/assets/css/jarvis.css?r=91 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:52:05] "[37mGET /static/assets/css/jarvis_red.css?r=87 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:52:05] "[37mGET /static/assets/css/jarvis_grey.css?r=2 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:52:05] "[37mGET /static/assets/img/favicon.png HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:52:14] "[37mGET /index HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:52:14] "[37mGET /static/assets/css/jarvis_red.css?r=74 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:52:14] "[37mGET /static/assets/css/global.css?r=25 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:52:14] "[36mGET /static/assets/css/jarvis_grey.css?r=71 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:52:14] "[37mGET /static/assets/img/favicon.png HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:52:22] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:52:22] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:52:22] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:52:53] "[37mGET /index HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:52:53] "[36mGET /static/assets/css/jarvis.css?r=96 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:52:53] "[36mGET /static/assets/css/jarvis_red.css?r=89 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:52:53] "[37mGET /static/assets/css/jarvis_grey.css?r=41 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:52:53] "[37mGET /static/assets/css/global.css?r=2 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:52:54] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:52:54] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:52:54] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:52:54] "[37mGET /static/assets/img/favicon.png HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:54:39] "[37mGET /index HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:54:40] "[37mGET /static/assets/css/jarvis.css?r=9 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:54:40] "[37mGET /static/assets/css/jarvis_red.css?r=94 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:54:40] "[37mGET /static/assets/css/jarvis_grey.css?r=95 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:54:40] "[37mGET /static/assets/css/global.css?r=61 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:54:40] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:54:40] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:54:40] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:54:40] "[37mGET /static/assets/img/favicon.png HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:55:41] "[37mGET /index HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:55:41] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:55:41] "[37mGET /static/assets/css/jarvis.css?r=99 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:55:41] "[37mGET /static/assets/css/jarvis_red.css?r=84 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:55:41] "[37mGET /static/assets/css/global.css?r=63 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:55:41] "[37mGET /static/assets/css/jarvis_grey.css?r=4 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:55:41] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:55:41] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:55:42] "[37mGET /static/assets/img/favicon.png HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:57:46] "[37mGET /index HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:57:46] "[37mGET /static/assets/css/jarvis_red.css?r=56 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:57:46] "[37mGET /static/assets/css/jarvis_grey.css?r=70 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:57:46] "[37mGET /static/assets/css/global.css?r=87 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:57:46] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:57:46] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:57:46] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:57:47] "[37mGET /static/assets/img/favicon.png HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:58:01] "[37mGET /index HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:58:02] "[37mGET /static/assets/css/jarvis.css?r=56 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:58:02] "[37mGET /static/assets/css/jarvis_red.css?r=45 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:58:02] "[37mGET /static/assets/css/global.css?r=16 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:58:02] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:58:02] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:58:02] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:58:02] "[37mGET /static/assets/img/favicon.png HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:58:16] "[37mGET /index HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:58:17] "[37mGET /static/assets/css/jarvis_red.css?r=4 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:58:17] "[37mGET /static/assets/css/jarvis_grey.css?r=94 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:58:17] "[37mGET /static/assets/css/global.css?r=51 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:58:17] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:58:17] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:58:17] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:58:17] "[37mGET /static/assets/img/favicon.png HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:59:27] "[37mGET /index HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:59:28] "[36mGET /static/assets/css/jarvis.css?r=82 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:59:28] "[37mGET /static/assets/css/jarvis_red.css?r=10 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:59:28] "[37mGET /static/assets/css/global.css?r=56 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:59:28] "[36mGET /static/assets/css/jarvis_grey.css?r=79 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:59:28] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:59:28] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:59:28] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:59:28] "[37mGET /static/assets/img/favicon.png HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 1128
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1294
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 3048
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:59:59] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:59:59] "[37mGET /static/assets/css/jarvis.css?r=76 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:59:59] "[37mGET /static/assets/css/jarvis_red.css?r=83 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:59:59] "[36mGET /static/assets/css/jarvis_grey.css?r=84 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [04/Jan/2021 23:59:59] "[37mGET /static/assets/css/global.css?r=69 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:01:04] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:01:04] "[32mGET /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:01:04] "[37mGET /index HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:01:04] "[37mGET /static/assets/css/jarvis.css?r=59 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:01:04] "[37mGET /static/assets/css/jarvis_red.css?r=78 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:01:04] "[36mGET /static/assets/css/jarvis_grey.css?r=1 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:01:04] "[37mGET /static/assets/css/global.css?r=75 HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 2128
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1294
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 27
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:01:12] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:01:12] "[37mGET /static/assets/css/jarvis_grey.css?r=17 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:01:12] "[37mGET /static/assets/css/global.css?r=60 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:01:12] "[36mGET /static/assets/css/jarvis.css?r=10 HTTP/1.1[0m" 304 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 4124
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1294
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 1829
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:03:26] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:03:26] "[37mGET /static/assets/css/jarvis_grey.css?r=93 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:03:26] "[37mGET /static/assets/css/global.css?r=70 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:03:26] "[37mGET /static/assets/img/favicon.png HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 5127
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1294
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 2237
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:04:11] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:04:11] "[37mGET /static/assets/css/jarvis.css?r=12 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:04:11] "[37mGET /static/assets/css/jarvis_red.css?r=82 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:04:11] "[37mGET /static/assets/css/global.css?r=0 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:04:11] "[36mGET /static/assets/css/jarvis_grey.css?r=48 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:04:12] "[37mGET /static/assets/img/favicon.png HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 3127
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1294
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 27
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:04:16] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:04:16] "[37mGET /static/assets/css/jarvis_red.css?r=1 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:04:16] "[37mGET /static/assets/css/global.css?r=94 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:04:16] "[36mGET /static/assets/css/jarvis_grey.css?r=66 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:04:16] "[36mGET /static/assets/css/jarvis.css?r=68 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:04:17] "[37mGET /static/assets/img/favicon.png HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 2126
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1294
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 427
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:04:54] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:04:54] "[37mGET /static/assets/css/jarvis.css?r=72 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:04:54] "[37mGET /static/assets/css/jarvis_grey.css?r=89 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:04:54] "[37mGET /static/assets/css/global.css?r=11 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:04:54] "[37mGET /static/assets/img/favicon.png HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:05:19] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:05:19] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:05:19] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 4126
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1294
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 3009
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:05:47] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:05:48] "[37mGET /static/assets/css/jarvis.css?r=43 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:05:48] "[37mGET /static/assets/css/jarvis_red.css?r=66 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:05:48] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:05:50] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:05:50] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:05:50] "[37mGET /static/assets/img/favicon.png HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 4124
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1294
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 1836
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:06:42] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:06:42] "[36mGET /static/assets/css/jarvis.css?r=23 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:06:42] "[36mGET /static/assets/css/jarvis_grey.css?r=54 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:06:42] "[37mGET /static/assets/css/global.css?r=36 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:06:43] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:06:43] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:06:43] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:06:43] "[37mGET /static/assets/img/favicon.png HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 1125
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1294
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 2423
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:07:28] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:07:29] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:07:29] "[37mGET /static/assets/css/global.css?r=72 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:07:30] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:07:30] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:07:30] "[37mGET /static/assets/img/favicon.png HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 2126
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1294
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 1629
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:11:15] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:11:16] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:11:16] "[37mGET /static/assets/css/jarvis.css?r=16 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:11:16] "[37mGET /static/assets/css/jarvis_red.css?r=29 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:11:16] "[37mGET /static/assets/css/jarvis_grey.css?r=68 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:11:16] "[37mGET /static/assets/css/global.css?r=1 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:11:17] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:11:17] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:11:17] "[37mGET /static/assets/img/favicon.png HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 129
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1294
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 829
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:11:58] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:11:59] "[37mGET /static/assets/css/jarvis.css?r=1 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:11:59] "[37mGET /static/assets/css/global.css?r=93 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:11:59] "[36mGET /static/assets/css/jarvis_grey.css?r=49 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:11:59] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:11:59] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:11:59] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:12:00] "[37mGET /static/assets/img/favicon.png HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 1126
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1294
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 1228
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:12:05] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:12:05] "[37mGET /static/assets/css/jarvis_grey.css?r=56 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:12:05] "[37mGET /static/assets/css/global.css?r=65 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:12:05] "[36mGET /static/assets/css/jarvis.css?r=52 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:12:06] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:12:06] "[37mGET /static/assets/img/favicon.png HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:12:06] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:12:06] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 2128
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1294
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 1433
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:13:04] "[35m[1mGET /mission HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:13:05] "[37mGET /mission?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:13:05] "[37mGET /mission?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:13:05] "[37mGET /mission?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:13:05] "[37mGET /mission?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:13:06] "[37mGET /mission?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:13:06] "[37mGET /mission?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 1127
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1294
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 1418
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:13:54] "[35m[1mGET /mission HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:13:54] "[37mGET /mission?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:13:54] "[37mGET /mission?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:13:54] "[37mGET /mission?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:13:56] "[37mGET /mission?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:13:56] "[37mGET /mission?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:13:56] "[37mGET /mission?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 4130
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 1128
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1294
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 1620
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:17:56] "[35m[1mGET /mission HTTP/1.1[0m" 500 -
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1294
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 2229
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:17:57] "[35m[1mGET /mission HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:17:57] "[37mGET /mission?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:17:57] "[37mGET /mission?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:17:57] "[37mGET /mission?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:17:59] "[37mGET /mission?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:17:59] "[37mGET /mission?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:18:00] "[37mGET /mission?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 4128
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1294
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 1248
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:18:18] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:18:19] "[37mGET /static/assets/css/jarvis_red.css?r=14 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:18:19] "[36mGET /static/assets/css/jarvis.css?r=17 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:18:19] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:18:19] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:18:19] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:18:20] "[37mGET /static/assets/img/favicon.png HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 1128
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1294
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 829
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:22:40] "[35m[1mGET /mission HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:22:40] "[37mGET /mission?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:22:40] "[37mGET /mission?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:22:40] "[37mGET /mission?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:22:40] "[37mGET /mission?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:22:41] "[37mGET /mission?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:22:41] "[37mGET /mission?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 5127
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1282
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 2218
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:26:38] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:26:38] "[37mGET /static/assets/css/jarvis_red.css?r=13 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:26:38] "[36mGET /static/assets/css/jarvis_grey.css?r=37 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:26:39] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:26:39] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:26:39] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:26:39] "[37mGET /static/assets/img/favicon.png HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 3126
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1282
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 2465
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:28:06] "[35m[1mGET /mission HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:28:06] "[37mGET /mission?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:28:06] "[37mGET /mission?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:28:06] "[37mGET /mission?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:28:07] "[37mGET /mission?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:28:07] "[37mGET /mission?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:28:07] "[37mGET /mission?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 1126
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1282
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 3038
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:29:07] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:29:07] "[37mGET /static/assets/css/jarvis_red.css?r=81 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:29:07] "[36mGET /static/assets/css/jarvis_grey.css?r=58 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:29:07] "[37mGET /static/assets/css/global.css?r=29 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:29:26] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 1128
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1282
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 1023
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:30:35] "[37mGET /mission HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:32:13] "[37mGET /static/assets/css/global.css?r=89 HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:32:13] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:32:13] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:32:13] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 5128
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1282
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 633
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:32:16] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:32:16] "[37mGET /static/assets/css/jarvis_red.css?r=22 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:32:16] "[36mGET /static/assets/css/jarvis_grey.css?r=29 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:32:17] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:32:17] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:32:17] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:32:17] "[37mGET /static/assets/img/favicon.png HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 3126
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1273
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 2598
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:39:24] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:39:25] "[37mGET /static/assets/css/jarvis.css?r=48 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:39:25] "[37mGET /static/assets/css/jarvis_red.css?r=2 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:39:25] "[37mGET /static/assets/css/global.css?r=9 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:39:25] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:39:25] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:39:25] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:39:25] "[37mGET /static/assets/img/favicon.png HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 1127
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1273
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 2228
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:42:11] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:42:11] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:42:11] "[37mGET /static/assets/css/jarvis.css?r=2 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:42:11] "[37mGET /static/assets/css/global.css?r=96 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:42:11] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:42:11] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:42:12] "[37mGET /static/assets/img/favicon.png HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 3126
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1273
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 27
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:46:34] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:46:34] "[37mGET /static/assets/css/jarvis_red.css?r=95 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:46:34] "[37mGET /static/assets/css/jarvis_grey.css?r=20 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:46:35] "[37mGET /static/assets/css/global.css?r=53 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:46:35] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:46:35] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:46:35] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:46:35] "[37mGET /static/assets/img/favicon.png HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 5127
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1273
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 829
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:48:40] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:48:40] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:48:40] "[36mGET /static/assets/css/jarvis_red.css?r=80 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:48:40] "[36mGET /static/assets/css/jarvis_grey.css?r=61 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:48:40] "[37mGET /static/assets/css/global.css?r=35 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:48:41] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:48:41] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:48:41] "[37mGET /static/assets/img/favicon.png HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 3127
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1273
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 1626
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:50:48] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:50:48] "[37mGET /static/assets/css/jarvis.css?r=11 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:50:48] "[37mGET /static/assets/css/jarvis_red.css?r=0 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:50:48] "[37mGET /static/assets/css/jarvis_grey.css?r=13 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:50:48] "[37mGET /static/assets/css/global.css?r=23 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:50:48] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:50:49] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:50:49] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:50:49] "[37mGET /static/assets/img/favicon.png HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 1127
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1273
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 220
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:51:46] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:51:46] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:51:46] "[36mGET /static/assets/css/jarvis.css?r=63 HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:51:46] "[37mGET /static/assets/css/jarvis_red.css?r=72 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:51:46] "[37mGET /static/assets/css/jarvis_grey.css?r=3 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:51:46] "[37mGET /static/assets/css/global.css?r=43 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:51:47] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:51:47] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 00:51:47] "[37mGET /static/assets/img/favicon.png HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:36] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:36] "[37mGET /login HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:36] "[37mGET /static/assets/css/nucleo-icons.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:36] "[37mGET /static/assets/css/black-dashboard.css?v=1.0.10 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:36] "[37mGET /static/assets/demo/demo.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:36] "[37mGET /static/assets/js/core/jquery.min.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:36] "[37mGET /static/assets/js/core/popper.min.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:36] "[37mGET /static/assets/js/core/bootstrap.min.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:36] "[37mGET /static/assets/js/plugins/perfect-scrollbar.jquery.min.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:36] "[37mGET /static/assets/js/plugins/chartjs.min.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:36] "[37mGET /static/assets/js/plugins/bootstrap-notify.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:36] "[37mGET /static/assets/js/black-dashboard.min.js?v=1.0.16.15 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:36] "[37mGET /static/assets/demo/demo.js?v=1.0.16.15 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:36] "[37mGET /static/assets/js/charts/apexcharts.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:36] "[37mGET /static/assets/js/moment/moment.min.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:36] "[37mGET /static/assets/img/FreeTakServer3.png HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:36] "[37mGET /static/assets/css/jarvis.css?r=33 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:36] "[37mGET /static/assets/css/jarvis_red.css?r=12 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:36] "[37mGET /static/assets/css/jarvis_grey.css?r=63 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:36] "[37mGET /static/assets/css/global.css?r=94 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:42] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:42] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:42] "[32mGET /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:42] "[37mGET /index HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:42] "[37mGET /static/assets/img/spinner.svg HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:42] "[37mGET /static/assets/img/spinner1.svg HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:42] "[37mGET /static/assets/css/jarvis_red.css?r=24 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:42] "[37mGET /static/assets/css/jarvis_grey.css?r=50 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:42] "[37mGET /static/assets/css/global.css?r=40 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:42] "[37mGET /static/assets/css/jarvis.css?r=43 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:42] "[37mGET /static/assets/fonts/nucleo.woff2 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:52] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:52] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:02:52] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 1126
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1273
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 1435
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:03:01] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:03:01] "[37mGET /static/assets/css/jarvis.css?r=13 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:03:01] "[37mGET /static/assets/css/jarvis_red.css?r=83 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:03:01] "[37mGET /static/assets/css/jarvis_grey.css?r=77 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:03:01] "[37mGET /static/assets/css/global.css?r=10 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:03:01] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:03:01] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:03:01] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 1128
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1273
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 2633
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:03:38] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:03:38] "[37mGET /static/assets/css/jarvis.css?r=96 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:03:38] "[37mGET /static/assets/css/jarvis_red.css?r=84 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:03:38] "[37mGET /static/assets/css/jarvis_grey.css?r=64 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:03:38] "[37mGET /static/assets/css/global.css?r=38 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:03:38] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:03:38] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:03:38] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 2128
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1273
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 2020
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:04:51] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:04:51] "[37mGET /static/assets/css/jarvis.css?r=59 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:04:51] "[37mGET /static/assets/css/jarvis_red.css?r=9 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:04:51] "[37mGET /static/assets/css/jarvis_grey.css?r=26 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:04:51] "[37mGET /static/assets/css/global.css?r=75 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:04:51] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:04:51] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:04:51] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4453
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 3123
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1273
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 27
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:04:56] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:04:56] "[37mGET /static/assets/css/jarvis.css?r=46 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:04:56] "[37mGET /static/assets/css/jarvis_red.css?r=40 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:04:56] "[37mGET /static/assets/css/jarvis_grey.css?r=66 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:04:56] "[37mGET /static/assets/css/global.css?r=73 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:04:57] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:04:57] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:04:57] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4441
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 5127
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1273
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 621
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:05:15] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:05:15] "[37mGET /static/assets/css/jarvis.css?r=41 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:05:15] "[37mGET /static/assets/css/jarvis_red.css?r=13 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:05:15] "[37mGET /static/assets/css/jarvis_grey.css?r=79 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:05:15] "[37mGET /static/assets/css/global.css?r=5 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:05:15] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:05:15] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:05:15] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4441
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 2128
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1273
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 27
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:08:15] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:08:15] "[37mGET /static/assets/css/jarvis.css?r=72 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:08:15] "[37mGET /static/assets/css/jarvis_grey.css?r=4 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:08:15] "[37mGET /static/assets/css/jarvis_red.css?r=85 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:08:15] "[37mGET /static/assets/css/global.css?r=55 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:08:16] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:08:16] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:08:16] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4441
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 1126
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1273
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 1419
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:09:22] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:09:22] "[37mGET /static/assets/css/jarvis.css?r=5 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:09:22] "[37mGET /static/assets/css/jarvis_red.css?r=63 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:09:22] "[37mGET /static/assets/css/jarvis_grey.css?r=46 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:09:22] "[37mGET /static/assets/css/global.css?r=90 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:09:22] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:09:22] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:09:22] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4441
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 1127
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1273
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 808
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:09:33] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:09:33] "[37mGET /static/assets/css/jarvis.css?r=26 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:09:33] "[37mGET /static/assets/css/jarvis_red.css?r=49 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:09:33] "[37mGET /static/assets/css/jarvis_grey.css?r=27 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:09:33] "[37mGET /static/assets/css/global.css?r=48 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:09:33] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:09:33] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:09:33] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4441
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 2127
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1273
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 222
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:10:17] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:10:17] "[37mGET /static/assets/css/jarvis.css?r=75 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:10:17] "[37mGET /static/assets/css/jarvis_grey.css?r=16 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:10:17] "[37mGET /static/assets/css/jarvis_red.css?r=70 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:10:17] "[37mGET /static/assets/css/global.css?r=67 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:10:18] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:10:18] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:10:18] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4441
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 3128
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1273
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 2826
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:14:12] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:14:12] "[37mGET /static/assets/css/jarvis.css?r=18 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:14:12] "[37mGET /static/assets/css/jarvis_red.css?r=50 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:14:12] "[37mGET /static/assets/css/jarvis_grey.css?r=91 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:14:12] "[37mGET /static/assets/css/global.css?r=44 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:14:13] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:14:13] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:14:13] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4441
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 129
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1273
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 1231
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:15:55] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:15:55] "[37mGET /static/assets/css/jarvis.css?r=42 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:15:55] "[37mGET /static/assets/css/jarvis_red.css?r=44 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:15:55] "[37mGET /static/assets/css/jarvis_grey.css?r=44 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:15:55] "[37mGET /static/assets/css/global.css?r=70 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:15:55] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:15:56] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:15:56] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4441
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 1128
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1273
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 1822
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:16:31] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:16:31] "[37mGET /static/assets/css/jarvis.css?r=31 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:16:31] "[37mGET /static/assets/css/jarvis_red.css?r=97 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:16:31] "[37mGET /static/assets/css/jarvis_grey.css?r=2 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:16:31] "[37mGET /static/assets/css/global.css?r=11 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:16:31] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:16:31] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:16:31] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4441
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 5128
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1273
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 615
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:18:27] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:18:27] "[37mGET /static/assets/css/jarvis.css?r=81 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:18:27] "[37mGET /static/assets/css/jarvis_red.css?r=55 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:18:27] "[37mGET /static/assets/css/jarvis_grey.css?r=67 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:18:27] "[37mGET /static/assets/css/global.css?r=96 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:18:27] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:18:27] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:18:27] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4441
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 2128
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1273
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 2236
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:18:47] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:18:47] "[37mGET /static/assets/css/jarvis.css?r=15 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:18:47] "[37mGET /static/assets/css/jarvis_grey.css?r=11 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:18:47] "[37mGET /static/assets/css/jarvis_red.css?r=73 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:18:47] "[37mGET /static/assets/css/global.css?r=46 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:18:47] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:18:47] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:18:47] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4441
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 4129
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1273
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 2629
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:18:52] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:18:52] "[37mGET /static/assets/css/jarvis.css?r=47 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:18:52] "[37mGET /static/assets/css/jarvis_grey.css?r=87 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:18:52] "[37mGET /static/assets/css/global.css?r=30 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:18:53] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:18:53] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:18:53] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4441
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 1127
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1273
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 3039
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:19:15] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:19:15] "[37mGET /static/assets/css/jarvis.css?r=66 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:19:15] "[37mGET /static/assets/css/jarvis_grey.css?r=19 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:19:15] "[37mGET /static/assets/css/global.css?r=41 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:19:15] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:19:15] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:19:15] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4441
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 2125
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1273
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 1031
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:19:22] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:19:22] "[37mGET /static/assets/css/jarvis_red.css?r=64 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:19:22] "[37mGET /static/assets/css/jarvis_grey.css?r=31 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:19:22] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:19:22] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:19:22] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4441
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 3125
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1273
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 222
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:22:05] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:22:05] "[37mGET /static/assets/css/jarvis.css?r=11 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:22:05] "[37mGET /static/assets/css/jarvis_red.css?r=89 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:22:05] "[37mGET /static/assets/css/global.css?r=23 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:22:05] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:22:06] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:22:06] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4708
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 2128
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1285
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 814
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:26:21] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:26:22] "[37mGET /static/assets/css/global.css?r=68 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:26:22] "[37mGET /static/assets/css/jarvis_grey.css?r=14 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:26:22] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:26:22] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:26:22] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4708
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 2126
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1285
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 2414
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:29:06] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:29:06] "[37mGET /static/assets/css/jarvis.css?r=51 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:29:06] "[37mGET /static/assets/css/jarvis_red.css?r=93 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:29:06] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:29:06] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:29:06] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4708
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 5125
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1285
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 2030
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:34:00] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:34:00] "[37mGET /static/assets/css/jarvis_red.css?r=34 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:34:00] "[37mGET /static/assets/css/jarvis_grey.css?r=72 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:34:01] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:34:01] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:34:01] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4708
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 2128
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1285
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 2028
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:34:38] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:34:38] "[37mGET /static/assets/css/jarvis.css?r=14 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:34:38] "[37mGET /static/assets/css/jarvis_red.css?r=67 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:34:38] "[37mGET /static/assets/css/jarvis_grey.css?r=52 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:34:38] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:34:39] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:34:39] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4708
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 129
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1285
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 1817
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:36:14] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:36:14] "[37mGET /static/assets/css/jarvis.css?r=58 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:36:14] "[37mGET /static/assets/css/jarvis_grey.css?r=93 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:36:14] "[37mGET /static/assets/css/jarvis_red.css?r=42 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:36:14] "[37mGET /static/assets/css/global.css?r=15 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:36:15] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:36:15] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:36:15] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4708
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 1126
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1285
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 644
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:37:48] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:37:48] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:37:48] "[37mGET /static/assets/css/jarvis.css?r=56 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:37:48] "[37mGET /static/assets/css/jarvis_red.css?r=59 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:37:48] "[37mGET /static/assets/css/jarvis_grey.css?r=51 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:37:48] "[37mGET /static/assets/css/global.css?r=78 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:37:48] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:37:48] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4708
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 2126
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1285
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 1619
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:38:44] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:38:44] "[37mGET /static/assets/css/jarvis.css?r=98 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:38:44] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:38:44] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:38:44] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4708
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 129
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1285
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 1225
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:44:34] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:44:34] "[37mGET /static/assets/css/jarvis.css?r=38 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:44:34] "[37mGET /static/assets/css/jarvis_red.css?r=39 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:44:34] "[37mGET /static/assets/css/jarvis_grey.css?r=70 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:44:34] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:44:34] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:44:34] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4708
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 3128
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1285
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 1021
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:45:20] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:45:20] "[37mGET /static/assets/css/jarvis.css?r=95 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:45:20] "[37mGET /static/assets/css/global.css?r=62 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:45:20] "[37mGET /static/assets/css/jarvis_red.css?r=3 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:45:20] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:45:20] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:45:20] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4708
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 1127
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1285
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 3023
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:46:21] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:46:21] "[37mGET /static/assets/css/jarvis.css?r=73 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:46:21] "[37mGET /static/assets/css/jarvis_grey.css?r=1 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:46:21] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:46:21] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:46:21] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4708
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 5131
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1285
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 1819
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:47:14] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:47:15] "[37mGET /static/assets/css/jarvis_grey.css?r=30 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:47:15] "[37mGET /static/assets/css/global.css?r=29 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:47:15] "[37mGET /static/assets/css/jarvis.css?r=25 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:47:15] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:47:15] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:47:15] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4708
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 1126
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1285
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 432
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:48:10] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:48:10] "[37mGET /static/assets/css/jarvis_red.css?r=29 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:48:10] "[37mGET /static/assets/css/jarvis_grey.css?r=80 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:48:10] "[37mGET /static/assets/css/global.css?r=33 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:48:10] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:48:10] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:48:10] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4708
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 129
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1285
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 635
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:48:52] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:48:52] "[37mGET /static/assets/css/jarvis_red.css?r=80 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:48:52] "[37mGET /static/assets/css/global.css?r=35 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:48:52] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:48:52] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:48:52] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4708
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 5124
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1285
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 1605
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:50:10] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:50:10] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:50:10] "[37mGET /static/assets/css/jarvis.css?r=60 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:50:10] "[37mGET /static/assets/css/jarvis_red.css?r=96 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:50:10] "[37mGET /static/assets/css/jarvis_grey.css?r=33 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:50:10] "[37mGET /static/assets/css/global.css?r=27 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:50:11] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:50:11] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4953
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 4130
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1285
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 813
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:50:54] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:50:54] "[37mGET /static/assets/css/jarvis.css?r=48 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:50:54] "[37mGET /static/assets/css/jarvis_red.css?r=27 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:50:54] "[37mGET /static/assets/css/jarvis_grey.css?r=15 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:50:54] "[37mGET /static/assets/css/global.css?r=69 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:50:54] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:50:54] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:50:54] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4953
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 3128
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1285
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 2013
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:51:17] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:51:17] "[37mGET /static/assets/css/jarvis_grey.css?r=7 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:51:17] "[37mGET /static/assets/css/global.css?r=47 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:51:17] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:51:17] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:51:17] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4953
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 5127
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1285
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 819
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:54:04] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:54:04] "[37mGET /static/assets/css/jarvis.css?r=20 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:54:04] "[37mGET /static/assets/css/global.css?r=3 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:54:04] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:54:04] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:54:04] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4953
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 1126
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1285
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 1432
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:54:41] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:54:41] "[37mGET /static/assets/css/jarvis_red.css?r=57 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:54:41] "[37mGET /static/assets/css/global.css?r=52 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:54:41] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:54:41] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:54:41] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4953
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 129
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1285
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 2628
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:55:13] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:55:13] "[37mGET /static/assets/css/jarvis.css?r=86 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:55:13] "[37mGET /static/assets/css/jarvis_red.css?r=15 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:55:13] "[37mGET /static/assets/css/jarvis_grey.css?r=74 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:55:13] "[37mGET /static/assets/css/global.css?r=32 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:55:13] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:55:13] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:55:13] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 4953
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 4129
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1285
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 2442
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:55:42] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:55:42] "[37mGET /static/assets/css/jarvis.css?r=71 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:55:42] "[37mGET /static/assets/css/global.css?r=12 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:55:42] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:55:42] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:55:42] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:57:11] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:57:11] "[32mGET /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:57:11] "[37mGET /index HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:57:12] "[37mGET /static/assets/css/jarvis_grey.css?r=49 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:57:12] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:57:12] "[37mGET /static/assets/css/jarvis_red.css?r=32 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:57:12] "[37mGET /static/assets/css/global.css?r=81 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:57:12] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 01:57:12] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:07:23] "[37mGET /index HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:07:24] "[37mGET /static/assets/css/jarvis.css?r=78 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:07:24] "[37mGET /static/assets/css/jarvis_grey.css?r=0 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:07:24] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:07:24] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:07:24] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:07:54] "[37mGET /index HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:07:55] "[37mGET /static/assets/css/jarvis_red.css?r=91 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:07:55] "[37mGET /static/assets/css/jarvis.css?r=79 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:07:55] "[37mGET /static/assets/css/jarvis_grey.css?r=39 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:07:55] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:07:55] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:07:55] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:09:56] "[37mGET /index HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:09:56] "[37mGET /static/assets/css/jarvis_red.css?r=74 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:09:56] "[37mGET /static/assets/css/global.css?r=57 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:09:56] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:09:56] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:09:56] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:10:00] "[37mGET /index HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:10:01] "[37mGET /static/assets/css/jarvis_red.css?r=5 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:10:01] "[37mGET /static/assets/css/jarvis_grey.css?r=23 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:10:01] "[37mGET /static/assets/css/global.css?r=61 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:10:01] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:10:01] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:10:01] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:11:00] "[37mGET /index HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:11:00] "[37mGET /static/assets/css/global.css?r=53 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:11:00] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:11:00] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:11:00] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 5194
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 3128
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1273
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 2021
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:12:39] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:12:39] "[37mGET /static/assets/css/jarvis_grey.css?r=21 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:12:39] "[37mGET /static/assets/css/jarvis.css?r=36 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:12:39] "[37mGET /static/assets/css/global.css?r=97 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:12:39] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:12:39] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:12:39] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 5431
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 2128
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1273
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 3042
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:14:50] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:14:50] "[37mGET /static/assets/css/jarvis_red.css?r=52 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:14:51] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:14:51] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:14:51] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 5431
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 5124
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1285
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 2615
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:15:23] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:15:23] "[37mGET /static/assets/css/jarvis.css?r=49 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:15:23] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:15:23] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:15:23] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 5431
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 5127
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1273
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 1842
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:15:53] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:15:53] "[37mGET /static/assets/css/jarvis.css?r=0 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:15:53] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:15:53] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:15:53] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 5431
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 1127
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1285
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 431
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:17:09] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:17:09] "[37mGET /static/assets/css/jarvis.css?r=53 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:17:09] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:17:09] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:17:09] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 5431
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 1128
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1285
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 2218
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:17:31] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:17:31] "[37mGET /static/assets/css/jarvis_red.css?r=33 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:17:31] "[37mGET /static/assets/css/jarvis_grey.css?r=32 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:17:31] "[37mGET /static/assets/css/global.css?r=37 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:17:31] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:17:31] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:17:31] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 5431
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 5126
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1285
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 1640
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:17:51] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:17:51] "[37mGET /static/assets/css/jarvis.css?r=94 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:17:51] "[37mGET /static/assets/css/jarvis_grey.css?r=10 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:17:51] "[37mGET /static/assets/css/global.css?r=56 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:17:51] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:17:51] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:17:51] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 5431
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 5127
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1285
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 1222
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:18:18] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:18:18] "[37mGET /static/assets/css/jarvis.css?r=29 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:18:18] "[37mGET /static/assets/css/jarvis_red.css?r=71 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:18:18] "[37mGET /static/assets/css/jarvis_grey.css?r=61 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:18:18] "[37mGET /static/assets/css/global.css?r=80 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:18:18] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:18:19] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:18:19] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:38] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:38] "[37mGET /login HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:39] "[37mGET /static/assets/css/nucleo-icons.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:39] "[37mGET /static/assets/demo/demo.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:39] "[37mGET /static/assets/css/black-dashboard.css?v=1.0.10 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:39] "[37mGET /static/assets/js/core/jquery.min.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:39] "[37mGET /static/assets/js/core/popper.min.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:39] "[37mGET /static/assets/js/core/bootstrap.min.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:39] "[37mGET /static/assets/js/plugins/perfect-scrollbar.jquery.min.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:39] "[37mGET /static/assets/js/plugins/chartjs.min.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:39] "[37mGET /static/assets/js/plugins/bootstrap-notify.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:39] "[37mGET /static/assets/js/black-dashboard.min.js?v=1.0.16.15 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:39] "[37mGET /static/assets/demo/demo.js?v=1.0.16.15 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:39] "[37mGET /static/assets/js/charts/apexcharts.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:39] "[37mGET /static/assets/js/moment/moment.min.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:39] "[37mGET /static/assets/img/FreeTakServer3.png HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:39] "[37mGET /static/assets/css/jarvis.css?r=0 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:39] "[37mGET /static/assets/css/jarvis_grey.css?r=65 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:39] "[37mGET /static/assets/css/jarvis_red.css?r=48 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:39] "[37mGET /static/assets/css/global.css?r=86 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:45] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:45] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:45] "[32mGET /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:45] "[37mGET /index HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:45] "[37mGET /static/assets/img/spinner.svg HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:45] "[37mGET /static/assets/css/jarvis.css?r=48 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:45] "[37mGET /static/assets/img/spinner1.svg HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:45] "[37mGET /static/assets/css/jarvis_red.css?r=63 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:45] "[37mGET /static/assets/css/jarvis_grey.css?r=45 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:45] "[37mGET /static/assets/css/global.css?r=57 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:46] "[37mGET /static/assets/fonts/nucleo.woff2 HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 5431
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 5125
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1285
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 2039
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:58] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:58] "[37mGET /static/assets/css/jarvis.css?r=7 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:58] "[37mGET /static/assets/css/jarvis_grey.css?r=64 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:58] "[37mGET /static/assets/css/jarvis_red.css?r=32 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:19:58] "[37mGET /static/assets/css/global.css?r=84 HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 5200
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 5128
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1285
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 620
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:20:24] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:20:24] "[37mGET /static/assets/css/jarvis_grey.css?r=26 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:20:24] "[37mGET /static/assets/css/jarvis.css?r=53 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:20:24] "[37mGET /static/assets/css/jarvis_red.css?r=18 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:20:24] "[37mGET /static/assets/css/global.css?r=23 HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 5200
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 3125
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1285
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 2004
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:20:34] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:20:35] "[37mGET /static/assets/css/jarvis.css?r=31 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:20:35] "[37mGET /static/assets/css/jarvis_red.css?r=55 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:20:35] "[37mGET /static/assets/css/jarvis_grey.css?r=34 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:20:35] "[37mGET /static/assets/css/global.css?r=75 HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 5200
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 3125
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1285
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 1212
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:20:46] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:20:46] "[37mGET /static/assets/css/jarvis.css?r=96 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:20:46] "[37mGET /static/assets/css/jarvis_red.css?r=9 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:20:46] "[37mGET /static/assets/css/jarvis_grey.css?r=49 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:20:46] "[37mGET /static/assets/css/global.css?r=79 HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 5200
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 2129
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1285
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 1614
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:20:55] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:20:55] "[37mGET /static/assets/css/jarvis.css?r=20 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:20:56] "[37mGET /static/assets/css/jarvis_grey.css?r=82 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:20:56] "[37mGET /static/assets/css/jarvis_red.css?r=0 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:20:56] "[37mGET /static/assets/css/global.css?r=98 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:21:38] "[37mGET /users HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:21:38] "[37mGET /static/assets/css/jarvis_red.css?r=62 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:21:38] "[37mGET /static/assets/css/jarvis.css?r=77 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:21:38] "[37mGET /static/assets/css/global.css?r=0 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:21:38] "[37mGET /static/assets/css/jarvis_grey.css?r=28 HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ManageEmergency/getEmergency HTTP/1.1" 200 78
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:22:00] "[37mGET /connect HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:22:00] "[37mGET /static/assets/css/jarvis_grey.css?r=18 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:22:00] "[37mGET /static/assets/css/jarvis.css?r=55 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:22:00] "[37mGET /static/assets/css/jarvis_red.css?r=34 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:22:00] "[37mGET /static/assets/css/global.css?r=91 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:25:35] "[37mGET /users HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:25:35] "[37mGET /static/assets/css/jarvis.css?r=85 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:25:35] "[37mGET /static/assets/css/jarvis_red.css?r=81 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:25:35] "[37mGET /static/assets/css/jarvis_grey.css?r=1 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:25:42] "[37mGET /users HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:25:42] "[37mGET /static/assets/css/jarvis.css?r=60 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:25:42] "[37mGET /static/assets/css/global.css?r=85 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:25:42] "[37mGET /static/assets/css/jarvis_grey.css?r=4 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:25:53] "[37mGET /users HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:25:53] "[37mGET /static/assets/css/jarvis.css?r=52 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:25:53] "[37mGET /static/assets/css/jarvis_grey.css?r=31 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:25:53] "[37mGET /static/assets/css/jarvis_red.css?r=14 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:25:53] "[37mGET /static/assets/css/global.css?r=62 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:26:26] "[37mGET /users HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:26:26] "[37mGET /static/assets/css/jarvis.css?r=17 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:26:26] "[37mGET /static/assets/css/jarvis_grey.css?r=19 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:26:26] "[37mGET /static/assets/css/global.css?r=99 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:26:26] "[37mGET /static/assets/css/jarvis_red.css?r=5 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:26:45] "[37mGET /users HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:26:45] "[37mGET /static/assets/css/jarvis.css?r=80 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:26:45] "[37mGET /static/assets/css/jarvis_red.css?r=13 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:26:45] "[37mGET /static/assets/css/jarvis_grey.css?r=46 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:26:45] "[37mGET /static/assets/css/global.css?r=35 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:27:45] "[37mGET /users HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:27:45] "[37mGET /static/assets/css/global.css?r=97 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:27:45] "[37mGET /static/assets/css/jarvis_red.css?r=75 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:27:45] "[37mGET /static/assets/css/jarvis.css?r=73 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:28:08] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:28:08] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:28:08] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:29:43] "[37mGET /users HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:29:43] "[37mGET /static/assets/css/jarvis.css?r=63 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:29:43] "[37mGET /static/assets/css/global.css?r=11 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:29:43] "[37mGET /static/assets/css/jarvis_grey.css?r=23 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:29:43] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:29:43] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:29:43] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:30:03] "[37mGET /users HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:30:03] "[37mGET /static/assets/css/jarvis.css?r=72 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:30:03] "[37mGET /static/assets/css/jarvis_red.css?r=96 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:30:03] "[37mGET /static/assets/css/jarvis_grey.css?r=55 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:30:03] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:30:03] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:30:03] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:30:29] "[37mGET /users HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:30:29] "[37mGET /static/assets/css/jarvis.css?r=15 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:30:29] "[37mGET /static/assets/css/jarvis_red.css?r=89 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:30:29] "[37mGET /static/assets/css/jarvis_grey.css?r=67 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:30:29] "[37mGET /static/assets/css/global.css?r=2 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:30:29] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:30:29] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:30:29] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:30:40] "[37mGET /users HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:30:40] "[37mGET /static/assets/css/jarvis.css?r=71 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:30:40] "[37mGET /static/assets/css/jarvis_red.css?r=15 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:30:40] "[37mGET /static/assets/css/global.css?r=33 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:30:40] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:30:41] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:30:41] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:31:01] "[37mGET /users HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:31:02] "[37mGET /static/assets/css/jarvis.css?r=56 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:31:02] "[37mGET /static/assets/css/jarvis_red.css?r=68 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:31:02] "[37mGET /static/assets/css/global.css?r=77 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:31:02] "[37mGET /static/assets/css/jarvis_grey.css?r=11 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:31:02] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:31:02] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:31:02] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:32:06] "[37mGET /users HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:32:07] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:32:07] "[37mGET /static/assets/css/jarvis.css?r=59 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:32:07] "[37mGET /static/assets/css/jarvis_red.css?r=58 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:32:07] "[37mGET /static/assets/css/jarvis_grey.css?r=54 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:32:07] "[37mGET /static/assets/css/global.css?r=93 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:32:07] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:32:07] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ManageEmergency/getEmergency HTTP/1.1" 200 78
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:32:59] "[37mGET /connect HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:32:59] "[37mGET /static/assets/css/jarvis.css?r=3 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:32:59] "[37mGET /static/assets/css/jarvis_red.css?r=90 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:32:59] "[37mGET /static/assets/css/jarvis_grey.css?r=16 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:32:59] "[37mGET /static/assets/css/global.css?r=10 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:32:59] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:32:59] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:32:59] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:33:02] "[37mGET /users HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:33:02] "[37mGET /static/assets/css/jarvis.css?r=86 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:33:02] "[37mGET /static/assets/css/jarvis_grey.css?r=94 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:33:02] "[37mGET /static/assets/css/global.css?r=95 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:33:03] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:33:03] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:33:03] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ManageEmergency/getEmergency HTTP/1.1" 200 78
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:34:18] "[37mGET /connect HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:34:18] "[37mGET /static/assets/css/jarvis.css?r=84 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:34:18] "[37mGET /static/assets/css/jarvis_red.css?r=53 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:34:18] "[37mGET /static/assets/css/global.css?r=59 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:34:18] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:34:18] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:34:18] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:34:19] "[37mGET /users HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:34:19] "[37mGET /static/assets/css/jarvis.css?r=47 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:34:19] "[37mGET /static/assets/css/jarvis_red.css?r=87 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:34:19] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:34:19] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:34:19] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:35:01] "[37mGET /users HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:35:01] "[37mGET /static/assets/css/global.css?r=48 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:35:01] "[37mGET /static/assets/css/jarvis_grey.css?r=75 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:35:01] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:35:01] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:35:01] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 5923
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 4129
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1285
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 2818
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:35:07] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:35:08] "[37mGET /static/assets/css/jarvis_red.css?r=30 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:35:08] "[37mGET /static/assets/css/jarvis_grey.css?r=59 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:35:08] "[37mGET /static/assets/css/global.css?r=52 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:35:08] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:35:08] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:35:08] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:41:34] "[37mGET /about HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:41:35] "[37mGET /static/assets/css/jarvis.css?r=90 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:41:35] "[37mGET /static/assets/css/jarvis_grey.css?r=66 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:41:35] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:41:35] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:41:35] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in '/Users/sivadineshm/Documents/projects/2020/FreeTAKTeam/UI-master/app/__init__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:41:57] "[37mGET /about HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:41:57] "[37mGET /static/assets/css/jarvis.css?r=29 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:41:57] "[37mGET /static/assets/css/jarvis_grey.css?r=48 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:41:57] "[37mGET /static/assets/css/jarvis_red.css?r=44 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:41:57] "[37mGET /static/assets/css/global.css?r=89 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:41:57] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:41:57] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:41:57] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in '/Users/sivadineshm/Documents/projects/2020/FreeTAKTeam/UI-master/app/home/routes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:46:31] "[35m[1mGET /about HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:46:31] "[37mGET /about?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:46:31] "[37mGET /about?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:46:31] "[37mGET /about?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:46:31] "[37mGET /about?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:46:31] "[37mGET /about?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:46:31] "[37mGET /about?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:47:10] "[35m[1mGET /about HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:47:10] "[37mGET /about?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:47:10] "[37mGET /about?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:47:11] "[37mGET /about?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:47:11] "[37mGET /about?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:47:11] "[37mGET /about?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:47:11] "[37mGET /about?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Detected change in '/Users/sivadineshm/Documents/projects/2020/FreeTAKTeam/UI-master/app/home/routes.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:47:38] "[37mGET /about HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:47:38] "[37mGET /static/assets/css/jarvis.css?r=64 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:47:38] "[37mGET /static/assets/css/jarvis_red.css?r=82 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:47:38] "[37mGET /static/assets/css/jarvis_grey.css?r=0 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:47:38] "[37mGET /static/assets/css/global.css?r=43 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:47:38] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:47:38] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:47:38] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in '/Users/sivadineshm/Documents/projects/2020/FreeTAKTeam/UI-master/app/__init__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:48:09] "[37mGET /about HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:48:09] "[37mGET /static/assets/css/jarvis_red.css?r=65 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:48:09] "[37mGET /static/assets/css/jarvis.css?r=69 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:48:09] "[37mGET /static/assets/css/global.css?r=54 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:48:09] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:48:09] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:48:09] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in '/Users/sivadineshm/Documents/projects/2020/FreeTAKTeam/UI-master/app/__init__.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:48:23] "[37mGET /about HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:48:23] "[37mGET /static/assets/css/jarvis.css?r=36 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:48:23] "[37mGET /static/assets/css/jarvis_red.css?r=35 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:48:23] "[33mGET /static/assets/css/dashboard-free.css.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:48:23] "[33mGET /static/assets/js/_site_dashboard_free/assets/js/dashboard-free.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:48:23] "[33mGET /static/assets/js/moment/moment.min.js.map HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:48:59] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:48:59] "[32mGET /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:48:59] "[37mGET /index HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:48:59] "[37mGET /static/assets/css/jarvis_grey.css?r=37 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:48:59] "[37mGET /static/assets/css/jarvis_red.css?r=20 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:48:59] "[37mGET /static/assets/css/global.css?r=66 HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /DataPackageTable HTTP/1.1" 200 6416
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /MissionTable HTTP/1.1" 200 129
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ExCheckTable HTTP/1.1" 200 1285
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 1231
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:49:07] "[37mGET /mission HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:49:08] "[37mGET /static/assets/css/jarvis_red.css?r=7 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:49:08] "[37mGET /static/assets/css/jarvis.css?r=97 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:49:08] "[37mGET /static/assets/css/jarvis_grey.css?r=24 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:49:14] "[37mGET /users HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:49:14] "[37mGET /static/assets/css/global.css?r=12 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:49:14] "[37mGET /static/assets/css/jarvis_grey.css?r=5 HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /ManageEmergency/getEmergency HTTP/1.1" 200 78
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:49:19] "[37mGET /connect HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:49:19] "[37mGET /static/assets/css/global.css?r=63 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:49:19] "[37mGET /static/assets/css/jarvis_red.css?r=54 HTTP/1.1[0m" 200 -
+DEBUG:urllib3.connectionpool:Starting new HTTP connection (1): 204.48.30.216:19023
+DEBUG:urllib3.connectionpool:http://204.48.30.216:19023 "GET /FederationTable HTTP/1.1" 200 27
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:49:26] "[37mGET /configure HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:49:26] "[37mGET /static/assets/css/jarvis.css?r=82 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:49:26] "[37mGET /static/assets/css/jarvis_grey.css?r=35 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:49:28] "[37mGET /about HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:49:28] "[37mGET /static/assets/css/jarvis_red.css?r=3 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:49:28] "[37mGET /static/assets/css/jarvis.css?r=9 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:49:28] "[37mGET /static/assets/css/jarvis_grey.css?r=15 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:49:28] "[37mGET /static/assets/css/global.css?r=15 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:49:30] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:49:30] "[32mGET /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:49:30] "[37mGET /index HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:49:30] "[37mGET /static/assets/css/jarvis.css?r=94 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:49:30] "[37mGET /static/assets/css/jarvis_red.css?r=72 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:49:31] "[37mGET /static/assets/css/jarvis_grey.css?r=56 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Jan/2021 02:49:31] "[37mGET /static/assets/css/global.css?r=58 HTTP/1.1[0m" 200 -

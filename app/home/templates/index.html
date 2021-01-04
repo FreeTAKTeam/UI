@@ -109,9 +109,9 @@
 			<div style="display: grid; grid-column: 1/-1; padding: 5px"><h3 class="card-title" style="color: #278aed">API & Federations</h3></div>
 
 
-			<!-- <div id="loading-systemstatus1" style="display: grid; place-self: center">
+			<div id="loading-systemstatus3" style="display: grid; place-self: center">
 				<img src="/static/assets/img/spinner.svg" width="80px" height="80px" />
-			</div> -->
+			</div>
 			<div id="loading-systemstatus4" style="display: grid; place-self: center">
 				<img src="/static/assets/img/spinner.svg" width="80px" height="80px" />
 			</div>
@@ -126,7 +126,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="core2">TCP</div>
+					<div class="core2">API</div>
 				</div>
 			</div>
 
@@ -139,7 +139,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="r_core2">TCP</div>
+					<div class="r_core2">API</div>
 				</div>
 			</div>
 
@@ -152,12 +152,12 @@
 							</div>
 						</div>
 					</div>
-					<div class="g_core2">TCP</div>
+					<div class="g_core2">API</div>
 				</div>
 			</div>
 
 			<!-- FEDERATION  TCP -->
-			<div class="case_container" id="fed_on">
+			<div class="case_container" style="display: none" id="fed_on">
 				<div class="e7">
 					<div class="semi_arc_3 e5_1">
 						<div class="semi_arc_3 e5_2">
@@ -166,7 +166,33 @@
 							</div>
 						</div>
 					</div>
-					<div class="core2">TCP</div>
+					<div class="core2">FED</div>
+				</div>
+			</div>
+
+			<div class="r_case_container" style="display: none" id="fed_error">
+				<div class="r_e7">
+					<div class="r_semi_arc_3 r_e5_1">
+						<div class="r_semi_arc_3 r_e5_2">
+							<div class="r_semi_arc_3 r_e5_3">
+								<div class="r_semi_arc_3 r_e5_4"></div>
+							</div>
+						</div>
+					</div>
+					<div class="r_core2">FED</div>
+				</div>
+			</div>
+
+			<div class="g_case_container" style="display: none" id="fed_off">
+				<div class="g_e7">
+					<div class="g_semi_arc_3 g_e5_1">
+						<div class="g_semi_arc_3 g_e5_2">
+							<div class="g_semi_arc_3 g_e5_3">
+								<div class="g_semi_arc_3 g_e5_4"></div>
+							</div>
+						</div>
+					</div>
+					<div class="g_core2">FED</div>
 				</div>
 			</div>
 
@@ -547,9 +573,10 @@
 			socket.emit("systemStatus");
 			socket.on("systemStatusUpdate", function (data) {
 				let systemStatusObject = JSON.parse(data);
+				console.log('object >> print ' + JSON.stringify(systemStatusObject));
 				document.getElementById("loading-systemstatus1").style.display = "none";
 				document.getElementById("loading-systemstatus2").style.display = "none";
-			//	document.getElementById("loading-systemstatus3").style.display = "none";
+				document.getElementById("loading-systemstatus3").style.display = "none";
 				document.getElementById("loading-systemstatus4").style.display = "none";
 				document.getElementById("loading-systemstatus5").style.display = "none";
 				document.getElementById("loading-systemstatus6").style.display = "none";
@@ -608,6 +635,21 @@
 					document.getElementById("rest_api_on").style.display = "none";
 					document.getElementById("rest_api_off").style.display = "none";
 					document.getElementById("rest_api_error").style.display = "block";
+				}
+
+				// REST TCP
+				if (systemStatusObject.RestAPIStatus == systemStatusObject.RestAPIStatusExpected && systemStatusObject.RestAPIStatus == "on") {
+					document.getElementById("fed_on").style.display = "block";
+					document.getElementById("fed_off").style.display = "none";
+					document.getElementById("fed_error").style.display = "none";
+				} else if (systemStatusObject.RestAPIStatus == systemStatusObject.RestAPIStatusExpected && systemStatusObject.RestAPIStatus == "off") {
+					document.getElementById("fed_on").style.display = "none";
+					document.getElementById("fed_off").style.display = "block";
+					document.getElementById("fed_error").style.display = "none";
+				} else if (systemStatusObject.RestAPIStatus != systemStatusObject.RestAPIStatusExpected) {
+					document.getElementById("fed_on").style.display = "none";
+					document.getElementById("fed_off").style.display = "none";
+					document.getElementById("fed_error").style.display = "block";
 				}
 
 				// Datapackage SSL
