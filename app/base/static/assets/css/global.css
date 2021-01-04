@@ -482,9 +482,10 @@ input[type="file"] {
 /* USER PAGE CSS */
 
 .user_c1 {
-	color: #d6d6d6;
+	color: #fff;
 	width: 200px;
-	padding: 10px;
+	padding: 10px 10px 0px 10px;
+	font-size: 16px;
 }
 
 .user-table-hdr {

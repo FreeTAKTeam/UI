@@ -16,6 +16,13 @@
 		<div class="card" style="display: grid; grid-template-columns: 1fr 1fr">
 			<div style="display: grid; grid-column: 1/-1; padding: 5px"><h3 class="card-title" style="color: #278aed">Data Package</h3></div>
 
+			<div id="loading-systemstatus1" style="display: grid; place-self: center">
+				<img src="/static/assets/img/spinner.svg" width="80px" height="80px" />
+			</div>
+			<div id="loading-systemstatus2" style="display: grid; place-self: center">
+				<img src="/static/assets/img/spinner.svg" width="80px" height="80px" />
+			</div>
+
 			<!-- Data Package -->
 			<div class="case_container" style="display: none" id="tcp_on">
 				<div class="e7">
@@ -101,6 +108,14 @@
 		<div class="card" style="display: grid; grid-template-columns: 1fr 1fr">
 			<div style="display: grid; grid-column: 1/-1; padding: 5px"><h3 class="card-title" style="color: #278aed">API & Federations</h3></div>
 
+
+			<!-- <div id="loading-systemstatus1" style="display: grid; place-self: center">
+				<img src="/static/assets/img/spinner.svg" width="80px" height="80px" />
+			</div> -->
+			<div id="loading-systemstatus4" style="display: grid; place-self: center">
+				<img src="/static/assets/img/spinner.svg" width="80px" height="80px" />
+			</div>
+
 			<!-- REST TCP -->
 			<div class="case_container" style="display: none" id="rest_api_on">
 				<div class="e7">
@@ -160,6 +175,13 @@
 
 			<div class="card" style="display: grid; grid-template-columns: 1fr 1fr">
 				<div style="display: grid; grid-column: 1/-1; padding: 5px"><h3 class="card-title" style="color: #278aed">COT</h3></div>
+
+				<div id="loading-systemstatus5" style="display: grid; place-self: center">
+					<img src="/static/assets/img/spinner.svg" width="80px" height="80px" />
+				</div>
+				<div id="loading-systemstatus6" style="display: grid; place-self: center">
+					<img src="/static/assets/img/spinner.svg" width="80px" height="80px" />
+				</div>
 
 				<!-- COT TCP -->
 				<div class="case_container" style="display: none" id="cot_tcp_on">
@@ -311,9 +333,15 @@
 		</div>
 		<div style="display: grid; grid-template-columns: 1fr 1.5fr; width: 100%; gap: 20px">
 			<div>
+				<div id="loading-systemstatus7" style="display: grid; place-self: center">
+					<img src="/static/assets/img/spinner1.svg" width="80px" height="80px" />
+				</div>
 				<div id="chart"></div>
 			</div>
 			<div>
+				<div id="loading-systemstatus8" style="display: grid; place-self: end;">
+					<img src="/static/assets/img/spinner1.svg" width="80px" height="80px" />
+				</div>
 				<div id="log-table-hdr"></div>
 				<div id="log-table"></div>
 			</div>
@@ -431,7 +459,7 @@
 			socket.emit("logs", '{ "time": "2020-12-22 18:08:40,328" }');
 			socket.on("logUpdate", function (data) {
 				let logsObject = JSON.parse(data);
-
+				document.getElementById("loading-systemstatus8").style.display = "none";
 				let tableArr = JSON.parse(data).log_data;
 
 				//create a Table Object
@@ -504,7 +532,8 @@
 				socket.emit("serverHealth");
 				socket.on("serverHealthUpdate", function (data) {
 					let serverHealthObject = JSON.parse(data);
-
+					document.getElementById("loading-systemstatus7").style.display = "none";
+					
 					chart.updateOptions({ series: [serverHealthObject.CPU, serverHealthObject.memory, serverHealthObject.disk] });
 
 					// console.log("Print 4 serverHealthUpdate Response:" + JSON.stringify(serverHealthObject));
@@ -518,7 +547,12 @@
 			socket.emit("systemStatus");
 			socket.on("systemStatusUpdate", function (data) {
 				let systemStatusObject = JSON.parse(data);
-
+				document.getElementById("loading-systemstatus1").style.display = "none";
+				document.getElementById("loading-systemstatus2").style.display = "none";
+			//	document.getElementById("loading-systemstatus3").style.display = "none";
+				document.getElementById("loading-systemstatus4").style.display = "none";
+				document.getElementById("loading-systemstatus5").style.display = "none";
+				document.getElementById("loading-systemstatus6").style.display = "none";
 				// Datapackage TCP
 				if (
 					systemStatusObject.TCPDataPackageStatus == systemStatusObject.TCPDataPackageStatusExpected &&
