@@ -301,10 +301,16 @@
 			return false;
 		}
 
+		if(file.size > 15360000) {
+			snackFunction("Max 15 MB file allowed to upload");
+			return false;
+		}
+		
+
 		var formData = new FormData();
 		formData.append("assetfile", file);
 
-		headers = { Authorization: "Bearer a@v{5]MQU><waQ;Z" };
+		headers = { Authorization: "Bearer a@v{5]MQU><waQ;Z", Connection: "Keep-Alive" };
 
 		fetch(`http://204.48.30.216:19023/DataPackageTable?filename=${file.name}&creator`, {
 			method: "POST",
@@ -312,12 +318,26 @@
 			body: formData,
 		})
 			.then(
-				(response) => response.json(), // if the response is a JSON object
+				(response) => {
+				debugger;
+				if(response.status === 200) {
+					snackFunction("Add Datapackage Success. Refreshing data!");
+				document.getElementById("filename").value = "";
+				refresh();
+				} else {
+					snackFunction("Add Datapackage Failed. Contact Adminstrator!");
+					document.getElementById("filename").value = "";
+					refresh();
+				}
+				
+				}
+				
 			)
 			.catch((error) => {
 				console.log("log error.." + error);
 				snackFunction("Add Datapackage Failed. Contact Administrator!");
 				document.getElementById("filename").value = "";
+				refresh();
 			});
 	};
 
@@ -387,10 +407,11 @@
 	}
 
 	function handlePrivacy(cb, primarykey) {
+		
 		let obj = {
-			DataPackages: [{ PrimaryKey: primarykey, Privacy: cb === true ? "1" : "0" }],
+			DataPackages: [{ PrimaryKey: primarykey, Privacy: cb.checked === true ? "1" : "0" }],
 		};
-		debugger;
+		
 		headers = { Authorization: "Bearer a@v{5]MQU><waQ;Z" };
 		fetch("http://204.48.30.216:19023/DataPackageTable", {
 			method: "PUT",
