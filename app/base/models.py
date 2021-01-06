@@ -34,13 +34,16 @@ class User(db.Model, UserMixin):
                 
             setattr(self, property, value)
 
+    def get_id(self):
+        return self.uid
+
     def __repr__(self):
         return str(self.username)
 
 
 @login_manager.user_loader
-def user_loader(id):
-    return User.query.filter_by(id=id).first()
+def user_loader(uid):
+    return User.query.filter_by(uid=uid).first()
 
 @login_manager.request_loader
 def request_loader(request):
