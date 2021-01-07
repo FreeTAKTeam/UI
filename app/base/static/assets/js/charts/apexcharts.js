@@ -23,6 +23,9 @@ var options = {
 					show: false,
 				},
 			},
+			track: {
+				background: "#272929",
+			},
 		},
 	},
 	colors: ["#278AED", "#2c75ff", "#004C9A"],

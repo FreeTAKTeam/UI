@@ -77,15 +77,19 @@
 <!-- ======= Header tools ======= -->
 <div style="display: grid; grid-template-columns: 1fr;">
 <div class="card" style="padding: 16px;">
-	<div class="header-tools" style="display: grid; padding: 0px 100px; justify-content: flex-end; font-size: 20px; color: #278aed">
+	<div class="header-tools" 
+	style="display: grid; padding: 0px 16px; margin: 0 auto; width: 100%;
+	justify-content: flex-end; font-size: 20px; color: #278aed">
 		[SYSTEM CONFIGURATION]
 	</div>
 	<div style="font-size: 1rem; color: #fff; margin: 0 auto;
-	gap: 10px; border: 0px solid #fff;
-	padding: 16px; display: grid; grid-template-columns: 140px 180px 70px 180px 70px 180px 70px">
+	gap: 10px; border: 0px solid #fff; width: 100%;
+	padding: 16px; display: grid; grid-template-columns: 1fr 180px 70px 180px 70px 180px 70px">
 
-	<div class="config-rows">
+	<div class="config-rows" style="grid-row: 1/3;">
 		<div class="cols" style="padding: 5px;">
+			<label style="padding: 8px 0px; font-size: 1rem; ">Data Package IP</label>
+			
 			<input type="text" 
 			class="form-control"
 			id="ip" name="IP_address" value="">
@@ -141,11 +145,11 @@
 
 <!-- second row -->
 
-	<div class="config-rows">
+	<!-- <div class="config-rows">
 		<div class="cols" style="padding: 5px;">
 			<button class="btn btn-simple btn-twitter" style="color: #278aed; border-color: #278aed">Apply</button>
 		</div>
-	</div>
+	</div> -->
 	<div class="config-rows">
 		<div style="display: flex;justify-content: center;
 		align-items: center;">
@@ -195,7 +199,10 @@
 
 
 	</div>
-
+	<div  style="padding: 16px; text-align: right;">
+		<button class="btn btn-simple btn-twitter" onclick="applyServiceInfo()"
+		style="color: #278aed; border-color: #278aed">Apply</button>
+	</div>
 	</div>
 
 	
@@ -205,9 +212,10 @@
 		
 		<div class="card">
 			<div class="card-body">
-				<div style="width: 80%; display: grid; margin: 0 auto">
+				<div style="width: 100%; display: grid; margin: 0 auto">
 					
-						<div class="header-tools" style="display: grid; justify-content: flex-end; font-size: 20px; color: #278aed">[OUTGOING FEDERATION]</div>
+						<div class="header-tools" style="display: grid; width: 100%; margin: 0 auto; 
+						justify-content: flex-end; font-size: 20px; color: #278aed">[MANAGE PRESENCE]</div>
 						<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
 							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
 								<div style="font-size: 16px; color: #b5b5b5">Name</div>
@@ -215,7 +223,7 @@
 							</div>
 
 							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-								<div style="font-size: 16px; color: #b5b5b5">IP</div>
+								<div style="font-size: 16px; color: #b5b5b5">IP / Domain</div>
 								<div><input type="text" class="form-control" value="" /></div>
 							</div>
 						</div>
@@ -278,12 +286,12 @@
 <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 <script>
 var ip = "204.48.30.216";
-
+var socket = io.connect(`http://${ip}:19023`);
 
 // this gets current server data
 async function establishConnection() {
 	console.log("Make connection");
-	var socket = io.connect(`http://${ip}:19023`);
+//	var socket = io.connect(`http://${ip}:19023`);
 
 
 	console.log("Emit event authenticate...");
@@ -374,6 +382,104 @@ const getServiceInfo = (socket) => {
 	});
 	
 };
+
+
+
+const applyServiceInfo = () => {
+
+	
+
+let obj =	{
+   "services": {
+       "SSL_CoT_service": {
+                     "status": document.getElementById("SSLCoTOnOffSwitch").checked === true ? "on" : "off",
+                     "port": document.getElementById("ssl_cot_port").value
+                 },
+       "TCP_CoT_service": {
+                     "status": document.getElementById("TCPCoTOnOffSwitch").checked === true ? "on" : "off",
+                     "port": document.getElementById("tcp_cot_port").value
+                 },
+       "SSL_DataPackage_service": {
+                     "status": document.getElementById("SSLDPOnOffSwitch").checked === true ? "on" : "off",
+                     "port": document.getElementById("ssl_dp_port").value
+                 },
+       "TCP_DataPackage_service": {
+                     "status": document.getElementById("HTTPDPOnOffSwitch").checked === true ? "on" : "off",
+                     "port": document.getElementById("http_dp_port").value
+                 },
+       "Federation_server_service": {
+                     "status": document.getElementById("FEDOnOffSwitch").checked === true ? "on" : "off",
+                     "port": document.getElementById("fed_port").value
+                 },
+       "Rest_API_service": {
+                     "status": document.getElementById("APIOnOffSwitch").checked === true ? "on" : "off",
+                     "port": document.getElementById("api_port").value
+                 }
+   },
+   "IP": document.getElementById("ip").value
+}
+
+	var socket = io.connect(`http://${ip}:19023`);
+
+	debugger;
+	socket.emit("serviceInfo", JSON.stringify(obj) );
+	socket.on("serviceInfoUpdate", function (data) {
+		let serviceInfoObject = JSON.parse(data);
+		console.log("Print CONFIGURE serviceInfoUpdate Response:" + JSON.stringify(serviceInfoObject));
+
+		document.getElementById("tcp_cot_port").value = serviceInfoObject.services.TCP_CoT_service.port;
+		document.getElementById("ssl_cot_port").value = serviceInfoObject.services.SSL_CoT_service.port;
+		
+		document.getElementById("http_dp_port").value = serviceInfoObject.services.TCP_DataPackage_service.port;
+		document.getElementById("ssl_dp_port").value = serviceInfoObject.services.SSL_DataPackage_service.port;
+		
+		document.getElementById("api_port").value = serviceInfoObject.services.Rest_API_service.port;
+		document.getElementById("fed_port").value = serviceInfoObject.services.Federation_server_service.port;
+
+		document.getElementById("ip").value = serviceInfoObject.ip;
+
+		
+		if(serviceInfoObject.services.TCP_CoT_service.status == "on") {
+			document.getElementById("TCPCoTOnOffSwitch").checked = true;
+		} else {
+			document.getElementById("TCPCoTOnOffSwitch").checked = false;
+		}
+
+		if(serviceInfoObject.services.SSL_CoT_service.status == "on") {
+			document.getElementById("SSLCoTOnOffSwitch").checked = true;
+		} else {
+			document.getElementById("SSLCoTOnOffSwitch").checked = false;
+		}
+
+		if(serviceInfoObject.services.TCP_DataPackage_service.status == "on") {
+			document.getElementById("HTTPDPOnOffSwitch").checked = true;
+		} else {
+			document.getElementById("HTTPDPOnOffSwitch").checked = false;
+		}
+
+		if(serviceInfoObject.services.SSL_DataPackage_service.status == "on") {
+			document.getElementById("SSLDPOnOffSwitch").checked = true;
+		} else {
+			document.getElementById("SSLDPOnOffSwitch").checked = false;
+		}
+
+		if(serviceInfoObject.services.Rest_API_service.status == "on") {
+			document.getElementById("APIOnOffSwitch").checked = true;
+		} else {
+			document.getElementById("APIOnOffSwitch").checked = false;
+		}
+
+		if(serviceInfoObject.services.Federation_server_service.status == "on") {
+			document.getElementById("FEDOnOffSwitch").checked = true;
+		} else {
+			document.getElementById("FEDOnOffSwitch").checked = false;
+		}
+
+
+	});
+	
+};
+
 
 // missing FederationServerService
 
