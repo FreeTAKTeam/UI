@@ -7,7 +7,7 @@
 	<div class="col-md-8">
 		<div class="card">
 			<div class="card-header">
-				<h5 class="title">Edit Profile</h5>
+				<h5 class="title" style="font-size: 14px; color: #278aed">[EDIT PROFILE]</h5>
 			</div>
 			<div class="card-body">
 				<form>
@@ -15,13 +15,13 @@
 						<div class="col-md-5 pr-md-1">
 							<div class="form-group">
 								<label>Name (disabled)</label>
-								<input type="text" class="form-control" disabled="" value="{{ current_user.username }}" />
+								<input type="text" class="form-control" disabled="" value="{{ current_user.name }}" />
 							</div>
 						</div>
 						<div class="col-md-7 px-md-1">
 							<div class="form-group">
 								<label>Group</label>
-								<input type="text" class="form-control" value="{{ current_user.username }}" />
+								<input type="text" class="form-control" value="{{ current_user.group }}" />
 							</div>
 						</div>
 					</div>
@@ -29,13 +29,13 @@
 						<div class="col-md-6 pr-md-1">
 							<div class="form-group">
 								<label>Token</label>
-								<input type="text" class="form-control" placeholder="Company" value="Mike" />
+								<input type="text" class="form-control" placeholder="Company" value="{{ current_user.token }}" />
 							</div>
 						</div>
 						<div class="col-md-6 pl-md-1">
 							<div class="form-group">
 								<label>Password</label>
-								<input type="text" class="form-control" placeholder="Last Name" value="Andrew" />
+								<input type="text" class="form-control" placeholder="Last Name" value="{{ current_user.password}}" />
 							</div>
 						</div>
 					</div>
@@ -44,7 +44,7 @@
 						<div class="col-md-12 pr-md-1">
 							<div class="form-group">
 								<label>Certs</label>
-								<input type="text" class="form-control" placeholder="Company" value="Mike" />
+								<input type="text" class="form-control" placeholder="Company" value="{{ current_user.certificate_package_name}}" />
 							</div>
 						</div>
 					</div>

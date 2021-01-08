@@ -4,12 +4,12 @@
 {% block stylesheets %}
 <style>
 	.multiselect {
-		width: 20em;
 		height: auto;
-		max-height: 300px;
-		border: 1px solid #278aed;
-		padding: 10px;
-		margin: 20px;
+		max-height: 400px;
+
+		background-color: #27293d;
+		padding: 20px;
+		margin: 20px 0px 20px 20px;
 		overflow: auto;
 	}
 
@@ -36,7 +36,10 @@
 	<div id="user-table-hdr"></div>
 	<div id="user-table"></div>
 
-	<div class="footer-tools" style="background-color: #27293d; padding: 16px 16px 16px 50px; display: grid; grid-template-columns: 1fr 1fr">
+	<div
+		class="footer-tools"
+		style="background-color: #27293d; text-align: right; padding: 16px 20px 16px 50px; display: grid; grid-template-columns: 1fr"
+	>
 		<div>
 			<div
 				class="btn btn-simple btn-twitter"
@@ -104,17 +107,34 @@
 				</tbody>
 			</table>
 		</div>
-		<div style="background-color: #27293d">
+		<div>
 			<div class="multiselect">
-				<label><input type="checkbox" checked name="option[]" value="1" /> Create Enemy CoT</label>
-				<label><input type="checkbox" name="option[]" value="2" />Create Friendly CoT</label>
-				<label><input type="checkbox" name="option[]" value="3" />Create EMS CoT</label>
-				<label><input type="checkbox" checked name="option[]" value="4" />Create Routes CoT</label>
+				<label
+					><input type="checkbox" checked name="option[]" value="1" />
+					<span style="color: #fff; opacity: 0.8; padding: 0px 0px 0px 16px"> Enemy CoT </span></label
+				>
+				<label
+					><input type="checkbox" name="option[]" value="2" />
+					<span style="color: #fff; opacity: 0.8; padding: 0px 0px 0px 16px">Create Friendly CoT</span></label
+				>
+				<label
+					><input type="checkbox" name="option[]" value="3" /><span style="color: #fff; opacity: 0.8; padding: 0px 0px 0px 16px"
+						>Create EMS CoT</span
+					></label
+				>
+				<label
+					><input type="checkbox" checked name="option[]" value="4" /><span style="color: #fff; opacity: 0.8; padding: 0px 0px 0px 16px"
+						>Create Routes CoT</span
+					></label
+				>
 			</div>
 		</div>
 	</div>
 
-	<div class="footer-tools" style="background-color: #27293d; padding: 16px 16px 16px 50px; display: grid; grid-template-columns: 1fr 1fr">
+	<div
+		class="footer-tools"
+		style="background-color: #27293d; text-align: right; padding: 16px 16px 16px 50px; display: grid; grid-template-columns: 1fr"
+	>
 		<div>
 			<div class="btn btn-simple btn-twitter" style="color: #278aed80; border-color: #278aed80; display: inline-flex">
 				<span>DELETE</span> <span id="del-count">&nbsp;</span>
@@ -239,11 +259,13 @@
 					groupCell.className = "user-cell-style-1";
 
 					let tokenCell = t_row.insertCell();
-					tokenCell.textContent = row.Token;
+					// tokenCell.textContent = row.Token;
+					tokenCell.textContent = "************";
 					tokenCell.className = "user-cell-style-1";
 
 					let passwordCell = t_row.insertCell();
-					passwordCell.textContent = row.Password;
+					passwordCell.textContent = "************";
+					// passwordCell.textContent = row.Password;
 					passwordCell.className = "user-cell-style-1";
 
 					let certsCell = t_row.insertCell();
@@ -334,7 +356,7 @@
 				},
 			],
 		};
-		debugger;
+
 		var socket = io.connect(`http://${ip}:19023`);
 
 		console.log("Emit event authenticate...");

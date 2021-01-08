@@ -22,17 +22,16 @@ import binascii
 
 import dns.exception
 import dns.ipv4
-from ._compat import xrange, binary_type, maybe_decode
 
 _leading_zero = re.compile(r'0+([0-9a-f]+)')
 
 def inet_ntoa(address):
     """Convert an IPv6 address in binary form to text form.
 
-    *address*, a ``binary``, the IPv6 address in binary form.
+    *address*, a ``bytes``, the IPv6 address in binary form.
 
     Raises ``ValueError`` if the address isn't 16 bytes long.
-    Returns a ``text``.
+    Returns a ``str``.
     """
 
     if len(address) != 16:
@@ -42,12 +41,12 @@ def inet_ntoa(address):
     i = 0
     l = len(hex)
     while i < l:
-        chunk = maybe_decode(hex[i : i + 4])
+        chunk = hex[i:i + 4].decode()
         # strip leading zeros.  we do this with an re instead of
         # with lstrip() because lstrip() didn't support chars until
         # python 2.2.2
         m = _leading_zero.match(chunk)
-        if not m is None:
+        if m is not None:
             chunk = m.group(1)
         chunks.append(chunk)
         i += 4
@@ -58,7 +57,7 @@ def inet_ntoa(address):
     best_len = 0
     start = -1
     last_was_zero = False
-    for i in xrange(8):
+    for i in range(8):
         if chunks[i] != '0':
             if last_was_zero:
                 end = i
@@ -97,19 +96,30 @@ _v4_ending = re.compile(br'(.*):(\d+\.\d+\.\d+\.\d+)$')
 _colon_colon_start = re.compile(br'::.*')
 _colon_colon_end = re.compile(br'.*::$')
 
-def inet_aton(text):
+def inet_aton(text, ignore_scope=False):
     """Convert an IPv6 address in text form to binary form.
 
-    *text*, a ``text``, the IPv6 address in textual form.
+    *text*, a ``str``, the IPv6 address in textual form.
 
-    Returns a ``binary``.
+    *ignore_scope*, a ``bool``.  If ``True``, a scope will be ignored.
+    If ``False``, the default, it is an error for a scope to be present.
+
+    Returns a ``bytes``.
     """
 
     #
     # Our aim here is not something fast; we just want something that works.
     #
-    if not isinstance(text, binary_type):
+    if not isinstance(text, bytes):
         text = text.encode()
+
+    if ignore_scope:
+        parts = text.split(b'%')
+        l = len(parts)
+        if l == 2:
+            text = parts[0]
+        elif l > 2:
+            raise dns.exception.SyntaxError
 
     if text == b'::':
         text = b'0::'
@@ -117,8 +127,8 @@ def inet_aton(text):
     # Get rid of the icky dot-quad syntax if we have it.
     #
     m = _v4_ending.match(text)
-    if not m is None:
-        b = bytearray(dns.ipv4.inet_aton(m.group(2)))
+    if m is not None:
+        b = dns.ipv4.inet_aton(m.group(2))
         text = (u"{}:{:02x}{:02x}:{:02x}{:02x}".format(m.group(1).decode(),
                                                        b[0], b[1], b[2],
                                                        b[3])).encode()
@@ -127,11 +137,11 @@ def inet_aton(text):
     # turn '<whatever>::' into '<whatever>:'
     #
     m = _colon_colon_start.match(text)
-    if not m is None:
+    if m is not None:
         text = text[1:]
     else:
         m = _colon_colon_end.match(text)
-        if not m is None:
+        if m is not None:
             text = text[:-1]
     #
     # Now canonicalize into 8 chunks of 4 hex digits each
@@ -147,7 +157,7 @@ def inet_aton(text):
             if seen_empty:
                 raise dns.exception.SyntaxError
             seen_empty = True
-            for i in xrange(0, 8 - l + 1):
+            for i in range(0, 8 - l + 1):
                 canonical.append(b'0000')
         else:
             lc = len(c)
@@ -173,7 +183,7 @@ _mapped_prefix = b'\x00' * 10 + b'\xff\xff'
 def is_mapped(address):
     """Is the specified address a mapped IPv4 address?
 
-    *address*, a ``binary`` is an IPv6 address in binary form.
+    *address*, a ``bytes`` is an IPv6 address in binary form.
 
     Returns a ``bool``.
     """

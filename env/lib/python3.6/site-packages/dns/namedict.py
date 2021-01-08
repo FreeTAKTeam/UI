@@ -27,12 +27,12 @@
 
 """DNS name dictionary"""
 
-import collections
+from collections.abc import MutableMapping
+
 import dns.name
-from ._compat import xrange
 
 
-class NameDict(collections.MutableMapping):
+class NameDict(MutableMapping):
     """A dictionary whose keys are dns.name.Name objects.
 
     In addition to being like a regular Python dictionary, this
@@ -42,7 +42,7 @@ class NameDict(collections.MutableMapping):
     __slots__ = ["max_depth", "max_depth_items", "__store"]
 
     def __init__(self, *args, **kwargs):
-        super(NameDict, self).__init__()
+        super().__init__()
         self.__store = dict()
         #: the maximum depth of the keys that have ever been added
         self.max_depth = 0
@@ -67,8 +67,8 @@ class NameDict(collections.MutableMapping):
         self.__update_max_depth(key)
 
     def __delitem__(self, key):
-        value = self.__store.pop(key)
-        if len(value) == self.max_depth:
+        self.__store.pop(key)
+        if len(key) == self.max_depth:
             self.max_depth_items = self.max_depth_items - 1
         if self.max_depth_items == 0:
             self.max_depth = 0
@@ -100,7 +100,7 @@ class NameDict(collections.MutableMapping):
         depth = len(name)
         if depth > self.max_depth:
             depth = self.max_depth
-        for i in xrange(-depth, 0):
+        for i in range(-depth, 0):
             n = dns.name.Name(name[i:])
             if n in self:
                 return (n, self[n])

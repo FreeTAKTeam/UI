@@ -20,7 +20,6 @@
 import dns.exception
 import dns.name
 import dns.resolver
-from ._compat import string_types, maybe_decode
 
 #: The public E.164 domain.
 public_enum_domain = dns.name.from_text('e164.arpa.')
@@ -33,7 +32,7 @@ def from_e164(text, origin=public_enum_domain):
     Non-digits in the text are ignored, i.e. "16505551212",
     "+1.650.555.1212" and "1 (650) 555-1212" are all the same.
 
-    *text*, a ``text``, is an E.164 number in textual form.
+    *text*, a ``str``, is an E.164 number in textual form.
 
     *origin*, a ``dns.name.Name``, the domain in which the number
     should be constructed.  The default is ``e164.arpa.``.
@@ -63,7 +62,7 @@ def to_e164(name, origin=public_enum_domain, want_plus_prefix=True):
     *want_plus_prefix* is a ``bool``.  If True, add a '+' to the beginning of
     the returned number.
 
-    Returns a ``text``.
+    Returns a ``str``.
 
     """
     if origin is not None:
@@ -75,7 +74,7 @@ def to_e164(name, origin=public_enum_domain, want_plus_prefix=True):
     text = b''.join(dlabels)
     if want_plus_prefix:
         text = b'+' + text
-    return maybe_decode(text)
+    return text.decode()
 
 
 def query(number, domains, resolver=None):
@@ -83,7 +82,7 @@ def query(number, domains, resolver=None):
 
     e.g. lookup('16505551212', ['e164.dnspython.org.', 'e164.arpa.'])
 
-    *number*, a ``text`` is the number to look for.
+    *number*, a ``str`` is the number to look for.
 
     *domains* is an iterable containing ``dns.name.Name`` values.
 
@@ -95,11 +94,11 @@ def query(number, domains, resolver=None):
         resolver = dns.resolver.get_default_resolver()
     e_nx = dns.resolver.NXDOMAIN()
     for domain in domains:
-        if isinstance(domain, string_types):
+        if isinstance(domain, str):
             domain = dns.name.from_text(domain)
         qname = dns.e164.from_e164(number, domain)
         try:
-            return resolver.query(qname, 'NAPTR')
+            return resolver.resolve(qname, 'NAPTR')
         except dns.resolver.NXDOMAIN as e:
             e_nx += e
     raise e_nx

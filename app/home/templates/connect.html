@@ -9,16 +9,16 @@
 	<div style="display: grid; width: 90%; margin: 0 auto">
 		<div class="card">
 			<div class="card-body">
-				<div style="width: 80%; display: grid; margin: 0 auto">
+				<div style="width: 100%; display: grid; margin: 0 auto; padding: 16px">
 					<div class="header-tools" style="display: grid; justify-content: flex-end; font-size: 20px; color: #278aed">[SEND COT]</div>
 					<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
 						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-							<div style="font-size: 16px; color: #b5b5b5">Name</div>
+							<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px">Name</div>
 							<div><input type="text" class="form-control" id="name1" value="" /></div>
 						</div>
 
 						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-							<div style="font-size: 16px; color: #b5b5b5">Attitude</div>
+							<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px">Attitude</div>
 							<div class="select">
 								<select name="format" id="attitude1">
 									<option value="friend">Friend</option>
@@ -36,12 +36,12 @@
 
 					<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
 						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-							<div style="font-size: 16px; color: #b5b5b5">Longitude</div>
-							<div><input type="text" class="form-control" id="longitude1" placeholder="-00.0000" value="" /></div>
+							<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px">Longitude</div>
+							<div><input type="text" class="form-control" id="longitude1" style="width: 200px !important" placeholder="-00.0000" value="" /></div>
 						</div>
 
 						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-							<div style="font-size: 16px; color: #b5b5b5">GeoObject</div>
+							<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px">GeoObject</div>
 							<div class="select">
 								<select name="format" id="geoobject1">
 									<option value="Gnd Combat Infantry Rifleman">Gnd Combat Infantry Rifleman</option>
@@ -62,13 +62,13 @@
 
 					<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
 						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-							<div style="font-size: 16px; color: #b5b5b5">Latitude</div>
-							<div><input type="text" class="form-control" id="latitude1" placeholder="00.000" value="" /></div>
+							<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px">Latitude</div>
+							<div><input type="text" class="form-control" id="latitude1" style="width: 200px !important" placeholder="00.000" value="" /></div>
 						</div>
 
 						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-							<div style="font-size: 16px; color: #b5b5b5">Timeout</div>
-							<div><input type="number" class="form-control" id="timeout1" value="600" /></div>
+							<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px">Timeout</div>
+							<div><input type="number" class="form-control" id="timeout1" value="600" style="width: 100px !important" /></div>
 						</div>
 					</div>
 
@@ -80,79 +80,83 @@
 		</div>
 		<!-- ======= Header tools ======= -->
 		<div class="card">
-			<div class="header-tools" style="display: grid; padding: 10px 100px; justify-content: flex-end; font-size: 20px; color: #278aed">
-				[EMERGENCY]
-			</div>
-			<!-- ======= Table ======= -->
-			<div class="datatable-container" style="width: 90%">
-				<div class="datatable">
-					<div>
-						<div style="display: grid; grid-template-columns: 240px 100px 100px 180px 240px">
-							<div style="font-size: 16px; color: #b5b5b5">Name</div>
-							<div style="font-size: 16px; color: #b5b5b5">Latitude</div>
-							<div style="font-size: 16px; color: #b5b5b5">Longitude</div>
-							<div style="font-size: 16px; color: #b5b5b5">Type</div>
-							<div style="font-size: 16px; color: #b5b5b5">UID</div>
-							<div>&nbsp;</div>
+			<div class="card-body">
+				<div style="width: 100%; display: grid; margin: 0 auto; padding: 16px">
+					<div class="header-tools" style="display: grid; justify-content: flex-end; font-size: 20px; color: #278aed">[EMERGENCY]</div>
+					<!-- <div class="card" style="width: 100%; display: grid; margin: 0 auto">
+			<div class="header-tools" style="display: grid; padding: 10px 0px; justify-content: flex-end; font-size: 20px; color: #278aed">[EMERGENCY]</div> -->
+					<!-- ======= Table ======= -->
+					<div class="datatable-container" style="width: 100%">
+						<div class="datatable">
+							<div style="display: grid; grid-template-columns: 1fr 100px 100px 180px 1fr; padding: 10px">
+								<div style="font-size: 16px; color: #fff">Name</div>
+								<div style="font-size: 16px; color: #fff">Latitude</div>
+								<div style="font-size: 16px; color: #fff">Longitude</div>
+								<div style="font-size: 16px; color: #fff">Type</div>
+								<div style="font-size: 16px; color: #fff">UID</div>
+							</div>
+
+							<div style="max-height: 300px; overflow: auto">
+								{% for dict_items in json_data %}
+
+								<div
+									class="row-color-nohover row-class"
+									style="display: grid; grid-template-columns: 1fr 100px 100px 180px 1fr; padding: 10px; color: #fff; opacity: 0.8"
+									onclick="captureClick('{{dict_items.Hash}}')"
+								>
+									<div>{{dict_items['PrimaryKey']}}</div>
+									<div>{{dict_items['lat']}}</div>
+									<div>{{dict_items['lon']}}</div>
+									<div>{{dict_items['type']}}</div>
+									<div>{{dict_items['uid']}}</div>
+								</div>
+								{% endfor %}
+							</div>
+							<div>{% if json_data|length == 0 %} No Records. {% endif %}</div>
 						</div>
 					</div>
-
-					<div style="max-height: 300px; overflow: auto">
-						{% for dict_items in json_data %} {% if loop.index == 1 %} {% endif %}
-
-						<div
-							class="row-color-nohover row-class"
-							style="display: grid; grid-template-columns: 240px 100px 100px 180px 240px; padding: 10px; color: #fff; opacity: 0.8"
-							onclick="captureClick('{{dict_items.Hash}}')"
-						>
-							<div>{{dict_items['PrimaryKey']}}</div>
-							<div>&nbsp;</div>
-							<div>&nbsp;</div>
-							<div style="text-align: center">&nbsp;</div>
-							<div style="text-align: center">{{dict_items['uid']}}</div>
+					<!-- ======= Footer tools ======= -->
+					<div class="footer-tools" style="background-color: #27293d; padding: 16px 0px 16px 50px; text-align: right">
+						<button class="btn btn-simple btn-twitter" style="color: #278aed80; border-color: #278aed80">DELETE</button>
+						&nbsp;&nbsp;&nbsp;
+						<button class="btn btn-simple btn-twitter" onclick="addEmergencyToggle()" style="color: #278aed; border-color: #278aed">ADD</button>
+					</div>
+					<div style="display: none" id="addEmergency">
+						<div style="display: grid; width: 80%; margin: 0 auto; grid-template-columns: 1fr 100px 100px 180px 1fr; gap: 20px; padding-bottom: 16px">
+							<div><input type="text" class="form-control" id="name2" value="" placeholder="Name" /></div>
+							<div><input type="text" class="form-control" id="latitude2" value="" placeholder="Latitude" /></div>
+							<div><input type="text" class="form-control" id="longitude2" value="" placeholder="Longitude" /></div>
+							<div class="select">
+								<select name="format" id="emergencytype2">
+									<option value="911 Alert">911 Alert</option>
+									<option value="Ring The Bell">Ring The Bell</option>
+									<option value="Geo-fence Breached">Geo-fence Breached</option>
+									<option selected value="In Contact">In Contact</option>
+								</select>
+							</div>
+						</div>
+						<div style="background-color: #27293d; padding: 10px 0px; display: grid; justify-content: end">
+							<button class="btn btn-simple btn-twitter" onclick="postEmergency()" style="color: #278aed; border-color: #278aed">Send</button>
 						</div>
 					</div>
-					<div>{% endfor %} {% if json_data|length == 0 %} No Records. {% endif %}</div>
-				</div>
-			</div>
-			<!-- ======= Footer tools ======= -->
-			<div class="footer-tools" style="background-color: #27293d; padding: 16px 0px 16px 50px">
-				<button class="btn btn-simple btn-twitter" style="color: #278aed80; border-color: #278aed80">DELETE</button>
-				&nbsp;&nbsp;&nbsp;
-				<button class="btn btn-simple btn-twitter" onclick="addEmergencyToggle()" style="color: #278aed; border-color: #278aed">ADD</button>
-			</div>
-			<div style="display: none" id="addEmergency">
-				<div style="display: grid; width: 80%; margin: 0 auto; grid-template-columns: 1fr 100px 100px 180px 1fr; gap: 20px">
-					<div><input type="text" class="form-control" id="name2" value="" placeholder="Name" /></div>
-					<div><input type="text" class="form-control" id="latitude2" value="" placeholder="Latitude" /></div>
-					<div><input type="text" class="form-control" id="longitude2" value="" placeholder="Longitude" /></div>
-					<div class="select">
-						<select name="format" id="emergencytype2">
-							<option value="911 Alert">911 Alert</option>
-							<option value="Ring The Bell">Ring The Bell</option>
-							<option value="Geo-fence Breached">Geo-fence Breached</option>
-							<option selected value="In Contact">In Contact</option>
-						</select>
-					</div>
-				</div>
-				<div style="background-color: #27293d; padding: 10px 20px; display: grid; justify-content: end">
-					<button class="btn btn-simple btn-twitter" onclick="postEmergency()" style="color: #278aed; border-color: #278aed">Send</button>
 				</div>
 			</div>
 		</div>
 
 		<div class="card">
 			<div class="card-body">
-				<div style="width: 80%; display: grid; margin: 0 auto">
-					<div class="header-tools" style="display: grid; justify-content: flex-end; font-size: 20px; color: #278aed">[OUTGOING FEDERATION]</div>
+				<div style="width: 100%; display: grid; margin: 0 auto">
+					<div class="header-tools" style="display: grid; justify-content: flex-end; padding-right: 16px; font-size: 20px; color: #278aed">
+						[MANAGE PRESENCE]
+					</div>
 					<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
 						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-							<div style="font-size: 16px; color: #b5b5b5">Name</div>
+							<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px">Name</div>
 							<div><input type="text" class="form-control" value="" id="name3" /></div>
 						</div>
 
 						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-							<div style="font-size: 16px; color: #b5b5b5">Role</div>
+							<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px">Role</div>
 							<div class="select">
 								<select name="format" id="role3">
 									<option selected value="Team Member">Team Member</option>
@@ -170,12 +174,12 @@
 
 					<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
 						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-							<div style="font-size: 16px; color: #b5b5b5">Longitude</div>
+							<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px">Longitude</div>
 							<div><input type="text" class="form-control" id="longitude3" value="" /></div>
 						</div>
 
 						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-							<div style="font-size: 16px; color: #b5b5b5">Team</div>
+							<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px">Team</div>
 							<div class="select">
 								<select name="format" id="team3">
 									<option value="Yellow">Yellow</option>
@@ -198,11 +202,11 @@
 
 					<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
 						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-							<div style="font-size: 16px; color: #b5b5b5">Latitude</div>
+							<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px">Latitude</div>
 							<div><input type="text" class="form-control" value="" id="latitude3" /></div>
 						</div>
 
-						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
+						<div style="display: grid; grid-template-columns: 1fr; text-align: right; padding-right: 31px">
 							<div>
 								<button class="btn btn-simple btn-twitter" onclick="postPresence()" style="color: #278aed; border-color: #278aed">Send</button>
 							</div>
@@ -214,10 +218,15 @@
 
 		<div class="card">
 			<div class="card-body">
-				<div style="width: 80%; display: grid; margin: 0 auto">
-					<div class="header-tools" style="display: grid; justify-content: flex-end; font-size: 20px; color: #278aed">[MESSAGE]</div>
-					<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
-						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
+				<div style="width: 100%; display: grid; margin: 0 auto">
+					<div class="header-tools" style="display: grid; justify-content: flex-end; padding-right: 16px; font-size: 20px; color: #278aed">
+						[MESSAGE]
+					</div>
+					<div
+						class="row"
+						style="display: grid; grid-template-columns: 1fr; gap: 20px; align-items: center; width: 80%; padding: 10px 0px; margin: 0 auto"
+					>
+						<div style="display: grid; grid-template-columns: 1fr; align-items: center">
 							<div>
 								<textarea
 									name="comment"
@@ -229,7 +238,7 @@
 										border: 1px solid #2b3553 !important;
 										border-radius: 0 !important;
 										line-height: 2 !important;
-										width: 500px !important;
+										width: 100% !important;
 									"
 									id="message1"
 									placeholder="ex:The server will shutdown in 5 minutes..."
@@ -238,16 +247,18 @@
 						</div>
 					</div>
 
-					<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
-						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
+					<div
+						class="row"
+						style="display: grid; grid-template-columns: 1fr; gap: 20px; width: 80%; margin: 0 auto; align-items: center; padding: 10px 0px"
+					>
+						<div style="display: grid; grid-template-columns: 100px 1fr; align-items: center">
 							<div style="font-size: 16px; color: #b5b5b5">Sender</div>
-							<div><input type="text" class="form-control" value="" id="sendername1" /></div>
+							<div><input type="text" class="form-control" value="" id="sendername1" style="width: 200px !important" /></div>
 						</div>
-
-						<div style="display: grid; grid-template-columns: 1fr; justify-items: flex-end">
-							<div>
-								<button class="btn btn-simple btn-twitter" onclick="postGeoChat()" style="color: #278aed; border-color: #278aed">Send</button>
-							</div>
+					</div>
+					<div style="display: grid; grid-template-columns: 1fr; justify-items: flex-end">
+						<div style="padding-right: 31px">
+							<button class="btn btn-simple btn-twitter" onclick="postGeoChat()" style="color: #278aed; border-color: #278aed">Send</button>
 						</div>
 					</div>
 				</div>
@@ -316,21 +327,23 @@
 			body: JSON.stringify(obj),
 		}).then((response) => {
 			if (response.status === 500) {
-				snackFunction("Error !!! contact administrator");
+				snackFunction("Error !!! contact administrator. Refreshing Data!");
 				document.getElementById("name1").value = "";
 				document.getElementById("longitude1").value = "";
 				document.getElementById("attitude1").value = "Friendly";
 				document.getElementById("latitude1").value = "";
 				document.getElementById("geoobject1").value === "Ground";
 				document.getElementById("timeout1").value === "600";
+				refresh();
 			} else if (response.status === 200) {
-				snackFunction("GeoObject add successful");
+				snackFunction("GeoObject add successful. Refreshing Data!");
 				document.getElementById("name1").value = "";
 				document.getElementById("longitude1").value = "";
 				document.getElementById("attitude1").value = "Friendly";
 				document.getElementById("latitude1").value = "";
 				document.getElementById("geoobject1").value === "Ground";
 				document.getElementById("timeout1").value === "600";
+				refresh();
 			}
 		});
 	};
@@ -356,13 +369,15 @@
 			body: JSON.stringify(obj),
 		}).then((response) => {
 			if (response.status === 500) {
-				snackFunction("Error !!! contact administrator");
+				snackFunction("Error !!! contact administrator. Refreshing Data !");
 				document.getElementById("message1").value = "";
 				document.getElementById("sendername1").value = "";
+				refresh();
 			} else if (response.status === 200) {
-				snackFunction("Sending Geo Chat successful");
+				snackFunction("Sending Geo Chat successful. Refreshing Data !");
 				document.getElementById("message1").value = "";
 				document.getElementById("sendername1").value = "";
+				refresh();
 			}
 		});
 	};
@@ -393,17 +408,19 @@
 			body: JSON.stringify(obj),
 		}).then((response) => {
 			if (response.status === 500) {
-				snackFunction("Error !!! contact administrator");
+				snackFunction("Error !!! contact administrator. Refreshing Data!");
 				document.getElementById("name2").value = "";
 				document.getElementById("longitude2").value = "";
 				document.getElementById("latitude2").value = "";
 				document.getElementById("emergencytype2").value = "In Contact";
+				refresh();
 			} else if (response.status === 200) {
-				snackFunction("Sending emergency message successful");
+				snackFunction("Sending emergency message successful. Refreshing Data!");
 				document.getElementById("name2").value = "";
 				document.getElementById("longitude2").value = "";
 				document.getElementById("latitude2").value = "";
 				document.getElementById("emergencytype2").value = "In Contact";
+				refresh();
 			}
 		});
 	};
@@ -436,27 +453,37 @@
 			body: JSON.stringify(obj),
 		}).then((response) => {
 			if (response.status === 500) {
-				snackFunction("Error !!! contact administrator");
+				snackFunction("Error !!! contact administrator. Refreshing Data!");
 				document.getElementById("name3").value = "";
 				document.getElementById("longitude3").value = "";
 				document.getElementById("latitude3").value = "";
 				document.getElementById("team3").value = "Blue";
 				document.getElementById("role3").value = "Team Member";
+				refresh();
 			} else if (response.status === 200) {
-				snackFunction("Manage Presence successful");
+				snackFunction("Manage Presence successful. Refreshing Data!");
 				document.getElementById("name3").value = "";
 				document.getElementById("longitude3").value = "";
 				document.getElementById("latitude3").value = "";
 				document.getElementById("team3").value = "Blue";
 				document.getElementById("role3").value = "Team Member";
+				refresh();
 			}
 		});
 	};
+
+	function refresh() {
+		setTimeout(function () {
+			location.reload(true);
+		}, 3000);
+	}
 
 	function addEmergencyToggle() {
 		var x = document.getElementById("addEmergency");
 		if (x.style.display === "none") {
 			x.style.display = "block";
+			x.style.backgroundColor = "#1e1e2f";
+			x.style.padding = "16px 0px 0px 0px ";
 		} else {
 			x.style.display = "none";
 		}

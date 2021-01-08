@@ -17,21 +17,21 @@
 
 """DNS nodes.  A node is a set of rdatasets."""
 
-from io import StringIO
+import io
 
 import dns.rdataset
 import dns.rdatatype
 import dns.renderer
 
 
-class Node(object):
+class Node:
 
     """A Node is a set of rdatasets."""
 
     __slots__ = ['rdatasets']
 
     def __init__(self):
-        #: the set of rdatsets, represented as a list.
+        # the set of rdatasets, represented as a list.
         self.rdatasets = []
 
     def to_text(self, name, **kw):
@@ -40,16 +40,18 @@ class Node(object):
         Each rdataset at the node is printed.  Any keyword arguments
         to this method are passed on to the rdataset's to_text() method.
 
-        *name*, a ``dns.name.Name`` or ``text``, the owner name of the rdatasets.
+        *name*, a ``dns.name.Name`` or ``str``, the owner name of the
+        rdatasets.
 
-        Returns a ``text``.
+        Returns a ``str``.
+
         """
 
-        s = StringIO()
+        s = io.StringIO()
         for rds in self.rdatasets:
             if len(rds) > 0:
                 s.write(rds.to_text(name, **kw))
-                s.write(u'\n')
+                s.write('\n')
         return s.getvalue()[:-1]
 
     def __repr__(self):
@@ -85,14 +87,15 @@ class Node(object):
 
         *rdtype*, an ``int``, the type of the rdataset.
 
-        *covers*, an ``int``, the covered type.  Usually this value is
-        dns.rdatatype.NONE, but if the rdtype is dns.rdatatype.SIG or
-        dns.rdatatype.RRSIG, then the covers value will be the rdata
-        type the SIG/RRSIG covers.  The library treats the SIG and RRSIG
-        types as if they were a family of
-        types, e.g. RRSIG(A), RRSIG(NS), RRSIG(SOA).  This makes RRSIGs much
-        easier to work with than if RRSIGs covering different rdata
-        types were aggregated into a single RRSIG rdataset.
+        *covers*, an ``int`` or ``None``, the covered type.
+        Usually this value is ``dns.rdatatype.NONE``, but if the
+        rdtype is ``dns.rdatatype.SIG`` or ``dns.rdatatype.RRSIG``,
+        then the covers value will be the rdata type the SIG/RRSIG
+        covers.  The library treats the SIG and RRSIG types as if they
+        were a family of types, e.g. RRSIG(A), RRSIG(NS), RRSIG(SOA).
+        This makes RRSIGs much easier to work with than if RRSIGs
+        covering different rdata types were aggregated into a single
+        RRSIG rdataset.
 
         *create*, a ``bool``.  If True, create the rdataset if it is not found.
 

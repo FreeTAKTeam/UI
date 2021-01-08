@@ -18,16 +18,16 @@ function deactivate -d 'Exit virtualenv mode and return to the normal environmen
     # reset old environment variables
     if test -n "$_OLD_VIRTUAL_PATH"
         # https://github.com/fish-shell/fish-shell/issues/436 altered PATH handling
-        if test (echo $FISH_VERSION | tr "." "\n")[1] -lt 3
-            set -gx PATH (_fishify_path $_OLD_VIRTUAL_PATH)
+        if test (echo $FISH_VERSION | head -c 1) -lt 3
+            set -gx PATH (_fishify_path "$_OLD_VIRTUAL_PATH")
         else
-            set -gx PATH $_OLD_VIRTUAL_PATH
+            set -gx PATH "$_OLD_VIRTUAL_PATH"
         end
         set -e _OLD_VIRTUAL_PATH
     end
 
     if test -n "$_OLD_VIRTUAL_PYTHONHOME"
-        set -gx PYTHONHOME $_OLD_VIRTUAL_PYTHONHOME
+        set -gx PYTHONHOME "$_OLD_VIRTUAL_PYTHONHOME"
         set -e _OLD_VIRTUAL_PYTHONHOME
     end
 
@@ -57,15 +57,15 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/natha/TAKEnv/WebUI/flask-black-dashboard/env"
+set -gx VIRTUAL_ENV '/Users/sivadineshm/Documents/projects/2020/FreeTAKTeam/UI-master/env'
 
 # https://github.com/fish-shell/fish-shell/issues/436 altered PATH handling
-if test (echo $FISH_VERSION | tr "." "\n")[1] -lt 3
+if test (echo $FISH_VERSION | head -c 1) -lt 3
    set -gx _OLD_VIRTUAL_PATH (_bashify_path $PATH)
 else
-    set -gx _OLD_VIRTUAL_PATH $PATH
+    set -gx _OLD_VIRTUAL_PATH "$PATH"
 end
-set -gx PATH "$VIRTUAL_ENV/bin" $PATH
+set -gx PATH "$VIRTUAL_ENV"'/bin' $PATH
 
 # Unset `$PYTHONHOME` if set.
 if set -q PYTHONHOME
@@ -82,20 +82,18 @@ if test -z "$VIRTUAL_ENV_DISABLE_PROMPT"
     functions -c fish_prompt _old_fish_prompt
 
     function fish_prompt
-        # Save the current $status, for fish_prompts that display it.
-        set -l old_status $status
+        # Run the user's prompt first; it might depend on (pipe)status.
+        set -l prompt (_old_fish_prompt)
 
         # Prompt override provided?
         # If not, just prepend the environment name.
-        if test -n ""
-            printf '%s%s' "" (set_color normal)
+        if test -n ''
+            printf '%s%s' '' (set_color normal)
         else
             printf '%s(%s) ' (set_color normal) (basename "$VIRTUAL_ENV")
         end
 
-        # Restore the original $status
-        echo "exit $old_status" | source
-        _old_fish_prompt
+        string join -- \n $prompt # handle multi-line prompts
     end
 
     set -gx _OLD_FISH_PROMPT_OVERRIDE "$VIRTUAL_ENV"

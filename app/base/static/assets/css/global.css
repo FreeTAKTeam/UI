@@ -276,7 +276,7 @@ select::-ms-expand {
 .table-style-hdr {
 	border-collapse: collapse;
 	background-color: #27293d;
-	display: block;
+	display: table;
 	width: 100%;
 	max-width: 100%;
 	overflow: hidden;
@@ -287,7 +287,7 @@ select::-ms-expand {
 .table-style {
 	border-collapse: collapse;
 	background-color: #27293d;
-	display: block;
+	display: grid;
 	height: 400px;
 	max-height: 400px !important;
 
@@ -335,25 +335,25 @@ select::-ms-expand {
 .hdr_c1 {
 	color: #fff;
 	width: 90px;
-	padding: 5px;
+	padding: 10px;
 	font-weight: 600;
 }
 .hdr_c2 {
 	color: #fff;
 	font-weight: 600;
 	width: 90px;
-	padding: 5px;
+	padding: 10px;
 }
 .hdr_c3 {
 	color: #fff;
 	width: 200px;
 	font-weight: 600;
-	padding: 5px;
+	padding: 10px;
 }
 .hdr_c4 {
 	color: #fff;
 
-	padding: 5px;
+	padding: 10px;
 	font-weight: 600;
 	width: calc(100% - 380px);
 }
@@ -486,7 +486,7 @@ input[type="file"] {
 
 .user_c1 {
 	color: #fff;
-	width: 200px;
+	width: 20%;
 	padding: 10px 10px 0px 10px;
 	font-size: 16px;
 }
@@ -494,7 +494,7 @@ input[type="file"] {
 .user-table-hdr {
 	border-collapse: collapse;
 	background-color: #27293d;
-	display: block;
+	display: table;
 	width: 100%;
 	max-width: 100%;
 	overflow: hidden;
@@ -505,7 +505,7 @@ input[type="file"] {
 .user-table-style {
 	border-collapse: collapse;
 	background-color: #27293d;
-	display: block;
+	display: table;
 	height: auto;
 	max-height: 400px !important;
 
@@ -517,7 +517,7 @@ input[type="file"] {
 
 .user-cell-style-1 {
 	color: #fff;
-	width: 200px;
+	width: 20%;
 	padding: 10px;
 	opacity: 0.8;
 }

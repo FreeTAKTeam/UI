@@ -17,24 +17,15 @@
 
 """Tokenize DNS master file format"""
 
-from io import StringIO
+import io
 import sys
 
 import dns.exception
 import dns.name
 import dns.ttl
-from ._compat import long, text_type, binary_type
 
-_DELIMITERS = {
-    ' ': True,
-    '\t': True,
-    '\n': True,
-    ';': True,
-    '(': True,
-    ')': True,
-    '"': True}
-
-_QUOTING_DELIMITERS = {'"': True}
+_DELIMITERS = {' ', '\t', '\n', ';', '(', ')', '"'}
+_QUOTING_DELIMITERS = {'"'}
 
 EOF = 0
 EOL = 1
@@ -49,7 +40,7 @@ class UngetBufferFull(dns.exception.DNSException):
     """An attempt was made to unget a token when the unget buffer was full."""
 
 
-class Token(object):
+class Token:
     """A DNS master file format token.
 
     ttype: The token type
@@ -82,7 +73,7 @@ class Token(object):
     def is_comment(self):
         return self.ttype == COMMENT
 
-    def is_delimiter(self):
+    def is_delimiter(self):  # pragma: no cover (we don't return delimiters yet)
         return self.ttype == DELIMITER
 
     def is_eol_or_eof(self):
@@ -132,24 +123,67 @@ class Token(object):
             unescaped += c
         return Token(self.ttype, unescaped)
 
-    # compatibility for old-style tuple tokens
+    def unescape_to_bytes(self):
+        # We used to use unescape() for TXT-like records, but this
+        # caused problems as we'd process DNS escapes into Unicode code
+        # points instead of byte values, and then a to_text() of the
+        # processed data would not equal the original input.  For
+        # example, \226 in the TXT record would have a to_text() of
+        # \195\162 because we applied UTF-8 encoding to Unicode code
+        # point 226.
+        #
+        # We now apply escapes while converting directly to bytes,
+        # avoiding this double encoding.
+        #
+        # This code also handles cases where the unicode input has
+        # non-ASCII code-points in it by converting it to UTF-8.  TXT
+        # records aren't defined for Unicode, but this is the best we
+        # can do to preserve meaning.  For example,
+        #
+        #     foo\u200bbar
+        #
+        # (where \u200b is Unicode code point 0x200b) will be treated
+        # as if the input had been the UTF-8 encoding of that string,
+        # namely:
+        #
+        #     foo\226\128\139bar
+        #
+        unescaped = b''
+        l = len(self.value)
+        i = 0
+        while i < l:
+            c = self.value[i]
+            i += 1
+            if c == '\\':
+                if i >= l:
+                    raise dns.exception.UnexpectedEnd
+                c = self.value[i]
+                i += 1
+                if c.isdigit():
+                    if i >= l:
+                        raise dns.exception.UnexpectedEnd
+                    c2 = self.value[i]
+                    i += 1
+                    if i >= l:
+                        raise dns.exception.UnexpectedEnd
+                    c3 = self.value[i]
+                    i += 1
+                    if not (c2.isdigit() and c3.isdigit()):
+                        raise dns.exception.SyntaxError
+                    unescaped += b'%c' % (int(c) * 100 + int(c2) * 10 + int(c3))
+                else:
+                    # Note that as mentioned above, if c is a Unicode
+                    # code point outside of the ASCII range, then this
+                    # += is converting that code point to its UTF-8
+                    # encoding and appending multiple bytes to
+                    # unescaped.
+                    unescaped += c.encode()
+            else:
+                unescaped += c.encode()
+        return Token(self.ttype, bytes(unescaped))
 
-    def __len__(self):
-        return 2
 
-    def __iter__(self):
-        return iter((self.ttype, self.value))
-
-    def __getitem__(self, i):
-        if i == 0:
-            return self.ttype
-        elif i == 1:
-            return self.value
-        else:
-            raise IndexError
-
-
-class Tokenizer(object):
+class Tokenizer:
     """A DNS master file format tokenizer.
 
     A token object is basically a (type, value) tuple.  The valid
@@ -176,9 +210,13 @@ class Tokenizer(object):
     line_number: The current line number
 
     filename: A filename that will be returned by the where() method.
+
+    idna_codec: A dns.name.IDNACodec, specifies the IDNA
+    encoder/decoder.  If None, the default IDNA 2003
+    encoder/decoder is used.
     """
 
-    def __init__(self, f=sys.stdin, filename=None):
+    def __init__(self, f=sys.stdin, filename=None, idna_codec=None):
         """Initialize a tokenizer instance.
 
         f: The file to tokenize.  The default is sys.stdin.
@@ -187,14 +225,18 @@ class Tokenizer(object):
 
         filename: the name of the filename that the where() method
         will return.
+
+        idna_codec: A dns.name.IDNACodec, specifies the IDNA
+        encoder/decoder.  If None, the default IDNA 2003
+        encoder/decoder is used.
         """
 
-        if isinstance(f, text_type):
-            f = StringIO(f)
+        if isinstance(f, str):
+            f = io.StringIO(f)
             if filename is None:
                 filename = '<string>'
-        elif isinstance(f, binary_type):
-            f = StringIO(f.decode())
+        elif isinstance(f, bytes):
+            f = io.StringIO(f.decode())
             if filename is None:
                 filename = '<string>'
         else:
@@ -212,6 +254,9 @@ class Tokenizer(object):
         self.delimiters = _DELIMITERS
         self.line_number = 1
         self.filename = filename
+        if idna_codec is None:
+            idna_codec = dns.name.IDNA_2003
+        self.idna_codec = idna_codec
 
     def _get_char(self):
         """Read a character from input.
@@ -252,7 +297,8 @@ class Tokenizer(object):
         """
 
         if self.ungotten_char is not None:
-            raise UngetBufferFull
+            # this should never happen!
+            raise UngetBufferFull  # pragma: no cover
         self.ungotten_char = c
 
     def skip_whitespace(self):
@@ -366,23 +412,8 @@ class Tokenizer(object):
                 else:
                     self._unget_char(c)
                 break
-            elif self.quoting:
-                if c == '\\':
-                    c = self._get_char()
-                    if c == '':
-                        raise dns.exception.UnexpectedEnd
-                    if c.isdigit():
-                        c2 = self._get_char()
-                        if c2 == '':
-                            raise dns.exception.UnexpectedEnd
-                        c3 = self._get_char()
-                        if c == '':
-                            raise dns.exception.UnexpectedEnd
-                        if not (c2.isdigit() and c3.isdigit()):
-                            raise dns.exception.SyntaxError
-                        c = chr(int(c) * 100 + int(c2) * 10 + int(c3))
-                elif c == '\n':
-                    raise dns.exception.SyntaxError('newline in quoted string')
+            elif self.quoting and c == '\n':
+                raise dns.exception.SyntaxError('newline in quoted string')
             elif c == '\\':
                 #
                 # It's an escape.  Put it and the next character into
@@ -435,9 +466,9 @@ class Tokenizer(object):
     # Helpers
 
     def get_int(self, base=10):
-        """Read the next token and interpret it as an integer.
+        """Read the next token and interpret it as an unsigned integer.
 
-        Raises dns.exception.SyntaxError if not an integer.
+        Raises dns.exception.SyntaxError if not an unsigned integer.
 
         Returns an int.
         """
@@ -483,7 +514,7 @@ class Tokenizer(object):
                     '%d is not an unsigned 16-bit integer' % value)
         return value
 
-    def get_uint32(self):
+    def get_uint32(self, base=10):
         """Read the next token and interpret it as a 32-bit unsigned
         integer.
 
@@ -492,21 +523,18 @@ class Tokenizer(object):
         Returns an int.
         """
 
-        token = self.get().unescape()
-        if not token.is_identifier():
-            raise dns.exception.SyntaxError('expecting an identifier')
-        if not token.value.isdigit():
-            raise dns.exception.SyntaxError('expecting an integer')
-        value = long(token.value)
-        if value < 0 or value > long(4294967296):
+        value = self.get_int(base=base)
+        if value < 0 or value > 4294967295:
             raise dns.exception.SyntaxError(
                 '%d is not an unsigned 32-bit integer' % value)
         return value
 
-    def get_string(self, origin=None):
+    def get_string(self, max_length=None):
         """Read the next token and interpret it as a string.
 
         Raises dns.exception.SyntaxError if not a string.
+        Raises dns.exception.SyntaxError if token value length
+        exceeds max_length (if specified).
 
         Returns a string.
         """
@@ -514,9 +542,11 @@ class Tokenizer(object):
         token = self.get().unescape()
         if not (token.is_identifier() or token.is_quoted_string()):
             raise dns.exception.SyntaxError('expecting a string')
+        if max_length and len(token.value) > max_length:
+            raise dns.exception.SyntaxError("string too long")
         return token.value
 
-    def get_identifier(self, origin=None):
+    def get_identifier(self):
         """Read the next token, which should be an identifier.
 
         Raises dns.exception.SyntaxError if not an identifier.
@@ -529,7 +559,38 @@ class Tokenizer(object):
             raise dns.exception.SyntaxError('expecting an identifier')
         return token.value
 
-    def get_name(self, origin=None):
+    def concatenate_remaining_identifiers(self):
+        """Read the remaining tokens on the line, which should be identifiers.
+
+        Raises dns.exception.SyntaxError if a token is seen that is not an
+        identifier.
+
+        Returns a string containing a concatenation of the remaining
+        identifiers.
+        """
+        s = ""
+        while True:
+            token = self.get().unescape()
+            if token.is_eol_or_eof():
+                break
+            if not token.is_identifier():
+                raise dns.exception.SyntaxError
+            s += token.value
+        return s
+
+    def as_name(self, token, origin=None, relativize=False, relativize_to=None):
+        """Try to interpret the token as a DNS name.
+
+        Raises dns.exception.SyntaxError if not a name.
+
+        Returns a dns.name.Name.
+        """
+        if not token.is_identifier():
+            raise dns.exception.SyntaxError('expecting an identifier')
+        name = dns.name.from_text(token.value, origin, self.idna_codec)
+        return name.choose_relativity(relativize_to or origin, relativize)
+
+    def get_name(self, origin=None, relativize=False, relativize_to=None):
         """Read the next token and interpret it as a DNS name.
 
         Raises dns.exception.SyntaxError if not a name.
@@ -538,9 +599,7 @@ class Tokenizer(object):
         """
 
         token = self.get()
-        if not token.is_identifier():
-            raise dns.exception.SyntaxError('expecting an identifier')
-        return dns.name.from_text(token.value, origin)
+        return self.as_name(token, origin, relativize, relativize_to)
 
     def get_eol(self):
         """Read the next token and raise an exception if it isn't EOL or

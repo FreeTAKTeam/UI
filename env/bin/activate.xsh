@@ -28,7 +28,7 @@ def _deactivate(args):
 _deactivate(["nondestructive"])
 aliases["deactivate"] = _deactivate
 
-$VIRTUAL_ENV = r"/home/natha/TAKEnv/WebUI/flask-black-dashboard/env"
+$VIRTUAL_ENV = r"/Users/sivadineshm/Documents/projects/2020/FreeTAKTeam/UI-master/env"
 
 $_OLD_VIRTUAL_PATH = $PATH
 $PATH = $PATH[:]

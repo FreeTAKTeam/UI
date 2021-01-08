@@ -17,13 +17,13 @@
 
 """DNS Messages"""
 
-from __future__ import absolute_import
-
-from io import StringIO
-import struct
+import contextlib
+import io
 import time
 
+import dns.wire
 import dns.edns
+import dns.enum
 import dns.exception
 import dns.flags
 import dns.name
@@ -36,9 +36,8 @@ import dns.rdatatype
 import dns.rrset
 import dns.renderer
 import dns.tsig
-import dns.wiredata
-
-from ._compat import long, xrange, string_types
+import dns.rdtypes.ANY.OPT
+import dns.rdtypes.ANY.TSIG
 
 
 class ShortHeader(dns.exception.FormError):
@@ -55,7 +54,7 @@ class UnknownHeaderField(dns.exception.DNSException):
 
 
 class BadEDNS(dns.exception.FormError):
-    """An OPT record occurred somewhere other than the start of
+    """An OPT record occurred somewhere other than
     the additional data section."""
 
 
@@ -68,20 +67,37 @@ class UnknownTSIGKey(dns.exception.DNSException):
     """A TSIG with an unknown key was received."""
 
 
-#: The question section number
-QUESTION = 0
+class Truncated(dns.exception.DNSException):
+    """The truncated flag is set."""
 
-#: The answer section number
-ANSWER = 1
+    supp_kwargs = {'message'}
 
-#: The authority section number
-AUTHORITY = 2
+    def message(self):
+        """As much of the message as could be processed.
 
-#: The additional section number
-ADDITIONAL = 3
+        Returns a ``dns.message.Message``.
+        """
+        return self.kwargs['message']
 
-class Message(object):
+
+class MessageSection(dns.enum.IntEnum):
+    """Message sections"""
+    QUESTION = 0
+    ANSWER = 1
+    AUTHORITY = 2
+    ADDITIONAL = 3
+
+    @classmethod
+    def _maximum(cls):
+        return 3
+
+globals().update(MessageSection.__members__)
+
+
+class Message:
     """A DNS message."""
+
+    _section_enum = MessageSection
 
     def __init__(self, id=None):
         if id is None:
@@ -89,31 +105,52 @@ class Message(object):
         else:
             self.id = id
         self.flags = 0
-        self.question = []
-        self.answer = []
-        self.authority = []
-        self.additional = []
-        self.edns = -1
-        self.ednsflags = 0
-        self.payload = 0
-        self.options = []
+        self.sections = [[], [], [], []]
+        self.opt = None
         self.request_payload = 0
         self.keyring = None
-        self.keyname = None
-        self.keyalgorithm = dns.tsig.default_algorithm
+        self.tsig = None
         self.request_mac = b''
-        self.other_data = b''
-        self.tsig_error = 0
-        self.fudge = 300
-        self.original_id = self.id
-        self.mac = b''
         self.xfr = False
         self.origin = None
         self.tsig_ctx = None
-        self.had_tsig = False
-        self.multi = False
-        self.first = True
         self.index = {}
+
+    @property
+    def question(self):
+        """ The question section."""
+        return self.sections[0]
+
+    @question.setter
+    def question(self, v):
+        self.sections[0] = v
+
+    @property
+    def answer(self):
+        """ The answer section."""
+        return self.sections[1]
+
+    @answer.setter
+    def answer(self, v):
+        self.sections[1] = v
+
+    @property
+    def authority(self):
+        """ The authority section."""
+        return self.sections[2]
+
+    @authority.setter
+    def authority(self, v):
+        self.sections[2] = v
+
+    @property
+    def additional(self):
+        """ The additional data section."""
+        return self.sections[3]
+
+    @additional.setter
+    def additional(self, v):
+        self.sections[3] = v
 
     def __repr__(self):
         return '<DNS message, ID ' + repr(self.id) + '>'
@@ -127,50 +164,29 @@ class Message(object):
         The *origin*, *relativize*, and any other keyword
         arguments are passed to the RRset ``to_wire()`` method.
 
-        Returns a ``text``.
+        Returns a ``str``.
         """
 
-        s = StringIO()
-        s.write(u'id %d\n' % self.id)
-        s.write(u'opcode %s\n' %
+        s = io.StringIO()
+        s.write('id %d\n' % self.id)
+        s.write('opcode %s\n' %
                 dns.opcode.to_text(dns.opcode.from_flags(self.flags)))
         rc = dns.rcode.from_flags(self.flags, self.ednsflags)
-        s.write(u'rcode %s\n' % dns.rcode.to_text(rc))
-        s.write(u'flags %s\n' % dns.flags.to_text(self.flags))
+        s.write('rcode %s\n' % dns.rcode.to_text(rc))
+        s.write('flags %s\n' % dns.flags.to_text(self.flags))
         if self.edns >= 0:
-            s.write(u'edns %s\n' % self.edns)
+            s.write('edns %s\n' % self.edns)
             if self.ednsflags != 0:
-                s.write(u'eflags %s\n' %
+                s.write('eflags %s\n' %
                         dns.flags.edns_to_text(self.ednsflags))
-            s.write(u'payload %d\n' % self.payload)
+            s.write('payload %d\n' % self.payload)
         for opt in self.options:
-            s.write(u'option %s\n' % opt.to_text())
-        is_update = dns.opcode.is_update(self.flags)
-        if is_update:
-            s.write(u';ZONE\n')
-        else:
-            s.write(u';QUESTION\n')
-        for rrset in self.question:
-            s.write(rrset.to_text(origin, relativize, **kw))
-            s.write(u'\n')
-        if is_update:
-            s.write(u';PREREQ\n')
-        else:
-            s.write(u';ANSWER\n')
-        for rrset in self.answer:
-            s.write(rrset.to_text(origin, relativize, **kw))
-            s.write(u'\n')
-        if is_update:
-            s.write(u';UPDATE\n')
-        else:
-            s.write(u';AUTHORITY\n')
-        for rrset in self.authority:
-            s.write(rrset.to_text(origin, relativize, **kw))
-            s.write(u'\n')
-        s.write(u';ADDITIONAL\n')
-        for rrset in self.additional:
-            s.write(rrset.to_text(origin, relativize, **kw))
-            s.write(u'\n')
+            s.write('option %s\n' % opt.to_text())
+        for (name, which) in self._section_enum.__members__.items():
+            s.write(f';{name}\n')
+            for rrset in self.section_from_number(which):
+                s.write(rrset.to_text(origin, relativize, **kw))
+                s.write('\n')
         #
         # We strip off the final \n so the caller can print the result without
         # doing weird things to get around eccentricities in Python print
@@ -191,31 +207,21 @@ class Message(object):
             return False
         if self.flags != other.flags:
             return False
-        for n in self.question:
-            if n not in other.question:
-                return False
-        for n in other.question:
-            if n not in self.question:
-                return False
-        for n in self.answer:
-            if n not in other.answer:
-                return False
-        for n in other.answer:
-            if n not in self.answer:
-                return False
-        for n in self.authority:
-            if n not in other.authority:
-                return False
-        for n in other.authority:
-            if n not in self.authority:
-                return False
+        for i, section in enumerate(self.sections):
+            other_section = other.sections[i]
+            for n in section:
+                if n not in other_section:
+                    return False
+            for n in other_section:
+                if n not in section:
+                    return False
         return True
 
     def __ne__(self, other):
         return not self.__eq__(other)
 
     def is_response(self, other):
-        """Is this message a response to *other*?
+        """Is *other* a response this message?
 
         Returns a ``bool``.
         """
@@ -229,6 +235,10 @@ class Message(object):
                 dns.rcode.NOERROR:
             return True
         if dns.opcode.is_update(self.flags):
+            # This is assuming the "sender doesn't include anything
+            # from the update", but we don't care to check the other
+            # case, which is that all the sections are returned and
+            # identical.
             return True
         for n in self.question:
             if n not in other.question:
@@ -240,8 +250,7 @@ class Message(object):
 
     def section_number(self, section):
         """Return the "section number" of the specified section for use
-        in indexing.  The question section is 0, the answer section is 1,
-        the authority section is 2, and the additional section is 3.
+        in indexing.
 
         *section* is one of the section attributes of this message.
 
@@ -250,39 +259,25 @@ class Message(object):
         Returns an ``int``.
         """
 
-        if section is self.question:
-            return QUESTION
-        elif section is self.answer:
-            return ANSWER
-        elif section is self.authority:
-            return AUTHORITY
-        elif section is self.additional:
-            return ADDITIONAL
-        else:
-            raise ValueError('unknown section')
+        for i, our_section in enumerate(self.sections):
+            if section is our_section:
+                return self._section_enum(i)
+        raise ValueError('unknown section')
 
     def section_from_number(self, number):
-        """Return the "section number" of the specified section for use
-        in indexing.  The question section is 0, the answer section is 1,
-        the authority section is 2, and the additional section is 3.
+        """Return the section list associated with the specified section
+        number.
 
-        *section* is one of the section attributes of this message.
+        *number* is a section number `int` or the text form of a section
+        name.
 
         Raises ``ValueError`` if the section isn't known.
 
-        Returns an ``int``.
+        Returns a ``list``.
         """
 
-        if number == QUESTION:
-            return self.question
-        elif number == ANSWER:
-            return self.answer
-        elif number == AUTHORITY:
-            return self.authority
-        elif number == ADDITIONAL:
-            return self.additional
-        else:
-            raise ValueError('unknown section')
+        section = self._section_enum.make(number)
+        return self.sections[section]
 
     def find_rrset(self, section, name, rdclass, rdtype,
                    covers=dns.rdatatype.NONE, deleting=None, create=False,
@@ -389,7 +384,8 @@ class Message(object):
             rrset = None
         return rrset
 
-    def to_wire(self, origin=None, max_size=0, **kw):
+    def to_wire(self, origin=None, max_size=0, multi=False, tsig_ctx=None,
+                **kw):
         """Return a string containing the message in DNS compressed wire
         format.
 
@@ -397,17 +393,26 @@ class Message(object):
         method.
 
         *origin*, a ``dns.name.Name`` or ``None``, the origin to be appended
-        to any relative names.
+        to any relative names.  If ``None``, and the message has an origin
+        attribute that is not ``None``, then it will be used.
 
         *max_size*, an ``int``, the maximum size of the wire format
         output; default is 0, which means "the message's request
         payload, if nonzero, or 65535".
 
+        *multi*, a ``bool``, should be set to ``True`` if this message is
+        part of a multiple message sequence.
+
+        *tsig_ctx*, a ``hmac.HMAC`` object, the ongoing TSIG context, used
+        when signing zone transfers.
+
         Raises ``dns.exception.TooBig`` if *max_size* was exceeded.
 
-        Returns a ``binary``.
+        Returns a ``bytes``.
         """
 
+        if origin is None and self.origin is not None:
+            origin = self.origin
         if max_size == 0:
             if self.request_payload != 0:
                 max_size = self.request_payload
@@ -424,37 +429,59 @@ class Message(object):
             r.add_rrset(dns.renderer.ANSWER, rrset, **kw)
         for rrset in self.authority:
             r.add_rrset(dns.renderer.AUTHORITY, rrset, **kw)
-        if self.edns >= 0:
-            r.add_edns(self.edns, self.ednsflags, self.payload, self.options)
+        if self.opt is not None:
+            r.add_rrset(dns.renderer.ADDITIONAL, self.opt)
         for rrset in self.additional:
             r.add_rrset(dns.renderer.ADDITIONAL, rrset, **kw)
         r.write_header()
-        if self.keyname is not None:
-            r.add_tsig(self.keyname, self.keyring[self.keyname],
-                       self.fudge, self.original_id, self.tsig_error,
-                       self.other_data, self.request_mac,
-                       self.keyalgorithm)
-            self.mac = r.mac
+        if self.tsig is not None:
+            (new_tsig, ctx) = dns.tsig.sign(r.get_wire(),
+                                            self.keyring,
+                                            self.tsig[0],
+                                            int(time.time()),
+                                            self.request_mac,
+                                            tsig_ctx,
+                                            multi)
+            self.tsig.clear()
+            self.tsig.add(new_tsig)
+            r.add_rrset(dns.renderer.ADDITIONAL, self.tsig)
+            r.write_header()
+            if multi:
+                self.tsig_ctx = ctx
         return r.get_wire()
+
+    @staticmethod
+    def _make_tsig(keyname, algorithm, time_signed, fudge, mac, original_id,
+                   error, other):
+        tsig = dns.rdtypes.ANY.TSIG.TSIG(dns.rdataclass.ANY, dns.rdatatype.TSIG,
+                                         algorithm, time_signed, fudge, mac,
+                                         original_id, error, other)
+        return dns.rrset.from_rdata(keyname, 0, tsig)
 
     def use_tsig(self, keyring, keyname=None, fudge=300,
                  original_id=None, tsig_error=0, other_data=b'',
                  algorithm=dns.tsig.default_algorithm):
-        """When sending, a TSIG signature using the specified keyring
-        and keyname should be added.
+        """When sending, a TSIG signature using the specified key
+        should be added.
 
-        See the documentation of the Message class for a complete
-        description of the keyring dictionary.
+        *key*, a ``dns.tsig.Key`` is the key to use.  If a key is specified,
+        the *keyring* and *algorithm* fields are not used.
 
-        *keyring*, a ``dict``, the TSIG keyring to use.  If a
-        *keyring* is specified but a *keyname* is not, then the key
-        used will be the first key in the *keyring*.  Note that the
-        order of keys in a dictionary is not defined, so applications
-        should supply a keyname when a keyring is used, unless they
-        know the keyring contains only one key.
+        *keyring*, a ``dict`` or ``dns.tsig.Key``, is either the TSIG
+        keyring or key to use.
 
-        *keyname*, a ``dns.name.Name`` or ``None``, the name of the TSIG key
-        to use; defaults to ``None``. The key must be defined in the keyring.
+        The format of a keyring dict is a mapping from TSIG key name, as
+        ``dns.name.Name`` to ``dns.tsig.Key`` or a TSIG secret, a ``bytes``.
+        If a ``dict`` *keyring* is specified but a *keyname* is not, the key
+        used will be the first key in the *keyring*.  Note that the order of
+        keys in a dictionary is not defined, so applications should supply a
+        keyname when a ``dict`` keyring is used, unless they know the keyring
+        contains only one key.
+
+        *keyname*, a ``dns.name.Name``, ``str`` or ``None``, the name of
+        thes TSIG key to use; defaults to ``None``.  If *keyring* is a
+        ``dict``, the key must be defined in it.  If *keyring* is a
+        ``dns.tsig.Key``, this is ignored.
 
         *fudge*, an ``int``, the TSIG time fudge.
 
@@ -463,26 +490,65 @@ class Message(object):
 
         *tsig_error*, an ``int``, the TSIG error code.
 
-        *other_data*, a ``binary``, the TSIG other data.
+        *other_data*, a ``bytes``, the TSIG other data.
 
-        *algorithm*, a ``dns.name.Name``, the TSIG algorithm to use.
+        *algorithm*, a ``dns.name.Name``, the TSIG algorithm to use.  This is
+        only used if *keyring* is a ``dict``, and the key entry is a ``bytes``.
         """
 
-        self.keyring = keyring
-        if keyname is None:
-            self.keyname = list(self.keyring.keys())[0]
+        if isinstance(keyring, dns.tsig.Key):
+            self.keyring = keyring
         else:
-            if isinstance(keyname, string_types):
+            if isinstance(keyname, str):
                 keyname = dns.name.from_text(keyname)
-            self.keyname = keyname
-        self.keyalgorithm = algorithm
-        self.fudge = fudge
+            if keyname is None:
+                keyname = next(iter(keyring))
+            key = keyring[keyname]
+            if isinstance(key, bytes):
+                key = dns.tsig.Key(keyname, key, algorithm)
+            self.keyring = key
         if original_id is None:
-            self.original_id = self.id
+            original_id = self.id
+        self.tsig = self._make_tsig(keyname, self.keyring.algorithm, 0, fudge,
+                                    b'', original_id, tsig_error, other_data)
+
+    @property
+    def keyname(self):
+        if self.tsig:
+            return self.tsig.name
         else:
-            self.original_id = original_id
-        self.tsig_error = tsig_error
-        self.other_data = other_data
+            return None
+
+    @property
+    def keyalgorithm(self):
+        if self.tsig:
+            return self.tsig[0].algorithm
+        else:
+            return None
+
+    @property
+    def mac(self):
+        if self.tsig:
+            return self.tsig[0].mac
+        else:
+            return None
+
+    @property
+    def tsig_error(self):
+        if self.tsig:
+            return self.tsig[0].error
+        else:
+            return None
+
+    @property
+    def had_tsig(self):
+        return bool(self.tsig)
+
+    @staticmethod
+    def _make_opt(flags=0, payload=1280, options=None):
+        opt = dns.rdtypes.ANY.OPT.OPT(payload, dns.rdatatype.OPT,
+                                      options or ())
+        return dns.rrset.from_rdata(dns.name.root, int(flags), opt)
 
     def use_edns(self, edns=0, ednsflags=0, payload=1280, request_payload=None,
                  options=None):
@@ -520,15 +586,50 @@ class Message(object):
             options = []
         else:
             # make sure the EDNS version in ednsflags agrees with edns
-            ednsflags &= long(0xFF00FFFF)
+            ednsflags &= 0xFF00FFFF
             ednsflags |= (edns << 16)
             if options is None:
                 options = []
-        self.edns = edns
-        self.ednsflags = ednsflags
-        self.payload = payload
-        self.options = options
+        if edns >= 0:
+            self.opt = self._make_opt(ednsflags, payload, options)
+        else:
+            self.opt = None
         self.request_payload = request_payload
+
+    @property
+    def edns(self):
+        if self.opt:
+            return (self.ednsflags & 0xff0000) >> 16
+        else:
+            return -1
+
+    @property
+    def ednsflags(self):
+        if self.opt:
+            return self.opt.ttl
+        else:
+            return 0
+
+    @ednsflags.setter
+    def ednsflags(self, v):
+        if self.opt:
+            self.opt.ttl = v
+        elif v:
+            self.opt = self._make_opt(v)
+
+    @property
+    def payload(self):
+        if self.opt:
+            return self.opt[0].payload
+        else:
+            return 0
+
+    @property
+    def options(self):
+        if self.opt:
+            return self.opt[0].options
+        else:
+            return ()
 
     def want_dnssec(self, wanted=True):
         """Enable or disable 'DNSSEC desired' flag in requests.
@@ -540,10 +641,8 @@ class Message(object):
         """
 
         if wanted:
-            if self.edns < 0:
-                self.use_edns()
             self.ednsflags |= dns.flags.DO
-        elif self.edns >= 0:
+        elif self.opt:
             self.ednsflags &= ~dns.flags.DO
 
     def rcode(self):
@@ -561,10 +660,8 @@ class Message(object):
         (value, evalue) = dns.rcode.to_flags(rcode)
         self.flags &= 0xFFF0
         self.flags |= value
-        self.ednsflags &= long(0x00FFFFFF)
+        self.ednsflags &= 0x00FFFFFF
         self.ednsflags |= evalue
-        if self.ednsflags != 0 and self.edns < 0:
-            self.edns = 0
 
     def opcode(self):
         """Return the opcode.
@@ -581,58 +678,91 @@ class Message(object):
         self.flags &= 0x87FF
         self.flags |= dns.opcode.to_flags(opcode)
 
+    def _get_one_rr_per_rrset(self, value):
+        # What the caller picked is fine.
+        return value
 
-class _WireReader(object):
+    def _parse_rr_header(self, section, name, rdclass, rdtype):
+        return (rdclass, rdtype, None, False)
+
+    def _parse_special_rr_header(self, section, count, position,
+                                 name, rdclass, rdtype):
+        if rdtype == dns.rdatatype.OPT:
+            if section != MessageSection.ADDITIONAL or self.opt or \
+               name != dns.name.root:
+                raise BadEDNS
+        elif rdtype == dns.rdatatype.TSIG:
+            if section != MessageSection.ADDITIONAL or \
+               rdclass != dns.rdatatype.ANY or \
+               position != count - 1:
+                raise BadTSIG
+        return (rdclass, rdtype, None, False)
+
+
+class QueryMessage(Message):
+    pass
+
+
+def _maybe_import_update():
+    # We avoid circular imports by doing this here.  We do it in another
+    # function as doing it in _message_factory_from_opcode() makes "dns"
+    # a local symbol, and the first line fails :)
+    import dns.update  # noqa: F401
+
+
+def _message_factory_from_opcode(opcode):
+    if opcode == dns.opcode.QUERY:
+        return QueryMessage
+    elif opcode == dns.opcode.UPDATE:
+        _maybe_import_update()
+        return dns.update.UpdateMessage
+    else:
+        return Message
+
+
+class _WireReader:
 
     """Wire format reader.
 
-    wire: a binary, is the wire-format message.
+    parser: the binary parser
     message: The message object being built
-    current: When building a message object from wire format, this
-    variable contains the offset from the beginning of wire of the next octet
-    to be read.
-    updating: Is the message a dynamic update?
+    initialize_message: Callback to set message parsing options
+    question_only: Are we only reading the question?
     one_rr_per_rrset: Put each RR into its own RRset?
+    keyring: TSIG keyring
     ignore_trailing: Ignore trailing junk at end of request?
-    zone_rdclass: The class of the zone in messages which are
+    multi: Is this message part of a multi-message sequence?
     DNS dynamic updates.
     """
 
-    def __init__(self, wire, message, question_only=False,
-                 one_rr_per_rrset=False, ignore_trailing=False):
-        self.wire = dns.wiredata.maybe_wrap(wire)
-        self.message = message
-        self.current = 0
-        self.updating = False
-        self.zone_rdclass = dns.rdataclass.IN
+    def __init__(self, wire, initialize_message, question_only=False,
+                 one_rr_per_rrset=False, ignore_trailing=False,
+                 keyring=None, multi=False):
+        self.parser = dns.wire.Parser(wire)
+        self.message = None
+        self.initialize_message = initialize_message
         self.question_only = question_only
         self.one_rr_per_rrset = one_rr_per_rrset
         self.ignore_trailing = ignore_trailing
+        self.keyring = keyring
+        self.multi = multi
 
-    def _get_question(self, qcount):
+    def _get_question(self, section_number, qcount):
         """Read the next *qcount* records from the wire data and add them to
         the question section.
         """
 
-        if self.updating and qcount > 1:
-            raise dns.exception.FormError
+        section = self.message.sections[section_number]
+        for i in range(qcount):
+            qname = self.parser.get_name(self.message.origin)
+            (rdtype, rdclass) = self.parser.get_struct('!HH')
+            (rdclass, rdtype, _, _) = \
+                self.message._parse_rr_header(section_number, qname, rdclass,
+                                              rdtype)
+            self.message.find_rrset(section, qname, rdclass, rdtype,
+                                    create=True, force_unique=True)
 
-        for i in xrange(0, qcount):
-            (qname, used) = dns.name.from_wire(self.wire, self.current)
-            if self.message.origin is not None:
-                qname = qname.relativize(self.message.origin)
-            self.current = self.current + used
-            (rdtype, rdclass) = \
-                struct.unpack('!HH',
-                              self.wire[self.current:self.current + 4])
-            self.current = self.current + 4
-            self.message.find_rrset(self.message.question, qname,
-                                    rdclass, rdtype, create=True,
-                                    force_unique=True)
-            if self.updating:
-                self.zone_rdclass = rdclass
-
-    def _get_section(self, section, count):
+    def _get_section(self, section_number, count):
         """Read the next I{count} records from the wire data and add them to
         the specified section.
 
@@ -640,132 +770,111 @@ class _WireReader(object):
         count: the number of records to read
         """
 
-        if self.updating or self.one_rr_per_rrset:
-            force_unique = True
-        else:
-            force_unique = False
-        seen_opt = False
-        for i in xrange(0, count):
-            rr_start = self.current
-            (name, used) = dns.name.from_wire(self.wire, self.current)
-            absolute_name = name
+        section = self.message.sections[section_number]
+        force_unique = self.one_rr_per_rrset
+        for i in range(count):
+            rr_start = self.parser.current
+            absolute_name = self.parser.get_name()
             if self.message.origin is not None:
-                name = name.relativize(self.message.origin)
-            self.current = self.current + used
-            (rdtype, rdclass, ttl, rdlen) = \
-                struct.unpack('!HHIH',
-                              self.wire[self.current:self.current + 10])
-            self.current = self.current + 10
+                name = absolute_name.relativize(self.message.origin)
+            else:
+                name = absolute_name
+            (rdtype, rdclass, ttl, rdlen) = self.parser.get_struct('!HHIH')
+            if rdtype in (dns.rdatatype.OPT, dns.rdatatype.TSIG):
+                (rdclass, rdtype, deleting, empty) = \
+                    self.message._parse_special_rr_header(section_number,
+                                                          count, i, name,
+                                                          rdclass, rdtype)
+            else:
+                (rdclass, rdtype, deleting, empty) = \
+                    self.message._parse_rr_header(section_number,
+                                                  name, rdclass, rdtype)
+            if empty:
+                if rdlen > 0:
+                    raise dns.exception.FormError
+                rd = None
+                covers = dns.rdatatype.NONE
+            else:
+                with self.parser.restrict_to(rdlen):
+                    rd = dns.rdata.from_wire_parser(rdclass, rdtype,
+                                                    self.parser,
+                                                    self.message.origin)
+                covers = rd.covers()
+            if self.message.xfr and rdtype == dns.rdatatype.SOA:
+                force_unique = True
             if rdtype == dns.rdatatype.OPT:
-                if section is not self.message.additional or seen_opt:
-                    raise BadEDNS
-                self.message.payload = rdclass
-                self.message.ednsflags = ttl
-                self.message.edns = (ttl & 0xff0000) >> 16
-                self.message.options = []
-                current = self.current
-                optslen = rdlen
-                while optslen > 0:
-                    (otype, olen) = \
-                        struct.unpack('!HH',
-                                      self.wire[current:current + 4])
-                    current = current + 4
-                    opt = dns.edns.option_from_wire(
-                        otype, self.wire, current, olen)
-                    self.message.options.append(opt)
-                    current = current + olen
-                    optslen = optslen - 4 - olen
-                seen_opt = True
+                self.message.opt = dns.rrset.from_rdata(name, ttl, rd)
             elif rdtype == dns.rdatatype.TSIG:
-                if not (section is self.message.additional and
-                        i == (count - 1)):
-                    raise BadTSIG
-                if self.message.keyring is None:
+                if self.keyring is None:
                     raise UnknownTSIGKey('got signed message without keyring')
-                secret = self.message.keyring.get(absolute_name)
-                if secret is None:
+                if isinstance(self.keyring, dict):
+                    key = self.keyring.get(absolute_name)
+                    if isinstance(key, bytes):
+                        key = dns.tsig.Key(absolute_name, key, rd.algorithm)
+                else:
+                    key = self.keyring
+                if key is None:
                     raise UnknownTSIGKey("key '%s' unknown" % name)
-                self.message.keyname = absolute_name
-                (self.message.keyalgorithm, self.message.mac) = \
-                    dns.tsig.get_algorithm_and_mac(self.wire, self.current,
-                                                   rdlen)
+                self.message.keyring = key
                 self.message.tsig_ctx = \
-                    dns.tsig.validate(self.wire,
+                    dns.tsig.validate(self.parser.wire,
+                                      key,
                                       absolute_name,
-                                      secret,
+                                      rd,
                                       int(time.time()),
                                       self.message.request_mac,
                                       rr_start,
-                                      self.current,
-                                      rdlen,
                                       self.message.tsig_ctx,
-                                      self.message.multi,
-                                      self.message.first)
-                self.message.had_tsig = True
+                                      self.multi)
+                self.message.tsig = dns.rrset.from_rdata(absolute_name, 0, rd)
             else:
-                if ttl < 0:
-                    ttl = 0
-                if self.updating and \
-                   (rdclass == dns.rdataclass.ANY or
-                        rdclass == dns.rdataclass.NONE):
-                    deleting = rdclass
-                    rdclass = self.zone_rdclass
-                else:
-                    deleting = None
-                if deleting == dns.rdataclass.ANY or \
-                   (deleting == dns.rdataclass.NONE and
-                        section is self.message.answer):
-                    covers = dns.rdatatype.NONE
-                    rd = None
-                else:
-                    rd = dns.rdata.from_wire(rdclass, rdtype, self.wire,
-                                             self.current, rdlen,
-                                             self.message.origin)
-                    covers = rd.covers()
-                if self.message.xfr and rdtype == dns.rdatatype.SOA:
-                    force_unique = True
                 rrset = self.message.find_rrset(section, name,
                                                 rdclass, rdtype, covers,
-                                                deleting, True, force_unique)
+                                                deleting, True,
+                                                force_unique)
                 if rd is not None:
+                    if ttl > 0x7fffffff:
+                        ttl = 0
                     rrset.add(rd, ttl)
-            self.current = self.current + rdlen
 
     def read(self):
         """Read a wire format DNS message and build a dns.message.Message
         object."""
 
-        l = len(self.wire)
-        if l < 12:
+        if self.parser.remaining() < 12:
             raise ShortHeader
-        (self.message.id, self.message.flags, qcount, ancount,
-         aucount, adcount) = struct.unpack('!HHHHHH', self.wire[:12])
-        self.current = 12
-        if dns.opcode.is_update(self.message.flags):
-            self.updating = True
-        self._get_question(qcount)
+        (id, flags, qcount, ancount, aucount, adcount) = \
+            self.parser.get_struct('!HHHHHH')
+        factory = _message_factory_from_opcode(dns.opcode.from_flags(flags))
+        self.message = factory(id=id)
+        self.message.flags = flags
+        self.initialize_message(self.message)
+        self.one_rr_per_rrset = \
+            self.message._get_one_rr_per_rrset(self.one_rr_per_rrset)
+        self._get_question(MessageSection.QUESTION, qcount)
         if self.question_only:
             return
-        self._get_section(self.message.answer, ancount)
-        self._get_section(self.message.authority, aucount)
-        self._get_section(self.message.additional, adcount)
-        if not self.ignore_trailing and self.current != l:
+        self._get_section(MessageSection.ANSWER, ancount)
+        self._get_section(MessageSection.AUTHORITY, aucount)
+        self._get_section(MessageSection.ADDITIONAL, adcount)
+        if not self.ignore_trailing and self.parser.remaining() != 0:
             raise TrailingJunk
-        if self.message.multi and self.message.tsig_ctx and \
-                not self.message.had_tsig:
-            self.message.tsig_ctx.update(self.wire)
+        if self.multi and self.message.tsig_ctx and not self.message.had_tsig:
+            self.message.tsig_ctx.update(self.parser.wire)
+        return self.message
 
 
 def from_wire(wire, keyring=None, request_mac=b'', xfr=False, origin=None,
-              tsig_ctx=None, multi=False, first=True,
+              tsig_ctx=None, multi=False,
               question_only=False, one_rr_per_rrset=False,
-              ignore_trailing=False):
+              ignore_trailing=False, raise_on_truncation=False):
     """Convert a DNS wire format message into a message
     object.
 
-    *keyring*, a ``dict``, the keyring to use if the message is signed.
+    *keyring*, a ``dns.tsig.Key`` or ``dict``, the key or keyring to use
+    if the message is signed.
 
-    *request_mac*, a ``binary``.  If the message is a response to a
+    *request_mac*, a ``bytes``.  If the message is a response to a
     TSIG-signed request, *request_mac* should be set to the MAC of
     that request.
 
@@ -774,16 +883,13 @@ def from_wire(wire, keyring=None, request_mac=b'', xfr=False, origin=None,
 
     *origin*, a ``dns.name.Name`` or ``None``.  If the message is part
     of a zone transfer, *origin* should be the origin name of the
-    zone.
+    zone.  If not ``None``, names will be relativized to the origin.
 
-    *tsig_ctx*, a ``hmac.HMAC`` objext, the ongoing TSIG context, used
+    *tsig_ctx*, a ``hmac.HMAC`` object, the ongoing TSIG context, used
     when validating zone transfers.
 
-    *multi*, a ``bool``, should be set to ``True`` if this message
+    *multi*, a ``bool``, should be set to ``True`` if this message is
     part of a multiple message sequence.
-
-    *first*, a ``bool``, should be set to ``True`` if this message is
-    stand-alone, or the first message in a multi-message sequence.
 
     *question_only*, a ``bool``.  If ``True``, read only up to
     the end of the question section.
@@ -794,10 +900,13 @@ def from_wire(wire, keyring=None, request_mac=b'', xfr=False, origin=None,
     *ignore_trailing*, a ``bool``.  If ``True``, ignore trailing
     junk at end of the message.
 
+    *raise_on_truncation*, a ``bool``.  If ``True``, raise an exception if
+    the TC bit is set.
+
     Raises ``dns.message.ShortHeader`` if the message is less than 12 octets
     long.
 
-    Raises ``dns.messaage.TrailingJunk`` if there were octets in the message
+    Raises ``dns.message.TrailingJunk`` if there were octets in the message
     past the end of the proper DNS message, and *ignore_trailing* is ``False``.
 
     Raises ``dns.message.BadEDNS`` if an OPT record was in the
@@ -806,43 +915,66 @@ def from_wire(wire, keyring=None, request_mac=b'', xfr=False, origin=None,
     Raises ``dns.message.BadTSIG`` if a TSIG record was not the last
     record of the additional data section.
 
+    Raises ``dns.message.Truncated`` if the TC flag is set and
+    *raise_on_truncation* is ``True``.
+
     Returns a ``dns.message.Message``.
     """
 
-    m = Message(id=0)
-    m.keyring = keyring
-    m.request_mac = request_mac
-    m.xfr = xfr
-    m.origin = origin
-    m.tsig_ctx = tsig_ctx
-    m.multi = multi
-    m.first = first
+    def initialize_message(message):
+        message.request_mac = request_mac
+        message.xfr = xfr
+        message.origin = origin
+        message.tsig_ctx = tsig_ctx
 
-    reader = _WireReader(wire, m, question_only, one_rr_per_rrset,
-                         ignore_trailing)
-    reader.read()
+    reader = _WireReader(wire, initialize_message, question_only,
+                         one_rr_per_rrset, ignore_trailing, keyring, multi)
+    try:
+        m = reader.read()
+    except dns.exception.FormError:
+        if reader.message and (reader.message.flags & dns.flags.TC) and \
+           raise_on_truncation:
+            raise Truncated(message=reader.message)
+        else:
+            raise
+    # Reading a truncated message might not have any errors, so we
+    # have to do this check here too.
+    if m.flags & dns.flags.TC and raise_on_truncation:
+        raise Truncated(message=m)
 
     return m
 
 
-class _TextReader(object):
+class _TextReader:
 
     """Text format reader.
 
     tok: the tokenizer.
     message: The message object being built.
-    updating: Is the message a dynamic update?
-    zone_rdclass: The class of the zone in messages which are
     DNS dynamic updates.
     last_name: The most recently read name when building a message object.
+    one_rr_per_rrset: Put each RR into its own RRset?
+    origin: The origin for relative names
+    relativize: relativize names?
+    relativize_to: the origin to relativize to.
     """
 
-    def __init__(self, text, message):
-        self.message = message
-        self.tok = dns.tokenizer.Tokenizer(text)
+    def __init__(self, text, idna_codec, one_rr_per_rrset=False,
+                 origin=None, relativize=True, relativize_to=None):
+        self.message = None
+        self.tok = dns.tokenizer.Tokenizer(text, idna_codec=idna_codec)
         self.last_name = None
-        self.zone_rdclass = dns.rdataclass.IN
-        self.updating = False
+        self.one_rr_per_rrset = one_rr_per_rrset
+        self.origin = origin
+        self.relativize = relativize
+        self.relativize_to = relativize_to
+        self.id = None
+        self.edns = -1
+        self.ednsflags = 0
+        self.payload = None
+        self.rcode = None
+        self.opcode = dns.opcode.QUERY
+        self.flags = 0
 
     def _header_line(self, section):
         """Process one line from the text format header section."""
@@ -850,52 +982,51 @@ class _TextReader(object):
         token = self.tok.get()
         what = token.value
         if what == 'id':
-            self.message.id = self.tok.get_int()
+            self.id = self.tok.get_int()
         elif what == 'flags':
             while True:
                 token = self.tok.get()
                 if not token.is_identifier():
                     self.tok.unget(token)
                     break
-                self.message.flags = self.message.flags | \
-                    dns.flags.from_text(token.value)
-            if dns.opcode.is_update(self.message.flags):
-                self.updating = True
+                self.flags = self.flags | dns.flags.from_text(token.value)
         elif what == 'edns':
-            self.message.edns = self.tok.get_int()
-            self.message.ednsflags = self.message.ednsflags | \
-                (self.message.edns << 16)
+            self.edns = self.tok.get_int()
+            self.ednsflags = self.ednsflags | (self.edns << 16)
         elif what == 'eflags':
-            if self.message.edns < 0:
-                self.message.edns = 0
+            if self.edns < 0:
+                self.edns = 0
             while True:
                 token = self.tok.get()
                 if not token.is_identifier():
                     self.tok.unget(token)
                     break
-                self.message.ednsflags = self.message.ednsflags | \
+                self.ednsflags = self.ednsflags | \
                     dns.flags.edns_from_text(token.value)
         elif what == 'payload':
-            self.message.payload = self.tok.get_int()
-            if self.message.edns < 0:
-                self.message.edns = 0
+            self.payload = self.tok.get_int()
+            if self.edns < 0:
+                self.edns = 0
         elif what == 'opcode':
             text = self.tok.get_string()
-            self.message.flags = self.message.flags | \
-                dns.opcode.to_flags(dns.opcode.from_text(text))
+            self.opcode = dns.opcode.from_text(text)
+            self.flags = self.flags | dns.opcode.to_flags(self.opcode)
         elif what == 'rcode':
             text = self.tok.get_string()
-            self.message.set_rcode(dns.rcode.from_text(text))
+            self.rcode = dns.rcode.from_text(text)
         else:
             raise UnknownHeaderField
         self.tok.get_eol()
 
-    def _question_line(self, section):
+    def _question_line(self, section_number):
         """Process one line from the text format question section."""
 
+        section = self.message.sections[section_number]
         token = self.tok.get(want_leading=True)
         if not token.is_whitespace():
-            self.last_name = dns.name.from_text(token.value, None)
+            self.last_name = self.tok.as_name(token, self.message.origin,
+                                              self.relativize,
+                                              self.relativize_to)
         name = self.last_name
         token = self.tok.get()
         if not token.is_identifier():
@@ -912,23 +1043,24 @@ class _TextReader(object):
             rdclass = dns.rdataclass.IN
         # Type
         rdtype = dns.rdatatype.from_text(token.value)
-        self.message.find_rrset(self.message.question, name,
-                                rdclass, rdtype, create=True,
+        (rdclass, rdtype, _, _) = \
+            self.message._parse_rr_header(section_number, name, rdclass, rdtype)
+        self.message.find_rrset(section, name, rdclass, rdtype, create=True,
                                 force_unique=True)
-        if self.updating:
-            self.zone_rdclass = rdclass
         self.tok.get_eol()
 
-    def _rr_line(self, section):
+    def _rr_line(self, section_number):
         """Process one line from the text format answer, authority, or
         additional data sections.
         """
 
-        deleting = None
+        section = self.message.sections[section_number]
         # Name
         token = self.tok.get(want_leading=True)
         if not token.is_whitespace():
-            self.last_name = dns.name.from_text(token.value, None)
+            self.last_name = self.tok.as_name(token, self.message.origin,
+                                              self.relativize,
+                                              self.relativize_to)
         name = self.last_name
         token = self.tok.get()
         if not token.is_identifier():
@@ -949,35 +1081,50 @@ class _TextReader(object):
             token = self.tok.get()
             if not token.is_identifier():
                 raise dns.exception.SyntaxError
-            if rdclass == dns.rdataclass.ANY or rdclass == dns.rdataclass.NONE:
-                deleting = rdclass
-                rdclass = self.zone_rdclass
         except dns.exception.SyntaxError:
             raise dns.exception.SyntaxError
         except Exception:
             rdclass = dns.rdataclass.IN
         # Type
         rdtype = dns.rdatatype.from_text(token.value)
+        (rdclass, rdtype, deleting, empty) = \
+            self.message._parse_rr_header(section_number, name, rdclass, rdtype)
         token = self.tok.get()
+        if empty and not token.is_eol_or_eof():
+            raise dns.exception.SyntaxError
         if not token.is_eol_or_eof():
             self.tok.unget(token)
-            rd = dns.rdata.from_text(rdclass, rdtype, self.tok, None)
+            rd = dns.rdata.from_text(rdclass, rdtype, self.tok,
+                                     self.message.origin, self.relativize,
+                                     self.relativize_to)
             covers = rd.covers()
         else:
             rd = None
             covers = dns.rdatatype.NONE
         rrset = self.message.find_rrset(section, name,
                                         rdclass, rdtype, covers,
-                                        deleting, True, self.updating)
+                                        deleting, True, self.one_rr_per_rrset)
         if rd is not None:
             rrset.add(rd, ttl)
+
+    def _make_message(self):
+        factory = _message_factory_from_opcode(self.opcode)
+        message = factory(id=self.id)
+        message.flags = self.flags
+        if self.edns >= 0:
+            message.use_edns(self.edns, self.ednsflags, self.payload)
+        if self.rcode:
+            message.set_rcode(self.rcode)
+        if self.origin:
+            message.origin = self.origin
+        return message
 
     def read(self):
         """Read a text format DNS message and build a dns.message.Message
         object."""
 
         line_method = self._header_line
-        section = None
+        section_number = None
         while 1:
             token = self.tok.get(True, True)
             if token.is_eol_or_eof():
@@ -986,28 +1133,61 @@ class _TextReader(object):
                 u = token.value.upper()
                 if u == 'HEADER':
                     line_method = self._header_line
-                elif u == 'QUESTION' or u == 'ZONE':
-                    line_method = self._question_line
-                    section = self.message.question
-                elif u == 'ANSWER' or u == 'PREREQ':
-                    line_method = self._rr_line
-                    section = self.message.answer
-                elif u == 'AUTHORITY' or u == 'UPDATE':
-                    line_method = self._rr_line
-                    section = self.message.authority
-                elif u == 'ADDITIONAL':
-                    line_method = self._rr_line
-                    section = self.message.additional
+
+                if self.message:
+                    message = self.message
+                else:
+                    # If we don't have a message, create one with the current
+                    # opcode, so that we know which section names to parse.
+                    message = self._make_message()
+                try:
+                    section_number = message._section_enum.from_text(u)
+                    # We found a section name.  If we don't have a message,
+                    # use the one we just created.
+                    if not self.message:
+                        self.message = message
+                        self.one_rr_per_rrset = \
+                            message._get_one_rr_per_rrset(self.one_rr_per_rrset)
+                    if section_number == MessageSection.QUESTION:
+                        line_method = self._question_line
+                    else:
+                        line_method = self._rr_line
+                except Exception:
+                    # It's just a comment.
+                    pass
                 self.tok.get_eol()
                 continue
             self.tok.unget(token)
-            line_method(section)
+            line_method(section_number)
+        if not self.message:
+            self.message = self._make_message()
+        return self.message
 
 
-def from_text(text):
+def from_text(text, idna_codec=None, one_rr_per_rrset=False,
+              origin=None, relativize=True, relativize_to=None):
     """Convert the text format message into a message object.
 
-    *text*, a ``text``, the text format message.
+    The reader stops after reading the first blank line in the input to
+    facilitate reading multiple messages from a single file with
+    ``dns.message.from_file()``.
+
+    *text*, a ``str``, the text format message.
+
+    *idna_codec*, a ``dns.name.IDNACodec``, specifies the IDNA
+    encoder/decoder.  If ``None``, the default IDNA 2003 encoder/decoder
+    is used.
+
+    *one_rr_per_rrset*, a ``bool``.  If ``True``, then each RR is put
+    into its own rrset.  The default is ``False``.
+
+    *origin*, a ``dns.name.Name`` (or ``None``), the
+    origin to use for relative names.
+
+    *relativize*, a ``bool``.  If true, name will be relativized.
+
+    *relativize_to*, a ``dns.name.Name`` (or ``None``), the origin to use
+    when relativizing names.  If not set, the *origin* value will be used.
 
     Raises ``dns.message.UnknownHeaderField`` if a header is unknown.
 
@@ -1020,19 +1200,25 @@ def from_text(text):
     # since it's an implementation detail.  The official file
     # interface is from_file().
 
-    m = Message()
-
-    reader = _TextReader(text, m)
-    reader.read()
-
-    return m
+    reader = _TextReader(text, idna_codec, one_rr_per_rrset, origin,
+                         relativize, relativize_to)
+    return reader.read()
 
 
-def from_file(f):
+def from_file(f, idna_codec=None, one_rr_per_rrset=False):
     """Read the next text format message from the specified file.
 
-    *f*, a ``file`` or ``text``.  If *f* is text, it is treated as the
+    Message blocks are separated by a single blank line.
+
+    *f*, a ``file`` or ``str``.  If *f* is text, it is treated as the
     pathname of a file to open.
+
+    *idna_codec*, a ``dns.name.IDNACodec``, specifies the IDNA
+    encoder/decoder.  If ``None``, the default IDNA 2003 encoder/decoder
+    is used.
+
+    *one_rr_per_rrset*, a ``bool``.  If ``True``, then each RR is put
+    into its own rrset.  The default is ``False``.
 
     Raises ``dns.message.UnknownHeaderField`` if a header is unknown.
 
@@ -1041,26 +1227,15 @@ def from_file(f):
     Returns a ``dns.message.Message object``
     """
 
-    str_type = string_types
-    opts = 'rU'
-
-    if isinstance(f, str_type):
-        f = open(f, opts)
-        want_close = True
-    else:
-        want_close = False
-
-    try:
-        m = from_text(f)
-    finally:
-        if want_close:
-            f.close()
-    return m
+    with contextlib.ExitStack() as stack:
+        if isinstance(f, str):
+            f = stack.enter_context(open(f))
+        return from_text(f, idna_codec, one_rr_per_rrset)
 
 
 def make_query(qname, rdtype, rdclass=dns.rdataclass.IN, use_edns=None,
                want_dnssec=False, ednsflags=None, payload=None,
-               request_payload=None, options=None):
+               request_payload=None, options=None, idna_codec=None):
     """Make a query message.
 
     The query name, type, and class may all be specified either
@@ -1069,11 +1244,11 @@ def make_query(qname, rdtype, rdclass=dns.rdataclass.IN, use_edns=None,
     The query will have a randomly chosen query id, and its DNS flags
     will be set to dns.flags.RD.
 
-    qname, a ``dns.name.Name`` or ``text``, the query name.
+    qname, a ``dns.name.Name`` or ``str``, the query name.
 
-    *rdtype*, an ``int`` or ``text``, the desired rdata type.
+    *rdtype*, an ``int`` or ``str``, the desired rdata type.
 
-    *rdclass*, an ``int`` or ``text``,  the desired rdata class; the default
+    *rdclass*, an ``int`` or ``str``,  the desired rdata class; the default
     is class IN.
 
     *use_edns*, an ``int``, ``bool`` or ``None``.  The EDNS level to use; the
@@ -1096,16 +1271,18 @@ def make_query(qname, rdtype, rdclass=dns.rdataclass.IN, use_edns=None,
     *options*, a list of ``dns.edns.Option`` objects or ``None``, the EDNS
     options.
 
-    Returns a ``dns.message.Message``
+    *idna_codec*, a ``dns.name.IDNACodec``, specifies the IDNA
+    encoder/decoder.  If ``None``, the default IDNA 2003 encoder/decoder
+    is used.
+
+    Returns a ``dns.message.QueryMessage``
     """
 
-    if isinstance(qname, string_types):
-        qname = dns.name.from_text(qname)
-    if isinstance(rdtype, string_types):
-        rdtype = dns.rdatatype.from_text(rdtype)
-    if isinstance(rdclass, string_types):
-        rdclass = dns.rdataclass.from_text(rdclass)
-    m = Message()
+    if isinstance(qname, str):
+        qname = dns.name.from_text(qname, idna_codec=idna_codec)
+    rdtype = dns.rdatatype.RdataType.make(rdtype)
+    rdclass = dns.rdataclass.RdataClass.make(rdclass)
+    m = QueryMessage()
     m.flags |= dns.flags.RD
     m.find_rrset(m.question, qname, rdclass, rdtype, create=True,
                  force_unique=True)
@@ -1136,7 +1313,7 @@ def make_query(qname, rdtype, rdclass=dns.rdataclass.IN, use_edns=None,
 
 
 def make_response(query, recursion_available=False, our_payload=8192,
-                  fudge=300):
+                  fudge=300, tsig_error=0):
     """Make a message which is a response for the specified query.
     The message returned is really a response skeleton; it has all
     of the infrastructure required of a response, but none of the
@@ -1155,12 +1332,17 @@ def make_response(query, recursion_available=False, our_payload=8192,
 
     *fudge*, an ``int``, the TSIG time fudge.
 
-    Returns a ``dns.message.Message`` object.
+    *tsig_error*, an ``int``, the TSIG error.
+
+    Returns a ``dns.message.Message`` object whose specific class is
+    appropriate for the query.  For example, if query is a
+    ``dns.update.UpdateMessage``, response will be too.
     """
 
     if query.flags & dns.flags.QR:
         raise dns.exception.FormError('specified query message is not a query')
-    response = dns.message.Message(query.id)
+    factory = _message_factory_from_opcode(query.opcode())
+    response = factory(id=query.id)
     response.flags = dns.flags.QR | (query.flags & dns.flags.RD)
     if recursion_available:
         response.flags |= dns.flags.RA
@@ -1169,7 +1351,7 @@ def make_response(query, recursion_available=False, our_payload=8192,
     if query.edns >= 0:
         response.use_edns(0, 0, our_payload, query.payload)
     if query.had_tsig:
-        response.use_tsig(query.keyring, query.keyname, fudge, None, 0, b'',
-                          query.keyalgorithm)
+        response.use_tsig(query.keyring, query.keyname, fudge, None,
+                          tsig_error, b'', query.keyalgorithm)
         response.request_mac = query.mac
     return response

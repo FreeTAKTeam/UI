@@ -5,17 +5,12 @@
 # This module is part of SQLAlchemy and is released under
 # the MIT License: http://www.opensource.org/licenses/mit-license.php
 
-from .base import colspecs
-from .base import ischema_names
+import re
+
 from ... import types as sqltypes
+from ... import util
 from ...sql import expression
 from ...sql import operators
-
-
-try:
-    from uuid import UUID as _python_UUID  # noqa
-except ImportError:
-    _python_UUID = None
 
 
 def Any(other, arrexpr, operator=operators.eq):
@@ -25,7 +20,7 @@ def Any(other, arrexpr, operator=operators.eq):
 
     .. seealso::
 
-        :func:`.expression.any_`
+        :func:`_expression.any_`
 
     """
 
@@ -39,7 +34,7 @@ def All(other, arrexpr, operator=operators.eq):
 
     .. seealso::
 
-        :func:`.expression.all_`
+        :func:`_expression.all_`
 
     """
 
@@ -68,14 +63,16 @@ class array(expression.Tuple):
             ARRAY[%(param_3)s, %(param_4)s, %(param_5)s]) AS anon_1
 
     An instance of :class:`.array` will always have the datatype
-    :class:`.ARRAY`.  The "inner" type of the array is inferred from
+    :class:`_types.ARRAY`.  The "inner" type of the array is inferred from
     the values present, unless the ``type_`` keyword argument is passed::
 
         array(['foo', 'bar'], type_=CHAR)
 
     Multidimensional arrays are produced by nesting :class:`.array` constructs.
-    The dimensionality of the final :class:`.ARRAY` type is calculated by
-    recursively adding the dimensions of the inner :class:`.ARRAY` type::
+    The dimensionality of the final :class:`_types.ARRAY`
+    type is calculated by
+    recursively adding the dimensions of the inner :class:`_types.ARRAY`
+    type::
 
         stmt = select([
             array([
@@ -93,7 +90,7 @@ class array(expression.Tuple):
 
     .. seealso::
 
-        :class:`.postgresql.ARRAY`
+        :class:`_postgresql.ARRAY`
 
     """
 
@@ -150,11 +147,11 @@ class ARRAY(sqltypes.ARRAY):
 
     """PostgreSQL ARRAY type.
 
-    .. versionchanged:: 1.1 The :class:`.postgresql.ARRAY` type is now
-       a subclass of the core :class:`.types.ARRAY` type.
+    .. versionchanged:: 1.1 The :class:`_postgresql.ARRAY` type is now
+       a subclass of the core :class:`_types.ARRAY` type.
 
-    The :class:`.postgresql.ARRAY` type is constructed in the same way
-    as the core :class:`.types.ARRAY` type; a member type is required, and a
+    The :class:`_postgresql.ARRAY` type is constructed in the same way
+    as the core :class:`_types.ARRAY` type; a member type is required, and a
     number of dimensions is recommended if the type is to be used for more
     than one dimension::
 
@@ -164,11 +161,12 @@ class ARRAY(sqltypes.ARRAY):
                 Column("data", postgresql.ARRAY(Integer, dimensions=2))
             )
 
-    The :class:`.postgresql.ARRAY` type provides all operations defined on the
-    core :class:`.types.ARRAY` type, including support for "dimensions",
+    The :class:`_postgresql.ARRAY` type provides all operations defined on the
+    core :class:`_types.ARRAY` type, including support for "dimensions",
     indexed access, and simple matching such as
     :meth:`.types.ARRAY.Comparator.any` and
-    :meth:`.types.ARRAY.Comparator.all`.  :class:`.postgresql.ARRAY` class also
+    :meth:`.types.ARRAY.Comparator.all`.  :class:`_postgresql.ARRAY`
+    class also
     provides PostgreSQL-specific methods for containment operations, including
     :meth:`.postgresql.ARRAY.Comparator.contains`
     :meth:`.postgresql.ARRAY.Comparator.contained_by`, and
@@ -176,24 +174,25 @@ class ARRAY(sqltypes.ARRAY):
 
         mytable.c.data.contains([1, 2])
 
-    The :class:`.postgresql.ARRAY` type may not be supported on all
+    The :class:`_postgresql.ARRAY` type may not be supported on all
     PostgreSQL DBAPIs; it is currently known to work on psycopg2 only.
 
-    Additionally, the :class:`.postgresql.ARRAY` type does not work directly in
+    Additionally, the :class:`_postgresql.ARRAY`
+    type does not work directly in
     conjunction with the :class:`.ENUM` type.  For a workaround, see the
     special type at :ref:`postgresql_array_of_enum`.
 
     .. seealso::
 
-        :class:`.types.ARRAY` - base array type
+        :class:`_types.ARRAY` - base array type
 
-        :class:`.postgresql.array` - produces a literal array value.
+        :class:`_postgresql.array` - produces a literal array value.
 
     """
 
     class Comparator(sqltypes.ARRAY.Comparator):
 
-        """Define comparison operations for :class:`.ARRAY`.
+        """Define comparison operations for :class:`_types.ARRAY`.
 
         Note that these operations are in addition to those provided
         by the base :class:`.types.ARRAY.Comparator` class, including
@@ -314,6 +313,25 @@ class ARRAY(sqltypes.ARRAY):
                 for x in arr
             )
 
+    @util.memoized_property
+    def _require_cast(self):
+        return self._against_native_enum or isinstance(
+            self.item_type, sqltypes.JSON
+        )
+
+    @util.memoized_property
+    def _against_native_enum(self):
+        return (
+            isinstance(self.item_type, sqltypes.Enum)
+            and self.item_type.native_enum
+        )
+
+    def bind_expression(self, bindvalue):
+        if self._require_cast:
+            return expression.cast(bindvalue, self)
+        else:
+            return bindvalue
+
     def bind_processor(self, dialect):
         item_proc = self.item_type.dialect_impl(dialect).bind_processor(
             dialect
@@ -345,8 +363,23 @@ class ARRAY(sqltypes.ARRAY):
                     tuple if self.as_tuple else list,
                 )
 
+        if self._against_native_enum:
+            super_rp = process
+
+            def handle_raw_string(value):
+                inner = re.match(r"^{(.*)}$", value).group(1)
+                return inner.split(",") if inner else []
+
+            def process(value):
+                if value is None:
+                    return value
+                # isinstance(value, util.string_types) is required to handle
+                # the # case where a TypeDecorator for and Array of Enum is
+                # used like was required in sa < 1.3.17
+                return super_rp(
+                    handle_raw_string(value)
+                    if isinstance(value, util.string_types)
+                    else value
+                )
+
         return process
-
-
-colspecs[sqltypes.ARRAY] = ARRAY
-ischema_names["_array"] = ARRAY

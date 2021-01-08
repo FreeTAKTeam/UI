@@ -40,6 +40,8 @@ def missionApi():
     outgoing_federation_json_data = requests.get('http://204.48.30.216:19023/FederationTable', headers= headers).json()
     
     #  print('Name' + json_data['json_list'][0]['Name'])    
+
+   # print('Name' + str(len(mission_json_data['data'])));    
      
 
     return render_template('mission.html', json_data = json_data['json_list'], 

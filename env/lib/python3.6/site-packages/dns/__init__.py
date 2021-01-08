@@ -18,13 +18,15 @@
 """dnspython DNS toolkit"""
 
 __all__ = [
+    'asyncbackend',
+    'asyncquery',
+    'asyncresolver',
     'dnssec',
     'e164',
     'edns',
     'entropy',
     'exception',
     'flags',
-    'hash',
     'inet',
     'ipv4',
     'ipv6',
@@ -43,6 +45,7 @@ __all__ = [
     'resolver',
     'reversename',
     'rrset',
+    'serial',
     'set',
     'tokenizer',
     'tsig',
@@ -51,6 +54,8 @@ __all__ = [
     'rdtypes',
     'update',
     'version',
-    'wiredata',
+    'wire',
     'zone',
 ]
+
+from dns.version import version as __version__  # noqa

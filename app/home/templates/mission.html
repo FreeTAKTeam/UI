@@ -12,7 +12,7 @@
 		<div
 			style="
 				display: grid;
-				grid-template-columns: 100px 240px 180px 50px 120px 60px 1fr;
+				grid-template-columns: 100px 240px 150px 50px 120px 100px 1fr;
 				gap: 10px;
 				padding: 10px;
 				font-size: 16px;
@@ -24,8 +24,8 @@
 			<div style="color: #fff; font-weight: 600; padding: 5px">Name</div>
 			<div style="color: #fff; font-weight: 600; padding: 5px">Author</div>
 			<div style="color: #fff; font-weight: 600; padding: 5px">Index</div>
-			<div style="color: #fff; font-weight: 600; padding: 5px; text-align: center">Is Privacy</div>
-			<div style="color: #fff; font-weight: 600; padding: 5px">Size</div>
+			<div style="color: #fff; font-weight: 600; padding: 5px; text-align: center">Is Private</div>
+			<div style="color: #fff; font-weight: 600; padding: 5px">Size (KB)</div>
 			<div style="color: #fff; font-weight: 600; padding: 5px">Submitted</div>
 		</div>
 		<div style="max-height: 300px; overflow-y: scroll">
@@ -33,11 +33,18 @@
 
 			<div
 				class="row-color-nohover row-class"
-				style="display: grid; grid-template-columns: 100px 240px 180px 50px 120px 60px 1fr; gap: 10px; padding: 10px; color: #fff; opacity: 0.8"
+				style="display: grid; grid-template-columns: 100px 240px 150px 50px 120px 100px 1fr; gap: 10px; padding: 10px; color: #fff; opacity: 0.8"
 				onclick="captureClick('{{dict_items.Hash}}')"
 			>
 				<div >{{dict_items['Keywords']}}</div>
-				<div >{{dict_items['Name']}}</div>
+				<div >
+					<div onclick="downloadFile('{{dict_items.Hash}}')" >
+						<span style="cursor: pointer; color: #278aed;">
+							{{dict_items['Name']}}
+						</span>
+						
+					</div>
+					</div>
 				<div >
 					{{dict_items['SubmissionUser'] | replace("[", "") | replace("(", "") | replace("'", "") | replace("'", "") | replace(")", "") | replace("]",
 					"") | replace(",", "") }}
@@ -49,7 +56,7 @@
 					dict_items['Privacy'] == 1 else ''}} />
 				</div>
 
-				<div  style="text-align: right; padding-right: 10px">{{dict_items['Size']}}</div>
+				<div  style="text-align: right; padding-right: 10px">{{dict_items['Size'] /1000}}</div>
 				<div >{{dict_items['SubmissionDateTime']}}</div>
 			</div>
 
@@ -82,31 +89,37 @@
 
 <div style="width: 90%; display: grid; padding: 5px; margin: 0 auto; background-color: #27293d">
 	<div class="header-tools" style="justify-self: flex-end; font-size: 20px; padding-right: 20px; color: #278aed">[MISSION]</div>
-
+ 
 	<div style="max-width: 100%; padding: 5px; display: contents">
 		<div style="max-height: 300px; max-width: 100%; overflow-y: scroll; overflow-x: scroll; display: table-cell">
-			{% for items in mission_json_data %} {% if loop.index == 1 %}
 			<div
-				style="
-					display: grid;
+			style="
+				display: grid;
 
-					grid-template-columns: 100px 240px 240px 240px 240px 240px;
-					padding: 10px;
-					font-size: 16px;
-					color: #fff;
-					opacity: 0.9;
-				"
-			>
-				<div>Name</div>
-				<div>Description</div>
-				<div>Keywords</div>
+				grid-template-columns: 100px 240px 240px 240px 240px 240px;
+				padding: 10px;
+				font-size: 16px;
+				color: #fff;
+				opacity: 0.9;
+			"
+		>
+			<div style="color: #fff; font-weight: 600; padding: 5px">Name</div>
+			<div style="color: #fff; font-weight: 600; padding: 5px">Description</div>
+			<div style="color: #fff; font-weight: 600; padding: 5px">Keywords</div>
 
-				<div>Creator</div>
-				<div>Groups</div>
+			<div style="color: #fff; font-weight: 600; padding: 5px">Creator</div>
+			<div style="color: #fff; font-weight: 600; padding: 5px">Groups</div>
 
-				<div>Created</div>
-			</div>
+			<div>Created</div>
+		</div>
+			{% if  mission_json_data | length == 0 %}
+		
+			<div style="padding: 10px; font-size: 14px;">No Records Found</div>
 			{% endif %}
+
+			{% for items in mission_json_data %} 
+			
+			
 
 			<div
 				class="row-color-nohover row-class"
@@ -124,13 +137,14 @@
 		</div>
 	</div>
 
-	<div class="footer-tools" style="background-color: #27293d; padding: 16px 16px 16px 50px; display: grid; grid-template-columns: 1fr 1fr">
+	<div class="footer-tools" style="background-color: #27293d; justify-items: end;
+	padding: 16px 16px 16px 50px; display: grid; grid-template-columns: 1fr">
 		<div>
-			<div class="btn btn-simple btn-twitter" id="data-package-delete" style="color: #484848; border-color: #484848; display: inline-flex">
+			<div class="btn btn-simple btn-twitter" id="data-package-delete" style="color: #278aed; border-color: #278aed; display: inline-flex">
 				<span>DELETE</span> <span id="del-count">&nbsp;</span>
 			</div>
 			&nbsp;&nbsp;&nbsp;
-			<button class="btn btn-simple btn-twitter" style="color: #484848; border-color: #484848">ADD</button>
+			<button class="btn btn-simple btn-twitter" style="color: #278aed; border-color: #278aed">ADD</button>
 		</div>
 	</div>
 </div>
@@ -179,13 +193,14 @@
 		</div>
 	</div>
 
-	<div class="footer-tools" style="background-color: #27293d; padding: 16px 16px 16px 50px; display: grid; grid-template-columns: 1fr 1fr">
+	<div class="footer-tools" style="background-color: #27293d; justify-items: end;
+	padding: 16px 16px 16px 50px; display: grid; grid-template-columns: 1fr">
 		<div>
-			<div class="btn btn-simple btn-twitter" id="data-package-delete" style="color: #484848; border-color: #484848; display: inline-flex">
+			<div class="btn btn-simple btn-twitter" id="data-package-delete" style="color: #278aed; border-color: #278aed; display: inline-flex">
 				<span>DELETE</span> <span id="del-count">&nbsp;</span>
 			</div>
 			&nbsp;&nbsp;&nbsp;
-			<button class="btn btn-simple btn-twitter" style="color: #484848; border-color: #484848">ADD</button>
+			<button class="btn btn-simple btn-twitter" style="color: #278aed; border-color: #278aed">ADD</button>
 		</div>
 	</div>
 </div>
@@ -194,31 +209,39 @@
 	<div class="header-tools" style="justify-self: flex-end; font-size: 20px; padding-right: 20px; color: #278aed">[OUTGOING FEDERATIONS]</div>
 	<div style="max-width: 100%; padding: 5px; display: contents"">
 		<div style="max-height: 300px; max-width: 100%; overflow-y: scroll; overflow-x: scroll; display: table-cell">
-			{% for items in outgoing_federation_json_data %} {% if loop.index == 1 %}
+
 			<div
-				style="
-					display: grid;
+			style="
+				display: grid;
 
-					grid-template-columns: 200px 240px 240px 200px 200px 200px 200px 200px;
-					padding: 10px;
-					font-size: 16px;
-					color: #fff;
-					opacity: 0.9;
-				"
-			>
-				<div>Name</div>
-				<div>Address</div>
-				<div>Port</div>
-				<div>Fallback</div>
+				grid-template-columns: 200px 240px 240px 200px 200px 200px 200px 200px;
+				padding: 10px;
+				font-size: 16px;
+				color: #fff;
+				opacity: 0.9;
+			"
+		>
+			<div>Name</div>
+			<div>Address</div>
+			<div>Port</div>
+			<div>Fallback</div>
 
-				<div>Status</div>
-				<div>Rec. Interval</div>
+			<div>Status</div>
+			<div>Rec. Interval</div>
 
-				<div>Max Retries</div>
+			<div>Max Retries</div>
 
-				<div>Last Error</div>
-			</div>
-			{% endif %}
+			<div>Last Error</div>
+		</div>
+		
+		{% if  outgoing_federation_json_data |count == 0 %}
+
+		<div style="font-size: 14px; padding: 10px;">No Records Found</div>
+
+{% endif %}
+
+			{% for items in outgoing_federation_json_data %}
+		
 			<div
 				class="row-color-nohover row-class"
 				style="display: grid; grid-template-columns: 200px 240px 240px 200px 200px 200px 200px 200px; padding: 10px; color: #fff; opacity: 0.8"
@@ -236,6 +259,65 @@
 			{% endfor %}
 		</div>
 	</div>
+	<div class="footer-tools" style="background-color: #27293d; justify-items: end;
+	padding: 16px 16px 16px 50px; display: grid; grid-template-columns: 1fr">
+		<div>
+			<div class="btn btn-simple btn-twitter" id="data-package-delete" style="color: #278aed; border-color: #278aed; display: inline-flex">
+				<span>DELETE</span> <span id="del-count">&nbsp;</span>
+			</div>
+			&nbsp;&nbsp;&nbsp;
+			<button class="btn btn-simple btn-twitter" onclick="addToggle('addOF')"
+			style="color: #278aed; border-color: #278aed">ADD</button>
+		</div>
+	</div>
+
+	
+	<div style="display: none" id="addOF">
+		<div style="display: grid; width: 80%; padding: 10px 0px; margin: 0 auto; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px">
+			<div><input type="text" class="form-control" id="nameof" value="" placeholder="Name" /></div>
+			<div><input type="text" class="form-control" id="ipaddressof" value="" placeholder="IP Address" /></div>
+			<div><input type="text" class="form-control" id="portof" value="" placeholder="Port" /></div>
+			<div>&nbsp;</div>
+			
+
+			<div style="font-size: 16px; color: #b5b5b5; line-height: 40px">Fallback Server</div>
+			<div class="select" style="width: 200px">
+				<select name="format" id="fallbackserverof">
+					{% for items in outgoing_federation_json_data %} 
+						<option >{{items['Name']}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div style="font-size: 16px; color: #b5b5b5; line-height: 40px; 
+			    display: grid;
+    grid-column: 3/-1;"
+			>
+			<div style="display: flex; align-items: center;">
+				<div>Status&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				<div class="select" style="width: 120px">
+					<select name="format" id="statusof">
+						<option selected value="true">Enabled</option>
+						<option value="false">Disabled</option>
+					</select>
+				</div>
+			</div>
+			
+			</div>
+			
+
+			<div><input type="text" class="form-control" id="maxretriesof" value="" placeholder="Max Retries" /></div>
+			<div><input type="text" class="form-control" id="recintervalof" value="" placeholder="Rec Interval" /></div>
+			<div>&nbsp;</div>
+			<div>&nbsp;</div>
+
+		</div>
+		<div style="background-color: #27293d; padding: 10px 20px; display: grid; justify-content: end">
+			<button class="btn btn-simple btn-twitter" onclick="addOF()" style="color: #278aed; border-color: #278aed">Submit</button>
+		</div>
+	</div>
+
+
 </div>
 
 <div id="snackbar">&nbsp;</div>
@@ -245,7 +327,48 @@
 {% block javascripts %}
 <!-- arr.some(item => item.a === 'b') -->
 <!-- const updatedHero = hero.filter(item => item.id !== 1); -->
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 <script>
+	var ip = "204.48.30.216";
+var socket = io.connect(`http://${ip}:19023`);
+
+var tcpip;
+var tcpport;
+
+async function establishConnection() {
+	console.log("Make connection");
+//	var socket = io.connect(`http://${ip}:19023`);
+
+
+	console.log("Emit event authenticate...");
+
+	let isAuth = await authenticate(socket);
+
+	if (isAuth === "True") {
+		getServiceInfo(socket);
+		
+	} else {
+		// throw error
+	}
+}
+
+const authenticate = (socket) => {
+			// socket.emit('authenticate',  '{"Authenticate": "a@v{5]MQU><waQ;Z"}');
+			socket.emit("authenticate", JSON.stringify({ Authenticate: "a@v{5]MQU><waQ;Z" }));
+
+			return new Promise(function (resolve, reject) {
+				socket.on("authentication", function (data) {
+					let authenticateObject = JSON.parse(data);
+
+					if (authenticateObject.successful === "True") {
+						resolve("True");
+					} else {
+						reject("False");
+					}
+				});
+			});
+		};
+
 	// this is a global variable
 	var gArr;
 	var updatedGARR;
@@ -267,6 +390,30 @@
 			document.getElementById("data-package-delete").classList.add("btn", "btn-simple", "btn-twitter", "disable-delete");
 		}
 	}
+
+
+	function downloadFile(param) {
+		
+		let url = `http://${tcpip}:${tcpport}/Marti/api/sync/metadata/${param}/tool`;
+
+		window.location = url;
+		
+		// window.open(url,'mywin',"width="+screen.availWidth+",height="+screen.availHeight);
+	}
+
+	const getServiceInfo = (socket) => {
+    
+    socket.emit("serviceInfo");
+    socket.on("serviceInfoUpdate", function (data) {
+        let serviceInfoObject = JSON.parse(data);
+        console.log("Print CONFIGURE serviceInfoUpdate Response:" + JSON.stringify(serviceInfoObject));
+    
+        tcpport = serviceInfoObject.services.TCP_DataPackage_service.port;
+    
+        tcpip  = serviceInfoObject.ip;
+    });
+    
+};
 
 	function snackFunction(message) {
 		// Get the snackbar DIV
@@ -319,7 +466,7 @@
 		})
 			.then(
 				(response) => {
-				debugger;
+				
 				if(response.status === 200) {
 					snackFunction("Add Datapackage Success. Refreshing data!");
 				document.getElementById("filename").value = "";
@@ -387,6 +534,34 @@
 		});
 	}
 
+	
+	function addOF() {
+		let obj =  {
+		outgoingFederations:[{
+				Name: document.getElementById("nameof").value,
+				Address: document.getElementById("ipaddressof").value,
+				Port: document.getElementById("portof").value,
+				FallBack: document.getElementById("fallbackserverof").value,
+				Status: document.getElementById("statusof").value,
+				ReconnectInterval: document.getElementById("recintervalof").value,
+				MaxRetries: document.getElementById("maxretriesof").value,
+			}]
+		} 
+
+		headers = { Authorization: "Bearer a@v{5]MQU><waQ;Z" };
+		fetch("http://204.48.30.216:19023/FederationTable", {
+			method: "POST",
+			headers: headers,
+			body: JSON.stringify(obj),
+		}).then((response) => {
+			
+			snackFunction("Add Outgoing Federation Successful. Refreshing data.");
+			refresh();
+		});
+
+	}
+
+
 	$(document).ready(function () {
 		console.log("hell");
 
@@ -424,6 +599,19 @@
 			refresh();
 		});
 	}
+
+
+	function addToggle(param) {
+		var x = document.getElementById(param);
+		if (x.style.display === "none") {
+			x.style.display = "block";
+			x.style.padding = "10px 0px";
+		} else {
+			x.style.display = "none";
+		}
+	}
+
+
 </script>
 <script>
 	$(window).on("load", function () {
@@ -431,6 +619,12 @@
 		gArr = [];
 	});
 </script>
+
+<script>
+    establishConnection();
+</script>
+
+
 {% endblock javascripts %}
 <!-- color: #3ea1ec;
 border-color: #3ea1ec; -->

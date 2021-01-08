@@ -3677,14 +3677,14 @@ input[type="button"].btn-block {
   z-index: 1000;
   display: none;
   float: left;
-  min-width: 10rem;
+  min-width: 400px;
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
   font-size: 0.875rem;
   color: #525f7f;
   text-align: left;
   list-style: none;
-  background-color: #ffffff;
+  background-color: #27293d;
   background-clip: padding-box;
   border: 0 solid rgba(34, 42, 66, 0.15);
   border-radius: 0.1428rem;
@@ -14236,7 +14236,7 @@ fieldset[disabled] .btn-link.active {
 
 .dropdown-menu .dropdown-item,
 .bootstrap-select .dropdown-menu.inner li a {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   padding-top: .6rem;
   padding-bottom: .6rem;
   margin-top: 5px;
@@ -14245,6 +14245,7 @@ fieldset[disabled] .btn-link.active {
   -o-transition: all 150ms linear;
   -ms-transition: all 150ms linear;
   transition: all 150ms linear;
+  opacity: 0.8;
 }
 
 .dropdown-menu .dropdown-item:hover,

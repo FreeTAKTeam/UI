@@ -87,11 +87,12 @@
 	padding: 16px; display: grid; grid-template-columns: 1fr 180px 70px 180px 70px 180px 70px">
 
 	<div class="config-rows" style="grid-row: 1/3;">
-		<div class="cols" style="padding: 5px;">
+		<div class="cols" style="padding: 5px;     display: grid;
+		justify-content: center;">
 			<label style="padding: 8px 0px; font-size: 1rem; ">Data Package IP</label>
 			
 			<input type="text" 
-			class="form-control"
+			class="form-control" style="width: 200px;"
 			id="ip" name="IP_address" value="">
 		</div>
 	</div>
@@ -215,43 +216,43 @@
 				<div style="width: 100%; display: grid; margin: 0 auto">
 					
 						<div class="header-tools" style="display: grid; width: 100%; margin: 0 auto; 
-						justify-content: flex-end; font-size: 20px; color: #278aed">[MANAGE PRESENCE]</div>
+						justify-content: flex-end; font-size: 20px; color: #278aed">[OUTGOING FEDERATION]</div>
 						<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
 							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-								<div style="font-size: 16px; color: #b5b5b5">Name</div>
+								<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px;">Name</div>
 								<div><input type="text" class="form-control" value="" /></div>
 							</div>
 
 							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-								<div style="font-size: 16px; color: #b5b5b5">IP / Domain</div>
+								<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px;">IP / Domain</div>
 								<div><input type="text" class="form-control" value="" /></div>
 							</div>
 						</div>
 
 						<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
 							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-								<div style="font-size: 16px; color: #b5b5b5">Reconnect</div>
+								<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px;">Reconnect</div>
 								<div><input type="text" class="form-control" value="30" /></div>
 							</div>
 
 							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-								<div style="font-size: 16px; color: #b5b5b5">Port</div>
+								<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px;">Port</div>
 								<div><input type="text" class="form-control" style="width: 70px;" value="" /></div>
 							</div>
 						</div>
 
 						<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
 							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-								<div style="font-size: 16px; color: #b5b5b5">Max Retries</div>
+								<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px;">Max Retries</div>
 								<div><input type="text" class="form-control" value="3" /></div>
 							</div>
 
 							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-								<div style="font-size: 16px; color: #b5b5b5">Fallback</div>
+								<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px;">Fallback</div>
 								<div class="select">
 									<select name="format" id="format">
 										{% for items in outgoing_federation_json_data %} 
-										<option >{{items['FallBack']}}</option>
+										<option >{{items['Name']}}</option>
 										
 										{% endfor %}
 									</select>
@@ -287,6 +288,14 @@
 <script>
 var ip = "204.48.30.216";
 var socket = io.connect(`http://${ip}:19023`);
+
+var orig_tcp_cot_status;
+var orig_ssl_cot_status;
+var orig_tcp_dp_status;
+var orig_ssl_cot_status;
+var orig_api_cot_status;
+var orig_fed_cot_status;
+
 
 // this gets current server data
 async function establishConnection() {
@@ -328,6 +337,14 @@ const getServiceInfo = (socket) => {
 	socket.emit("serviceInfo");
 	socket.on("serviceInfoUpdate", function (data) {
 		let serviceInfoObject = JSON.parse(data);
+
+		orig_tcp_cot_status = serviceInfoObject.services.TCP_CoT_service.status;
+		orig_ssl_cot_status = serviceInfoObject.services.SSL_CoT_service.status;
+		orig_tcp_dp_status = serviceInfoObject.services.TCP_DataPackage_service.status;
+		orig_ssl_dp_status = serviceInfoObject.services.SSL_DataPackage_service.status;
+		orig_api_cot_status = serviceInfoObject.services.Rest_API_service.status;
+		orig_fed_cot_status = serviceInfoObject.services.Federation_server_service.status;
+
 		console.log("Print CONFIGURE serviceInfoUpdate Response:" + JSON.stringify(serviceInfoObject));
 
 		document.getElementById("tcp_cot_port").value = serviceInfoObject.services.TCP_CoT_service.port;
@@ -390,34 +407,59 @@ const applyServiceInfo = () => {
 	
 
 let obj =	{
-   "services": {
-       "SSL_CoT_service": {
-                     "status": document.getElementById("SSLCoTOnOffSwitch").checked === true ? "on" : "off",
-                     "port": document.getElementById("ssl_cot_port").value
+   services: {
+       SSL_CoT_service: {
+                     status: document.getElementById("SSLCoTOnOffSwitch").checked === true ? "on" : "off",
+                     port: +document.getElementById("ssl_cot_port").value
                  },
-       "TCP_CoT_service": {
-                     "status": document.getElementById("TCPCoTOnOffSwitch").checked === true ? "on" : "off",
-                     "port": document.getElementById("tcp_cot_port").value
+       TCP_CoT_service: {
+                     status: document.getElementById("TCPCoTOnOffSwitch").checked === true ? "on" : "off",
+                     port: +document.getElementById("tcp_cot_port").value
                  },
-       "SSL_DataPackage_service": {
-                     "status": document.getElementById("SSLDPOnOffSwitch").checked === true ? "on" : "off",
-                     "port": document.getElementById("ssl_dp_port").value
+       SSL_DataPackage_service: {
+                     status: document.getElementById("SSLDPOnOffSwitch").checked === true ? "on" : "off",
+                     port: +document.getElementById("ssl_dp_port").value
                  },
-       "TCP_DataPackage_service": {
-                     "status": document.getElementById("HTTPDPOnOffSwitch").checked === true ? "on" : "off",
-                     "port": document.getElementById("http_dp_port").value
+       TCP_DataPackage_service: {
+                     status: document.getElementById("HTTPDPOnOffSwitch").checked === true ? "on" : "off",
+                     port: +document.getElementById("http_dp_port").value
                  },
-       "Federation_server_service": {
-                     "status": document.getElementById("FEDOnOffSwitch").checked === true ? "on" : "off",
-                     "port": document.getElementById("fed_port").value
+       Federation_server_service: {
+                     status: document.getElementById("FEDOnOffSwitch").checked === true ? "on" : "off",
+                     port: +document.getElementById("fed_port").value
                  },
-       "Rest_API_service": {
-                     "status": document.getElementById("APIOnOffSwitch").checked === true ? "on" : "off",
-                     "port": document.getElementById("api_port").value
+       Rest_API_service: {
+                     status: document.getElementById("APIOnOffSwitch").checked === true ? "on" : "off",
+                     port: +document.getElementById("api_port").value
                  }
    },
-   "IP": document.getElementById("ip").value
+   ip: document.getElementById("ip").value
 }
+
+	if(orig_tcp_cot_status === "on" && (document.getElementById("TCPCoTOnOffSwitch").checked === true)) {
+		delete obj.services.TCP_CoT_service;
+	}
+
+	if(orig_ssl_cot_status === "on" && (document.getElementById("SSLCoTOnOffSwitch").checked === true)) {
+		delete obj.services.SSL_CoT_service;
+	}
+
+	if(orig_tcp_dp_status === "on" && (document.getElementById("HTTPDPOnOffSwitch").checked === true)) {
+		delete obj.services.TCP_DataPackage_service;
+	}
+
+	if(orig_ssl_dp_status === "on" && (document.getElementById("SSLDPOnOffSwitch").checked === true)) {
+		delete obj.services.SSL_DataPackage_service;
+	}
+
+	if(orig_api_cot_status === "on" && (document.getElementById("APIOnOffSwitch").checked === true)) {
+		delete obj.services.Rest_API_service;
+	}
+
+	if(orig_fed_cot_status === "on" && (document.getElementById("FEDOnOffSwitch").checked === true)) {
+		delete obj.services.Federation_server_service;
+	}
+
 
 	var socket = io.connect(`http://${ip}:19023`);
 
@@ -425,6 +467,14 @@ let obj =	{
 	socket.emit("serviceInfo", JSON.stringify(obj) );
 	socket.on("serviceInfoUpdate", function (data) {
 		let serviceInfoObject = JSON.parse(data);
+		
+		orig_tcp_cot_status = serviceInfoObject.services.TCP_CoT_service.status;
+		orig_ssl_cot_status = serviceInfoObject.services.SSL_CoT_service.status;
+		orig_tcp_dp_status = serviceInfoObject.services.TCP_DataPackage_service.status;
+		orig_ssl_dp_status = serviceInfoObject.services.SSL_DataPackage_service.status;
+		orig_api_cot_status = serviceInfoObject.services.Rest_API_service.status;
+		orig_fed_cot_status = serviceInfoObject.services.Federation_server_service.status;
+
 		console.log("Print CONFIGURE serviceInfoUpdate Response:" + JSON.stringify(serviceInfoObject));
 
 		document.getElementById("tcp_cot_port").value = serviceInfoObject.services.TCP_CoT_service.port;

@@ -16,20 +16,15 @@
                 {{ form.hidden_tag() }} 
 
                 <div class="card-header">
-                  <h5 class="title">Login</h5>
+                  <h3 class="title" style="color: #278aed;">[LOGIN]</h3>
 
                   <h6 class="card-category">
                       {% if msg %}
                         <span class="text-danger">{{ msg | safe }}</span>
                       {% else %}
-                      <span>
-                        Use default credentials: test / pass
-                        <br />
-                        OR <a href={{ url_for('base_blueprint.create_user') }} >
-                        <span style="color: #278aed;">
-                          create your own user
-                        </span>
-                        </a>
+                      <span style="font-size: 14px;">
+                        Welcome to FTS administration, please insert you credential
+                       
                       </span>
                       {% endif %}  
                   </h6>
@@ -39,8 +34,8 @@
 
                     <div class="row">
 
-                      <div class="col-md-3 px-md-1">
-                        <div class="form-group">
+                      <div class="col-md-3 px-md-1" >
+                        <div class="form-group" style="padding: 0px 16px;">
                           <label>Username</label>
                           {{ form.username(class="form-control") }}
                         </div>
@@ -49,8 +44,8 @@
                     </div>
                     <div class="row">
 
-                      <div class="col-md-3 px-md-1">
-                        <div class="form-group">
+                      <div class="col-md-3 px-md-1" >
+                        <div class="form-group" style="padding: 0px 16px;">
                           <label>Password</label>
                           {{ form.password(class="form-control", type="password") }}
                         </div>

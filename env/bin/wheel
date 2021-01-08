@@ -1,4 +1,4 @@
-#!/home/natha/TAKEnv/WebUI/flask-black-dashboard/env/bin/python3
+#!/Users/sivadineshm/Documents/projects/2020/FreeTAKTeam/UI-master/env/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

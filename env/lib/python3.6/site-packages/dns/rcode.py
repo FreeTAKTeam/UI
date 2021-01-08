@@ -17,55 +17,62 @@
 
 """DNS Result Codes."""
 
+import dns.enum
 import dns.exception
-from ._compat import long
 
-#: No error
-NOERROR = 0
-#: Form error
-FORMERR = 1
-#: Server failure
-SERVFAIL = 2
-#: Name does not exist ("Name Error" in RFC 1025 terminology).
-NXDOMAIN = 3
-#: Not implemented
-NOTIMP = 4
-#: Refused
-REFUSED = 5
-#: Name exists.
-YXDOMAIN = 6
-#: RRset exists.
-YXRRSET = 7
-#: RRset does not exist.
-NXRRSET = 8
-#: Not authoritative.
-NOTAUTH = 9
-#: Name not in zone.
-NOTZONE = 10
-#: Bad EDNS version.
-BADVERS = 16
+class Rcode(dns.enum.IntEnum):
+    #: No error
+    NOERROR = 0
+    #: Format error
+    FORMERR = 1
+    #: Server failure
+    SERVFAIL = 2
+    #: Name does not exist ("Name Error" in RFC 1025 terminology).
+    NXDOMAIN = 3
+    #: Not implemented
+    NOTIMP = 4
+    #: Refused
+    REFUSED = 5
+    #: Name exists.
+    YXDOMAIN = 6
+    #: RRset exists.
+    YXRRSET = 7
+    #: RRset does not exist.
+    NXRRSET = 8
+    #: Not authoritative.
+    NOTAUTH = 9
+    #: Name not in zone.
+    NOTZONE = 10
+    #: DSO-TYPE Not Implemented
+    DSOTYPENI = 11
+    #: Bad EDNS version.
+    BADVERS = 16
+    #: TSIG Signature Failure
+    BADSIG = 16
+    #: Key not recognized.
+    BADKEY = 17
+    #: Signature out of time window.
+    BADTIME = 18
+    #: Bad TKEY Mode.
+    BADMODE = 19
+    #: Duplicate key name.
+    BADNAME = 20
+    #: Algorithm not supported.
+    BADALG = 21
+    #: Bad Truncation
+    BADTRUNC = 22
+    #: Bad/missing Server Cookie
+    BADCOOKIE = 23
 
-_by_text = {
-    'NOERROR': NOERROR,
-    'FORMERR': FORMERR,
-    'SERVFAIL': SERVFAIL,
-    'NXDOMAIN': NXDOMAIN,
-    'NOTIMP': NOTIMP,
-    'REFUSED': REFUSED,
-    'YXDOMAIN': YXDOMAIN,
-    'YXRRSET': YXRRSET,
-    'NXRRSET': NXRRSET,
-    'NOTAUTH': NOTAUTH,
-    'NOTZONE': NOTZONE,
-    'BADVERS': BADVERS
-}
+    @classmethod
+    def _maximum(cls):
+        return 4095
 
-# We construct the inverse mapping programmatically to ensure that we
-# cannot make any mistakes (e.g. omissions, cut-and-paste errors) that
-# would cause the mapping not to be a true inverse.
+    @classmethod
+    def _unknown_exception_class(cls):
+        return UnknownRcode
 
-_by_value = {y: x for x, y in _by_text.items()}
-
+globals().update(Rcode.__members__)
 
 class UnknownRcode(dns.exception.DNSException):
     """A DNS rcode is unknown."""
@@ -74,21 +81,14 @@ class UnknownRcode(dns.exception.DNSException):
 def from_text(text):
     """Convert text into an rcode.
 
-    *text*, a ``text``, the textual rcode or an integer in textual form.
+    *text*, a ``str``, the textual rcode or an integer in textual form.
 
     Raises ``dns.rcode.UnknownRcode`` if the rcode mnemonic is unknown.
 
     Returns an ``int``.
     """
 
-    if text.isdigit():
-        v = int(text)
-        if v >= 0 and v <= 4095:
-            return v
-    v = _by_text.get(text.upper())
-    if v is None:
-        raise UnknownRcode
-    return v
+    return Rcode.from_text(text)
 
 
 def from_flags(flags, ednsflags):
@@ -122,23 +122,20 @@ def to_flags(value):
     if value < 0 or value > 4095:
         raise ValueError('rcode must be >= 0 and <= 4095')
     v = value & 0xf
-    ev = long(value & 0xff0) << 20
+    ev = (value & 0xff0) << 20
     return (v, ev)
 
 
-def to_text(value):
+def to_text(value, tsig=False):
     """Convert rcode into text.
 
-    *value*, and ``int``, the rcode.
+    *value*, an ``int``, the rcode.
 
     Raises ``ValueError`` if rcode is < 0 or > 4095.
 
-    Returns a ``text``.
+    Returns a ``str``.
     """
 
-    if value < 0 or value > 4095:
-        raise ValueError('rcode must be >= 0 and <= 4095')
-    text = _by_value.get(value)
-    if text is None:
-        text = str(value)
-    return text
+    if tsig and value == Rcode.BADVERS:
+        return 'BADSIG'
+    return Rcode.to_text(value)
