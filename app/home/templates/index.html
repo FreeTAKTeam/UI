@@ -470,11 +470,7 @@
 
 				let len = userObject.Users.length;
 				//let len = Object.keys(userObject).length;
-				if (len === 1) {
-					if (userObject[0].ip === "") {
-						len = 0;
-					}
-				}
+
 				document.getElementById("connected-users").innerText = len;
 
 				// console.log("Print 1 users Response:" + JSON.stringify(userObject));
