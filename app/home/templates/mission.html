@@ -297,8 +297,8 @@
 				<div>Status&nbsp;&nbsp;&nbsp;&nbsp;</div>
 				<div class="select" style="width: 120px">
 					<select name="format" id="statusof">
-						<option selected value="true">Enabled</option>
-						<option value="false">Disabled</option>
+						<option selected value="Enabled">Enabled</option>
+						<option value="Disabled">Disabled</option>
 					</select>
 				</div>
 			</div>
@@ -541,7 +541,7 @@ const authenticate = (socket) => {
 				name: document.getElementById("nameof").value,
 				address: document.getElementById("ipaddressof").value,
 				port: document.getElementById("portof").value,
-				fallback: document.getElementById("fallbackserverof").value,
+				fallBack: document.getElementById("fallbackserverof").value,
 				status: document.getElementById("statusof").value,
 				reconnectInterval: document.getElementById("recintervalof").value,
 				maxRetries: document.getElementById("maxretriesof").value,
