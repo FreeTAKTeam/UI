@@ -47,7 +47,7 @@ def missionApi():
     return render_template('mission.html', json_data = json_data['json_list'], 
     mission_json_data = mission_json_data['data'],
     excheck_json_data = excheck_json_data['ExCheck']['Templates'],
-    outgoing_federation_json_data = outgoing_federation_json_data['outgoingFederations'],
+    outgoing_federation_json_data = outgoing_federation_json_data['activeFederations'],
     segment = "mission"
      )
 
@@ -71,7 +71,7 @@ def configureApi():
     outgoing_federation_json_data = requests.get('http://204.48.30.216:19023/FederationTable', headers= headers).json()
 
     return render_template('configure.html', segment="configure", 
-    outgoing_federation_json_data = outgoing_federation_json_data['outgoingFederations'])     
+    outgoing_federation_json_data = outgoing_federation_json_data['activeFederations'])
 
 @blueprint.route('/users')
 @login_required
