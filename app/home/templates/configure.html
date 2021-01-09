@@ -464,7 +464,7 @@ let obj =	{
 	var socket = io.connect(`http://${ip}:19023`);
 
 	debugger;
-	socket.emit("serviceInfo", JSON.stringify(obj) );
+	socket.emit("changeServiceInfo", JSON.stringify(obj) );
 	socket.on("serviceInfoUpdate", function (data) {
 		let serviceInfoObject = JSON.parse(data);
 		
