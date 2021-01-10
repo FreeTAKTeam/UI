@@ -59,6 +59,8 @@
 		{% include 'site_template/scripts.html' %} {% include 'site_template/scripts-sidebar.html' %}
 
 		<!-- Specific Page JS goes HERE  -->
-		{% block javascripts %}{% endblock javascripts %}
+		{% block javascripts %}
+		<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+		{% endblock javascripts %}
 	</body>
 </html>

@@ -76,6 +76,8 @@ def create_app(config, selenium=False):
     app.config.from_object(config)
     app.config['UIVERSION'] = '1.0'
     app.config['APIKEY'] = 'a@v{5]MQU><waQ;Z'
+    app.config['PORT'] = '19023'
+    app.config['IP'] = '204.48.30.216'
     if selenium:
         app.config['LOGIN_DISABLED'] = True
     register_extensions(app)

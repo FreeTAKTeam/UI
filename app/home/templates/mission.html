@@ -551,7 +551,7 @@ const authenticate = (socket) => {
 		let url = `http://${tcpip}:${tcpport}/Marti/api/sync/metadata/${param}/tool`;
 		headers = { Authorization: "Bearer a@v{5]MQU><waQ;Z", Connection: "Keep-Alive" };
 
-		debugger;
+		
 		fetch(url, {
 			method: "GET",
 			headers: headers,
@@ -694,11 +694,9 @@ const authenticate = (socket) => {
 		}
 		
 
-	//	var formData = new FormData();
-	//	formData.append("assetfile", file);
 
 		headers = { Authorization: "Bearer a@v{5]MQU><waQ;Z", Connection: "Keep-Alive" };
-		debugger;
+		
 		fetch(`http://204.48.30.216:19023/ExCheckTable`, {
 			method: "POST",
 			headers: headers,

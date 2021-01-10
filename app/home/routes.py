@@ -61,7 +61,8 @@ def connectApi():
     headers = {'Authorization': 'Bearer a@v{5]MQU><waQ;Z'}
     json_data = requests.get('http://204.48.30.216:19023/ManageEmergency/getEmergency', headers= headers).json()
     
-    return render_template('connect.html', json_data = json_data['json_list'], segment="connect")     
+    return render_template('connect.html', json_data = json_data['json_list'], segment="connect",
+    apikey=app.config['APIKEY'], port=app.config['PORT'], ip=app.config['IP'])     
 
 
 @blueprint.route('/configure')
@@ -71,7 +72,8 @@ def configureApi():
     outgoing_federation_json_data = requests.get('http://204.48.30.216:19023/FederationTable', headers= headers).json()
 
     return render_template('configure.html', segment="configure", 
-    outgoing_federation_json_data = outgoing_federation_json_data['federations'])
+    outgoing_federation_json_data = outgoing_federation_json_data['federations'],
+    apikey=app.config['APIKEY'], port=app.config['PORT'], ip=app.config['IP'])
 
 @blueprint.route('/users')
 @login_required
@@ -82,7 +84,7 @@ def usersApi():
 @login_required
 def aboutApi():
     return render_template('about.html', segment="about", uiversion=app.config['UIVERSION'],
-    apikey=app.config['APIKEY'])     
+    apikey=app.config['APIKEY'], port=app.config['PORT'], ip=app.config['IP'])     
 
 # @blueprint.route('/connect')
 # @login_required
