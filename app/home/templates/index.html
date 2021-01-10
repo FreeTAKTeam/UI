@@ -576,7 +576,7 @@
 				document.getElementById("loading-systemstatus4").style.display = "none";
 				document.getElementById("loading-systemstatus5").style.display = "none";
 				document.getElementById("loading-systemstatus6").style.display = "none";
-				// Datapackage TCP
+				// Datapackage TCP (1)
 				if (
 					systemStatusObject.TCPDataPackageStatus == systemStatusObject.TCPDataPackageStatusExpected &&
 					systemStatusObject.TCPDataPackageStatus == "on"
@@ -597,7 +597,7 @@
 					document.getElementById("tcp_error").style.display = "block";
 				}
 
-				// Datapackage SSL
+				// Datapackage SSL (2)
 				if (
 					systemStatusObject.SSLDataPackageStatus == systemStatusObject.SSLDataPackageStatusExpected &&
 					systemStatusObject.SSLDataPackageStatus == "on"
@@ -618,7 +618,7 @@
 					document.getElementById("ssl_error").style.display = "block";
 				}
 
-				// REST TCP
+				// REST TCP (3)
 				if (systemStatusObject.RestAPIStatus == systemStatusObject.RestAPIStatusExpected && systemStatusObject.RestAPIStatus == "on") {
 					document.getElementById("rest_api_on").style.display = "block";
 					document.getElementById("rest_api_off").style.display = "none";
@@ -633,47 +633,47 @@
 					document.getElementById("rest_api_error").style.display = "block";
 				}
 
-				// REST TCP
-				if (systemStatusObject.RestAPIStatus == systemStatusObject.RestAPIStatusExpected && systemStatusObject.RestAPIStatus == "on") {
+				// FED (4)
+				if (systemStatusObject.FederationServerStatus == systemStatusObject.FederationServerExpected && systemStatusObject.FederationServerStatus == "on") {
 					document.getElementById("fed_on").style.display = "block";
 					document.getElementById("fed_off").style.display = "none";
 					document.getElementById("fed_error").style.display = "none";
-				} else if (systemStatusObject.RestAPIStatus == systemStatusObject.RestAPIStatusExpected && systemStatusObject.RestAPIStatus == "off") {
+				} else if (systemStatusObject.FederationServerStatus == systemStatusObject.FederationServerExpected && systemStatusObject.FederationServerStatus == "off") {
 					document.getElementById("fed_on").style.display = "none";
 					document.getElementById("fed_off").style.display = "block";
 					document.getElementById("fed_error").style.display = "none";
-				} else if (systemStatusObject.RestAPIStatus != systemStatusObject.RestAPIStatusExpected) {
+				} else if (systemStatusObject.FederationServerStatus != systemStatusObject.FederationServerExpected) {
 					document.getElementById("fed_on").style.display = "none";
 					document.getElementById("fed_off").style.display = "none";
 					document.getElementById("fed_error").style.display = "block";
 				}
 
-				// Datapackage SSL
-				if (
-					systemStatusObject.SSLDataPackageStatus == systemStatusObject.SSLDataPackageStatusExpected &&
-					systemStatusObject.SSLDataPackageStatus == "on"
-				) {
-					document.getElementById("ssl_on").style.display = "block";
-					document.getElementById("ssl_off").style.display = "none";
-					document.getElementById("ssl_error").style.display = "none";
-				} else if (
-					systemStatusObject.SSLDataPackageStatus == systemStatusObject.SSLDataPackageStatusExpected &&
-					systemStatusObject.SSLDataPackageStatus == "off"
-				) {
-					document.getElementById("ssl_on").style.display = "none";
-					document.getElementById("ssl_off").style.display = "block";
-					document.getElementById("ssl_error").style.display = "none";
-				} else if (
-					systemStatusObject.SSLDataPackageStatus == systemStatusObject.SSLDataPackageStatusExpected &&
-					systemStatusObject.SSLDataPackageStatus != "on" &&
-					systemStatusObject.SSLDataPackageStatus != "off"
-				) {
-					document.getElementById("ssl_on").style.display = "none";
-					document.getElementById("ssl_off").style.display = "none";
-					document.getElementById("ssl_error").style.display = "block";
-				}
+				// // Datapackage SSL
+				// if (
+				// 	systemStatusObject.SSLDataPackageStatus == systemStatusObject.SSLDataPackageStatusExpected &&
+				// 	systemStatusObject.SSLDataPackageStatus == "on"
+				// ) {
+				// 	document.getElementById("ssl_on").style.display = "block";
+				// 	document.getElementById("ssl_off").style.display = "none";
+				// 	document.getElementById("ssl_error").style.display = "none";
+				// } else if (
+				// 	systemStatusObject.SSLDataPackageStatus == systemStatusObject.SSLDataPackageStatusExpected &&
+				// 	systemStatusObject.SSLDataPackageStatus == "off"
+				// ) {
+				// 	document.getElementById("ssl_on").style.display = "none";
+				// 	document.getElementById("ssl_off").style.display = "block";
+				// 	document.getElementById("ssl_error").style.display = "none";
+				// } else if (
+				// 	systemStatusObject.SSLDataPackageStatus == systemStatusObject.SSLDataPackageStatusExpected &&
+				// 	systemStatusObject.SSLDataPackageStatus != "on" &&
+				// 	systemStatusObject.SSLDataPackageStatus != "off"
+				// ) {
+				// 	document.getElementById("ssl_on").style.display = "none";
+				// 	document.getElementById("ssl_off").style.display = "none";
+				// 	document.getElementById("ssl_error").style.display = "block";
+				// }
 
-				// COT TCP
+				// COT TCP (5)
 				if (systemStatusObject.TCPCoTStatus == systemStatusObject.TCPCoTStatusExpected && systemStatusObject.TCPCoTStatus == "on") {
 					document.getElementById("cot_tcp_on").style.display = "block";
 					document.getElementById("cot_tcp_off").style.display = "none";
@@ -688,7 +688,7 @@
 					document.getElementById("cot_tcp_error").style.display = "block";
 				}
 
-				// COT SSL
+				// COT SSL (6)
 				if (systemStatusObject.SSLCoTStatus == systemStatusObject.SSLCoTStatusExpected && systemStatusObject.SSLCoTStatus == "on") {
 					document.getElementById("cot_ssl_on").style.display = "block";
 					document.getElementById("cot_ssl_off").style.display = "none";

@@ -359,13 +359,18 @@ select::-ms-expand {
 }
 
 .rowselected {
-	background-color: #0f84d6 !important;
+	background-color: #0f84d680 !important;
 	color: #fff !important;
 }
 
 .row-class:hover {
 	border-left: 2px solid #0f84d6;
 	color: #fff !important;
+}
+
+.link-name {
+	cursor: pointer;
+	color: #278aed;
 }
 
 .enable-delete {

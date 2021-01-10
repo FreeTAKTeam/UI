@@ -44,8 +44,8 @@
 					download={{dict_items['Name']}} >
 					{{dict_items['Name']}}
 				</a> -->
-					<div onclick="downloadFile('{{dict_items.Hash}}')" >
-						<span style="cursor: pointer; color: #278aed;">
+					<div onclick="downloadFile('{{dict_items.Hash}}', '{{dict_items.Name}}')" >
+						<span class="link-name" >
 							{{dict_items['Name']}}
 						</span>
 						
@@ -546,7 +546,7 @@ const authenticate = (socket) => {
 
 
 
-	function downloadFile(param) {
+	function downloadFile(param, name) {
 		
 		let url = `http://${tcpip}:${tcpport}/Marti/api/sync/metadata/${param}/tool`;
 		headers = { Authorization: "Bearer a@v{5]MQU><waQ;Z", Connection: "Keep-Alive" };
@@ -563,13 +563,16 @@ const authenticate = (socket) => {
     a.style.display = 'none';
     a.href = url;
     // the filename you want
-    a.download = 'todo.json';
+    a.download = name;
     document.body.appendChild(a);
     a.click();
-    window.URL.revokeObjectURL(url);
-    alert('your file has downloaded!'); // or you know, something with better UX...
+	window.URL.revokeObjectURL(url);
+	snackFunction("File Downloaded Successfully!");
+    // alert('your file has downloaded!'); // or you know, something with better UX...
   })
-  .catch(() => alert('oh no!'));
+  .catch(() => {
+	snackFunction("File downloaded Failed! Contact Administrator.");
+  });
 
 
 	//	window.location = url;

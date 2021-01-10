@@ -81,7 +81,8 @@ def usersApi():
 @blueprint.route('/about')
 @login_required
 def aboutApi():
-    return render_template('about.html', segment="about", uiversion=app.config['UIVERSION'])     
+    return render_template('about.html', segment="about", uiversion=app.config['UIVERSION'],
+    apikey=app.config['APIKEY'])     
 
 # @blueprint.route('/connect')
 # @login_required
