@@ -252,7 +252,7 @@
 								<div class="select">
 									<select name="format" id="format">
 										{% for items in outgoing_federation_json_data %} 
-										<option >{{items['Name']}}</option>
+										<option >{{items['name']}}</option>
 										
 										{% endfor %}
 									</select>
@@ -279,6 +279,7 @@
 
 
 </div>
+<div id="snackbar">&nbsp;</div>
 {% endblock content %}
 
 <!-- Specific Page JS goes HERE  -->
@@ -404,8 +405,6 @@ const getServiceInfo = (socket) => {
 
 const applyServiceInfo = () => {
 
-	
-
 let obj =	{
    services: {
        SSL_CoT_service: {
@@ -436,6 +435,7 @@ let obj =	{
    ip: document.getElementById("ip").value
 }
 
+
 	if(orig_tcp_cot_status === "on" && (document.getElementById("TCPCoTOnOffSwitch").checked === true)) {
 		delete obj.services.TCP_CoT_service;
 	}
@@ -464,75 +464,99 @@ let obj =	{
 	var socket = io.connect(`http://${ip}:19023`);
 
 	debugger;
+
 	socket.emit("changeServiceInfo", JSON.stringify(obj) );
-	socket.on("serviceInfoUpdate", function (data) {
-		let serviceInfoObject = JSON.parse(data);
+		snackFunction("Configuration updated. Refreshing data.");
+			refresh();
+
+	// socket.on("serviceInfoUpdate", function (data) {
+	// 	debugger;
+	// 	let serviceInfoObject = JSON.parse(data);
+	// 	debugger;
+	// 	orig_tcp_cot_status = serviceInfoObject.services.TCP_CoT_service.status;
+	// 	orig_ssl_cot_status = serviceInfoObject.services.SSL_CoT_service.status;
+	// 	orig_tcp_dp_status = serviceInfoObject.services.TCP_DataPackage_service.status;
+	// 	orig_ssl_dp_status = serviceInfoObject.services.SSL_DataPackage_service.status;
+	// 	orig_api_cot_status = serviceInfoObject.services.Rest_API_service.status;
+	// 	orig_fed_cot_status = serviceInfoObject.services.Federation_server_service.status;
+
+	// 	console.log("Print CONFIGURE serviceInfoUpdate Response:" + JSON.stringify(serviceInfoObject));
+
+	// 	document.getElementById("tcp_cot_port").value = serviceInfoObject.services.TCP_CoT_service.port;
+	// 	document.getElementById("ssl_cot_port").value = serviceInfoObject.services.SSL_CoT_service.port;
 		
-		orig_tcp_cot_status = serviceInfoObject.services.TCP_CoT_service.status;
-		orig_ssl_cot_status = serviceInfoObject.services.SSL_CoT_service.status;
-		orig_tcp_dp_status = serviceInfoObject.services.TCP_DataPackage_service.status;
-		orig_ssl_dp_status = serviceInfoObject.services.SSL_DataPackage_service.status;
-		orig_api_cot_status = serviceInfoObject.services.Rest_API_service.status;
-		orig_fed_cot_status = serviceInfoObject.services.Federation_server_service.status;
-
-		console.log("Print CONFIGURE serviceInfoUpdate Response:" + JSON.stringify(serviceInfoObject));
-
-		document.getElementById("tcp_cot_port").value = serviceInfoObject.services.TCP_CoT_service.port;
-		document.getElementById("ssl_cot_port").value = serviceInfoObject.services.SSL_CoT_service.port;
+	// 	document.getElementById("http_dp_port").value = serviceInfoObject.services.TCP_DataPackage_service.port;
+	// 	document.getElementById("ssl_dp_port").value = serviceInfoObject.services.SSL_DataPackage_service.port;
 		
-		document.getElementById("http_dp_port").value = serviceInfoObject.services.TCP_DataPackage_service.port;
-		document.getElementById("ssl_dp_port").value = serviceInfoObject.services.SSL_DataPackage_service.port;
-		
-		document.getElementById("api_port").value = serviceInfoObject.services.Rest_API_service.port;
-		document.getElementById("fed_port").value = serviceInfoObject.services.Federation_server_service.port;
+	// 	document.getElementById("api_port").value = serviceInfoObject.services.Rest_API_service.port;
+	// 	document.getElementById("fed_port").value = serviceInfoObject.services.Federation_server_service.port;
 
-		document.getElementById("ip").value = serviceInfoObject.ip;
+	// 	document.getElementById("ip").value = serviceInfoObject.ip;
 
 		
-		if(serviceInfoObject.services.TCP_CoT_service.status == "on") {
-			document.getElementById("TCPCoTOnOffSwitch").checked = true;
-		} else {
-			document.getElementById("TCPCoTOnOffSwitch").checked = false;
-		}
+	// 	if(serviceInfoObject.services.TCP_CoT_service.status == "on") {
+	// 		document.getElementById("TCPCoTOnOffSwitch").checked = true;
+	// 	} else {
+	// 		document.getElementById("TCPCoTOnOffSwitch").checked = false;
+	// 	}
 
-		if(serviceInfoObject.services.SSL_CoT_service.status == "on") {
-			document.getElementById("SSLCoTOnOffSwitch").checked = true;
-		} else {
-			document.getElementById("SSLCoTOnOffSwitch").checked = false;
-		}
+	// 	if(serviceInfoObject.services.SSL_CoT_service.status == "on") {
+	// 		document.getElementById("SSLCoTOnOffSwitch").checked = true;
+	// 	} else {
+	// 		document.getElementById("SSLCoTOnOffSwitch").checked = false;
+	// 	}
 
-		if(serviceInfoObject.services.TCP_DataPackage_service.status == "on") {
-			document.getElementById("HTTPDPOnOffSwitch").checked = true;
-		} else {
-			document.getElementById("HTTPDPOnOffSwitch").checked = false;
-		}
+	// 	if(serviceInfoObject.services.TCP_DataPackage_service.status == "on") {
+	// 		document.getElementById("HTTPDPOnOffSwitch").checked = true;
+	// 	} else {
+	// 		document.getElementById("HTTPDPOnOffSwitch").checked = false;
+	// 	}
 
-		if(serviceInfoObject.services.SSL_DataPackage_service.status == "on") {
-			document.getElementById("SSLDPOnOffSwitch").checked = true;
-		} else {
-			document.getElementById("SSLDPOnOffSwitch").checked = false;
-		}
+	// 	if(serviceInfoObject.services.SSL_DataPackage_service.status == "on") {
+	// 		document.getElementById("SSLDPOnOffSwitch").checked = true;
+	// 	} else {
+	// 		document.getElementById("SSLDPOnOffSwitch").checked = false;
+	// 	}
 
-		if(serviceInfoObject.services.Rest_API_service.status == "on") {
-			document.getElementById("APIOnOffSwitch").checked = true;
-		} else {
-			document.getElementById("APIOnOffSwitch").checked = false;
-		}
+	// 	if(serviceInfoObject.services.Rest_API_service.status == "on") {
+	// 		document.getElementById("APIOnOffSwitch").checked = true;
+	// 	} else {
+	// 		document.getElementById("APIOnOffSwitch").checked = false;
+	// 	}
 
-		if(serviceInfoObject.services.Federation_server_service.status == "on") {
-			document.getElementById("FEDOnOffSwitch").checked = true;
-		} else {
-			document.getElementById("FEDOnOffSwitch").checked = false;
-		}
+	// 	if(serviceInfoObject.services.Federation_server_service.status == "on") {
+	// 		document.getElementById("FEDOnOffSwitch").checked = true;
+	// 	} else {
+	// 		document.getElementById("FEDOnOffSwitch").checked = false;
+	// 	}
 
+	// 	snackFunction("Configuration updated. Refreshing data.");
+	// 		refresh();
 
-	});
+	// });
 	
 };
 
+function refresh() {
+		setTimeout(function () {
+			location.reload(true);
+		}, 3000);
+	}
 
-// missing FederationServerService
 
+function snackFunction(message) {
+		// Get the snackbar DIV
+		var x = document.getElementById("snackbar");
+		document.getElementById("snackbar").textContent = message;
+
+		// Add the "show" class to DIV
+		x.className = "show";
+
+		// After 3 seconds, remove the show class from DIV
+		setTimeout(function () {
+			x.className = x.className.replace("show", "");
+		}, 3000);
+	}
 
 
 </script>

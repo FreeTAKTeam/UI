@@ -102,9 +102,9 @@
 								<div
 									class="row-color-nohover row-class"
 									style="display: grid; grid-template-columns: 1fr 100px 100px 180px 1fr; padding: 10px; color: #fff; opacity: 0.8"
-									onclick="captureClick('{{dict_items.Hash}}')"
+									onclick="captureClick('{{dict_items.uid}}')"
 								>
-									<div>{{dict_items['PrimaryKey']}}</div>
+									<div>{{dict_items['name']}}</div>
 									<div>{{dict_items['lat']}}</div>
 									<div>{{dict_items['lon']}}</div>
 									<div>{{dict_items['type']}}</div>
@@ -117,7 +117,14 @@
 					</div>
 					<!-- ======= Footer tools ======= -->
 					<div class="footer-tools" style="background-color: #27293d; padding: 16px 0px 16px 50px; text-align: right">
-						<button class="btn btn-simple btn-twitter" style="color: #278aed80; border-color: #278aed80">DELETE</button>
+						<div
+							class="btn btn-simple btn-twitter"
+							id="data-emergency-delete"
+							onclick="deleteEmergency()"
+							style="color: #278aed80; border-color: #278aed; color: #278aed; display: inline-flex"
+						>
+							<span>DELETE</span> <span id="del-count">&nbsp;</span>
+						</div>
 						&nbsp;&nbsp;&nbsp;
 						<button class="btn btn-simple btn-twitter" onclick="addEmergencyToggle()" style="color: #278aed; border-color: #278aed">ADD</button>
 					</div>
@@ -472,6 +479,13 @@
 		});
 	};
 
+	$(document).ready(function () {
+		$(".row-class").on("click", function () {
+			$(".row-class").removeClass("rowselected");
+			$(this).toggleClass("rowselected");
+		});
+	});
+
 	function refresh() {
 		setTimeout(function () {
 			location.reload(true);
@@ -488,7 +502,37 @@
 			x.style.display = "none";
 		}
 	}
+
+	function captureClick(param) {
+		emergencyArr[0] = param;
+	}
+
+	function deleteEmergency() {
+		let obj = {
+			uid: emergencyArr[0],
+		};
+
+		headers = { Authorization: "Bearer a@v{5]MQU><waQ;Z" };
+		fetch("http://204.48.30.216:19023/ManageEmergency/deleteEmergency", {
+			method: "DELETE",
+			headers: headers,
+			body: JSON.stringify(obj),
+		}).then((response) => {
+			console.log("delete response...");
+			response.json();
+			console.log("delete response...XX " + response.json());
+			snackFunction("Delete Successful. Refreshing data.");
+			refresh();
+		});
+	}
 </script>
+
+<script>
+	$(window).on("load", function () {
+		emergencyArr = [];
+	});
+</script>
+
 {% endblock javascripts %}
 
 <!-- {
@@ -499,3 +543,8 @@
     "role": "Team Member",
     "team": "Yellow"
 } -->
+
+<!-- {
+	"uid": "459b5874-1ebf-11eb-9e70-4e58de281c19",
+	  "status": "off"
+	} -->
