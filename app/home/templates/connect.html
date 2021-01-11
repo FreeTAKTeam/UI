@@ -408,7 +408,7 @@
 			latitude: +document.getElementById("latitude2").value,
 		};
 
-		headers = { "Content-Type": "application/json", Authorization: "{{websocketkey | safe}}" };
+		headers = { "Content-Type": "application/json", Authorization: "{{apikey | safe}}" };
 		fetch("http://{{ip}}:{{port}}/ManageEmergency/postEmergency", {
 			method: "post",
 			headers: headers,
