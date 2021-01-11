@@ -113,16 +113,70 @@
 
 <script>
 
-	 function establishConnection() {
+	 async function establishConnection() {
 		var socket = io.connect(`http://{{ip}}:{{port}}`);
 		getConnectInfo(socket);
+		let isAuth = await authenticate(socket);
+
+		if (isAuth === "True") {
+			getEventsInfo(socket);
+		} else {
+
+		}
+	
 	}
+
+	const authenticate = (socket) => {
+			
+			socket.emit("authenticate", JSON.stringify({ Authenticate: "{{websocketkey | safe}}" }));
+
+			return new Promise(function (resolve, reject) {
+				socket.on("authentication", function (data) {
+					let authenticateObject = JSON.parse(data);
+
+					if (authenticateObject.successful === "True") {
+						resolve("True");
+					} else {
+						reject("False");
+					}
+				});
+			});
+		};
 
 	const getConnectInfo = (socket) => {
 		
 		socket.on("connectUpdate", function (data) {
 			let connectObject = JSON.parse(data);
 			document.getElementById("server-version").innerText = connectObject.version;
+		});
+	};
+
+	const getEventsInfo = (socket) => {
+		
+		socket.emit("events");
+		socket.on("eventsUpdate", function (data) {
+			let eventsArr = data.events;
+			if (eventsArr.lenght > 0) {
+				document.getElementById("notif").style.display = "block";
+			} else {
+				document.getElementById("notif").style.display = "none";
+			}
+
+			let ul = document.createElement("ul");
+			ul.className = "dropdown-menu dropdown-menu-right dropdown-navbar";
+			document.getElementById("events-info").appendChild(ul);
+
+			for (let [index, row] of eventsArr.entries()) {
+				var li = document.createElement("li");
+				li.className = "nav-link";
+
+				var a = document.createElement("a");
+				a.className = "nav-item dropdown-item";
+				a.innerHTML = row;
+
+				li.appendChild(a);
+				ul.appendChild(li);
+			}
 		});
 	};
 

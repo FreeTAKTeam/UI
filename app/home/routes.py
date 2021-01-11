@@ -20,35 +20,34 @@ def index():
     if not current_user.is_authenticated:
        return redirect(url_for('base_blueprint.login'))
 
-    return render_template('index.html', segment='index')
+    return render_template('index.html', segment='index',
+    websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], port=app.config['PORT'], ip=app.config['IP'],
+    userinterval=app.config['USERINTERVAL'],serverhealthinterval=app.config['SERVERHEALTHINTERVAL'], sysstatusinterval=app.config['SYSSTATUSINTERVAL']
+    )
 
 
 @blueprint.route('/mission')
 @login_required
 def missionApi():
-    # response = requests.get('https://jsonplaceholder.typicode.com/posts')
-    #response = requests.get('http://localhost:3000/dataPackage')
     
-    headers = {'Authorization': 'Bearer a@v{5]MQU><waQ;Z'}
+    headers = {'Authorization': app.config['APIKEY']}
 
-    json_data = requests.get('http://204.48.30.216:19023/DataPackageTable', headers= headers).json()
+    json_data = requests.get('http://' + app.config['IP'] + ':' + app.config['PORT'] + '/DataPackageTable', headers= headers).json()
     
-    mission_json_data = requests.get('http://204.48.30.216:19023/MissionTable', headers= headers).json()
+    mission_json_data = requests.get('http://' + app.config['IP'] + ':' + app.config['PORT'] + '/MissionTable', headers= headers).json()
 
-    excheck_json_data = requests.get('http://204.48.30.216:19023/ExCheckTable', headers= headers).json()
+    excheck_json_data = requests.get('http://' + app.config['IP'] + ':' + app.config['PORT'] + '/ExCheckTable', headers= headers).json()
 
-    outgoing_federation_json_data = requests.get('http://204.48.30.216:19023/FederationTable', headers= headers).json()
+    outgoing_federation_json_data = requests.get('http://' + app.config['IP'] + ':' + app.config['PORT'] + '/FederationTable', headers= headers).json()
     
-    #  print('Name' + json_data['json_list'][0]['Name'])    
-
-   # print('Name' + str(len(mission_json_data['data'])));    
-     
-
+   
     return render_template('mission.html', json_data = json_data['json_list'], 
     mission_json_data = mission_json_data['data'],
     excheck_json_data = excheck_json_data['ExCheck']['Templates'],
     outgoing_federation_json_data = outgoing_federation_json_data['federations'],
-    segment = "mission"
+    segment = "mission",
+    websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], port=app.config['PORT'], ip=app.config['IP']
+    
      )
 
 
@@ -58,45 +57,34 @@ def missionApi():
 @blueprint.route('/connect')
 @login_required
 def connectApi():
-    headers = {'Authorization': 'Bearer a@v{5]MQU><waQ;Z'}
-    json_data = requests.get('http://204.48.30.216:19023/ManageEmergency/getEmergency', headers= headers).json()
+    headers = {'Authorization': app.config['APIKEY']}
+    json_data = requests.get('http://' + app.config['IP'] + ':' + app.config['PORT'] + '/ManageEmergency/getEmergency', headers= headers).json()
     
     return render_template('connect.html', json_data = json_data['json_list'], segment="connect",
-    apikey=app.config['APIKEY'], port=app.config['PORT'], ip=app.config['IP'])     
+    websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], port=app.config['PORT'], ip=app.config['IP'])     
 
 
 @blueprint.route('/configure')
 @login_required
 def configureApi():
-    headers = {'Authorization': 'Bearer a@v{5]MQU><waQ;Z'}
-    outgoing_federation_json_data = requests.get('http://204.48.30.216:19023/FederationTable', headers= headers).json()
+    headers = {'Authorization': app.config['APIKEY']}
+    outgoing_federation_json_data = requests.get('http://' + app.config['IP'] + ':' + app.config['PORT'] + '/FederationTable', headers= headers).json()
 
     return render_template('configure.html', segment="configure", 
     outgoing_federation_json_data = outgoing_federation_json_data['federations'],
-    apikey=app.config['APIKEY'], port=app.config['PORT'], ip=app.config['IP'])
+    websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], port=app.config['PORT'], ip=app.config['IP'])
 
 @blueprint.route('/users')
 @login_required
 def usersApi():
-    return render_template('users.html', segment="users")     
+    return render_template('users.html', segment="users", 
+    websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], port=app.config['PORT'], ip=app.config['IP'])     
       
 @blueprint.route('/about')
 @login_required
 def aboutApi():
     return render_template('about.html', segment="about", uiversion=app.config['UIVERSION'],
-    apikey=app.config['APIKEY'], port=app.config['PORT'], ip=app.config['IP'])     
-
-# @blueprint.route('/connect')
-# @login_required
-# def connectApi():
-    
-    
-#     headers = {'Authorization': 'Bearer a@v{5]MQU><waQ;Z'}
-
-#     json_data = requests.get('http://204.48.30.216:19023/ManageEmergency/getEmergency', headers= headers).json()
-    
-#     return render_template('connect.html', json_data = json_data['json_list'])     
-  
+    websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], port=app.config['PORT'], ip=app.config['IP'])     
 
 @blueprint.route('/<template>')
 def route_template(template):

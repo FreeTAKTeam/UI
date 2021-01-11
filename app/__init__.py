@@ -75,9 +75,13 @@ def create_app(config, selenium=False):
     app = Flask(__name__, static_folder='base/static')
     app.config.from_object(config)
     app.config['UIVERSION'] = '1.0'
-    app.config['APIKEY'] = 'a@v{5]MQU><waQ;Z'
+    app.config['APIKEY'] = 'Bearer a@v{5]MQU><waQ;Z'
+    app.config['WEBSOCKETKEY'] = 'a@v{5]MQU><waQ;Z'
     app.config['PORT'] = '19023'
     app.config['IP'] = '204.48.30.216'
+    app.config['USERINTERVAL'] = '180000';
+    app.config['SERVERHEALTHINTERVAL'] = '180000';
+    app.config['SYSSTATUSINTERVAL'] = '600000';
     if selenium:
         app.config['LOGIN_DISABLED'] = True
     register_extensions(app)

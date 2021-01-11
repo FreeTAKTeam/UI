@@ -40,10 +40,6 @@
 				
 				<div >
 
-					<!-- <a href="http://204.48.30.216:8080/Marti/api/sync/metadata/bdb925eba8bf18308d145cbacb2576bab39b94dc28ebbc4e613104a421bf9d59/tool" 
-					download={{dict_items['Name']}} >
-					{{dict_items['Name']}}
-				</a> -->
 					<div onclick="downloadFile('{{dict_items.Hash}}', '{{dict_items.Name}}')" >
 						<span class="link-name" >
 							{{dict_items['Name']}}
@@ -399,11 +395,9 @@
 <!-- Specific Page JS goes HERE  -->
 {% block javascripts %}
 
-
-<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 <script>
-	var ip = "204.48.30.216";
-var socket = io.connect(`http://${ip}:19023`);
+
+var socket = io.connect(`http://{{ip}}:{{port}}`);
 
 var tcpip;
 var tcpport;
@@ -415,6 +409,7 @@ async function establishConnection() {
 
 	if (isAuth === "True") {
 		getServiceInfo(socket);
+		getEventsInfo(socket);
 		
 	} else {
 		// throw error
@@ -423,7 +418,7 @@ async function establishConnection() {
 
 const authenticate = (socket) => {
 			
-			socket.emit("authenticate", JSON.stringify({ Authenticate: "a@v{5]MQU><waQ;Z" }));
+			socket.emit("authenticate", JSON.stringify({ Authenticate: "{{websocketkey | safe}}" }));
 
 			return new Promise(function (resolve, reject) {
 				socket.on("authentication", function (data) {
@@ -524,6 +519,7 @@ const authenticate = (socket) => {
 		if(ofDelArr.length === 1) {
 			document.getElementById("data-of-edit").style.display = "inline-flex";
 			document.getElementById("editOF").style.display = "block";
+			document.getElementById("addOF").style.display = "none";
 
 		} else {
 			document.getElementById("data-of-edit").style.display = "none";
@@ -543,41 +539,34 @@ const authenticate = (socket) => {
 	}
 
 
-
-
-
 	function downloadFile(param, name) {
 		
 		let url = `http://${tcpip}:${tcpport}/Marti/api/sync/metadata/${param}/tool`;
-		headers = { Authorization: "Bearer a@v{5]MQU><waQ;Z", Connection: "Keep-Alive" };
+		headers = { Authorization: "{{apikey}}", Connection: "Keep-Alive" };
 
 		
 		fetch(url, {
 			method: "GET",
 			headers: headers,
 		})
-  .then(resp => resp.blob())
-  .then(blob => {
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.style.display = 'none';
-    a.href = url;
-    // the filename you want
-    a.download = name;
-    document.body.appendChild(a);
-    a.click();
-	window.URL.revokeObjectURL(url);
-	snackFunction("File Downloaded Successfully!");
-    // alert('your file has downloaded!'); // or you know, something with better UX...
-  })
-  .catch(() => {
-	snackFunction("File downloaded Failed! Contact Administrator.");
-  });
+			.then(resp => resp.blob())
+			.then(blob => {
+				const url = window.URL.createObjectURL(blob);
+				const a = document.createElement('a');
+				a.style.display = 'none';
+				a.href = url;
+				// the filename you want
+				a.download = name;
+				document.body.appendChild(a);
+				a.click();
+				window.URL.revokeObjectURL(url);
+				snackFunction("File Downloaded Successfully!");
+				// alert('your file has downloaded!'); // or you know, something with better UX...
+			})
+			.catch(() => {
+				snackFunction("File downloaded Failed! Contact Administrator.");
+			});
 
-
-	//	window.location = url;
-		
-		// window.open(url,'mywin',"width="+screen.availWidth+",height="+screen.availHeight);
 	}
 
 	const getServiceInfo = (socket) => {
@@ -639,9 +628,9 @@ const authenticate = (socket) => {
 		var formData = new FormData();
 		formData.append("assetfile", file);
 
-		headers = { Authorization: "Bearer a@v{5]MQU><waQ;Z", Connection: "Keep-Alive" };
+		headers = { Authorization: "{{apikey}}", Connection: "Keep-Alive" };
 
-		fetch(`http://204.48.30.216:19023/DataPackageTable?filename=${file.name}&creator`, {
+		fetch(`http://{{ip}}:{{port}}/DataPackageTable?filename=${file.name}&creator`, {
 			method: "POST",
 			headers: headers,
 			body: formData,
@@ -695,9 +684,9 @@ const authenticate = (socket) => {
 		
 
 
-		headers = { Authorization: "Bearer a@v{5]MQU><waQ;Z", Connection: "Keep-Alive" };
+		headers = { Authorization: "{{apikey}}", Connection: "Keep-Alive" };
 		
-		fetch(`http://204.48.30.216:19023/ExCheckTable`, {
+		fetch(`http://{{ip}}:{{port}}/ExCheckTable`, {
 			method: "POST",
 			headers: headers,
 			body: inputExcheck.files[0],
@@ -763,8 +752,8 @@ const authenticate = (socket) => {
 
 	function deleteDataPackage() {
 		
-		headers = { Authorization: "Bearer a@v{5]MQU><waQ;Z" };
-		fetch("http://204.48.30.216:19023/DataPackageTable", {
+		headers = { Authorization: "{{apikey}}" };
+		fetch("http://{{ip}}:{{port}}/DataPackageTable", {
 			method: "DELETE",
 			headers: headers,
 			body: JSON.stringify({
@@ -789,8 +778,8 @@ const authenticate = (socket) => {
 		}
 
 		
-		headers = { Authorization: "Bearer a@v{5]MQU><waQ;Z" };
-		fetch("http://204.48.30.216:19023/ExCheckTable", {
+		headers = { Authorization: "{{apikey}}" };
+		fetch("http://{{ip}}:{{port}}/ExCheckTable", {
 			method: "DELETE",
 			headers: headers,
 			body: JSON.stringify(obj),
@@ -803,25 +792,18 @@ const authenticate = (socket) => {
 		});
 	}
 
-
-	
-
 	function deleteOF() {
+		let obj = {
+			"federations": ofDelArr
+		}
 
-			let obj = {
-  "federations": ofDelArr
-    
-}
-
-		headers = { Authorization: "Bearer a@v{5]MQU><waQ;Z" };
-		fetch("http://204.48.30.216:19023/FederationTable", {
+		headers = { Authorization: "{{apikey}}" };
+		fetch("http://{{ip}}:{{port}}/FederationTable", {
 			method: "DELETE",
 			headers: headers,
 			body: JSON.stringify(obj),
 			
 		}).then((response) => {
-			
-			
 			console.log("delete OF response... " );
 			snackFunction("Delete Successful. Refreshing data.");
 			refresh();
@@ -842,8 +824,8 @@ const authenticate = (socket) => {
 			}]
 		} 
 
-		headers = { Authorization: "Bearer a@v{5]MQU><waQ;Z" };
-		fetch("http://204.48.30.216:19023/FederationTable", {
+		headers = { Authorization: "{{apikey}}" };
+		fetch("http://{{ip}}:{{port}}/FederationTable", {
 			method: "POST",
 			headers: headers,
 			body: JSON.stringify(obj),
@@ -869,8 +851,8 @@ const authenticate = (socket) => {
 			}]
 		} 
 
-		headers = { Authorization: "Bearer a@v{5]MQU><waQ;Z" };
-		fetch("http://204.48.30.216:19023/FederationTable", {
+		headers = { Authorization: "{{apikey}}" };
+		fetch("http://{{ip}}:{{port}}/FederationTable", {
 			method: "PUT",
 			headers: headers,
 			body: JSON.stringify(obj),
@@ -907,8 +889,8 @@ const authenticate = (socket) => {
 			DataPackages: [{ PrimaryKey: primarykey, Privacy: cb.checked === true ? "1" : "0" }],
 		};
 		
-		headers = { Authorization: "Bearer a@v{5]MQU><waQ;Z" };
-		fetch("http://204.48.30.216:19023/DataPackageTable", {
+		headers = { Authorization: "{{apikey}}" };
+		fetch("http://{{ip}}:{{port}}/DataPackageTable", {
 			method: "PUT",
 			headers: headers,
 			body: JSON.stringify(obj),
@@ -924,18 +906,51 @@ const authenticate = (socket) => {
 	function addToggle(param) {
 		var x = document.getElementById(param);
 		if (x.style.display === "none") {
+			document.getElementById("editOF").style.display = "none";
 			x.style.display = "block";
 			x.style.padding = "10px 0px";
+			
 		} else {
 			x.style.display = "none";
 		}
 	}
 
+	const getEventsInfo = (socket) => {
+			
+		socket.emit("events");
+		socket.on("eventsUpdate", function (data) {
+	
+			let eventsArr = data.events;
+			if(eventsArr.lenght > 0) {
+			document.getElementById("notif").style.display = "block";
+			} else {
+			document.getElementById("notif").style.display = "none";
+			}
+
+			let ul = document.createElement("ul");
+			ul.className = "dropdown-menu dropdown-menu-right dropdown-navbar";
+			document.getElementById("events-info").appendChild(ul);
+			
+
+			for (let [index, row] of eventsArr.entries()) {
+				var li = document.createElement("li");  
+				li.className = "nav-link";
+
+				var a = document.createElement("a");
+				a.className = "nav-item dropdown-item";
+				a.innerHTML =  row ;
+
+				li.appendChild(a);
+				ul.appendChild(li);
+			}
+		});
+    };
+
 
 </script>
 <script>
 	$(window).on("load", function () {
-		console.log("window loaded");
+		
 		gArr = [];
 		ofDelArr = [];
 		ofEditArr = [];
@@ -949,6 +964,3 @@ const authenticate = (socket) => {
 
 
 {% endblock javascripts %}
-<!-- color: #3ea1ec;
-border-color: #3ea1ec; -->
-

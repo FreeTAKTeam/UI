@@ -146,11 +146,6 @@
 
 <!-- second row -->
 
-	<!-- <div class="config-rows">
-		<div class="cols" style="padding: 5px;">
-			<button class="btn btn-simple btn-twitter" style="color: #278aed; border-color: #278aed">Apply</button>
-		</div>
-	</div> -->
 	<div class="config-rows">
 		<div style="display: flex;justify-content: center;
 		align-items: center;">
@@ -320,6 +315,7 @@ async function establishConnection() {
 
 	if (isAuth === "True") {
 		getServiceInfo(socket);
+		getEventsInfo(socket);
 		
 	} else {
 		// throw error
@@ -328,7 +324,7 @@ async function establishConnection() {
 
 const authenticate = (socket) => {
 
-		socket.emit("authenticate", JSON.stringify({ Authenticate: "a@v{5]MQU><waQ;Z" }));
+		socket.emit("authenticate", JSON.stringify({ Authenticate: "{{websocketkey | safe}}" }));
 
 		return new Promise(function (resolve, reject) {
 			socket.on("authentication", function (data) {
@@ -342,6 +338,34 @@ const authenticate = (socket) => {
 			});
 		});
 	};
+
+	const getEventsInfo = (socket) => {
+		socket.emit("events");
+		socket.on("eventsUpdate", function (data) {
+			let eventsArr = data.events;
+			if (eventsArr.lenght > 0) {
+				document.getElementById("notif").style.display = "block";
+			} else {
+				document.getElementById("notif").style.display = "none";
+			}
+
+			let ul = document.createElement("ul");
+			ul.className = "dropdown-menu dropdown-menu-right dropdown-navbar";
+			document.getElementById("events-info").appendChild(ul);
+
+			for (let [index, row] of eventsArr.entries()) {
+				var li = document.createElement("li");
+				li.className = "nav-link";
+
+				var a = document.createElement("a");
+				a.className = "nav-item dropdown-item";
+				a.innerHTML = row;
+
+				li.appendChild(a);
+				ul.appendChild(li);
+			}
+		});
+	};	
 
 const getServiceInfo = (socket) => {
 	
@@ -490,8 +514,8 @@ function addOF() {
 				maxRetries: document.getElementById("maxretriesof").value,
 			}]
 		} 
-debugger;
-		headers = { Authorization: "Bearer a@v{5]MQU><waQ;Z" };
+
+		headers = { Authorization: "{{apikey | safe}}" };
 		fetch("http://{{ip}}:{{port}}/FederationTable", {
 			method: "POST",
 			headers: headers,
@@ -535,5 +559,3 @@ function snackFunction(message) {
 	establishConnection();
 </script>
 {% endblock javascripts %}
-<!-- color: #3ea1ec;
-border-color: #3ea1ec; -->

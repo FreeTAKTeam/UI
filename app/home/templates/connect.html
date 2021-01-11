@@ -327,8 +327,8 @@
 			timeout: +document.getElementById("timeout1").value,
 		};
 
-		headers = { "Content-Type": "application/json", Authorization: "Bearer a@v{5]MQU><waQ;Z" };
-		fetch("http://204.48.30.216:19023/ManageGeoObject/postGeoObject", {
+		headers = { "Content-Type": "application/json", Authorization: "{{apikey | safe}}" };
+		fetch("http://{{ip}}:{{port}}/ManageGeoObject/postGeoObject", {
 			method: "post",
 			headers: headers,
 			body: JSON.stringify(obj),
@@ -369,8 +369,8 @@
 			sender: document.getElementById("sendername1").value,
 		};
 
-		headers = { "Content-Type": "application/json", Authorization: "Bearer a@v{5]MQU><waQ;Z" };
-		fetch("http://204.48.30.216:19023/ManageChat/postChatToAll", {
+		headers = { "Content-Type": "application/json", Authorization: "{{apikey | safe}}" };
+		fetch("http://{{ip}}:{{port}}/ManageChat/postChatToAll", {
 			method: "post",
 			headers: headers,
 			body: JSON.stringify(obj),
@@ -408,8 +408,8 @@
 			latitude: +document.getElementById("latitude2").value,
 		};
 
-		headers = { "Content-Type": "application/json", Authorization: "Bearer a@v{5]MQU><waQ;Z" };
-		fetch("http://204.48.30.216:19023/ManageEmergency/postEmergency", {
+		headers = { "Content-Type": "application/json", Authorization: "{{websocketkey | safe}}" };
+		fetch("http://{{ip}}:{{port}}/ManageEmergency/postEmergency", {
 			method: "post",
 			headers: headers,
 			body: JSON.stringify(obj),
@@ -453,8 +453,8 @@
 			team: document.getElementById("team3").value,
 		};
 
-		headers = { "Content-Type": "application/json", Authorization: "Bearer a@v{5]MQU><waQ;Z" };
-		fetch("http://204.48.30.216:19023/ManagePresence/postPresence", {
+		headers = { "Content-Type": "application/json", Authorization: "{{apikey | safe}}" };
+		fetch("http://{{ip}}:{{port}}/ManagePresence/postPresence", {
 			method: "post",
 			headers: headers,
 			body: JSON.stringify(obj),
@@ -512,8 +512,8 @@
 			uid: emergencyArr[0],
 		};
 
-		headers = { Authorization: "Bearer a@v{5]MQU><waQ;Z" };
-		fetch("http://204.48.30.216:19023/ManageEmergency/deleteEmergency", {
+		headers = { Authorization: "{{apikey | safe}}" };
+		fetch("http://{{ip}}:{{port}}/ManageEmergency/deleteEmergency", {
 			method: "DELETE",
 			headers: headers,
 			body: JSON.stringify(obj),
@@ -525,8 +525,69 @@
 			refresh();
 		});
 	}
-</script>
 
+	async function establishConnection() {
+		console.log("Make connection");
+		var socket = io.connect(`http://{{ip}}:{{port}}`);
+
+		console.log("Emit event authenticate...");
+
+		let isAuth = await authenticate(socket);
+
+		if (isAuth === "True") {
+			getEventsInfo(socket);
+		} else {
+			// throw error
+		}
+	}
+
+	const authenticate = (socket) => {
+		socket.emit("authenticate", JSON.stringify({ Authenticate: "{{websocketkey | safe}}" }));
+
+		return new Promise(function (resolve, reject) {
+			socket.on("authentication", function (data) {
+				let authenticateObject = JSON.parse(data);
+
+				if (authenticateObject.successful === "True") {
+					resolve("True");
+				} else {
+					reject("False");
+				}
+			});
+		});
+	};
+
+	const getEventsInfo = (socket) => {
+		socket.emit("events");
+		socket.on("eventsUpdate", function (data) {
+			let eventsArr = data.events;
+			if (eventsArr.lenght > 0) {
+				document.getElementById("notif").style.display = "block";
+			} else {
+				document.getElementById("notif").style.display = "none";
+			}
+
+			let ul = document.createElement("ul");
+			ul.className = "dropdown-menu dropdown-menu-right dropdown-navbar";
+			document.getElementById("events-info").appendChild(ul);
+
+			for (let [index, row] of eventsArr.entries()) {
+				var li = document.createElement("li");
+				li.className = "nav-link";
+
+				var a = document.createElement("a");
+				a.className = "nav-item dropdown-item";
+				a.innerHTML = row;
+
+				li.appendChild(a);
+				ul.appendChild(li);
+			}
+		});
+	};
+</script>
+<script>
+	establishConnection();
+</script>
 <script>
 	$(window).on("load", function () {
 		emergencyArr = [];
@@ -534,17 +595,3 @@
 </script>
 
 {% endblock javascripts %}
-
-<!-- {
-    "how": "nonCoT",
-    "name": "POTUS",
-"longitude": -77.01385,
-"latitude": 38.889,
-    "role": "Team Member",
-    "team": "Yellow"
-} -->
-
-<!-- {
-	"uid": "459b5874-1ebf-11eb-9e70-4e58de281c19",
-	  "status": "off"
-	} -->

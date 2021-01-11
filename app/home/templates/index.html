@@ -1,4 +1,4 @@
-{% extends "base-site.html" %}
+{% extends "base-site.html" %}  {% block title %} Dashboard {% endblock %}
 
 <!-- Specific Page CSS goes HERE  -->
 
@@ -375,20 +375,19 @@
 	</div>
 
 	{% endblock content %}
-	<!-- http://204.48.30.216:19023 -->
+	
 	<!-- Specific Page JS goes HERE  -->
 	{% block javascripts %}
-	<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+	
 	<script>
 		//the ip or dns which the FTS instances REST api is accessible
-		var ip = "204.48.30.216";
+	
 		var now = moment();
-		console.log("time now " + now.format("DD-MM-YYYY"));
-
+		
 		// this gets current server data
 		async function establishConnection() {
 			console.log("Make connection");
-			var socket = io.connect(`http://${ip}:19023`);
+			var socket = io.connect(`http://{{ip}}:{{port}}`);
 			getConnectInfo(socket);
 
 			console.log("Emit event authenticate...");
@@ -401,18 +400,18 @@
 				getServiceInfo(socket);
 				getServerHealth(socket);
 				getSystemStatus(socket);
-
+				getEventsInfo(socket);
 				setInterval(() => {
 					getUsers(socket);
-				}, 180000); // 3 minutes polling
+				}, '{{userinterval}}'); // 3 minutes polling
 
 				setInterval(() => {
 					getServerHealth(socket);
-				}, 180000); // 3 minutes polling
+				}, '{{serverhealthinterval}}'); // 3 minutes polling
 
 				setInterval(() => {
 					getSystemStatus(socket);
-				}, 600000); // 10 minutes polling
+				}, '{{sysstatusinterval}}'); // 10 minutes polling
 
 			} else {
 				// throw error
@@ -420,8 +419,8 @@
 		}
 
 		const authenticate = (socket) => {
-			// socket.emit('authenticate',  '{"Authenticate": "a@v{5]MQU><waQ;Z"}');
-			socket.emit("authenticate", JSON.stringify({ Authenticate: "a@v{5]MQU><waQ;Z" }));
+			
+			socket.emit("authenticate", JSON.stringify({ Authenticate: "{{websocketkey | safe}}" }));
 
 			return new Promise(function (resolve, reject) {
 				socket.on("authentication", function (data) {
@@ -436,10 +435,9 @@
 			});
 		};
 
-		// {"starttime":"2020-12-23 13:07:09.917285","version":"FreeTAKServer-1.3 RC 5"}
-
+		
 		const getConnectInfo = (socket) => {
-			// socket.emit('connect');
+			
 			socket.on("connectUpdate", function (data) {
 				let connectObject = JSON.parse(data);
 
@@ -461,26 +459,53 @@
 			});
 		};
 
-		// [{"ip":"","callsign":"","team":""}]
+		const getEventsInfo = (socket) => {
+			
+			socket.emit("events");
+			socket.on("eventsUpdate", function (data) {
+     
+				let eventsArr = data.events;
+				if(eventsArr.lenght > 0) {
+				document.getElementById("notif").style.display = "block";
+				} else {
+				document.getElementById("notif").style.display = "none";
+				}
+
+				let ul = document.createElement("ul");
+				ul.className = "dropdown-menu dropdown-menu-right dropdown-navbar";
+				document.getElementById("events-info").appendChild(ul);
+				
+
+				for (let [index, row] of eventsArr.entries()) {
+					var li = document.createElement("li");  
+					li.className = "nav-link";
+
+					var a = document.createElement("a");
+					a.className = "nav-item dropdown-item";
+					a.innerHTML =  row ;
+
+					li.appendChild(a);
+					ul.appendChild(li);
+				}
+			});
+    	};
 
 		const getUsers = (socket) => {
 			socket.emit("users");
 			socket.on("userUpdate", function (data) {
 				let userObject = JSON.parse(data);
-
 				let len = userObject.Users.length;
-				//let len = Object.keys(userObject).length;
-
+				
 				document.getElementById("connected-users").innerText = len;
-
-				// console.log("Print 1 users Response:" + JSON.stringify(userObject));
+				
 			});
 		};
 
 		const getLogs = (socket) => {
-			socket.emit("logs", '{ "time": "2020-12-22 18:08:40,328" }');
+			socket.emit("logs", '{ "time": "2020-12-29 18:08:40,328" }');
 			socket.on("logUpdate", function (data) {
 				let logsObject = JSON.parse(data);
+				console.log(' received log data ' );
 				document.getElementById("loading-systemstatus8").style.display = "none";
 				let tableArr = JSON.parse(data).log_data;
 
@@ -528,23 +553,19 @@
 					messageCell.className = "cell-style-4";
 				}
 
-				//append the compiled table to the DOM
-				//document.body.appendChild(table);
-
 				document.getElementById("log-table").appendChild(table);
 
-				//	console.log("Print 2 logs Response:" + JSON.stringify(logsObject));
 			});
 		};
 
 		const getServiceInfo = (socket) => {
-			// setInterval(() => {
+			
 			socket.emit("serviceInfo");
 			socket.on("serviceInfoUpdate", function (data) {
 				let serviceInfoObject = JSON.parse(data);
-				// console.log("Print 3 serviceInfoUpdate Response:" + JSON.stringify(serviceInfoObject));
+				
 			});
-			//     }, 3000);
+			
 		};
 
 		const getServerHealth = (socket) => {
@@ -558,13 +579,11 @@
 					
 					chart.updateOptions({ series: [serverHealthObject.CPU, serverHealthObject.memory, serverHealthObject.disk] });
 
-					// console.log("Print 4 serverHealthUpdate Response:" + JSON.stringify(serverHealthObject));
 				});
 			
 		};
 
 		const getSystemStatus = (socket) => {
-
 			
 			socket.emit("systemStatus");
 			socket.on("systemStatusUpdate", function (data) {
@@ -576,6 +595,7 @@
 				document.getElementById("loading-systemstatus4").style.display = "none";
 				document.getElementById("loading-systemstatus5").style.display = "none";
 				document.getElementById("loading-systemstatus6").style.display = "none";
+
 				// Datapackage TCP (1)
 				if (
 					systemStatusObject.TCPDataPackageStatus == systemStatusObject.TCPDataPackageStatusExpected &&
@@ -648,31 +668,6 @@
 					document.getElementById("fed_error").style.display = "block";
 				}
 
-				// // Datapackage SSL
-				// if (
-				// 	systemStatusObject.SSLDataPackageStatus == systemStatusObject.SSLDataPackageStatusExpected &&
-				// 	systemStatusObject.SSLDataPackageStatus == "on"
-				// ) {
-				// 	document.getElementById("ssl_on").style.display = "block";
-				// 	document.getElementById("ssl_off").style.display = "none";
-				// 	document.getElementById("ssl_error").style.display = "none";
-				// } else if (
-				// 	systemStatusObject.SSLDataPackageStatus == systemStatusObject.SSLDataPackageStatusExpected &&
-				// 	systemStatusObject.SSLDataPackageStatus == "off"
-				// ) {
-				// 	document.getElementById("ssl_on").style.display = "none";
-				// 	document.getElementById("ssl_off").style.display = "block";
-				// 	document.getElementById("ssl_error").style.display = "none";
-				// } else if (
-				// 	systemStatusObject.SSLDataPackageStatus == systemStatusObject.SSLDataPackageStatusExpected &&
-				// 	systemStatusObject.SSLDataPackageStatus != "on" &&
-				// 	systemStatusObject.SSLDataPackageStatus != "off"
-				// ) {
-				// 	document.getElementById("ssl_on").style.display = "none";
-				// 	document.getElementById("ssl_off").style.display = "none";
-				// 	document.getElementById("ssl_error").style.display = "block";
-				// }
-
 				// COT TCP (5)
 				if (systemStatusObject.TCPCoTStatus == systemStatusObject.TCPCoTStatusExpected && systemStatusObject.TCPCoTStatus == "on") {
 					document.getElementById("cot_tcp_on").style.display = "block";
@@ -706,10 +701,7 @@
 					document.getElementById("cot_ssl_error").style.display = "block";
 				}
 
-				// console.log("Print 5 systemStatusUpdate Response:" + JSON.stringify(systemStatusObject));
 			});
-
-		
 			
 		};
 	</script>
@@ -720,7 +712,3 @@
 	{% endblock javascripts %}
 </div>
 
-
-<!-- on = on = blue
-off = off = grey
-on = off = red -->
