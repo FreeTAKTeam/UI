@@ -146,11 +146,6 @@
 
 <!-- second row -->
 
-	<!-- <div class="config-rows">
-		<div class="cols" style="padding: 5px;">
-			<button class="btn btn-simple btn-twitter" style="color: #278aed; border-color: #278aed">Apply</button>
-		</div>
-	</div> -->
 	<div class="config-rows">
 		<div style="display: flex;justify-content: center;
 		align-items: center;">
@@ -220,47 +215,61 @@
 						<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
 							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
 								<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px;">Name</div>
-								<div><input type="text" class="form-control" value="" /></div>
+								<div><input type="text" class="form-control" value="" id="nameof" /></div>
 							</div>
 
 							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
 								<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px;">IP / Domain</div>
-								<div><input type="text" class="form-control" value="" /></div>
+								<div><input type="text" class="form-control" value="" id="ipaddressof" /></div>
 							</div>
 						</div>
 
 						<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
 							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
 								<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px;">Reconnect</div>
-								<div><input type="text" class="form-control" value="30" /></div>
+								<div><input type="text" class="form-control" value="30" id="recintervalof" /></div>
 							</div>
 
 							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
 								<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px;">Port</div>
-								<div><input type="text" class="form-control" style="width: 70px;" value="" /></div>
+								<div><input type="text" class="form-control" style="width: 70px;" value="" id="portof" /></div>
 							</div>
 						</div>
 
 						<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
 							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
 								<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px;">Max Retries</div>
-								<div><input type="text" class="form-control" value="3" /></div>
+								<div><input type="text" class="form-control" value="3" id="maxretriesof" /></div>
 							</div>
 
 							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
 								<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px;">Fallback</div>
 								<div class="select">
-									<select name="format" id="format">
+									<select name="format" id="fallbackserverof">
 										{% for items in outgoing_federation_json_data %} 
-										<option >{{items['Name']}}</option>
+										<option >{{items['name']}}</option>
 										
 										{% endfor %}
 									</select>
 								</div>
 							</div>
 						</div>
+
+						<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
+							
+							<div class="select" style="width: 120px; justify-self: flex-end;">
+								<select name="format" id="statusof">
+									<option selected value="Enabled">Enabled</option>
+									<option value="Disabled">Disabled</option>
+								</select>
+							</div>
+							<div>&nbsp;</div>
+							
+						</div>
+
 						<div  style="padding: 5px; text-align: right;">
-							<button class="btn btn-simple btn-twitter" style="color: #278aed; border-color: #278aed">Apply</button>
+							<button class="btn btn-simple btn-twitter" onclick="addOF()"
+							style="color: #278aed; border-color: #278aed">Apply</button>
 						</div>
 					
 				</div>
@@ -279,15 +288,17 @@
 
 
 </div>
+<div id="snackbar">&nbsp;</div>
 {% endblock content %}
 
 <!-- Specific Page JS goes HERE  -->
 {% block javascripts %}
 
-<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+
 <script>
-var ip = "204.48.30.216";
-var socket = io.connect(`http://${ip}:19023`);
+
+
+var socket = io.connect(`http://{{ip}}:{{port}}`);
 
 var orig_tcp_cot_status;
 var orig_ssl_cot_status;
@@ -299,16 +310,12 @@ var orig_fed_cot_status;
 
 // this gets current server data
 async function establishConnection() {
-	console.log("Make connection");
-//	var socket = io.connect(`http://${ip}:19023`);
-
-
-	console.log("Emit event authenticate...");
 
 	let isAuth = await authenticate(socket);
 
 	if (isAuth === "True") {
 		getServiceInfo(socket);
+		getEventsInfo(socket);
 		
 	} else {
 		// throw error
@@ -316,8 +323,8 @@ async function establishConnection() {
 }
 
 const authenticate = (socket) => {
-		// socket.emit('authenticate',  '{"Authenticate": "a@v{5]MQU><waQ;Z"}');
-		socket.emit("authenticate", JSON.stringify({ Authenticate: "a@v{5]MQU><waQ;Z" }));
+
+		socket.emit("authenticate", JSON.stringify({ Authenticate: "{{websocketkey | safe}}" }));
 
 		return new Promise(function (resolve, reject) {
 			socket.on("authentication", function (data) {
@@ -331,6 +338,34 @@ const authenticate = (socket) => {
 			});
 		});
 	};
+
+	const getEventsInfo = (socket) => {
+		socket.emit("events");
+		socket.on("eventsUpdate", function (data) {
+			let eventsArr = data.events;
+			if (eventsArr.lenght > 0) {
+				document.getElementById("notif").style.display = "block";
+			} else {
+				document.getElementById("notif").style.display = "none";
+			}
+
+			let ul = document.createElement("ul");
+			ul.className = "dropdown-menu dropdown-menu-right dropdown-navbar";
+			document.getElementById("events-info").appendChild(ul);
+
+			for (let [index, row] of eventsArr.entries()) {
+				var li = document.createElement("li");
+				li.className = "nav-link";
+
+				var a = document.createElement("a");
+				a.className = "nav-item dropdown-item";
+				a.innerHTML = row;
+
+				li.appendChild(a);
+				ul.appendChild(li);
+			}
+		});
+	};	
 
 const getServiceInfo = (socket) => {
 	
@@ -404,8 +439,6 @@ const getServiceInfo = (socket) => {
 
 const applyServiceInfo = () => {
 
-	
-
 let obj =	{
    services: {
        SSL_CoT_service: {
@@ -436,6 +469,7 @@ let obj =	{
    ip: document.getElementById("ip").value
 }
 
+
 	if(orig_tcp_cot_status === "on" && (document.getElementById("TCPCoTOnOffSwitch").checked === true)) {
 		delete obj.services.TCP_CoT_service;
 	}
@@ -460,78 +494,60 @@ let obj =	{
 		delete obj.services.Federation_server_service;
 	}
 
+	var socket = io.connect(`http://{{ip}}:{{port}}`);
 
-	var socket = io.connect(`http://${ip}:19023`);
-
-	debugger;
 	socket.emit("changeServiceInfo", JSON.stringify(obj) );
-	socket.on("serviceInfoUpdate", function (data) {
-		let serviceInfoObject = JSON.parse(data);
-		
-		orig_tcp_cot_status = serviceInfoObject.services.TCP_CoT_service.status;
-		orig_ssl_cot_status = serviceInfoObject.services.SSL_CoT_service.status;
-		orig_tcp_dp_status = serviceInfoObject.services.TCP_DataPackage_service.status;
-		orig_ssl_dp_status = serviceInfoObject.services.SSL_DataPackage_service.status;
-		orig_api_cot_status = serviceInfoObject.services.Rest_API_service.status;
-		orig_fed_cot_status = serviceInfoObject.services.Federation_server_service.status;
+	snackFunction("Configuration updated. Refreshing data.");
+	refresh();
 
-		console.log("Print CONFIGURE serviceInfoUpdate Response:" + JSON.stringify(serviceInfoObject));
-
-		document.getElementById("tcp_cot_port").value = serviceInfoObject.services.TCP_CoT_service.port;
-		document.getElementById("ssl_cot_port").value = serviceInfoObject.services.SSL_CoT_service.port;
-		
-		document.getElementById("http_dp_port").value = serviceInfoObject.services.TCP_DataPackage_service.port;
-		document.getElementById("ssl_dp_port").value = serviceInfoObject.services.SSL_DataPackage_service.port;
-		
-		document.getElementById("api_port").value = serviceInfoObject.services.Rest_API_service.port;
-		document.getElementById("fed_port").value = serviceInfoObject.services.Federation_server_service.port;
-
-		document.getElementById("ip").value = serviceInfoObject.ip;
-
-		
-		if(serviceInfoObject.services.TCP_CoT_service.status == "on") {
-			document.getElementById("TCPCoTOnOffSwitch").checked = true;
-		} else {
-			document.getElementById("TCPCoTOnOffSwitch").checked = false;
-		}
-
-		if(serviceInfoObject.services.SSL_CoT_service.status == "on") {
-			document.getElementById("SSLCoTOnOffSwitch").checked = true;
-		} else {
-			document.getElementById("SSLCoTOnOffSwitch").checked = false;
-		}
-
-		if(serviceInfoObject.services.TCP_DataPackage_service.status == "on") {
-			document.getElementById("HTTPDPOnOffSwitch").checked = true;
-		} else {
-			document.getElementById("HTTPDPOnOffSwitch").checked = false;
-		}
-
-		if(serviceInfoObject.services.SSL_DataPackage_service.status == "on") {
-			document.getElementById("SSLDPOnOffSwitch").checked = true;
-		} else {
-			document.getElementById("SSLDPOnOffSwitch").checked = false;
-		}
-
-		if(serviceInfoObject.services.Rest_API_service.status == "on") {
-			document.getElementById("APIOnOffSwitch").checked = true;
-		} else {
-			document.getElementById("APIOnOffSwitch").checked = false;
-		}
-
-		if(serviceInfoObject.services.Federation_server_service.status == "on") {
-			document.getElementById("FEDOnOffSwitch").checked = true;
-		} else {
-			document.getElementById("FEDOnOffSwitch").checked = false;
-		}
-
-
-	});
-	
 };
 
+function addOF() {
+		let obj =  {
+		outgoingFederations:[{
+				name: document.getElementById("nameof").value,
+				address: document.getElementById("ipaddressof").value,
+				port: document.getElementById("portof").value,
+				fallBack: document.getElementById("fallbackserverof").value,
+				status: document.getElementById("statusof").value,
+				reconnectInterval: document.getElementById("recintervalof").value,
+				maxRetries: document.getElementById("maxretriesof").value,
+			}]
+		} 
 
-// missing FederationServerService
+		headers = { Authorization: "{{apikey | safe}}" };
+		fetch("http://{{ip}}:{{port}}/FederationTable", {
+			method: "POST",
+			headers: headers,
+			body: JSON.stringify(obj),
+		}).then((response) => {
+			
+			snackFunction("Add Outgoing Federation Successful. Refreshing data.");
+			refresh();
+		});
+
+	}
+
+function refresh() {
+		setTimeout(function () {
+			location.reload(true);
+		}, 3000);
+	}
+
+
+function snackFunction(message) {
+		// Get the snackbar DIV
+		var x = document.getElementById("snackbar");
+		document.getElementById("snackbar").textContent = message;
+
+		// Add the "show" class to DIV
+		x.className = "show";
+
+		// After 3 seconds, remove the show class from DIV
+		setTimeout(function () {
+			x.className = x.className.replace("show", "");
+		}, 3000);
+	}
 
 
 
@@ -540,5 +556,3 @@ let obj =	{
 	establishConnection();
 </script>
 {% endblock javascripts %}
-<!-- color: #3ea1ec;
-border-color: #3ea1ec; -->

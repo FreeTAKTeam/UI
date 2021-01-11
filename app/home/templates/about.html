@@ -13,15 +13,12 @@
 	<div style="font-size: 1rem; color: #fff; padding: 16px;">
 		FTS is a Python3 implementation of the TAK Server for devices like CiVTAK, WinTAK and ITAK, it is cross-platform. 
 		It's free and open source (released under the <a href="https://www.eclipse.org/legal/epl-2.0/" target="_blank" >Eclipse Public License</a>).
-		
 	</div>
 	</div>
 	
 </div>
 
-
 <div style="display: grid; grid-template-columns: 1fr 1fr;gap: 30px">
-
 
 <div class="card card-stats">
 	<div class="card-body">
@@ -109,64 +106,80 @@
 		</div>
 		</div>
 
-
-
 {% endblock content %}
 
 <!-- Specific Page JS goes HERE  -->
 {% block javascripts %}
 
-<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
-
 <script>
-//the ip or dns which the FTS instances REST api is accessible
-var ip = "204.48.30.216";
-	var now = moment();
-	console.log("time now " + now.format("DD-MM-YYYY"));
 
-	// this gets current server data
-	async function establishConnection() {
-		console.log("Make connection");
-		var socket = io.connect(`http://${ip}:19023`);
+	 async function establishConnection() {
+		var socket = io.connect(`http://{{ip}}:{{port}}`);
 		getConnectInfo(socket);
-
-		console.log("Emit event authenticate...");
-
 		let isAuth = await authenticate(socket);
 
+		if (isAuth === "True") {
+			getEventsInfo(socket);
+		} else {
+
+		}
 	
 	}
 
+	const authenticate = (socket) => {
+			
+			socket.emit("authenticate", JSON.stringify({ Authenticate: "{{websocketkey | safe}}" }));
+
+			return new Promise(function (resolve, reject) {
+				socket.on("authentication", function (data) {
+					let authenticateObject = JSON.parse(data);
+
+					if (authenticateObject.successful === "True") {
+						resolve("True");
+					} else {
+						reject("False");
+					}
+				});
+			});
+		};
+
 	const getConnectInfo = (socket) => {
-		// socket.emit('connect');
+		
 		socket.on("connectUpdate", function (data) {
 			let connectObject = JSON.parse(data);
-
 			document.getElementById("server-version").innerText = connectObject.version;
-
-			console.log("Print server-version:" + JSON.stringify(connectObject));
 		});
 	};
 
-</script>
+	const getEventsInfo = (socket) => {
+		
+		socket.emit("events");
+		socket.on("eventsUpdate", function (data) {
+			let eventsArr = data.events;
+			if (eventsArr.lenght > 0) {
+				document.getElementById("notif").style.display = "block";
+			} else {
+				document.getElementById("notif").style.display = "none";
+			}
 
-<script>
-		const authenticate = (socket) => {
-		// socket.emit('authenticate',  '{"Authenticate": "a@v{5]MQU><waQ;Z"}');
-		socket.emit("authenticate", JSON.stringify({ Authenticate: "a@v{5]MQU><waQ;Z" }));
+			let ul = document.createElement("ul");
+			ul.className = "dropdown-menu dropdown-menu-right dropdown-navbar";
+			document.getElementById("events-info").appendChild(ul);
 
-		return new Promise(function (resolve, reject) {
-			socket.on("authentication", function (data) {
-				let authenticateObject = JSON.parse(data);
+			for (let [index, row] of eventsArr.entries()) {
+				var li = document.createElement("li");
+				li.className = "nav-link";
 
-				if (authenticateObject.successful === "True") {
-					resolve("True");
-				} else {
-					reject("False");
-				}
-			});
+				var a = document.createElement("a");
+				a.className = "nav-item dropdown-item";
+				a.innerHTML = row;
+
+				li.appendChild(a);
+				ul.appendChild(li);
+			}
 		});
 	};
+
 </script>
 
 <script>
@@ -174,6 +187,5 @@ var ip = "204.48.30.216";
 </script>
 
 {% endblock javascripts %}
-<!-- color: #3ea1ec;
-border-color: #3ea1ec; -->
+
 

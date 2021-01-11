@@ -1,4 +1,4 @@
-{% extends "base-site.html" %} {% block title %} Configure {% endblock %}
+{% extends "base-site.html" %} {% block title %} Users {% endblock %}
 
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}
@@ -45,7 +45,7 @@
 				class="btn btn-simple btn-twitter"
 				id="user-delete"
 				onclick="removeUsers()"
-				style="color: #278aed80; border-color: #278aed80; display: inline-flex"
+				style="color: #278aed; border-color: #278aed; display: inline-flex"
 			>
 				<span>DELETE</span> <span id="del-count">&nbsp;</span>
 			</div>
@@ -140,7 +140,7 @@
 				<span>DELETE</span> <span id="del-count">&nbsp;</span>
 			</div>
 			&nbsp;&nbsp;&nbsp;
-			<button class="btn btn-simple btn-twitter" style="color: #278aed; border-color: #278aed">ADD</button>
+			<button class="btn btn-simple btn-twitter" style="color: #278aed80; border-color: #278aed80">ADD</button>
 		</div>
 	</div>
 </div>
@@ -151,14 +151,11 @@
 <!-- Specific Page JS goes HERE  -->
 {% block javascripts %}
 
-<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 <script>
-	var ip = "204.48.30.216";
-
 	// this gets current server data
 	async function establishConnection() {
 		console.log("Make connection");
-		var socket = io.connect(`http://${ip}:19023`);
+		var socket = io.connect(`http://{{ip}}:{{port}}`);
 
 		console.log("Emit event authenticate...");
 
@@ -166,14 +163,14 @@
 
 		if (isAuth === "True") {
 			getUserInfo(socket);
+			getEventsInfo(socket);
 		} else {
 			// throw error
 		}
 	}
 
 	const authenticate = (socket) => {
-		// socket.emit('authenticate',  '{"Authenticate": "a@v{5]MQU><waQ;Z"}');
-		socket.emit("authenticate", JSON.stringify({ Authenticate: "a@v{5]MQU><waQ;Z" }));
+		socket.emit("authenticate", JSON.stringify({ Authenticate: "{{websocketkey | safe}}" }));
 
 		return new Promise(function (resolve, reject) {
 			socket.on("authentication", function (data) {
@@ -278,6 +275,34 @@
 		});
 	};
 
+	const getEventsInfo = (socket) => {
+		socket.emit("events");
+		socket.on("eventsUpdate", function (data) {
+			let eventsArr = data.events;
+			if (eventsArr.lenght > 0) {
+				document.getElementById("notif").style.display = "block";
+			} else {
+				document.getElementById("notif").style.display = "none";
+			}
+
+			let ul = document.createElement("ul");
+			ul.className = "dropdown-menu dropdown-menu-right dropdown-navbar";
+			document.getElementById("events-info").appendChild(ul);
+
+			for (let [index, row] of eventsArr.entries()) {
+				var li = document.createElement("li");
+				li.className = "nav-link";
+
+				var a = document.createElement("a");
+				a.className = "nav-item dropdown-item";
+				a.innerHTML = row;
+
+				li.appendChild(a);
+				ul.appendChild(li);
+			}
+		});
+	};
+
 	// missing FederationServerService
 
 	function addUserToggle() {
@@ -312,7 +337,7 @@
 	}
 
 	const removeUsers = async () => {
-		var socket = io.connect(`http://${ip}:19023`);
+		var socket = io.connect(`http://{{ip}}:{{port}}`);
 
 		let obj = {
 			systemUsers: uArr,
@@ -357,7 +382,7 @@
 			],
 		};
 
-		var socket = io.connect(`http://${ip}:19023`);
+		var socket = io.connect(`http://{{ip}}:{{port}}`);
 
 		console.log("Emit event authenticate...");
 
@@ -401,6 +426,10 @@
 			location.reload(true);
 		}, 3000);
 	}
+
+	$("#name1").keypress(function (e) {
+		if (e.which === 32) return false;
+	});
 </script>
 <script>
 	establishConnection();

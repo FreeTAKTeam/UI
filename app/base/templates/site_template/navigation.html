@@ -33,15 +33,6 @@
                   </p>
                 </a>
 
-                
-
-                <!-- <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
-                  <li class="nav-link"><a href="#" class="nav-item dropdown-item">Mike John responded to your email</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">You have 5 more tasks</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Your friend Michael is in town</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Another notification</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Another one</a></li>
-                </ul> -->
               </li>
               <li class="dropdown nav-item">
                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
@@ -77,98 +68,8 @@
       </div>
       <!-- End Navbar -->
 
-      <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
-      <script>
-        //the ip or dns which the FTS instances REST api is accessible
-        var ip = "204.48.30.216";
-        
-    
-        // this gets current server data
-        async function establishConnection() {
-          console.log("Make connection");
-          var socket = io.connect(`http://${ip}:19023`);
-          
-    
-          console.log("Emit event authenticate...");
-    
-          let isAuth = await authenticate1(socket);
-    
-          if (isAuth === "True") {
-            getEventsInfo(socket);
-            
-    
-          } else {
-            // throw error
-          }
-        }
-    
-        const authenticate1 = (socket) => {
-          // socket.emit('authenticate',  '{"Authenticate": "a@v{5]MQU><waQ;Z"}');
-          socket.emit("authenticate", JSON.stringify({ Authenticate: "a@v{5]MQU><waQ;Z" }));
-    
-          return new Promise(function (resolve, reject) {
-            socket.on("authentication", function (data) {
-              let authenticateObject = JSON.parse(data);
-    
-              if (authenticateObject.successful === "True") {
-                resolve("True");
-              } else {
-                reject("False");
-              }
-            });
-          });
-        };
+      
+      
 
-        const getEventsInfo = (socket) => {
-			
-			socket.emit("events");
-			socket.on("eventsUpdate", function (data) {
-     
-        let eventsArr = data.events;
-        if(eventsArr.lenght > 0) {
-          document.getElementById("notif").style.display = "block";
-        } else {
-          document.getElementById("notif").style.display = "none";
-        }
+   
 
-        let ul = document.createElement("ul");
-        ul.className = "dropdown-menu dropdown-menu-right dropdown-navbar";
-        document.getElementById("events-info").appendChild(ul);
-        
-
-        for (let [index, row] of eventsArr.entries()) {
-          var li = document.createElement("li");  
-    li.className = "nav-link";
-
-    var a = document.createElement("a");
-    a.className = "nav-item dropdown-item";
-    a.innerHTML =  row ;
-
-    li.appendChild(a);
-    ul.appendChild(li);
-
-        }
-
-				//console.log("Notification serviceInfoUpdate Response:" + JSON.stringify(serviceInfoObject));
-			});
-			
-    };
-    
-
-</script>    
-
-      <script>
-        establishConnection();
-      </script>
-
-<!-- {
-  "events": ["server event 1", "server event 2", "server event 3", "server event 4", "server event 5"]
-} -->
-
-   <!-- <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
-                  <li class="nav-link"><a href="#" class="nav-item dropdown-item">Mike John responded to your email</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">You have 5 more tasks</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Your friend Michael is in town</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Another notification</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Another one</a></li>
-                </ul> -->
