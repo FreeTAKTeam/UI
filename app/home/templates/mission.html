@@ -12,7 +12,7 @@
 		<div
 			style="
 				display: grid;
-				grid-template-columns: 100px 240px 150px 50px 120px 100px 1fr;
+				grid-template-columns: 240px 150px 50px 120px 100px 1fr;
 				gap: 10px;
 				padding: 10px;
 				font-size: 16px;
@@ -20,7 +20,7 @@
 				opacity: 0.9;
 			"
 		>
-			<div style="color: #fff; font-weight: 600; padding: 5px">Keywords</div>
+			
 			<div style="color: #fff; font-weight: 600; padding: 5px">Name</div>
 			<div style="color: #fff; font-weight: 600; padding: 5px">Author</div>
 			<div style="color: #fff; font-weight: 600; padding: 5px">Index</div>
@@ -33,10 +33,10 @@
 
 			<div
 				class="row-color-nohover row-class"
-				style="display: grid; grid-template-columns: 100px 240px 150px 50px 120px 100px 1fr; gap: 10px; padding: 10px; color: #fff; opacity: 0.8"
+				style="display: grid; grid-template-columns: 240px 150px 50px 120px 100px 1fr; gap: 10px; padding: 10px; color: #fff; opacity: 0.8"
 				onclick="captureClick('{{dict_items.Hash}}')"
 			>
-				<div >{{dict_items['Keywords']}}</div>
+				
 				
 				<div >
 
@@ -188,7 +188,7 @@
 					"") | replace(",", "")}}</div>
 				<div>{{items['filename']}}</div>
 				<div>{{items['size']}}</div>
-				<div>{{items['submissionTime']}}</div>
+				<div>moment({{items['submissionTime']}}).format("DD-MM-YYYY")</div>
 				<div>&nbsp;</div>
 			</div>
 
@@ -946,6 +946,36 @@ const authenticate = (socket) => {
 		});
     };
 
+	// to be implemented when we have download GET api
+	// function downloadFile(param, name) {
+		
+	// 	let url = `http://${tcpip}:${tcpport}/Marti/api/sync/metadata/${param}/tool`;
+	// 	headers = { Authorization: "{{apikey | safe}}", Connection: "Keep-Alive" };
+
+		
+	// 	fetch(url, {
+	// 		method: "GET",
+	// 		headers: headers,
+	// 	})
+	// 		.then(resp => resp.blob())
+	// 		.then(blob => {
+	// 			const url = window.URL.createObjectURL(blob);
+	// 			const a = document.createElement('a');
+	// 			a.style.display = 'none';
+	// 			a.href = url;
+	// 			// the filename you want
+	// 			a.download = name;
+	// 			document.body.appendChild(a);
+	// 			a.click();
+	// 			window.URL.revokeObjectURL(url);
+	// 			snackFunction("File Downloaded Successfully!");
+	// 			// alert('your file has downloaded!'); // or you know, something with better UX...
+	// 		})
+	// 		.catch(() => {
+	// 			snackFunction("File downloaded Failed! Contact Administrator.");
+	// 		});
+
+	// }
 
 </script>
 <script>

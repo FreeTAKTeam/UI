@@ -374,6 +374,7 @@
 		</div>
 	</div>
 
+	<div id="snackbar">&nbsp;</div>
 	{% endblock content %}
 	
 	<!-- Specific Page JS goes HERE  -->
@@ -388,6 +389,26 @@
 		async function establishConnection() {
 			console.log("Make connection");
 			var socket = io.connect(`http://{{ip}}:{{port}}`);
+			// connect_timeout
+			socket.on('connect_error', function() {
+				   console.log("Sorry, there seems to be an issue with the connection!");
+				   snackFunction("Sorry, there seems to be an issue with the connection!");
+				   document.getElementById("loading-systemstatus1").style.display = "none";
+				document.getElementById("loading-systemstatus2").style.display = "none";
+				document.getElementById("loading-systemstatus3").style.display = "none";
+				document.getElementById("loading-systemstatus4").style.display = "none";
+				document.getElementById("loading-systemstatus5").style.display = "none";
+				document.getElementById("loading-systemstatus6").style.display = "none";
+
+				document.getElementById("tcp_error").style.display = "block";
+				document.getElementById("ssl_error").style.display = "block";
+				document.getElementById("rest_api_error").style.display = "block";
+				document.getElementById("fed_error").style.display = "block";
+				document.getElementById("cot_tcp_error").style.display = "block";
+				document.getElementById("cot_ssl_error").style.display = "block";
+			})
+
+
 			getConnectInfo(socket);
 
 			console.log("Emit event authenticate...");
@@ -416,8 +437,11 @@
 			} else {
 				// throw error
 			}
+
+
 		}
 
+		
 		const authenticate = (socket) => {
 			
 			socket.emit("authenticate", JSON.stringify({ Authenticate: "{{websocketkey | safe}}" }));
@@ -502,7 +526,11 @@
 		};
 
 		const getLogs = (socket) => {
-			socket.emit("logs", '{ "time": "2020-12-29 18:08:40,328" }');
+			// socket.emit("logs", '{ "time": "2020-12-29 18:08:40,328" }');
+			 let logdate = moment().format("YYYY-MM-DD HH:mm:ss,SSS");
+			 let obj = { "time": logdate }
+			
+			socket.emit("logs", JSON.stringify(obj));
 			socket.on("logUpdate", function (data) {
 				let logsObject = JSON.parse(data);
 				console.log(' received log data ' );
@@ -704,6 +732,22 @@
 			});
 			
 		};
+
+		function snackFunction(message) {
+		// Get the snackbar DIV
+		var x = document.getElementById("snackbar");
+		document.getElementById("snackbar").textContent = message;
+
+		// Add the "show" class to DIV
+		x.className = "show";
+
+		// After 3 seconds, remove the show class from DIV
+		setTimeout(function () {
+			x.className = x.className.replace("show", "");
+		}, 3000);
+	}
+
+
 	</script>
 	<script>
 		establishConnection();
