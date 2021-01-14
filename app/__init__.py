@@ -82,7 +82,7 @@ def create_app(config, selenium=False):
     app.config['APIKEY'] = 'Bearer a@v{5]MQU><waQ;Z'
     # the webSocket  key used by the UI to comunicate with FTS. 
     app.config['WEBSOCKETKEY'] = 'a@v{5]MQU><waQ;Z'
-    # Port exposed  by the UI, need to be opened in the firewall
+    # Port the  UI uses to communicate with the API
     app.config['PORT'] = '19023'
     # the public IP your server is exposing
     app.config['IP'] = '204.48.30.216'
