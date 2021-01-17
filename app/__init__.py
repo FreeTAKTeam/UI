@@ -78,14 +78,7 @@ def create_app(config, selenium=False):
     # UI configuration
     # UI version DO NOT modify it
     app.config['UIVERSION'] = '1.0'
-    # the API key used by the UI to comunicate with FTS. generate a new system user and then set it
-    app.config['APIKEY'] = 'Bearer a@v{5]MQU><waQ;Z'
-    # the webSocket  key used by the UI to comunicate with FTS.
-    app.config['WEBSOCKETKEY'] = 'a@v{5]MQU><waQ;Z'
-    # Port the  UI uses to communicate with the API
-    app.config['PORT'] = '19023'
-    # the public IP your server is exposing
-    app.config['IP'] = '204.48.30.216'
+
     # number of milliseconds to query FTS for connected Users, health, a System status
     app.config['USERINTERVAL'] = '180000';
     app.config['SERVERHEALTHINTERVAL'] = '180000';

@@ -16,24 +16,32 @@ class Config(object):
     # This will create a file in <app> FOLDER
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + '/root/FTSDataBase.db'
 
+    # certificates path
+    certpath = "/usr/local/lib/python3.8/dist-packages/FreeTAKServer/certs/"
+
+    # crt file path
+    crtfilepath = f"{certpath}pubserver.pem"
+
+    # key file path
+    keyfilepath = f"{certpath}pubserver.key.unencrypted"
 
     # this IP will be used to connect with the FTS API
     IP = '127.0.0.1'
 
-    # this port will be used to connect with the FTS API
+    # Port the  UI uses to communicate with the API
     PORT = '19023'
 
-    # this ip will be used to listen for connections from users
+    # the public IP your server is exposing
     APPIP = '127.0.0.1'
 
     # this port will be used to listen
     APPPort = 5000
 
+    # the webSocket  key used by the UI to communicate with FTS.
     WEBSOCKETKEY = 'YourWebsocketKey'
 
+    # the API key used by the UI to comunicate with FTS. generate a new system user and then set it
     APIKEY = 'Bearer token'
-
-    UIVERSION = '1.0'
 
     # For 'in memory' database, please use:
     # SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'
