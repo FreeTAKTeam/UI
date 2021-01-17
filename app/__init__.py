@@ -1,7 +1,8 @@
 # -*- encoding: utf-8 -*-
 """
-License: MIT
-Copyright (c) 2019 - present AppSeed.us
+License: EPL
+Copyright (c) 2021 - present FTS team
+go to line 77+ for configuring the FTS UI
 """
 
 from flask import Flask, url_for
@@ -74,9 +75,21 @@ def apply_themes(app):
 def create_app(config, selenium=False):
     app = Flask(__name__, static_folder='base/static')
     app.config.from_object(config)
-    app.config['USERINTERVAL'] = '180000'
-    app.config['SERVERHEALTHINTERVAL'] = '180000'
-    app.config['SYSSTATUSINTERVAL'] = '600000'
+    # UI configuration
+    # UI version DO NOT modify it
+    app.config['UIVERSION'] = '1.0'
+    # the API key used by the UI to comunicate with FTS. generate a new system user and then set it
+    app.config['APIKEY'] = 'Bearer a@v{5]MQU><waQ;Z'
+    # the webSocket  key used by the UI to comunicate with FTS.
+    app.config['WEBSOCKETKEY'] = 'a@v{5]MQU><waQ;Z'
+    # Port the  UI uses to communicate with the API
+    app.config['PORT'] = '19023'
+    # the public IP your server is exposing
+    app.config['IP'] = '204.48.30.216'
+    # number of milliseconds to query FTS for connected Users, health, a System status
+    app.config['USERINTERVAL'] = '180000';
+    app.config['SERVERHEALTHINTERVAL'] = '180000';
+    app.config['SYSSTATUSINTERVAL'] = '600000';
     if selenium:
         app.config['LOGIN_DISABLED'] = True
     register_extensions(app)
