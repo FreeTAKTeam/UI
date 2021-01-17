@@ -10,7 +10,7 @@
 				<h5 class="title" style="font-size: 14px; color: #278aed">[EDIT PROFILE]</h5>
 			</div>
 			<div class="card-body">
-				<form>
+				<form role="form" method="post" action="">
 					<div class="row">
 						<div class="col-md-5 pr-md-1">
 							<div class="form-group">
@@ -21,35 +21,22 @@
 						<div class="col-md-7 px-md-1">
 							<div class="form-group">
 								<label>Group</label>
-								<input type="text" class="form-control" value="{{ current_user.group }}" />
+								{{ form.group(class="form-control", value=current_user.group) }}
 							</div>
 						</div>
 					</div>
+					<p>{{current_user.password}}</p>
 					<div class="row">
 						<div class="col-md-6 pr-md-1">
 							<div class="form-group">
 								<label>Token</label>
-								<input
-									type="password"
-									class="form-control"
-									onclick="myFunction('token')"
-									id="token"
-									placeholder="Token"
-									value="{{ current_user.token }}"
-								/>
+								{{ form.token(class="form-control", value=current_user.token, type="password", placeholder="token", onclick="myFunction('token')", id="token") }}
 							</div>
 						</div>
 						<div class="col-md-6 pl-md-1">
 							<div class="form-group">
 								<label>Password</label>
-								<input
-									type="password"
-									onclick="myFunction('password')"
-									id="password"
-									class="form-control"
-									placeholder="Password"
-									value="{{ current_user.password}}"
-								/>
+								{{ form.password(class="form-control", value=current_user.password, type="password", placeholder="Password", onclick="myFunction('password')", id="password") }}
 							</div>
 						</div>
 					</div>
@@ -62,10 +49,10 @@
 							</div>
 						</div>
 					</div>
+					<div class="card-footer">
+						<button type="submit" class="btn btn-fill btn-primary" name="update">Save</button>
+					</div>
 				</form>
-			</div>
-			<div class="card-footer">
-				<button type="submit" class="btn btn-fill btn-primary">Save</button>
 			</div>
 		</div>
 	</div>

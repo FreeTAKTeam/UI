@@ -12,6 +12,13 @@ from app import login_manager
 from jinja2 import TemplateNotFound
 import requests
 from flask import current_app as app
+from app.base.forms import UpdateAccountForm
+from app.base.models import User
+from app import db
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.filter_by(uid=user_id).first()
 
 @blueprint.route('/index')
 @login_required
@@ -85,6 +92,28 @@ def usersApi():
 def aboutApi():
     return render_template('about.html', segment="about", uiversion=app.config['UIVERSION'],
     websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], port=app.config['PORT'], ip=app.config['IP'])     
+
+@blueprint.route('/page-user', methods=['GET', 'POST'])
+@login_required
+def page_user():
+    update_account_form = UpdateAccountForm(request.form)
+    y = request.form
+    if "update" in request.form:
+        password = request.form['password']
+        token = request.form['token']
+        group = request.form['group']
+        user = User.query.filter_by(uid=current_user.uid).first()
+        user.token = token
+        user.group = group
+        user.password = password
+        db.session.add(user)
+        db.session.commit()
+        return render_template('page-user.html', form=update_account_form)
+
+    else:
+        return render_template('page-user.html', form=update_account_form)
+
+
 
 @blueprint.route('/<template>')
 def route_template(template):

@@ -14,7 +14,7 @@ class Config(object):
     SECRET_KEY = 'key'
 
     # This will create a file in <app> FOLDER
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + '/root/FTSDataBase.db'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + r'C:\Users\natha\PycharmProjects\UI\FTSDataBase.db'
 
     # certificates path
     certpath = "/usr/local/lib/python3.8/dist-packages/FreeTAKServer/certs/"
