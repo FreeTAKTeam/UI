@@ -58,6 +58,6 @@ Migrate(app, db)
 if __name__ == "__main__":
     import eventlet
     from eventlet import wsgi, wrap_ssl
-    wsgi.server(sock = wrap_ssl(eventlet.listen((app_config.APPIP, app_config.APPPort)), keyfile=""), site=app)
+    wsgi.server(sock = eventlet.listen((app_config.APPIP, app_config.APPPort)), site=app)
     #app.run(debug=True)
     # app.run()
