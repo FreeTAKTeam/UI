@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name='UI',
+    name='FreeTAKServer-UI',
     version='1.0',
     packages=['app', 'app.base', 'app.home', 'tests'],
     url='https://github.com/FreeTAKTeam/FreeTakServer',

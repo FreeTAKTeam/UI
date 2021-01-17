@@ -14,7 +14,26 @@ class Config(object):
     SECRET_KEY = 'key'
 
     # This will create a file in <app> FOLDER
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'database.db')
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + '/root/FTSDataBase.db'
+
+
+    # this IP will be used to connect with the FTS API
+    IP = '127.0.0.1'
+
+    # this port will be used to connect with the FTS API
+    PORT = '19023'
+
+    # this ip will be used to listen for connections from users
+    APPIP = '127.0.0.1'
+
+    # this port will be used to listen
+    APPPort = 5000
+
+    WEBSOCKETKEY = 'YourWebsocketKey'
+
+    APIKEY = 'Bearer token'
+
+    UIVERSION = '1.0'
 
     # For 'in memory' database, please use:
     # SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'

@@ -56,5 +56,8 @@ app = create_app( app_config )
 Migrate(app, db)
 
 if __name__ == "__main__":
-    app.run(debug=True) 
+    import eventlet
+    from eventlet import wsgi
+    wsgi.server(eventlet.listen((app_config.APPIP, app_config.APPPort)), app)
+    #app.run(debug=True)
     # app.run()
