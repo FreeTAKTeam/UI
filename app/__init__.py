@@ -77,7 +77,7 @@ def create_app(config, selenium=False):
     app.config.from_object(config)
     # UI configuration
     # UI version DO NOT modify it
-    app.config['UIVERSION'] = '1.0'
+    app.config['UIVERSION'] = '1.4.2'
 
     # number of milliseconds to query FTS for connected Users, health, a System status
     app.config['USERINTERVAL'] = '180000';
