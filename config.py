@@ -13,7 +13,7 @@ class Config(object):
 
     SECRET_KEY = 'key'
 
-    # This will create a file in <app> FOLDER
+    # This will connect to the FTS db
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + '/root/FTSDataBase.db'
 
     # certificates path

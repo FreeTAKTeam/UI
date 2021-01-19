@@ -8,6 +8,7 @@ go to line 77+ for configuring the FTS UI
 from flask import Flask, url_for
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy_utils.functions import database_exists
 from importlib import import_module
 from logging import basicConfig, DEBUG, getLogger, StreamHandler
 from os import path
@@ -75,6 +76,8 @@ def apply_themes(app):
 def create_app(config, selenium=False):
     app = Flask(__name__, static_folder='base/static')
     app.config.from_object(config)
+    if database_exists(app.config['SQLALCHEMY_DATABASE_URI']) == False:
+        raise Exception("Database does not exist, check your DataBase path and ensure that you've started FTS")
     # UI configuration
     # UI version DO NOT modify it
     app.config['UIVERSION'] = '1.4.2'
