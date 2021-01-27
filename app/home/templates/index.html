@@ -524,11 +524,11 @@
 		};
 
 		const getLogs = (socket) => {
-			 socket.emit("logs", '{ "time": "2020-12-29 18:08:40,328" }');
+			// socket.emit("logs", '{ "time": "2020-12-29 18:08:40,328" }');
 			 let logdate = moment().format("YYYY-MM-DD HH:mm:ss,SSS");
 			 let obj = { "time": logdate }
 			
-			//socket.emit("logs", JSON.stringify(obj));
+			socket.emit("logs", JSON.stringify(obj));
 			socket.on("logUpdate", function (data) {
 				let logsObject = JSON.parse(data);
 				console.log(' received log data ' );
