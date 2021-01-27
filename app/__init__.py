@@ -86,6 +86,7 @@ def create_app(config, selenium=False):
     app.config['USERINTERVAL'] = '180000';
     app.config['SERVERHEALTHINTERVAL'] = '180000';
     app.config['SYSSTATUSINTERVAL'] = '600000';
+    app.config['DATAPACKAGESIZELIMIT'] = '15360000';
     if selenium:
         app.config['LOGIN_DISABLED'] = True
     register_extensions(app)
