@@ -1,6 +1,6 @@
 .g_case_container {
-	width: 180px;
-	height: 180px;
+	width: 170px;
+	height: 170px;
 	border-radius: 50%;
 	/* position: absolute; */
 	/* margin-left: 20px;
@@ -9,8 +9,8 @@
 
 .g_core2 {
 	/* background: #cedce0; */
-	width: 80px;
-	height: 80px;
+	width: 70px;
+	height: 70px;
 
 	border-radius: 50%;
 	border: 5px solid rgba(144, 144, 144, 0.15);
@@ -22,8 +22,8 @@
 }
 
 .g_e7 {
-	width: 95.25%;
-	height: 95.25%;
+	width: 90%;
+	height: 90%;
 	left: 2.5475%;
 	right: 2.5475%;
 	border: 6px solid transparent;
@@ -33,7 +33,7 @@
 	transform: rotateZ(0deg);
 	transition: box-shadow 3s ease;
 	text-align: center;
-	line-height: 80px;
+	line-height: 65px;
 }
 
 .g_semi_arc {

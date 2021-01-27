@@ -82,11 +82,9 @@
 	justify-content: flex-end; font-size: 20px; color: #278aed">
 		[SYSTEM CONFIGURATION]
 	</div>
-	<div style="font-size: 1rem; color: #fff; margin: 0 auto;
-	gap: 10px; border: 0px solid #fff; width: 100%;
-	padding: 16px; display: grid; grid-template-columns: 1fr 180px 70px 180px 70px 180px 70px">
+	<div class="configure-section">
 
-	<div class="config-rows" style="grid-row: 1/3;">
+	<div class="config-rows-1" >
 		<div class="cols" style="padding: 5px;     display: grid;
 		justify-content: center;">
 			<label style="padding: 8px 0px; font-size: 1rem; ">Data Package IP</label>
@@ -96,7 +94,7 @@
 			id="ip" name="IP_address" value="">
 		</div>
 	</div>
-	<div class="config-rows">
+	<div class="config-rows-odd">
 		<div style="display: flex;justify-content: center;
 		align-items: center;">
 			<label style="padding: 0px 5px; font-size: 1rem;">TCP COT</label>
@@ -112,7 +110,7 @@
 			id="tcp_cot_port" value="">
 		</div>
 	</div>
-	<div class="config-rows">
+	<div class="config-rows-odd">
 		<div style="display: flex;justify-content: center;
 		align-items: center;">
 			<label style="padding: 0px 5px; font-size: 1rem">HTTP DP</label>
@@ -127,7 +125,7 @@
 		id="http_dp_port"  value="">
 	</div>
 </div>
-	<div class="config-rows">
+	<div class="config-rows-odd">
 		<div style="display: flex;justify-content: center;
 		align-items: center;">
 			<label style="padding: 0px 5px; font-size: 1rem" >API</label>
@@ -146,7 +144,7 @@
 
 <!-- second row -->
 
-	<div class="config-rows">
+	<div class="config-rows-odd">
 		<div style="display: flex;justify-content: center;
 		align-items: center;">
 			<label style="padding: 0px 5px; font-size: 1rem">SSL COT</label>
@@ -162,7 +160,7 @@
 			id="ssl_cot_port"  value="">
 		</div>
 	</div>
-	<div class="config-rows">
+	<div class="config-rows-odd">
 		<div style="display: flex;justify-content: center;
 		align-items: center;">
 			<label style="padding: 0px 5px; font-size: 1rem">SSL DP</label>
@@ -176,7 +174,7 @@
 		class="form-control" style="width: 70px;"
 		id="ssl_dp_port"  value="">
 	</div></div>
-	<div class="config-rows">
+	<div class="config-rows-odd">
 		<div style="display: flex;justify-content: center;
 		align-items: center;">
 			<label style="padding: 0px 5px; font-size: 1rem">FED</label>
@@ -212,37 +210,37 @@
 					
 						<div class="header-tools" style="display: grid; width: 100%; margin: 0 auto; 
 						justify-content: flex-end; font-size: 20px; color: #278aed">[OUTGOING FEDERATION]</div>
-						<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
+						<div class="configure-outgoing-fed">
 							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
 								<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px;">Name</div>
 								<div><input type="text" class="form-control" value="" id="nameof" /></div>
 							</div>
 
-							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
+							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: left">
 								<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px;">IP / Domain</div>
 								<div><input type="text" class="form-control" value="" id="ipaddressof" /></div>
 							</div>
 						</div>
 
-						<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
+						<div class="configure-outgoing-fed">
 							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
 								<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px;">Reconnect</div>
 								<div><input type="text" class="form-control" value="30" id="recintervalof" /></div>
 							</div>
 
-							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
+							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: left">
 								<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px;">Port</div>
 								<div><input type="text" class="form-control" style="width: 70px;" value="" id="portof" /></div>
 							</div>
 						</div>
 
-						<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
+						<div class="configure-outgoing-fed">
 							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
 								<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px;">Max Retries</div>
 								<div><input type="text" class="form-control" value="3" id="maxretriesof" /></div>
 							</div>
 
-							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
+							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: left">
 								<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px;">Fallback</div>
 								<div class="select">
 									<select name="format" id="fallbackserverof">
@@ -255,7 +253,7 @@
 							</div>
 						</div>
 
-						<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
+						<div class="configure-outgoing-fed">
 							
 							<div class="select" style="width: 120px; justify-self: flex-end;">
 								<select name="format" id="statusof">

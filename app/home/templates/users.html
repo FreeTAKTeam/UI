@@ -33,9 +33,10 @@
 	<div id="loading" style="display: grid; place-self: center">
 		<img src="/static/assets/img/spinner1.svg" width="80px" height="80px" />
 	</div>
+	<div style="max-height: 300px; max-width: 100%; overflow-y: scroll; overflow-x: scroll; display: table-cell">
 	<div id="user-table-hdr"></div>
 	<div id="user-table"></div>
-
+</div>
 	<div
 		class="footer-tools"
 		style="background-color: #27293d; text-align: right; padding: 16px 20px 16px 50px; display: grid; grid-template-columns: 1fr"
@@ -55,7 +56,7 @@
 	</div>
 
 	<div style="display: none" id="addUser">
-		<div style="display: grid; width: 80%; padding: 10px 0px; margin: 0 auto; grid-template-columns: 1fr 120px 120px 180px 50px 1fr; gap: 20px">
+		<div class="user-add-section">
 			<div><input type="text" class="form-control" id="name1" value="" placeholder="Name" /></div>
 			<div><input type="text" class="form-control" id="group1" value="" placeholder="Group" /></div>
 			<div><input type="text" class="form-control" id="token1" value="" placeholder="Token" /></div>

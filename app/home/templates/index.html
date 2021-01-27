@@ -12,7 +12,7 @@
 	<!-- ... existing HTML ... -->
 
 	<div style="padding: 0px 0px 10px 0px; font-size: 20px; color: #278aed">[SYSTEM STATUS]</div>
-	<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; width: 100%; gap: 10px">
+	<div class="status-info-section">
 		<div class="card" style="display: grid; grid-template-columns: 1fr 1fr">
 			<div style="display: grid; grid-column: 1/-1; padding: 5px"><h3 class="card-title" style="color: #278aed">Data Package</h3></div>
 
@@ -293,7 +293,7 @@
 			</div>
 		</div>
 
-		<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; width: 100%; gap: 10px">
+		<div class="connection-info-section">
 			<div>
 				<div class="card card-stats">
 					<div class="card-body">
@@ -353,18 +353,16 @@
 			</div>
 		</div>
 
-		<div style="padding: 0px 0px 10px 0px; width: 100%; display: flex; justify-content: space-between">
-			<div style="font-size: 20px; color: #278aed">[HEALTH]</div>
-			<div style="font-size: 20px; color: #278aed">[LOGS]</div>
-		</div>
-		<div style="display: grid; grid-template-columns: 1fr 1.5fr; width: 100%; gap: 20px">
+		<div class="health-log">
 			<div>
+				<div style="font-size: 20px; color: #278aed">[HEALTH]</div>
 				<div id="loading-systemstatus7" style="display: grid; place-self: center">
 					<img src="/static/assets/img/spinner1.svg" width="80px" height="80px" />
 				</div>
 				<div id="chart"></div>
 			</div>
 			<div>
+				<div style="font-size: 20px; color: #278aed">[LOGS]</div>
 				<div id="loading-systemstatus8" style="display: grid; place-self: end;">
 					<img src="/static/assets/img/spinner1.svg" width="80px" height="80px" />
 				</div>
@@ -526,11 +524,11 @@
 		};
 
 		const getLogs = (socket) => {
-			// socket.emit("logs", '{ "time": "2020-12-29 18:08:40,328" }');
+			 socket.emit("logs", '{ "time": "2020-12-29 18:08:40,328" }');
 			 let logdate = moment().format("YYYY-MM-DD HH:mm:ss,SSS");
 			 let obj = { "time": logdate }
 			
-			socket.emit("logs", JSON.stringify(obj));
+			//socket.emit("logs", JSON.stringify(obj));
 			socket.on("logUpdate", function (data) {
 				let logsObject = JSON.parse(data);
 				console.log(' received log data ' );

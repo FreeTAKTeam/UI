@@ -8,11 +8,12 @@
 <div style="width: 90%; display: grid; padding: 5px; margin: 0 auto; background-color: #27293d">
 	<div class="header-tools" style="justify-self: flex-end; font-size: 20px; padding-right: 20px; color: #278aed">[DATA PACKAGE]</div>
 
-	<div style="width: 100%; padding: 5px">
+	<div style="width: 100%; padding: 5px; display: contents;">
+		<div style="max-height: 300px; max-width: 100%; overflow-y: scroll; overflow-x: scroll; display: table-cell">
 		<div
 			style="
 				display: grid;
-				grid-template-columns: 240px 150px 50px 120px 100px 1fr;
+				grid-template-columns: 240px 150px 50px 120px 100px 240px;
 				gap: 10px;
 				padding: 10px;
 				font-size: 16px;
@@ -28,12 +29,12 @@
 			<div style="color: #fff; font-weight: 600; padding: 5px">Size (KB)</div>
 			<div style="color: #fff; font-weight: 600; padding: 5px">Submitted</div>
 		</div>
-		<div style="max-height: 300px; overflow-y: scroll">
+		<div >
 			{% for dict_items in json_data %} {% if loop.index == 1 %} {% endif %}
 
 			<div
 				class="row-color-nohover row-class"
-				style="display: grid; grid-template-columns: 240px 150px 50px 120px 100px 1fr; gap: 10px; padding: 10px; color: #fff; opacity: 0.8"
+				style="display: grid; grid-template-columns: 240px 150px 50px 120px 100px 240px; gap: 10px; padding: 10px; color: #fff; opacity: 0.8; width: 1000px;"
 				onclick="captureClick('{{dict_items.Hash}}')"
 			>
 				
@@ -63,6 +64,7 @@
 			</div>
 
 			{% endfor %}
+		</div>
 		</div>
 	</div>
 
@@ -125,7 +127,7 @@
 
 			<div
 				class="row-color-nohover row-class"
-				style="display: grid; grid-template-columns: 100px 240px 240px 240px 240px 240px; padding: 10px; color: #fff; opacity: 0.8"
+				style="display: grid; grid-template-columns: 100px 240px 240px 240px 240px 240px; padding: 10px; color: #fff; opacity: 0.8; width: 1300px;"
 			>
 				<div>{{items['name']}}</div>
 				<div>{{items['description']}}</div>
@@ -180,7 +182,7 @@
 			{% endif %}
 			<div
 				class="row-color-nohover row-class"
-				style="display: grid; grid-template-columns: 200px 240px 240px 200px 200px 200px; padding: 10px; color: #fff; opacity: 0.8"
+				style="display: grid; grid-template-columns: 200px 240px 240px 200px 200px 200px; padding: 10px; color: #fff; opacity: 0.8; width: 1280px;"
 				onclick="captureExcheckClick('{{items.uid}}')"
 			>
 				<div>{{items['name']}}</div>
@@ -188,7 +190,7 @@
 					"") | replace(",", "")}}</div>
 				<div>{{items['filename']}}</div>
 				<div>{{items['size']}}</div>
-				<div>moment({{items['submissionTime']}}).format("DD-MM-YYYY")</div>
+				<div>{{items['submissionTime']}}</div>
 				<div>&nbsp;</div>
 			</div>
 
@@ -257,7 +259,7 @@
 		
 			<div
 				class="row-color-nohover row-class"
-				style="display: grid; grid-template-columns: 200px 240px 240px 200px 200px 200px 200px 200px; padding: 10px; color: #fff; opacity: 0.8"
+				style="display: grid; grid-template-columns: 200px 240px 240px 200px 200px 200px 200px 200px; padding: 10px; color: #fff; opacity: 0.8; width: 1680px;"
 				onclick="captureOFClick('{{items.id}}', '{{items.name}}', '{{items.address}}', '{{items.port}}',
 				'{{items.fallBack}}', '{{items.status}}', '{{items.reconnectInterval}}', '{{items.maxRetries}}', '{{items.lastError}}' );"
 			>
@@ -343,7 +345,7 @@
 
 
 	<div style="display: none" id="addOF">
-		<div style="display: grid; width: 80%; padding: 10px 0px; margin: 0 auto; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px">
+		<div class="outgoing-fed-add">
 			<div><input type="text" class="form-control" id="nameof" value="" placeholder="Name" /></div>
 			<div><input type="text" class="form-control" id="ipaddressof" value="" placeholder="IP Address" /></div>
 			<div><input type="text" class="form-control" id="portof" value="" placeholder="Port" /></div>
@@ -359,8 +361,8 @@
 				</select>
 			</div>
 
-			<div style="font-size: 16px; color: #b5b5b5; line-height: 40px; 
-			    display: grid; grid-column: 3/-1;"
+			<div class="outgoing-fed-status"
+			style=""
 			>
 			<div style="display: flex; align-items: center;">
 				<div>Status&nbsp;&nbsp;&nbsp;&nbsp;</div>
@@ -619,8 +621,8 @@ const authenticate = (socket) => {
 			return false;
 		}
 
-		if(file.size > 15360000) {
-			snackFunction("Max 15 MB file allowed to upload");
+		if(file.size > '{{datapackagesizelimit}}') {
+			snackFunction("Upload Max Allowed File Size Exceeded");
 			return false;
 		}
 		
@@ -630,7 +632,7 @@ const authenticate = (socket) => {
 
 		headers = { Authorization: "{{apikey | safe}}", Connection: "Keep-Alive" };
 
-		fetch(`http://{{ip}}:{{port}}/DataPackageTable?filename=${file.name}&creator`, {
+		fetch(`http://{{ip}}:{{port}}/DataPackageTable?filename=${file.name}&creator={{current_user.name}}`, {
 			method: "POST",
 			headers: headers,
 			body: formData,
@@ -677,8 +679,8 @@ const authenticate = (socket) => {
 		// 	return false;
 		// }
 
-		if(file.size > 15360000) {
-			snackFunction("Max 15 MB file allowed to upload");
+		if(file.size > '{{datapackagesizelimit}}') {
+			snackFunction("Upload Max Allowed File Size Exceeded");
 			return false;
 		}
 		
@@ -946,36 +948,7 @@ const authenticate = (socket) => {
 		});
     };
 
-	// to be implemented when we have download GET api
-	// function downloadFile(param, name) {
-		
-	// 	let url = `http://${tcpip}:${tcpport}/Marti/api/sync/metadata/${param}/tool`;
-	// 	headers = { Authorization: "{{apikey | safe}}", Connection: "Keep-Alive" };
-
-		
-	// 	fetch(url, {
-	// 		method: "GET",
-	// 		headers: headers,
-	// 	})
-	// 		.then(resp => resp.blob())
-	// 		.then(blob => {
-	// 			const url = window.URL.createObjectURL(blob);
-	// 			const a = document.createElement('a');
-	// 			a.style.display = 'none';
-	// 			a.href = url;
-	// 			// the filename you want
-	// 			a.download = name;
-	// 			document.body.appendChild(a);
-	// 			a.click();
-	// 			window.URL.revokeObjectURL(url);
-	// 			snackFunction("File Downloaded Successfully!");
-	// 			// alert('your file has downloaded!'); // or you know, something with better UX...
-	// 		})
-	// 		.catch(() => {
-	// 			snackFunction("File downloaded Failed! Contact Administrator.");
-	// 		});
-
-	// }
+	
 
 </script>
 <script>

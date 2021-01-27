@@ -11,10 +11,10 @@
 			<div class="card-body">
 				<div style="width: 100%; display: grid; margin: 0 auto; padding: 16px">
 					<div class="header-tools" style="display: grid; justify-content: flex-end; font-size: 20px; color: #278aed">[SEND COT]</div>
-					<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
+					<div class="connect-send-cot">
 						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
 							<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px">Name</div>
-							<div><input type="text" class="form-control" id="name1" value="" /></div>
+							<div><input type="text" class="form-control" id="name1" value="" style="width: 280px !important" /></div>
 						</div>
 
 						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
@@ -34,10 +34,10 @@
 						</div>
 					</div>
 
-					<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
+					<div class="connect-send-cot" >
 						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
 							<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px">Longitude</div>
-							<div><input type="text" class="form-control" id="longitude1" style="width: 200px !important" placeholder="-00.0000" value="" /></div>
+							<div><input type="text" class="form-control" id="longitude1" style="width: 280px !important" placeholder="-00.0000" value="" /></div>
 						</div>
 
 						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
@@ -60,15 +60,15 @@
 						</div>
 					</div>
 
-					<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
+					<div class="connect-send-cot" >
 						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
 							<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px">Latitude</div>
-							<div><input type="text" class="form-control" id="latitude1" style="width: 200px !important" placeholder="00.000" value="" /></div>
+							<div><input type="text" class="form-control" id="latitude1" style="width: 280px !important" placeholder="00.000" value="" /></div>
 						</div>
 
 						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
 							<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px">Timeout</div>
-							<div><input type="number" class="form-control" id="timeout1" value="600" style="width: 100px !important" /></div>
+							<div><input type="number" class="form-control" id="timeout1" value="600" style="width: 280px !important" /></div>
 						</div>
 					</div>
 
@@ -86,9 +86,10 @@
 					<!-- <div class="card" style="width: 100%; display: grid; margin: 0 auto">
 			<div class="header-tools" style="display: grid; padding: 10px 0px; justify-content: flex-end; font-size: 20px; color: #278aed">[EMERGENCY]</div> -->
 					<!-- ======= Table ======= -->
-					<div class="datatable-container" style="width: 100%">
-						<div class="datatable">
-							<div style="display: grid; grid-template-columns: 1fr 100px 100px 180px 1fr; padding: 10px">
+					<div class="datatable-container" style="width: 100%; display: contents;">
+						
+							<div style="max-height: 300px; max-width: 100%; overflow-y: scroll; overflow-x: scroll; display: table-cell">
+							<div style="display: grid; grid-template-columns: 240px 100px 100px 180px 280px; padding: 10px">
 								<div style="font-size: 16px; color: #fff">Name</div>
 								<div style="font-size: 16px; color: #fff">Latitude</div>
 								<div style="font-size: 16px; color: #fff">Longitude</div>
@@ -96,12 +97,12 @@
 								<div style="font-size: 16px; color: #fff">UID</div>
 							</div>
 
-							<div style="max-height: 300px; overflow: auto">
+							<div >
 								{% for dict_items in json_data %}
 
 								<div
 									class="row-color-nohover row-class"
-									style="display: grid; grid-template-columns: 1fr 100px 100px 180px 1fr; padding: 10px; color: #fff; opacity: 0.8"
+									style="display: grid; grid-template-columns: 240px 100px 100px 180px 280px; padding: 10px; color: #fff; opacity: 0.8; width: 900px;"
 									onclick="captureClick('{{dict_items.uid}}')"
 								>
 									<div>{{dict_items['name']}}</div>
@@ -112,6 +113,7 @@
 								</div>
 								{% endfor %}
 							</div>
+						
 							<div>{% if json_data|length == 0 %} No Records. {% endif %}</div>
 						</div>
 					</div>
@@ -129,7 +131,7 @@
 						<button class="btn btn-simple btn-twitter" onclick="addEmergencyToggle()" style="color: #278aed; border-color: #278aed">ADD</button>
 					</div>
 					<div style="display: none" id="addEmergency">
-						<div style="display: grid; width: 80%; margin: 0 auto; grid-template-columns: 1fr 100px 100px 180px 1fr; gap: 20px; padding-bottom: 16px">
+						<div class="connect-emergency-add">
 							<div><input type="text" class="form-control" id="name2" value="" placeholder="Name" /></div>
 							<div><input type="text" class="form-control" id="latitude2" value="" placeholder="Latitude" /></div>
 							<div><input type="text" class="form-control" id="longitude2" value="" placeholder="Longitude" /></div>
@@ -156,7 +158,7 @@
 					<div class="header-tools" style="display: grid; justify-content: flex-end; padding-right: 16px; font-size: 20px; color: #278aed">
 						[MANAGE PRESENCE]
 					</div>
-					<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
+					<div class="connect-manage-presence" >
 						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
 							<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px">Name</div>
 							<div><input type="text" class="form-control" value="" id="name3" /></div>
@@ -164,7 +166,7 @@
 
 						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
 							<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px">Role</div>
-							<div class="select">
+							<div class="select" style="width: 180px;">
 								<select name="format" id="role3">
 									<option selected value="Team Member">Team Member</option>
 									<option value="Team Lead">Team Lead</option>
@@ -179,7 +181,7 @@
 						</div>
 					</div>
 
-					<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
+					<div class="connect-manage-presence" >
 						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
 							<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px">Longitude</div>
 							<div><input type="text" class="form-control" id="longitude3" value="" /></div>
@@ -187,7 +189,7 @@
 
 						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
 							<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px">Team</div>
-							<div class="select">
+							<div class="select" style="width: 180px;">
 								<select name="format" id="team3">
 									<option value="Yellow">Yellow</option>
 									<option value="Red">Red</option>
@@ -207,7 +209,7 @@
 						</div>
 					</div>
 
-					<div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px">
+					<div class="connect-manage-presence" >
 						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
 							<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px">Latitude</div>
 							<div><input type="text" class="form-control" value="" id="latitude3" /></div>
