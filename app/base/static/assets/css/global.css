@@ -482,9 +482,12 @@ input[type="file"] {
 
 .row-color-nohover {
 	background: #27293d;
+	width: 100%;
 }
 .row-color-nohover:nth-of-type(even) {
 	background: #323242;
+	
+	
 }
 
 /* USER PAGE CSS */
@@ -553,3 +556,270 @@ div::-webkit-scrollbar-thumb {
 	background: #278aed;
 	border-radius: 10px;
 }
+
+
+/* Responsiveness code */
+
+
+/* large screen */
+@media all and (min-width: 768px) { 
+	.connection-info-section {
+		display: grid; 
+		grid-template-columns: 1fr 1fr 1fr; 
+		width: 100%; 
+		gap: 10px;
+	}
+	.health-log {
+		display: grid; grid-template-columns: 1fr 1.5fr; width: 100%; gap: 20px
+	}
+	.outgoing-fed-status {
+		font-size: 16px; color: #b5b5b5; line-height: 40px; 
+			    display: grid; grid-column: 3/-1;
+	}
+
+	.configure-section {
+		font-size: 1rem; color: #fff; margin: 0 auto;
+	gap: 10px; border: 0px solid #fff; width: 100%;
+	padding: 16px; display: grid; grid-template-columns: 1fr 180px 70px 180px 70px 180px 70px;
+	}
+
+	.config-rows-1 {
+		grid-row: 1/3;
+	}
+
+
+	.configure-outgoing-fed {
+		display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px;
+	}
+
+	.connect-send-cot {
+		display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px;
+	}
+	.connect-manage-presence {
+		display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; padding: 10px 0px;
+	}
+
+	.connect-emergency-add {
+		display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 20px;
+		width: 70%; margin:  0 auto;
+	}
+
+	.user-add-section {
+		display: grid; width: 80%; padding: 20px; margin: 0 auto; 
+		grid-template-columns: 1fr 120px 120px 180px 50px 1fr; gap: 20px
+	}
+
+	.about-version-section {
+		display: grid; grid-template-columns: 1fr 1fr; gap: 30px;
+	}
+}
+
+
+/* screen size above 1281px */
+@media all and (min-width: 1281px) { 
+	.status-info-section {
+		display: grid; 
+		grid-template-columns: 1fr 1fr 1fr; 
+		width: 100%; 
+		gap: 10px;
+	}
+
+	.health-log {
+		display: grid; grid-template-columns: 1fr 1.5fr; width: 100%; gap: 20px; margin: 0 auto;
+	}
+
+	.outgoing-fed-add {
+		display: grid; width: 80%; padding: 10px 0px; margin: 0 auto; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px;
+	}
+	.outgoing-fed-status {
+		font-size: 16px; color: #b5b5b5; line-height: 40px; 
+			    display: grid; grid-column: 3/-1;
+	}
+	.configure-section {
+		font-size: 1rem; color: #fff; margin: 0 auto;
+	gap: 10px; border: 0px solid #fff; width: 100%;
+	padding: 16px; display: grid; grid-template-columns: 1fr 180px 70px 180px 70px 180px 70px;
+	}
+
+	.config-rows-1 {
+		grid-row: 1/3;
+	}
+	
+}
+
+
+
+/* screen size between 768px - 1280px */
+@media all and (min-width: 768px) and (max-width: 1280px) { 
+	.status-info-section {
+		display: grid; 
+		grid-template-columns: 1fr 1fr; 
+		width: 100%; 
+		gap: 10px;
+	}
+
+	.health-log {
+		display: grid; grid-template-columns: 1fr; width: 90%; gap: 20px; margin: 0 auto;
+	}
+
+	.outgoing-fed-add {
+		display: grid; width: 80%; padding: 10px 0px; margin: 0 auto; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px;
+	}
+	.outgoing-fed-status {
+		font-size: 16px; color: #b5b5b5; line-height: 40px; 
+			    display: grid; grid-column: 3/-1;
+	}
+
+	.configure-section {
+		font-size: 1rem; color: #fff; margin: 0 auto;
+	gap: 10px; border: 0px solid #fff; width: 100%;
+	padding: 16px; display: grid; grid-template-columns: 1fr 180px 70px 180px 70px 180px 70px;
+	}
+
+	.config-rows-1 {
+		grid-row: 1/3;
+	}
+
+	.connect-send-cot {
+		display: grid; grid-template-columns: 1fr; gap: 20px; align-items: center; padding: 10px 0px;
+		width: 80%; margin:  0 auto;
+	}
+
+	.user-add-section {
+		display: grid; width: 80%; padding: 20px; margin: 0 auto; 
+		grid-template-columns: 1fr 1fr; gap: 20px
+	}
+	
+	
+}
+
+
+@media all and (min-width: 1250px) and (max-width: 1399px) { 
+
+	.configure-section {
+		font-size: 1rem; color: #fff; margin: 0 auto;
+	gap: 10px; border: 0px solid #fff; width: 100%;
+	padding: 16px; display: grid; grid-template-columns: 180px 70px 180px 70px 180px 70px;
+	justify-items: self-start;
+
+	}
+
+	.config-rows-1 {
+		grid-column: 1/-1;
+	}
+
+	.config-rows-odd {
+		justify-self: end;
+	}
+
+	
+}
+
+
+@media all and (min-width: 768px) and (max-width: 1249px) { 
+
+	.configure-section {
+		font-size: 1rem; color: #fff; margin: 0 auto;
+	gap: 10px; border: 0px solid #fff; width: 100%;
+	padding: 16px; display: grid; grid-template-columns: 180px 70px 180px 70px;
+	justify-items: self-start;
+
+	}
+
+	.config-rows-1 {
+		grid-column: 1/-1;
+	}
+
+	.config-rows-odd {
+		justify-self: end;
+	}
+
+	
+}
+
+/* small screen max 767px */
+@media all and (max-width: 767px) { 
+	.connection-info-section {
+		display: grid; 
+		grid-template-columns: 1fr; 
+		width: 80%; 
+		margin: 0 auto;
+		gap: 10px;
+	}
+
+	.health-log {
+		display: grid; grid-template-columns: 1fr; width: 90%; gap: 20px; margin: 0 auto;
+	}
+
+	.status-info-section {
+		display: grid; 
+		grid-template-columns: 1fr; 
+		width: 80%; 
+		margin: 0 auto;
+		gap: 10px;
+		text-align: center;
+		
+	}
+
+	.card {
+		justify-items: center;
+	}
+
+	.outgoing-fed-add {
+		display: grid; width: 80%; padding: 10px; margin: 0 auto; gap: 10px;
+		grid-template-columns: 1fr;
+		
+	}
+
+	.outgoing-fed-status {
+		font-size: 16px; color: #b5b5b5; line-height: 40px; 
+			    display: grid; grid-column: 1/-1;
+	}
+
+	.configure-section {
+		font-size: 1rem; color: #fff; margin: 0 auto;
+	gap: 10px; border: 0px solid #fff; width: 100%;
+	padding: 16px; display: grid; grid-template-columns: 1fr 1fr;
+	justify-items: self-start;
+
+	}
+
+	.config-rows-1 {
+		grid-column: 1/-1;
+	}
+
+	.config-rows-odd {
+		justify-self: end;
+	}
+
+	.configure-outgoing-fed {
+		display: grid; grid-template-columns: 1fr; gap: 20px; align-items: center; padding: 10px 0px;
+		width: 80%;
+	}
+
+	.connect-send-cot {
+		display: grid; grid-template-columns: 1fr; gap: 20px; align-items: center; padding: 10px 0px;
+		width: 80%; margin:  0 auto;
+	}
+
+	.connect-manage-presence {
+		display: grid; grid-template-columns: 1fr; gap: 20px; align-items: center; padding: 10px 0px;
+		width: 80%; margin:  0 auto;
+	}
+
+	.connect-emergency-add {
+		display: grid; grid-template-columns: 1fr; gap: 20px; padding: 20px;
+		width: 70%; margin:  0 auto;
+	}
+
+	.user-add-section {
+		display: grid; width: 80%; padding: 20px; margin: 0 auto; 
+		grid-template-columns: 1fr 1fr; gap: 20px
+	}
+	
+	.about-version-section {
+		display: grid; grid-template-columns: 1fr;gap: 10px;
+	}
+
+}
+
