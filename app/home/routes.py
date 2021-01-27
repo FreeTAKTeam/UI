@@ -53,7 +53,8 @@ def missionApi():
     excheck_json_data = excheck_json_data['ExCheck']['Templates'],
     outgoing_federation_json_data = outgoing_federation_json_data['federations'],
     segment = "mission",
-    websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], port=app.config['PORT'], ip=app.config['IP']
+    websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], port=app.config['PORT'], ip=app.config['IP'],
+    datapackagesizelimit=app.config['DATAPACKAGESIZELIMIT']
     
      )
 
