@@ -429,6 +429,7 @@
 				}, '{{serverhealthinterval}}'); // 3 minutes polling
 
 				setInterval(() => {
+					refresh();
 					getSystemStatus(socket);
 				}, '{{sysstatusinterval}}'); // 10 minutes polling
 
@@ -745,6 +746,11 @@
 		}, 3000);
 	}
 
+	function refresh() {
+		setTimeout(function () {
+			location.reload(true);
+		}, 3000);
+	}
 
 	</script>
 	<script>
