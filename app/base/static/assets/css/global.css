@@ -604,6 +604,15 @@ div::-webkit-scrollbar-thumb {
 		width: 70%; margin:  0 auto;
 	}
 
+	.connect-send-cot-elements {
+		display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+	}
+
+	.connect-send-cot-label {
+		font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px;
+	}
+
+
 	.user-add-section {
 		display: grid; width: 80%; padding: 20px; margin: 0 auto; 
 		grid-template-columns: 1fr 120px 120px 180px 50px 1fr; gap: 20px
@@ -611,6 +620,14 @@ div::-webkit-scrollbar-thumb {
 
 	.about-version-section {
 		display: grid; grid-template-columns: 1fr 1fr; gap: 30px;
+	}
+
+	.configure-outgoing-fed-element {
+		display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+	}
+
+	.configure-outgoing-fed-label {
+		font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px;
 	}
 }
 
@@ -801,6 +818,13 @@ div::-webkit-scrollbar-thumb {
 		display: grid; grid-template-columns: 1fr; gap: 20px; align-items: center; padding: 10px 0px;
 		width: 80%; margin:  0 auto;
 	}
+	.connect-send-cot-elements {
+		display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+	}
+
+	.connect-send-cot-label {
+		font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px;
+	}
 
 	.connect-manage-presence {
 		display: grid; grid-template-columns: 1fr; gap: 20px; align-items: center; padding: 10px 0px;
@@ -821,5 +845,36 @@ div::-webkit-scrollbar-thumb {
 		display: grid; grid-template-columns: 1fr;gap: 10px;
 	}
 
+	.configure-outgoing-fed-element {
+		display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+	}
+	
+	.configure-outgoing-fed-label {
+		font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px;
+	}
+
 }
+
+
+/* small screen max 767px */
+@media all and (max-width: 550px) { 
+
+	.connect-send-cot-elements {
+		display: grid; grid-template-columns: 1fr; align-items: center;
+	}
+
+	.connect-send-cot-label {
+		font-size: 16px; color: #b5b5b5; text-align: left; 
+	}
+	
+	.configure-outgoing-fed-element {
+		display: grid; grid-template-columns: 1fr; align-items: left;
+	}
+
+	.configure-outgoing-fed-label {
+		font-size: 16px; color: #b5b5b5; text-align: left; padding-right: 16px;
+	}
+}
+
+
 

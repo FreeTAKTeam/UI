@@ -211,37 +211,37 @@
 						<div class="header-tools" style="display: grid; width: 100%; margin: 0 auto; 
 						justify-content: flex-end; font-size: 20px; color: #278aed">[OUTGOING FEDERATION]</div>
 						<div class="configure-outgoing-fed">
-							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-								<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px;">Name</div>
+							<div class="configure-outgoing-fed-element" >
+								<div class="configure-outgoing-fed-label" >Name</div>
 								<div><input type="text" class="form-control" value="" id="nameof" /></div>
 							</div>
 
-							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: left">
-								<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px;">IP / Domain</div>
+							<div class="configure-outgoing-fed-element">
+								<div class="configure-outgoing-fed-label">IP / Domain</div>
 								<div><input type="text" class="form-control" value="" id="ipaddressof" /></div>
 							</div>
 						</div>
 
 						<div class="configure-outgoing-fed">
-							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-								<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px;">Reconnect</div>
+							<div class="configure-outgoing-fed-element">
+								<div class="configure-outgoing-fed-label">Reconnect</div>
 								<div><input type="text" class="form-control" value="30" id="recintervalof" /></div>
 							</div>
 
-							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: left">
-								<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px;">Port</div>
+							<div class="configure-outgoing-fed-element">
+								<div class="configure-outgoing-fed-label">Port</div>
 								<div><input type="text" class="form-control" style="width: 70px;" value="" id="portof" /></div>
 							</div>
 						</div>
 
 						<div class="configure-outgoing-fed">
-							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-								<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px;">Max Retries</div>
+							<div class="configure-outgoing-fed-element">
+								<div class="configure-outgoing-fed-label">Max Retries</div>
 								<div><input type="text" class="form-control" value="3" id="maxretriesof" /></div>
 							</div>
 
-							<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: left">
-								<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px;">Fallback</div>
+							<div class="configure-outgoing-fed-element">
+								<div class="configure-outgoing-fed-label">Fallback</div>
 								<div class="select">
 									<select name="format" id="fallbackserverof">
 										{% for items in outgoing_federation_json_data %} 
