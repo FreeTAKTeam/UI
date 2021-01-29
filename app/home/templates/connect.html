@@ -9,7 +9,7 @@
 	<div style="display: grid; width: 90%; margin: 0 auto">
 		<div class="card">
 			<div class="card-body">
-				<div style="width: 100%; display: grid; margin: 0 auto; padding: 16px">
+				<div class="connect-section1-block">
 					<div class="header-tools" style="display: grid; justify-content: flex-end; font-size: 20px; color: #278aed">[SEND COT]</div>
 					<div class="connect-send-cot">
 						<div class="connect-send-cot-elements">
@@ -81,7 +81,7 @@
 		<!-- ======= Header tools ======= -->
 		<div class="card">
 			<div class="card-body">
-				<div style="width: 100%; display: grid; margin: 0 auto; padding: 16px">
+				<div style="width: 100%; display: grid; margin: 0 auto; ">
 					<div class="header-tools" style="display: grid; justify-content: flex-end; font-size: 20px; color: #278aed">[EMERGENCY]</div>
 					<!-- <div class="card" style="width: 100%; display: grid; margin: 0 auto">
 			<div class="header-tools" style="display: grid; padding: 10px 0px; justify-content: flex-end; font-size: 20px; color: #278aed">[EMERGENCY]</div> -->
@@ -159,13 +159,13 @@
 						[MANAGE PRESENCE]
 					</div>
 					<div class="connect-manage-presence" >
-						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-							<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px">Name</div>
+						<div class="connect-manage-presence-element">
+							<div class="connect-mp-element-lbl">Name</div>
 							<div><input type="text" class="form-control" value="" id="name3" /></div>
 						</div>
 
-						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-							<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px">Role</div>
+						<div class="connect-manage-presence-element">
+							<div class="connect-mp-element-lbl">Role</div>
 							<div class="select" style="width: 180px;">
 								<select name="format" id="role3">
 									<option selected value="Team Member">Team Member</option>
@@ -182,13 +182,13 @@
 					</div>
 
 					<div class="connect-manage-presence" >
-						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-							<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px">Longitude</div>
+						<div class="connect-manage-presence-element">
+							<div class="connect-mp-element-lbl">Longitude</div>
 							<div><input type="text" class="form-control" id="longitude3" value="" /></div>
 						</div>
 
-						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-							<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px">Team</div>
+						<div class="connect-manage-presence-element">
+							<div class="connect-mp-element-lbl">Team</div>
 							<div class="select" style="width: 180px;">
 								<select name="format" id="team3">
 									<option value="Yellow">Yellow</option>
@@ -210,8 +210,8 @@
 					</div>
 
 					<div class="connect-manage-presence" >
-						<div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center">
-							<div style="font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px">Latitude</div>
+						<div class="connect-manage-presence-element">
+							<div class="connect-mp-element-lbl">Latitude</div>
 							<div><input type="text" class="form-control" value="" id="latitude3" /></div>
 						</div>
 
@@ -260,7 +260,7 @@
 						class="row"
 						style="display: grid; grid-template-columns: 1fr; gap: 20px; width: 80%; margin: 0 auto; align-items: center; padding: 10px 0px"
 					>
-						<div style="display: grid; grid-template-columns: 100px 1fr; align-items: center">
+						<div class="connect-sender-elements">
 							<div style="font-size: 16px; color: #b5b5b5">Sender</div>
 							<div><input type="text" class="form-control" value="" id="sendername1" style="width: 200px !important" /></div>
 						</div>

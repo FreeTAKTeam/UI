@@ -6,7 +6,7 @@
 <!-- mission code here -->
 
 <div style="width: 90%; display: grid; padding: 5px; margin: 0 auto; background-color: #27293d">
-	<div class="header-tools" style="justify-self: flex-end; font-size: 20px; padding-right: 20px; color: #278aed">[DATA PACKAGE]</div>
+	<div class="header-tools mission-dp-header-lbl" >[DATA PACKAGE]</div>
 
 	<div style="width: 100%; padding: 5px; display: contents;">
 		<div style="max-height: 300px; max-width: 100%; overflow-y: scroll; overflow-x: scroll; display: table-cell">
@@ -68,7 +68,7 @@
 		</div>
 	</div>
 
-	<div class="footer-tools" style="background-color: #27293d; padding: 16px 16px 16px 50px; display: grid; grid-template-columns: 1fr 1fr">
+	<div class="mission-packagedata-footer-tools" >
 		<div>
 			<div
 				class="btn btn-simple btn-twitter"
@@ -82,7 +82,7 @@
 			<button class="btn btn-simple btn-twitter" onclick="onSelectFile()" style="color: #278aed; border-color: #278aed">ADD</button>
 		</div>
 		<div style="display: grid; grid-template-columns: 1fr 40px">
-			<div><input type="text" id="filename" readonly class="form-control" value="" /></div>
+			<div><input type="text" id="filename" readonly class="form-control browse-box" value="" /></div>
 			<label for="fileinput" class="custom-file-upload"> ... </label>
 			<input id="fileinput" type="file" />
 		</div>
@@ -197,7 +197,7 @@
 			{% endfor %}
 		</div>
 	</div>
-	<div class="footer-tools" style="background-color: #27293d; padding: 16px 16px 16px 50px; display: grid; grid-template-columns: 1fr 1fr">
+	<div class="mission-excheck-footer-tools" >
 		<div>
 			<div
 				class="btn btn-simple btn-twitter"

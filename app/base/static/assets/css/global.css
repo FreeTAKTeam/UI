@@ -629,6 +629,50 @@ div::-webkit-scrollbar-thumb {
 	.configure-outgoing-fed-label {
 		font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px;
 	}
+
+	.mission-packagedata-footer-tools {
+		background-color: #27293d; padding: 16px 16px 16px 50px; display: grid; grid-template-columns: 1fr 1fr;
+	}
+
+	.mission-excheck-footer-tools {
+		background-color: #27293d; padding: 16px 16px 16px 50px; display: grid; grid-template-columns: 1fr 1fr;
+	}
+
+	.circle-card {
+		display: grid; grid-template-columns: 1fr 1fr; justify-items: center;
+	}
+
+	.system-status-lbl {
+		padding: 0px 0px 10px 0px; font-size: 20px; color: #278aed;
+	}
+
+	.mission-dp-header-lbl {
+		justify-self: flex-end; font-size: 20px; padding-right: 20px; color: #278aed
+	}
+
+	.connect-manage-presence-element{
+		display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+	}
+
+	.connect-mp-element-lbl {
+		font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px;
+	}
+
+	.connect-sender-elements {
+		display: grid; 
+		grid-template-columns: 100px 1fr; align-items: center;
+	}
+
+	.about-version-lbl {
+		font-size: 20px;
+	}
+
+	.index-elem-lbl {
+		font-size: 20px;
+	}
+	.configure-elem-lbl {
+		padding: 0px 5px; font-size: 1rem !important;
+	}
 }
 
 
@@ -646,7 +690,7 @@ div::-webkit-scrollbar-thumb {
 	}
 
 	.outgoing-fed-add {
-		display: grid; width: 80%; padding: 10px 0px; margin: 0 auto; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px;
+		display: grid; width: 80%; padding: 10px 0px; margin: 0 auto; grid-template-columns: 1fr 1fr 1fr 10px; gap: 20px;
 	}
 	.outgoing-fed-status {
 		font-size: 16px; color: #b5b5b5; line-height: 40px; 
@@ -661,6 +705,23 @@ div::-webkit-scrollbar-thumb {
 	.config-rows-1 {
 		grid-row: 1/3;
 	}
+
+	.circle-card {
+		display: grid; grid-template-columns: 1fr 1fr;
+	}
+
+	.mission-dp-header-lbl {
+		justify-self: flex-end; font-size: 20px; padding-right: 20px; color: #278aed
+	}
+
+	.configure-elem-lbl {
+		padding: 0px 5px; font-size: 1rem !important;
+	}
+	.connect-section1-block {
+		width: 100%; display: grid; margin: 0 auto; 
+		
+	}
+	
 	
 }
 
@@ -680,7 +741,7 @@ div::-webkit-scrollbar-thumb {
 	}
 
 	.outgoing-fed-add {
-		display: grid; width: 80%; padding: 10px 0px; margin: 0 auto; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px;
+		display: grid; width: 80%; padding: 10px 0px; margin: 0 auto; grid-template-columns: 1fr 1fr 1fr 10px; gap: 20px;
 	}
 	.outgoing-fed-status {
 		font-size: 16px; color: #b5b5b5; line-height: 40px; 
@@ -707,6 +768,20 @@ div::-webkit-scrollbar-thumb {
 		grid-template-columns: 1fr 1fr; gap: 20px
 	}
 	
+	.circle-card {
+		display: grid; grid-template-columns: 1fr 1fr;
+	}
+
+	.mission-dp-header-lbl {
+		justify-self: flex-end; font-size: 20px; padding-right: 20px; color: #278aed
+	}
+	.connect-section1-block {
+		width: 100%; display: grid; margin: 0 auto; text-align-last: justify;
+		
+	}
+	.configure-elem-lbl {
+		padding: 0px 5px; font-size: 1rem !important;
+	}
 	
 }
 
@@ -728,8 +803,18 @@ div::-webkit-scrollbar-thumb {
 	.config-rows-odd {
 		justify-self: end;
 	}
+	.mission-dp-header-lbl {
+		justify-self: flex-end; font-size: 20px; padding-right: 20px; color: #278aed
+	}
 
+	.connect-section1-block {
+		width: 100%; display: grid; margin: 0 auto; text-align-last: justify;
+		
+	}
 	
+	.configure-elem-lbl {
+		padding: 0px 5px; font-size: 1rem !important;
+	}
 }
 
 
@@ -740,6 +825,7 @@ div::-webkit-scrollbar-thumb {
 	gap: 10px; border: 0px solid #fff; width: 100%;
 	padding: 16px; display: grid; grid-template-columns: 180px 70px 180px 70px;
 	justify-items: self-start;
+	justify-content: center;
 
 	}
 
@@ -751,6 +837,20 @@ div::-webkit-scrollbar-thumb {
 		justify-self: end;
 	}
 
+	.circle-card {
+		display: grid; grid-template-columns: 1fr 1fr;
+	}
+
+	.mission-dp-header-lbl {
+		justify-self: flex-end; font-size: 20px; padding-right: 20px; color: #278aed
+	}
+	.connect-section1-block {
+		width: 100%; display: grid; margin: 0 auto; text-align-last: justify;
+		
+	}
+	.configure-elem-lbl {
+		padding: 0px 5px; font-size: 1rem !important;
+	}
 	
 }
 
@@ -816,7 +916,7 @@ div::-webkit-scrollbar-thumb {
 
 	.connect-send-cot {
 		display: grid; grid-template-columns: 1fr; gap: 20px; align-items: center; padding: 10px 0px;
-		width: 80%; margin:  0 auto;
+		width: 100%; margin:  0 auto;
 	}
 	.connect-send-cot-elements {
 		display: grid; grid-template-columns: 1fr 1fr; align-items: center;
@@ -828,7 +928,7 @@ div::-webkit-scrollbar-thumb {
 
 	.connect-manage-presence {
 		display: grid; grid-template-columns: 1fr; gap: 20px; align-items: center; padding: 10px 0px;
-		width: 80%; margin:  0 auto;
+		width: 100%; margin:  0 auto;
 	}
 
 	.connect-emergency-add {
@@ -838,7 +938,7 @@ div::-webkit-scrollbar-thumb {
 
 	.user-add-section {
 		display: grid; width: 80%; padding: 20px; margin: 0 auto; 
-		grid-template-columns: 1fr 1fr; gap: 20px
+		grid-template-columns: 1fr; gap: 20px
 	}
 	
 	.about-version-section {
@@ -852,6 +952,61 @@ div::-webkit-scrollbar-thumb {
 	.configure-outgoing-fed-label {
 		font-size: 16px; color: #b5b5b5; text-align: right; padding-right: 16px;
 	}
+
+	.mission-packagedata-footer-tools {
+		background-color: #27293d; padding: 16px 16px 16px 50px; 
+		display: flex;
+		flex-direction: column-reverse;
+		
+	}
+
+	.mission-excheck-footer-tools {
+		background-color: #27293d; padding: 16px 16px 16px 50px; 
+		display: flex;
+		flex-direction: column-reverse;
+	}
+
+	.circle-card {
+		display: grid; grid-template-columns: 1fr 1fr;
+	}
+
+	/* Label Font Sizes */
+	.system-status-lbl {
+		padding: 0px 0px 0px 10px; font-size: 16px; color: #278aed;
+	}
+
+	.mission-dp-header-lbl {
+		justify-self: flex-end; font-size: 20px; padding-right: 20px; color: #278aed
+	}
+
+	.connect-manage-presence-element{
+		display: grid; grid-template-columns: 1fr; align-items: center;
+	}
+	.connect-mp-element-lbl {
+		font-size: 16px; color: #b5b5b5; text-align: left; padding-right: 16px;
+	}
+
+	.connect-sender-elements {
+		display: grid; 
+		grid-template-columns: 100px 1fr; align-items: center;
+	}
+
+	.configure-elem-lbl {
+		padding: 0px 5px; font-size: 1rem !important;
+	}
+
+	.about-version-lbl {
+		font-size: 20px;
+	}
+
+	.index-elem-lbl {
+		font-size: 16px;
+	}
+
+	.connect-section1-block {
+		width: 100%; display: grid; margin: 0 auto; text-align-last: justify;
+	}
+	
 
 }
 
@@ -874,7 +1029,93 @@ div::-webkit-scrollbar-thumb {
 	.configure-outgoing-fed-label {
 		font-size: 16px; color: #b5b5b5; text-align: left; padding-right: 16px;
 	}
+
+	.mission-packagedata-footer-tools {
+		background-color: #27293d; padding: 16px 16px 16px 50px; 
+		display: flex;
+		flex-direction: column-reverse;
+	}
+
+	.mission-excheck-footer-tools {
+		background-color: #27293d; padding: 16px 16px 16px 50px; 
+		display: flex;
+		flex-direction: column-reverse;
+	}
+
+	.circle-card {
+		display: grid; grid-template-columns: 1fr;
+	}
+
+
+
+	/* Labels Fonts Sizes */
+	.system-status-lbl {
+		padding: 0px 0px 0px 32px; font-size: 20px; color: #278aed;
+	}
+	
+	.mission-dp-header-lbl {
+		justify-self: flex-end; font-size: 20px; 
+		padding-bottom: 8px;
+		padding-right: 0px; color: #278aed
+	}
+	
+	.browse-box {
+		width: 100%;
+	}
+
+	.mission-packagedata-footer-tools {
+		background-color: #27293d; padding: 16px 16px 16px 16px; 
+		display: flex;
+		flex-direction: column-reverse;
+	}
+
+	.mission-excheck-footer-tools {
+		background-color: #27293d; padding: 16px 16px 16px 16px; 
+		display: flex;
+		flex-direction: column-reverse;
+	}
+
+	.connect-manage-presence-element{
+		display: grid; grid-template-columns: 1fr; align-items: center;
+	}
+	
+.connect-mp-element-lbl {
+	font-size: 16px; color: #b5b5b5; text-align: left; padding-right: 16px;
 }
+	
+.connect-sender-elements {
+	display: grid; 
+	grid-template-columns: 1fr; align-items: center;
+}
+
+.configure-elem-lbl {
+	padding: 0px 5px; font-size: 12px !important;
+}
+
+.about-version-lbl {
+	font-size: 16px;
+}
+
+.index-elem-lbl {
+	font-size: 16px;
+}
+
+.connect-section1-block {
+	width: 100%; display: grid; margin: 0 auto; text-align-last: justify;
+}
+
+.connect-send-cot {
+	display: grid; grid-template-columns: 1fr; gap: 20px; align-items: center; padding: 10px 0px;
+	width: 100%; margin:  0 auto;
+}
+
+.connect-emergency-add {
+	display: grid; grid-template-columns: 1fr; gap: 20px; padding: 20px;
+	width: 100%; margin:  0 auto;
+}
+
+}
+
 
 
 

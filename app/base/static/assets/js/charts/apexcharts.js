@@ -55,7 +55,24 @@ var options = {
 			breakpoint: 480,
 			options: {
 				legend: {
-					show: false,
+					show: true,
+					floating: true,
+					fontSize: "16px",
+					position: "left",
+					offsetX: 10,
+					offsetY: 10,
+					labels: {
+						useSeriesColors: true,
+					},
+					markers: {
+						size: 0,
+					},
+					formatter: function (seriesName, opts) {
+						return seriesName + ":  " + opts.w.globals.series[opts.seriesIndex];
+					},
+					itemMargin: {
+						vertical: 3,
+					},
 				},
 			},
 		},
