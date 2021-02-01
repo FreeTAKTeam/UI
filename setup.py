@@ -2,13 +2,13 @@ from setuptools import setup
 
 setup(
     name='FreeTAKServer-UI',
-    version='1.0',
+    version='1.5.10',
     packages=['app', 'app.base', 'app.home', 'tests'],
     url='https://github.com/FreeTAKTeam/FreeTakServer',
     license='Eclipse License',
     author='Ghost, C0rv0',
-    author_email='avc',
-    description='fawfwfa',
+    author_email='your.email@domain.com',
+    description='an optional UI for the FreeTAKServer software',
     install_requires = [
         "flask",
         "flask_login",

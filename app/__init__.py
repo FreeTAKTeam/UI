@@ -80,7 +80,7 @@ def create_app(config, selenium=False):
         raise Exception("Database does not exist, check your DataBase path and ensure that you've started FTS")
     # UI configuration
     # UI version DO NOT modify it
-    app.config['UIVERSION'] = '1.4.2'
+    app.config['UIVERSION'] = '1.5.10'
 
     # number of milliseconds to query FTS for connected Users, health, a System status
     app.config['USERINTERVAL'] = '180000';
