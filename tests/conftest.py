@@ -31,10 +31,8 @@ def user_client():
     db.session.close()
     db.drop_all()
     client = app.test_client()
-    create = {'username': '', 'password': '', 'create_account': ''}
     login = {'username': '', 'password': '', 'login': ''}
     with app.app_context():
-        client.post('/create_user', data=create)
         client.post('/login', data=login)
         yield client
 
