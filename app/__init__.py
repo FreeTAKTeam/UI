@@ -76,8 +76,8 @@ def apply_themes(app):
 def create_app(config, selenium=False):
     app = Flask(__name__, static_folder='base/static')
     app.config.from_object(config)
-    if database_exists(app.config['SQLALCHEMY_DATABASE_URI']) == False:
-        raise Exception("Database does not exist, check your DataBase path and ensure that you've started FTS")
+    #if database_exists(app.config['SQLALCHEMY_DATABASE_URI']) == False:
+    #    raise Exception("Database does not exist, check your DataBase path and ensure that you've started FTS")
     # UI configuration
     # UI version DO NOT modify it
     app.config['UIVERSION'] = '1.5.10'

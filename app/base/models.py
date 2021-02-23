@@ -12,13 +12,8 @@ from app import db, login_manager
 from app.base.util import hash_pass
 
 class User(db.Model, UserMixin):
-    __tablename__ = 'SystemUser'
+    __tablename__ = 'user'
     uid = Column(String(25), primary_key=True)
-    name = Column(String(15), nullable=False)
-    token = Column(String(30), nullable=True)
-    password = Column(String(30), nullable=True)
-    group = Column(String(15), default=True, nullable=True)
-    certificate_package_name = Column(String(30), nullable=True, default=None)
 
     def __init__(self, **kwargs):
         for property, value in kwargs.items():
@@ -35,7 +30,7 @@ class User(db.Model, UserMixin):
         return self.uid
 
     def __repr__(self):
-        return str(self.name)
+        return str(self.uid)
 
 
 @login_manager.user_loader
@@ -44,6 +39,6 @@ def user_loader(uid):
 
 @login_manager.request_loader
 def request_loader(request):
-    username = request.form.get('username')
-    user = User.query.filter_by(name=username).first()
+    username = request.form.get('uid')
+    user = User.query.filter_by(uid=username).first()
     return user if user else None

@@ -45,11 +45,14 @@ def login():
         if user and verify_pass( password, user.password):
 
             login_user(user)
-            return redirect(url_for('base_blueprint.route_default'))
+            z = current_user
+            url = url_for('base_blueprint.route_default')
+            new_redr = redirect(url)
+            return new_redr
 
         # Something (user or pass) is not ok
         return render_template( 'login/login.html', msg='Wrong user or password', form=login_form)
-
+    z = current_user
     if not current_user.is_authenticated:
         return render_template( 'login/login.html',
                                 form=login_form)
@@ -57,7 +60,10 @@ def login():
 
 @blueprint.route('/logout')
 def logout():
+    db.session.delete(current_user)
+    db.session.commit()
     logout_user()
+
     return redirect(url_for('base_blueprint.login'))
 
 @blueprint.route('/shutdown')

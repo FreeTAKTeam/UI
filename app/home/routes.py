@@ -66,7 +66,8 @@ def missionApi():
 @login_required
 def connectApi():
     headers = {'Authorization': app.config['APIKEY']}
-    json_data = requests.get('http://' + app.config['IP'] + ':' + app.config['PORT'] + '/ManageEmergency/getEmergency', headers= headers).json()
+    json_data = requests.get('http://' + app.config['IP'] + ':' + app.config['PORT'] + '/ManageEmergency/getEmergency', headers= headers)
+    json_data = json_data.json()
     
     return render_template('connect.html', json_data = json_data['json_list'], segment="connect",
     websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], port=app.config['PORT'], ip=app.config['IP'])     
