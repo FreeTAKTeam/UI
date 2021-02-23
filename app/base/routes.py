@@ -16,7 +16,7 @@ from app import db, login_manager
 from app.base import blueprint
 from app.base.forms import LoginForm, CreateAccountForm
 from app.base.models import User
-
+from flask import current_app as app
 from app.base.util import verify_pass
 
 @blueprint.route('/')
@@ -33,17 +33,19 @@ def route_errors(error):
 def login():
     login_form = LoginForm(request.form)
     if 'login' in request.form:
-        
+        import requests
         # read form data
         username = request.form['username']
         password = request.form['password']
 
         # Locate user
-        user = User.query.filter_by(name=username).first()
+        user = requests.get(f"http://{app.config['IP']}:{app.config['PORT']}/AuthenticateUser", params={"username": username, "password": password}, headers={"Authorization": f"{app.config['APIKEY']}"}).json()
         
         # Check the password
-        if user and verify_pass( password, user.password):
-
+        if user:
+            user = User(uid = user["uid"])
+            db.session.add(user)
+            db.session.commit()
             login_user(user)
             z = current_user
             url = url_for('base_blueprint.route_default')
