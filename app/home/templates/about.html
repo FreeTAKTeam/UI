@@ -30,8 +30,9 @@
 		</div>
 		<div >
 		  <div class="numbers">
-			<p class="card-category" style="font-size: 20px; color: #278aed;">[FTS VERSION]</p>
+			<p class="card-category" style="font-size: 20px; color: #278aed;">[FTS SERVER INFO]</p>
 			<h3 class="card-title about-version-lbl" id="server-version">&nbsp;</h3>
+			<h3 class="card-title about-version-lbl" id="server-ip">&nbsp;</h3>
 		  </div>
 		</div>
 	  </div>
@@ -49,8 +50,10 @@
 		</div>
 		<div >
 		  <div class="numbers">
-			<p class="card-category" style="font-size: 20px; color: #278aed">[UI VERSION]</p>
-			<h3 class="card-title about-version-lbl">{{uiversion}}</h3>
+			<p class="card-category" style="font-size: 20px; color: #278aed">[UI SERVER INFO]</p>
+			<h3 class="card-title about-version-lbl">Version {{uiversion}}</h3>
+			<h3 class="card-title about-version-lbl" id="ui-ip">&nbsp</h3>
+
 		  </div>
 		</div>
 	  </div>
@@ -112,6 +115,8 @@
 {% block javascripts %}
 
 <script>
+     <!-- assign the UI IP address to the div -->
+     document.getElementById("ui-ip").innerText = self.location.host ;
 
 	 async function establishConnection() {
 		var socket = io.connect(`http://{{ip}}:{{port}}`);
@@ -148,6 +153,7 @@
 		socket.on("connectUpdate", function (data) {
 			let connectObject = JSON.parse(data);
 			document.getElementById("server-version").innerText = connectObject.version;
+			document.getElementById("server-ip").innerText = "{{ip}}" ;
 		});
 	};
 
