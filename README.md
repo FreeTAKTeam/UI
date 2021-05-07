@@ -17,6 +17,7 @@ To install FTS and the UI type in a console
 ```
 sudo python3 -m pip install FreeTAKServer[ui]
 ```
+
 Setup your Configuration
 your administrator will need to configure the following files
 ```
@@ -24,12 +25,15 @@ Config.py for the UI
 MainConfig.py for FTS
 ```
 
-###Start FTS
-```nohup sudo python3 -m FreeTAKServer.controllers.services.FTS -DataPackageIP [YourIP] -AutoStart True nohup sudo python3 -m 
+### Start FTS
+
+```
+nohup sudo python3 -m FreeTAKServer.controllers.services.FTS -DataPackageIP [YourIP] -AutoStart True nohup sudo python3 -m 
 ```
 
-Start the WebUI
-```nohup  sudo FLASK_APP=/usr/local/lib/python3.8/dist-packages/FreeTAKServer-UI/run.py python3 
+### Start the WebUI
+```
+nohup sudo FLASK_APP=/usr/local/lib/python3.8/dist-packages/FreeTAKServer-UI/run.py python3 
 ```
 ## Dashboard Features
 
@@ -41,7 +45,8 @@ Start the WebUI
  
 - **MIT License**
  
-#
+
 ## How to use it
 
+Once FTS and FTS-UI servers are started. Login to (ServerIP):5000 on your web browser.
 `
