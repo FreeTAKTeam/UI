@@ -13,8 +13,8 @@ from app.base.util import hash_pass
 
 class User(db.Model, UserMixin):
     __tablename__ = 'user'
-    uid = Column(String(25), primary_key=True)
-
+    uid = Column(String(25))
+    id = Column(Integer, primary_key=True, autoincrement=True)
     def __init__(self, **kwargs):
         for property, value in kwargs.items():
             # depending on whether value is an iterable or not, we must

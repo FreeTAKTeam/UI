@@ -492,8 +492,6 @@ let obj =	{
 		delete obj.services.Federation_server_service;
 	}
 
-	var socket = io.connect(`http://{{ip}}:{{port}}`);
-
 	socket.emit("changeServiceInfo", JSON.stringify(obj) );
 	snackFunction("Configuration updated. Refreshing data.");
 	refresh();

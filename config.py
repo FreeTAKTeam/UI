@@ -14,7 +14,7 @@ class Config(object):
     SECRET_KEY = 'key'
 
     # This will connect to the FTS db
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + '/root/FTSDataBase.db'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + r'C:\Users\natha\PycharmProjects\UI_git\example.db'
 
     # certificates path
     certpath = "/usr/local/lib/python3.8/dist-packages/FreeTAKServer/certs/"
@@ -33,6 +33,12 @@ class Config(object):
 
     # the public IP your server is exposing
     APPIP = '127.0.0.1'
+
+    # webmap IP
+    WEBMAPIP = "204.48.30.216"
+
+    # webmap port
+    WEBMAPPORT = 8000
 
     # this port will be used to listen
     APPPort = 5000

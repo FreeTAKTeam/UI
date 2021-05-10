@@ -95,6 +95,13 @@ def aboutApi():
     return render_template('about.html', segment="about", uiversion=app.config['UIVERSION'],
     websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], port=app.config['PORT'], ip=app.config['IP'])     
 
+@blueprint.route('/webmap')
+@login_required
+def webmapApi():
+    return render_template('webmap.html', segment="webmap", uiversion=app.config['UIVERSION'],
+                           websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], port=app.config['PORT'],
+                           ip=app.config['IP'], webmapip=app.config['WEBMAPIP'], webmapport=app.config["WEBMAPPORT"])
+
 @blueprint.route('/page-user', methods=['GET', 'POST'])
 @login_required
 def page_user():
