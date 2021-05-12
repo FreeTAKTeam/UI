@@ -1,9 +1,9 @@
 from setuptools import setup
 
 setup(
-    name='FreeTAKServer_UI',
-    version='0.1.7.5',
-    packages=['FreeTAKServer-UI', 'FreeTAKServer-UI.app', 'FreeTAKServer-UI.app.base', 'FreeTAKServer-UI.app.home', 'FreeTAKServer-UI.tests', 'FreeTAKServer-UI.docs'],
+    name='FreeTAKServer-UI',
+    version='0.1.7.9',
+    packages=['app', 'app.base', 'app.home', 'tests'],
     url='https://github.com/FreeTAKTeam/FreeTakServer',
     license='Eclipse License',
     author='Ghost, C0rv0',
