@@ -1,0 +1,197 @@
+{% extends "base-site.html" %} {% block title %} About {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %} {% block content %}
+
+
+<!-- ======= Header tools ======= -->
+<div style="display: grid; grid-template-columns: 1fr;">
+<div class="card" style="padding: 16px;">
+	<div class="header-tools" style="display: grid; padding: 16px; justify-content: flex-start; font-size: 20px; color: #278aed">
+		[ABOUT FTS]
+	</div>
+	<div style="font-size: 1rem; color: #fff; padding: 16px;">
+		FTS is a Python3 implementation of the TAK Server for devices like CiVTAK, WinTAK and ITAK, it is cross-platform. 
+		It's free and open source (released under the <a href="https://www.eclipse.org/legal/epl-2.0/" target="_blank" >Eclipse Public License</a>).
+	</div>
+	</div>
+	
+</div>
+
+<div class="about-version-section">
+
+<div class="card card-stats">
+	<div class="card-body">
+	  <div style="display: grid; grid-template-columns: 1fr 3fr;">
+		<div >
+		  <div class="info-icon text-center icon-warning">
+			<i class="tim-icons icon-time-alarm" style="font-size: 40px; color: #278AED""></i>
+		  </div>
+		</div>
+		<div >
+		  <div class="numbers">
+			<p class="card-category" style="font-size: 20px; color: #278aed;">[FTS SERVER INFO]</p>
+			<h3 class="card-title about-version-lbl" id="server-version">&nbsp;</h3>
+			<h3 class="card-title about-version-lbl" id="server-ip">&nbsp;</h3>
+		  </div>
+		</div>
+	  </div>
+	</div>
+   
+  </div>
+
+  <div class="card card-stats">
+	<div class="card-body">
+	  <div style="display: grid; grid-template-columns: 1fr 3fr;">
+		<div >
+		  <div class="info-icon text-center icon-warning">
+			<i class="tim-icons icon-time-alarm" style="font-size: 40px; color: #278AED""></i>
+		  </div>
+		</div>
+		<div >
+		  <div class="numbers">
+			<p class="card-category" style="font-size: 20px; color: #278aed">[UI SERVER INFO]</p>
+			<h3 class="card-title about-version-lbl">Version {{uiversion}}</h3>
+			<h3 class="card-title about-version-lbl" id="ui-ip">&nbsp</h3>
+
+		  </div>
+		</div>
+	  </div>
+	</div>
+   
+  </div>
+  </div>
+
+  <div class="card" style="padding: 16px;">
+	<div class="header-tools" style="display: grid; padding: 16px; justify-content: flex-start; font-size: 20px; color: #278aed">
+		[CREDITS]
+	</div>
+	<div style="font-size: 1rem; color: #fff; padding: 16px;">
+		FTS is provided to you by the FTS team. If you like this project and you can please consider a donation.
+		<br>
+		We like to thanks the following individuals and organization for provide crucial support, making FTS possible.
+		<ul>
+			<li>Air Force Research Laboratory</li>
+		<li>Sparx Services North America</li>
+		<li>Ralph "ATAK release"</li>
+		<li>Jay "Field Mapper"</li>
+		<li>Wesley "GHOST_DA-B6"</li>
+		<li>Brad</li>
+		<li>Largo Usagi</li>
+		<li>Alan "Pinzgauer"</li>
+		<li>Wizkey</li>
+	</div>
+	</div>
+
+	<div class="card" style="padding: 16px;">
+		<div class="header-tools" style="display: grid; padding: 16px; justify-content: flex-start; font-size: 20px; color: #278aed">
+			[OPEN SOURCE NOTICES]
+		</div>
+		<div style="font-size: 1rem; color: #fff; padding: 16px;">
+			FTS was made possible by the following Open Source projects.
+			<br>
+			We like to thank the following individuals and organization for providing crucial support and making FTS possible.
+			<ul>
+				<li>flask</li>
+				<li>lxml</li>
+				<li>pathlib</li>
+				<li>tabulate</li>
+				<li>sqlalchemy</li>
+				<li>setuptools</li>
+				<li>eventlet</li>
+				<li>random_word</li>
+				<li>Pip</li>
+				<li>Bootstrap4 </li>
+				<li>pyopenssl</li>
+				<li>Flask Dashboard Black by AppSeed</li>
+			</ul>
+
+		</div>
+		</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<script>
+     <!-- assign the UI IP address to the div -->
+     document.getElementById("ui-ip").innerText = self.location.host ;
+
+	 async function establishConnection() {
+		var socket = io.connect(`http://{{ip}}:{{port}}`);
+		getConnectInfo(socket);
+		let isAuth = await authenticate(socket);
+
+		if (isAuth === "True") {
+			getEventsInfo(socket);
+		} else {
+
+		}
+	
+	}
+
+	const authenticate = (socket) => {
+			
+			socket.emit("authenticate", JSON.stringify({ Authenticate: "{{websocketkey | safe}}" }));
+
+			return new Promise(function (resolve, reject) {
+				socket.on("authentication", function (data) {
+					let authenticateObject = JSON.parse(data);
+
+					if (authenticateObject.successful === "True") {
+						resolve("True");
+					} else {
+						reject("False");
+					}
+				});
+			});
+		};
+
+	const getConnectInfo = (socket) => {
+		
+		socket.on("connectUpdate", function (data) {
+			let connectObject = JSON.parse(data);
+			document.getElementById("server-version").innerText = connectObject.version;
+			document.getElementById("server-ip").innerText = "{{ip}}" ;
+		});
+	};
+
+	const getEventsInfo = (socket) => {
+		
+		socket.emit("events");
+		socket.on("eventsUpdate", function (data) {
+			let eventsArr = data.events;
+			if (eventsArr.lenght > 0) {
+				document.getElementById("notif").style.display = "block";
+			} else {
+				document.getElementById("notif").style.display = "none";
+			}
+
+			let ul = document.createElement("ul");
+			ul.className = "dropdown-menu dropdown-menu-right dropdown-navbar";
+			document.getElementById("events-info").appendChild(ul);
+
+			for (let [index, row] of eventsArr.entries()) {
+				var li = document.createElement("li");
+				li.className = "nav-link";
+
+				var a = document.createElement("a");
+				a.className = "nav-item dropdown-item";
+				a.innerHTML = row;
+
+				li.appendChild(a);
+				ul.appendChild(li);
+			}
+		});
+	};
+
+</script>
+
+<script>
+	establishConnection();
+</script>
+
+{% endblock javascripts %}
+
+

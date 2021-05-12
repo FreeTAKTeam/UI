@@ -1,0 +1,554 @@
+{% extends "base-site.html" %} {% block title %} Configure {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %} {% block content %}
+
+<style>
+
+
+	/* The switch - the box around the slider */
+	.switch {
+	  position: relative;
+	  display: inline-block;
+	  width: 60px;
+	  height: 34px;
+	  padding-left: 10px;
+	  margin: 0px;
+	}
+
+	/* Hide default HTML checkbox */
+	.switch input {
+	  opacity: 0;
+	  width: 0;
+	  height: 0;
+	}
+
+	/* The slider */
+	.slider {
+	  position: absolute;
+	  cursor: pointer;
+	  top: 0;
+	  left: 0;
+	  right: 0;
+	  bottom: 0;
+	  background-color: #ccc;
+	  -webkit-transition: .4s;
+	  transition: .4s;
+	}
+
+	.slider:before {
+	  position: absolute;
+	  content: "";
+	  height: 26px;
+	  width: 26px;
+	  left: 4px;
+	  bottom: 4px;
+	  background-color: white;
+	  -webkit-transition: .4s;
+	  transition: .4s;
+	}
+
+	input:checked + .slider {
+	  background-color: #2196F3;
+	}
+
+	input:focus + .slider {
+	  box-shadow: 0 0 1px #2196F3;
+	}
+
+	input:checked + .slider:before {
+	  -webkit-transform: translateX(26px);
+	  -ms-transform: translateX(26px);
+	  transform: translateX(26px);
+	}
+
+	/* Rounded sliders */
+	.slider.round {
+		padding-left: 30px;
+		display: inline-block;
+		border-radius: 34px;
+	}
+
+	.slider.round:before {
+	  border-radius: 50%;
+	}
+	.button5 {background-color: #000000;border: none;color: white;} /* Black */
+	</style>
+<!-- ======= Header tools ======= -->
+<div style="display: grid; grid-template-columns: 1fr;">
+<div class="card" style="padding: 16px;">
+	<div class="header-tools" 
+	style="display: grid; padding: 0px 16px; margin: 0 auto; width: 100%;
+	justify-content: flex-end; font-size: 20px; color: #278aed">
+		[SYSTEM CONFIGURATION]
+	</div>
+	<div class="configure-section">
+
+	<div class="config-rows-1" >
+		<div class="cols" style="padding: 5px;     display: grid;
+		justify-content: center;">
+			<label style="padding: 8px 0px; font-size: 1rem; ">Data Package IP</label>
+			
+			<input type="text" 
+			class="form-control" style="width: 200px;"
+			id="ip" name="IP_address" value="">
+		</div>
+	</div>
+	<div class="config-rows-odd">
+		<div style="display: flex;justify-content: center;
+		align-items: center;">
+			<label class="configure-elem-lbl">TCP COT</label>
+			<label class="switch">
+				<input type="checkbox" id="TCPCoTOnOffSwitch">
+				<span class="slider round"></span></label>
+		</div>
+	</div>
+	<div class="config-rows">
+		<div class="cols" style="padding: 5px;">
+			<input type="text" 
+			class="form-control" style="width: 70px;"
+			id="tcp_cot_port" value="">
+		</div>
+	</div>
+	<div class="config-rows-odd">
+		<div style="display: flex;justify-content: center;
+		align-items: center;">
+			<label class="configure-elem-lbl">HTTP DP</label>
+			<label class="switch">
+				<input type="checkbox", id="HTTPDPOnOffSwitch">
+				<span class="slider round"></span></label>
+		</div>
+	</div>
+	<div class="config-rows"><div class="cols" style="padding: 5px;">
+		<input type="text" 
+		class="form-control" style="width: 70px;"
+		id="http_dp_port"  value="">
+	</div>
+</div>
+	<div class="config-rows-odd">
+		<div style="display: flex;justify-content: center;
+		align-items: center;">
+			<label class="configure-elem-lbl" >API</label>
+			<label class="switch">
+				<input type="checkbox", id="APIOnOffSwitch">
+				<span class="slider round"></span></label>
+		</div>
+	</div>
+	<div class="config-rows">
+		<div class="cols" style="padding: 5px;">
+			<input type="text" 
+			class="form-control" style="width: 70px;"
+			id="api_port"  value="">
+		</div>
+	</div>
+
+<!-- second row -->
+
+	<div class="config-rows-odd">
+		<div style="display: flex;justify-content: center;
+		align-items: center;">
+			<label class="configure-elem-lbl">SSL COT</label>
+			<label class="switch">
+				<input type="checkbox", id="SSLCoTOnOffSwitch">
+				<span class="slider round"></span></label>
+	</div>
+	</div>
+	<div class="config-rows">
+		<div class="cols" style="padding: 5px;">
+			<input type="text" 
+			class="form-control" style="width: 70px;"
+			id="ssl_cot_port"  value="">
+		</div>
+	</div>
+	<div class="config-rows-odd">
+		<div style="display: flex;justify-content: center;
+		align-items: center;">
+			<label class="configure-elem-lbl">SSL DP</label>
+			<label class="switch">
+				<input type="checkbox", id="SSLDPOnOffSwitch">
+				<span class="slider round"></span></label>
+		</div>
+	</div>
+	<div class="config-rows"><div class="cols" style="padding: 5px;">
+		<input type="text" 
+		class="form-control" style="width: 70px;"
+		id="ssl_dp_port"  value="">
+	</div></div>
+	<div class="config-rows-odd">
+		<div style="display: flex;justify-content: center;
+		align-items: center;">
+			<label class="configure-elem-lbl">FED</label>
+			<label class="switch">
+				<input type="checkbox", id="FEDOnOffSwitch">
+				<span class="slider round"></span></label>
+		</div>
+	</div>
+	<div class="config-rows">
+		<div class="cols" style="padding: 5px;">
+			<input type="text" 
+			class="form-control" style="width: 70px;"
+			id="fed_port"  value="">
+		</div>
+	</div>
+
+
+	</div>
+	<div  style="padding: 16px; text-align: right;">
+		<button class="btn btn-simple btn-twitter" onclick="applyServiceInfo()"
+		style="color: #278aed; border-color: #278aed">Apply</button>
+	</div>
+	</div>
+
+	
+	</div>
+
+	<div class="card" style="padding: 16px;">
+		
+		<div class="card">
+			<div class="card-body">
+				<div style="width: 100%; display: grid; margin: 0 auto">
+					
+						<div class="header-tools" style="display: grid; width: 100%; margin: 0 auto; 
+						justify-content: flex-end; font-size: 20px; color: #278aed">[OUTGOING FEDERATION]</div>
+						<div class="configure-outgoing-fed">
+							<div class="configure-outgoing-fed-element" >
+								<div class="configure-outgoing-fed-label" >Name</div>
+								<div><input type="text" class="form-control" value="" id="nameof" /></div>
+							</div>
+
+							<div class="configure-outgoing-fed-element">
+								<div class="configure-outgoing-fed-label">IP / Domain</div>
+								<div><input type="text" class="form-control" value="" id="ipaddressof" /></div>
+							</div>
+						</div>
+
+						<div class="configure-outgoing-fed">
+							<div class="configure-outgoing-fed-element">
+								<div class="configure-outgoing-fed-label">Reconnect</div>
+								<div><input type="text" class="form-control" value="30" id="recintervalof" /></div>
+							</div>
+
+							<div class="configure-outgoing-fed-element">
+								<div class="configure-outgoing-fed-label">Port</div>
+								<div><input type="text" class="form-control" style="width: 70px;" value="" id="portof" /></div>
+							</div>
+						</div>
+
+						<div class="configure-outgoing-fed">
+							<div class="configure-outgoing-fed-element">
+								<div class="configure-outgoing-fed-label">Max Retries</div>
+								<div><input type="text" class="form-control" value="3" id="maxretriesof" /></div>
+							</div>
+
+							<div class="configure-outgoing-fed-element">
+								<div class="configure-outgoing-fed-label">Fallback</div>
+								<div class="select">
+									<select name="format" id="fallbackserverof">
+										{% for items in outgoing_federation_json_data %} 
+										<option >{{items['name']}}</option>
+										
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+						</div>
+
+						<div class="configure-outgoing-fed">
+							
+							<div class="select" style="width: 120px; justify-self: flex-end;">
+								<select name="format" id="statusof">
+									<option selected value="Enabled">Enabled</option>
+									<option value="Disabled">Disabled</option>
+								</select>
+							</div>
+							<div>&nbsp;</div>
+							
+						</div>
+
+						<div  style="padding: 5px; text-align: right;">
+							<button class="btn btn-simple btn-twitter" onclick="addOF()"
+							style="color: #278aed; border-color: #278aed">Apply</button>
+						</div>
+					
+				</div>
+			</div>
+		</div>
+		</div>
+
+
+	</div>
+	
+		
+	
+</div>
+
+
+
+
+</div>
+<div id="snackbar">&nbsp;</div>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+
+<script>
+
+
+var socket = io.connect(`http://{{ip}}:{{port}}`);
+
+var orig_tcp_cot_status;
+var orig_ssl_cot_status;
+var orig_tcp_dp_status;
+var orig_ssl_cot_status;
+var orig_api_cot_status;
+var orig_fed_cot_status;
+
+
+// this gets current server data
+async function establishConnection() {
+
+	let isAuth = await authenticate(socket);
+
+	if (isAuth === "True") {
+		getServiceInfo(socket);
+		getEventsInfo(socket);
+		
+	} else {
+		// throw error
+	}
+}
+
+const authenticate = (socket) => {
+
+		socket.emit("authenticate", JSON.stringify({ Authenticate: "{{websocketkey | safe}}" }));
+
+		return new Promise(function (resolve, reject) {
+			socket.on("authentication", function (data) {
+				let authenticateObject = JSON.parse(data);
+
+				if (authenticateObject.successful === "True") {
+					resolve("True");
+				} else {
+					reject("False");
+				}
+			});
+		});
+	};
+
+	const getEventsInfo = (socket) => {
+		socket.emit("events");
+		socket.on("eventsUpdate", function (data) {
+			let eventsArr = data.events;
+			if (eventsArr.lenght > 0) {
+				document.getElementById("notif").style.display = "block";
+			} else {
+				document.getElementById("notif").style.display = "none";
+			}
+
+			let ul = document.createElement("ul");
+			ul.className = "dropdown-menu dropdown-menu-right dropdown-navbar";
+			document.getElementById("events-info").appendChild(ul);
+
+			for (let [index, row] of eventsArr.entries()) {
+				var li = document.createElement("li");
+				li.className = "nav-link";
+
+				var a = document.createElement("a");
+				a.className = "nav-item dropdown-item";
+				a.innerHTML = row;
+
+				li.appendChild(a);
+				ul.appendChild(li);
+			}
+		});
+	};	
+
+const getServiceInfo = (socket) => {
+	
+	socket.emit("serviceInfo");
+	socket.on("serviceInfoUpdate", function (data) {
+		let serviceInfoObject = JSON.parse(data);
+
+		orig_tcp_cot_status = serviceInfoObject.services.TCP_CoT_service.status;
+		orig_ssl_cot_status = serviceInfoObject.services.SSL_CoT_service.status;
+		orig_tcp_dp_status = serviceInfoObject.services.TCP_DataPackage_service.status;
+		orig_ssl_dp_status = serviceInfoObject.services.SSL_DataPackage_service.status;
+		orig_api_cot_status = serviceInfoObject.services.Rest_API_service.status;
+		orig_fed_cot_status = serviceInfoObject.services.Federation_server_service.status;
+
+		console.log("Print CONFIGURE serviceInfoUpdate Response:" + JSON.stringify(serviceInfoObject));
+
+		document.getElementById("tcp_cot_port").value = serviceInfoObject.services.TCP_CoT_service.port;
+		document.getElementById("ssl_cot_port").value = serviceInfoObject.services.SSL_CoT_service.port;
+		
+		document.getElementById("http_dp_port").value = serviceInfoObject.services.TCP_DataPackage_service.port;
+		document.getElementById("ssl_dp_port").value = serviceInfoObject.services.SSL_DataPackage_service.port;
+		
+		document.getElementById("api_port").value = serviceInfoObject.services.Rest_API_service.port;
+		document.getElementById("fed_port").value = serviceInfoObject.services.Federation_server_service.port;
+
+		document.getElementById("ip").value = serviceInfoObject.ip;
+
+		
+		if(serviceInfoObject.services.TCP_CoT_service.status == "on") {
+			document.getElementById("TCPCoTOnOffSwitch").checked = true;
+		} else {
+			document.getElementById("TCPCoTOnOffSwitch").checked = false;
+		}
+
+		if(serviceInfoObject.services.SSL_CoT_service.status == "on") {
+			document.getElementById("SSLCoTOnOffSwitch").checked = true;
+		} else {
+			document.getElementById("SSLCoTOnOffSwitch").checked = false;
+		}
+
+		if(serviceInfoObject.services.TCP_DataPackage_service.status == "on") {
+			document.getElementById("HTTPDPOnOffSwitch").checked = true;
+		} else {
+			document.getElementById("HTTPDPOnOffSwitch").checked = false;
+		}
+
+		if(serviceInfoObject.services.SSL_DataPackage_service.status == "on") {
+			document.getElementById("SSLDPOnOffSwitch").checked = true;
+		} else {
+			document.getElementById("SSLDPOnOffSwitch").checked = false;
+		}
+
+		if(serviceInfoObject.services.Rest_API_service.status == "on") {
+			document.getElementById("APIOnOffSwitch").checked = true;
+		} else {
+			document.getElementById("APIOnOffSwitch").checked = false;
+		}
+
+		if(serviceInfoObject.services.Federation_server_service.status == "on") {
+			document.getElementById("FEDOnOffSwitch").checked = true;
+		} else {
+			document.getElementById("FEDOnOffSwitch").checked = false;
+		}
+
+
+	});
+	
+};
+
+
+
+const applyServiceInfo = () => {
+
+let obj =	{
+   services: {
+       SSL_CoT_service: {
+                     status: document.getElementById("SSLCoTOnOffSwitch").checked === true ? "on" : "off",
+                     port: +document.getElementById("ssl_cot_port").value
+                 },
+       TCP_CoT_service: {
+                     status: document.getElementById("TCPCoTOnOffSwitch").checked === true ? "on" : "off",
+                     port: +document.getElementById("tcp_cot_port").value
+                 },
+       SSL_DataPackage_service: {
+                     status: document.getElementById("SSLDPOnOffSwitch").checked === true ? "on" : "off",
+                     port: +document.getElementById("ssl_dp_port").value
+                 },
+       TCP_DataPackage_service: {
+                     status: document.getElementById("HTTPDPOnOffSwitch").checked === true ? "on" : "off",
+                     port: +document.getElementById("http_dp_port").value
+                 },
+       Federation_server_service: {
+                     status: document.getElementById("FEDOnOffSwitch").checked === true ? "on" : "off",
+                     port: +document.getElementById("fed_port").value
+                 },
+       Rest_API_service: {
+                     status: document.getElementById("APIOnOffSwitch").checked === true ? "on" : "off",
+                     port: +document.getElementById("api_port").value
+                 }
+   },
+   ip: document.getElementById("ip").value
+}
+
+
+	if(orig_tcp_cot_status === "on" && (document.getElementById("TCPCoTOnOffSwitch").checked === true)) {
+		delete obj.services.TCP_CoT_service;
+	}
+
+	if(orig_ssl_cot_status === "on" && (document.getElementById("SSLCoTOnOffSwitch").checked === true)) {
+		delete obj.services.SSL_CoT_service;
+	}
+
+	if(orig_tcp_dp_status === "on" && (document.getElementById("HTTPDPOnOffSwitch").checked === true)) {
+		delete obj.services.TCP_DataPackage_service;
+	}
+
+	if(orig_ssl_dp_status === "on" && (document.getElementById("SSLDPOnOffSwitch").checked === true)) {
+		delete obj.services.SSL_DataPackage_service;
+	}
+
+	if(orig_api_cot_status === "on" && (document.getElementById("APIOnOffSwitch").checked === true)) {
+		delete obj.services.Rest_API_service;
+	}
+
+	if(orig_fed_cot_status === "on" && (document.getElementById("FEDOnOffSwitch").checked === true)) {
+		delete obj.services.Federation_server_service;
+	}
+
+	socket.emit("changeServiceInfo", JSON.stringify(obj) );
+	snackFunction("Configuration updated. Refreshing data.");
+	refresh();
+
+};
+
+function addOF() {
+		let obj =  {
+		outgoingFederations:[{
+				name: document.getElementById("nameof").value,
+				address: document.getElementById("ipaddressof").value,
+				port: document.getElementById("portof").value,
+				fallBack: document.getElementById("fallbackserverof").value,
+				status: document.getElementById("statusof").value,
+				reconnectInterval: document.getElementById("recintervalof").value,
+				maxRetries: document.getElementById("maxretriesof").value,
+			}]
+		} 
+
+		headers = { Authorization: "{{apikey | safe}}" };
+		fetch("http://{{ip}}:{{port}}/FederationTable", {
+			method: "POST",
+			headers: headers,
+			body: JSON.stringify(obj),
+		}).then((response) => {
+			
+			snackFunction("Add Outgoing Federation Successful. Refreshing data.");
+			refresh();
+		});
+
+	}
+
+function refresh() {
+		setTimeout(function () {
+			location.reload(true);
+		}, 3000);
+	}
+
+
+function snackFunction(message) {
+		// Get the snackbar DIV
+		var x = document.getElementById("snackbar");
+		document.getElementById("snackbar").textContent = message;
+
+		// Add the "show" class to DIV
+		x.className = "show";
+
+		// After 3 seconds, remove the show class from DIV
+		setTimeout(function () {
+			x.className = x.className.replace("show", "");
+		}, 3000);
+	}
+
+
+
+</script>
+<script>
+	establishConnection();
+</script>
+{% endblock javascripts %}

@@ -1,0 +1,64 @@
+<!--
+=========================================================
+* * Black Dashboard - v1.0.1
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/black-dashboard
+* Copyright 2019 Creative Tim (https://www.creative-tim.com)
+
+
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<link rel="apple-touch-icon" sizes="76x76" href="/static/assets/img/apple-icon.png" />
+		<link rel="icon" type="image/png" href="/static/assets/img/favicon.png" />
+		<title>FreeTakServer - {% block title %}{% endblock %}</title>
+		<!--     Fonts and icons     -->
+		<link href="/static/assets/css/css.css" rel="stylesheet" />
+		<link href="/static/assets/css/all.css" rel="stylesheet" />
+		<!-- Nucleo Icons -->
+		<link href="/static/assets/css/nucleo-icons.css" rel="stylesheet" />
+		<!-- CSS Files -->
+		<link href="/static/assets/css/black-dashboard.css?v=1.0.10" rel="stylesheet" />
+		<script src="/static/assets/js/socket.io-1.4.5.js"></script>
+		<script>
+			document.write('<link href="/static/assets/css/jarvis.css?r=' + Math.floor(Math.random() * 100) + '" rel="stylesheet" type="text/css" />');
+			document.write('<link href="/static/assets/css/jarvis_red.css?r=' + Math.floor(Math.random() * 100) + '" rel="stylesheet" type="text/css" />');
+			document.write('<link href="/static/assets/css/jarvis_grey.css?r=' + Math.floor(Math.random() * 100) + '" rel="stylesheet" type="text/css" />');
+			document.write('<link href="/static/assets/css/global.css?r=' + Math.floor(Math.random() * 100) + '" rel="stylesheet" type="text/css" />');
+		</script>
+
+		<!-- CSS Just for demo purpose, don't include it in your project -->
+		<link href="/static/assets/demo/demo.css" rel="stylesheet" />
+
+		<!-- Specific Page CSS goes HERE  -->
+		{% block stylesheets %}{% endblock stylesheets %}
+	</head>
+
+	<body class="">
+		<div class="wrapper">
+			{% include 'site_template/sidebar.html' %}
+
+			<div class="main-panel">
+				{% include 'site_template/navigation.html' %}
+
+				<div class="content">{% block content %}{% endblock content %}</div>
+
+				{% include 'site_template/footer.html' %}
+			</div>
+		</div>
+
+		{% include 'site_template/scripts.html' %} {% include 'site_template/scripts-sidebar.html' %}
+
+		<!-- Specific Page JS goes HERE  -->
+		{% block javascripts %} {% endblock javascripts %}
+	</body>
+</html>

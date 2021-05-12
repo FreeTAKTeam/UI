@@ -1,0 +1,82 @@
+{% extends "base-site.html" %}
+
+{% block title %} Login {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+        <div class="row">
+          <div class="col-md-8">
+            <div class="card">
+
+              <form role="form" method="post" action="">
+              
+                {{ form.hidden_tag() }} 
+
+                <div class="card-header">
+                  <h3 class="title" style="color: #278aed;">[LOGIN]</h3>
+
+                  <h6 class="card-category">
+                      {% if msg %}
+                        <span class="text-danger">{{ msg | safe }}</span>
+                      {% else %}
+                      <span style="font-size: 14px;">
+                        Welcome to FTS administration, please insert you credential
+                       
+                      </span>
+                      {% endif %}  
+                  </h6>
+                </div>
+
+                <div class="card-body">
+
+                    <div class="row">
+
+                      <div class="col-md-3 px-md-1" >
+                        <div class="form-group" style="padding: 0px 16px;">
+                          <label>Username</label>
+                          {{ form.username(class="form-control") }}
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="row">
+
+                      <div class="col-md-3 px-md-1" >
+                        <div class="form-group" style="padding: 0px 16px;">
+                          <label>Password</label>
+                          {{ form.password(class="form-control", type="password") }}
+                        </div>
+                      </div>
+
+                    </div>
+                    
+                </div>
+                <div class="card-footer">
+                  <button type="submit" name="login" class="btn btn-primary">Login</button>
+                  &nbsp; &nbsp;
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+      </div>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+  <script>
+    $(document).ready(function() {
+      // Javascript method's body can be found in assets/js/demos.js
+      demo.initDashboardPageCharts();
+
+    });
+  </script>
+
+{% endblock javascripts %}

@@ -1,0 +1,599 @@
+{% extends "base-site.html" %} {% block title %} Connect {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %} {% block content %}
+
+<!-- Connect code here -->
+
+<div class="row">
+	<div style="display: grid; width: 90%; margin: 0 auto">
+		<div class="card">
+			<div class="card-body">
+				<div class="connect-section1-block">
+					<div class="header-tools" style="display: grid; justify-content: flex-end; font-size: 20px; color: #278aed">[SEND COT]</div>
+					<div class="connect-send-cot">
+						<div class="connect-send-cot-elements">
+							<div class="connect-send-cot-label" >Name</div>
+							<div><input type="text" class="form-control" id="name1" value="" style="width: 280px !important" /></div>
+						</div>
+
+						<div class="connect-send-cot-elements">
+							<div class="connect-send-cot-label">Attitude</div>
+							<div class="select">
+								<select name="format" id="attitude1">
+									<option value="friend">Friend</option>
+									<option selected value="friendly">Friendly</option>
+									<option value="hostile">Hostile</option>
+									<option value="unknown">Unknown</option>
+									<option value="pending">Pending</option>
+									<option value="assumed">Assumed</option>
+									<option value="neutral">Neutral</option>
+									<option value="suspect">Suspect</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="connect-send-cot" >
+						<div class="connect-send-cot-elements">
+							<div class="connect-send-cot-label">Longitude</div>
+							<div><input type="text" class="form-control" id="longitude1" style="width: 280px !important" placeholder="-00.0000" value="" /></div>
+						</div>
+
+						<div class="connect-send-cot-elements">
+							<div class="connect-send-cot-label">GeoObject</div>
+							<div class="select">
+								<select name="format" id="geoobject1">
+									<option value="Gnd Combat Infantry Rifleman">Gnd Combat Infantry Rifleman</option>
+									<option value="Gnd Combat Infantry Grenadier">Gnd Combat Infantry Grenadier</option>
+									<option value="Gnd Combat Infantry Mortar">Gnd Combat Infantry Mortar</option>
+									<option value="Gnd Combat Infantry MachineGunner (LMG)">Gnd Combat Infantry MachineGunner(LMG)</option>
+									<option value="Gnd Combat Infantry Medic">Gnd Combat Infantry Medic</option>
+									<option value="Gnd Combat Infantry Sniper">Gnd Combat Infantry Sniper</option>
+									<option value="Gnd Combat Infantry Recon">Gnd Combat Infantry Recon</option>
+									<option value="Gnd Combat Infantry anti Tank">Gnd Combat Infantry anti Tank</option>
+									<option value="Gnd Combat Infantry air defense">Gnd Combat Infantry air defense</option>
+									<option value="Gnd Combat Infantry Engineer">Gnd Combat Infantry Engineer</option>
+									<option selected value="Ground">Ground</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="connect-send-cot" >
+						<div class="connect-send-cot-elements">
+							<div class="connect-send-cot-label">Latitude</div>
+							<div><input type="text" class="form-control" id="latitude1" style="width: 280px !important" placeholder="00.000" value="" /></div>
+						</div>
+
+						<div class="connect-send-cot-elements">
+							<div class="connect-send-cot-label">Timeout</div>
+							<div><input type="number" class="form-control" id="timeout1" value="600" style="width: 280px !important" /></div>
+						</div>
+					</div>
+
+					<div style="background-color: #27293d; padding: 10px 0px; display: grid; justify-content: end">
+						<button class="btn btn-simple btn-twitter" onclick="postGeoObject()" style="color: #278aed; border-color: #278aed">Send</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- ======= Header tools ======= -->
+		<div class="card">
+			<div class="card-body">
+				<div style="width: 100%; display: grid; margin: 0 auto; ">
+					<div class="header-tools" style="display: grid; justify-content: flex-end; font-size: 20px; color: #278aed">[EMERGENCY]</div>
+					<!-- <div class="card" style="width: 100%; display: grid; margin: 0 auto">
+			<div class="header-tools" style="display: grid; padding: 10px 0px; justify-content: flex-end; font-size: 20px; color: #278aed">[EMERGENCY]</div> -->
+					<!-- ======= Table ======= -->
+					<div class="datatable-container" style="width: 100%; display: contents;">
+						
+							<div style="max-height: 300px; max-width: 100%; overflow-y: scroll; overflow-x: scroll; display: table-cell">
+							<div style="display: grid; grid-template-columns: 240px 100px 100px 180px 280px; padding: 10px">
+								<div style="font-size: 16px; color: #fff">Name</div>
+								<div style="font-size: 16px; color: #fff">Latitude</div>
+								<div style="font-size: 16px; color: #fff">Longitude</div>
+								<div style="font-size: 16px; color: #fff">Type</div>
+								<div style="font-size: 16px; color: #fff">UID</div>
+							</div>
+
+							<div >
+								{% for dict_items in json_data %}
+
+								<div
+									class="row-color-nohover row-class"
+									style="display: grid; grid-template-columns: 240px 100px 100px 180px 280px; padding: 10px; color: #fff; opacity: 0.8; width: 900px;"
+									onclick="captureClick('{{dict_items.uid}}')"
+								>
+									<div>{{dict_items['name']}}</div>
+									<div>{{dict_items['lat']}}</div>
+									<div>{{dict_items['lon']}}</div>
+									<div>{{dict_items['type']}}</div>
+									<div>{{dict_items['uid']}}</div>
+								</div>
+								{% endfor %}
+							</div>
+						
+							<div>{% if json_data|length == 0 %} No Records. {% endif %}</div>
+						</div>
+					</div>
+					<!-- ======= Footer tools ======= -->
+					<div class="footer-tools" style="background-color: #27293d; padding: 16px 0px 16px 50px; text-align: right">
+						<div
+							class="btn btn-simple btn-twitter"
+							id="data-emergency-delete"
+							onclick="deleteEmergency()"
+							style="color: #278aed80; border-color: #278aed; color: #278aed; display: inline-flex"
+						>
+							<span>DELETE</span> <span id="del-count">&nbsp;</span>
+						</div>
+						&nbsp;&nbsp;&nbsp;
+						<button class="btn btn-simple btn-twitter" onclick="addEmergencyToggle()" style="color: #278aed; border-color: #278aed">ADD</button>
+					</div>
+					<div style="display: none" id="addEmergency">
+						<div class="connect-emergency-add">
+							<div><input type="text" class="form-control" id="name2" value="" placeholder="Name" /></div>
+							<div><input type="text" class="form-control" id="latitude2" value="" placeholder="Latitude" /></div>
+							<div><input type="text" class="form-control" id="longitude2" value="" placeholder="Longitude" /></div>
+							<div class="select">
+								<select name="format" id="emergencytype2">
+									<option value="911 Alert">911 Alert</option>
+									<option value="Ring The Bell">Ring The Bell</option>
+									<option value="Geo-fence Breached">Geo-fence Breached</option>
+									<option selected value="In Contact">In Contact</option>
+								</select>
+							</div>
+						</div>
+						<div style="background-color: #27293d; padding: 10px 0px; display: grid; justify-content: end">
+							<button class="btn btn-simple btn-twitter" onclick="postEmergency()" style="color: #278aed; border-color: #278aed">Send</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="card">
+			<div class="card-body">
+				<div style="width: 100%; display: grid; margin: 0 auto">
+					<div class="header-tools" style="display: grid; justify-content: flex-end; padding-right: 16px; font-size: 20px; color: #278aed">
+						[MANAGE PRESENCE]
+					</div>
+					<div class="connect-manage-presence" >
+						<div class="connect-manage-presence-element">
+							<div class="connect-mp-element-lbl">Name</div>
+							<div><input type="text" class="form-control" value="" id="name3" /></div>
+						</div>
+
+						<div class="connect-manage-presence-element">
+							<div class="connect-mp-element-lbl">Role</div>
+							<div class="select" style="width: 180px;">
+								<select name="format" id="role3">
+									<option selected value="Team Member">Team Member</option>
+									<option value="Team Lead">Team Lead</option>
+									<option value="HQ">HQ</option>
+									<option value="Sniper">Sniper</option>
+									<option value="Medic">Medic</option>
+									<option value="Forward Observer">Forward Observer</option>
+									<option value="RTO">RTO</option>
+									<option value="K9">K9</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="connect-manage-presence" >
+						<div class="connect-manage-presence-element">
+							<div class="connect-mp-element-lbl">Longitude</div>
+							<div><input type="text" class="form-control" id="longitude3" value="" /></div>
+						</div>
+
+						<div class="connect-manage-presence-element">
+							<div class="connect-mp-element-lbl">Team</div>
+							<div class="select" style="width: 180px;">
+								<select name="format" id="team3">
+									<option value="Yellow">Yellow</option>
+									<option value="Red">Red</option>
+									<option selected value="Blue">Blue</option>
+									<option value="Orange">Orange</option>
+									<option value="Magenta">Magenta</option>
+									<option value="Maroon">Maroon</option>
+									<option value="Purple">Purple</option>
+									<option value="Dark Blue">Dark Blue</option>
+									<option value="Cyan">Cyan</option>
+									<option value="Teal">Teal</option>
+									<option value="Green">Green</option>
+									<option value="Dark Green">Dark Green</option>
+									<option value="Brown">Brown</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="connect-manage-presence" >
+						<div class="connect-manage-presence-element">
+							<div class="connect-mp-element-lbl">Latitude</div>
+							<div><input type="text" class="form-control" value="" id="latitude3" /></div>
+						</div>
+
+						<div style="display: grid; grid-template-columns: 1fr; text-align: right; padding-right: 31px">
+							<div>
+								<button class="btn btn-simple btn-twitter" onclick="postPresence()" style="color: #278aed; border-color: #278aed">Send</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="card">
+			<div class="card-body">
+				<div style="width: 100%; display: grid; margin: 0 auto">
+					<div class="header-tools" style="display: grid; justify-content: flex-end; padding-right: 16px; font-size: 20px; color: #278aed">
+						[MESSAGE]
+					</div>
+					<div
+						class="row"
+						style="display: grid; grid-template-columns: 1fr; gap: 20px; align-items: center; width: 80%; padding: 10px 0px; margin: 0 auto"
+					>
+						<div style="display: grid; grid-template-columns: 1fr; align-items: center">
+							<div>
+								<textarea
+									name="comment"
+									class="form-control"
+									style="
+										max-height: 80px !important;
+										padding: 10px !important;
+										resize: none !important;
+										border: 1px solid #2b3553 !important;
+										border-radius: 0 !important;
+										line-height: 2 !important;
+										width: 100% !important;
+									"
+									id="message1"
+									placeholder="ex:The server will shutdown in 5 minutes..."
+								></textarea>
+							</div>
+						</div>
+					</div>
+
+					<div
+						class="row"
+						style="display: grid; grid-template-columns: 1fr; gap: 20px; width: 80%; margin: 0 auto; align-items: center; padding: 10px 0px"
+					>
+						<div class="connect-sender-elements">
+							<div style="font-size: 16px; color: #b5b5b5">Sender</div>
+							<div><input type="text" class="form-control" value="" id="sendername1" style="width: 200px !important" /></div>
+						</div>
+					</div>
+					<div style="display: grid; grid-template-columns: 1fr; justify-items: flex-end">
+						<div style="padding-right: 31px">
+							<button class="btn btn-simple btn-twitter" onclick="postGeoChat()" style="color: #278aed; border-color: #278aed">Send</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="snackbar">&nbsp;</div>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<script>
+	function snackFunction(message) {
+		// Get the snackbar DIV
+		var x = document.getElementById("snackbar");
+		document.getElementById("snackbar").textContent = message;
+
+		// Add the "show" class to DIV
+		x.className = "show";
+
+		// After 3 seconds, remove the show class from DIV
+		setTimeout(function () {
+			x.className = x.className.replace("show", "");
+		}, 3000);
+	}
+
+	const postGeoObject = () => {
+		if (document.getElementById("name1").value === "") {
+			snackFunction("Name field is mandatory");
+			return false;
+		} else if (document.getElementById("longitude1").value === "") {
+			snackFunction("Longitude field is mandatory");
+			return false;
+		} else if (document.getElementById("attitude1").value === "") {
+			snackFunction("Attitude field is mandatory");
+			return false;
+		} else if (document.getElementById("latitude1").value === "") {
+			snackFunction("Latitude field is mandatory");
+			return false;
+		} else if (document.getElementById("geoobject1").value === "") {
+			snackFunction("GeoObject field is mandatory");
+			return false;
+		} else if (document.getElementById("timeout1").value === "") {
+			snackFunction("Timeout field is mandatory");
+			return false;
+		}
+
+		let obj = {
+			longitude: +document.getElementById("longitude1").value,
+			latitude: +document.getElementById("latitude1").value,
+			attitude: document.getElementById("attitude1").value,
+			geoObject: document.getElementById("geoobject1").value,
+			how: "nonCoT",
+			name: document.getElementById("name1").value,
+			timeout: +document.getElementById("timeout1").value,
+		};
+
+		headers = { "Content-Type": "application/json", Authorization: "{{apikey | safe}}" };
+		fetch("http://{{ip}}:{{port}}/ManageGeoObject/postGeoObject", {
+			method: "post",
+			headers: headers,
+			body: JSON.stringify(obj),
+		}).then((response) => {
+			if (response.status === 500) {
+				snackFunction("Error !!! contact administrator. Refreshing Data!");
+				document.getElementById("name1").value = "";
+				document.getElementById("longitude1").value = "";
+				document.getElementById("attitude1").value = "Friendly";
+				document.getElementById("latitude1").value = "";
+				document.getElementById("geoobject1").value === "Ground";
+				document.getElementById("timeout1").value === "600";
+				refresh();
+			} else if (response.status === 200) {
+				snackFunction("GeoObject add successful. Refreshing Data!");
+				document.getElementById("name1").value = "";
+				document.getElementById("longitude1").value = "";
+				document.getElementById("attitude1").value = "Friendly";
+				document.getElementById("latitude1").value = "";
+				document.getElementById("geoobject1").value === "Ground";
+				document.getElementById("timeout1").value === "600";
+				refresh();
+			}
+		});
+	};
+
+	const postGeoChat = () => {
+		if (document.getElementById("message1").value === "") {
+			snackFunction("Message field is mandatory");
+			return false;
+		} else if (document.getElementById("sendername1").value === "") {
+			snackFunction("Sender field is mandatory");
+			return false;
+		}
+
+		let obj = {
+			message: document.getElementById("message1").value,
+			sender: document.getElementById("sendername1").value,
+		};
+
+		headers = { "Content-Type": "application/json", Authorization: "{{apikey | safe}}" };
+		fetch("http://{{ip}}:{{port}}/ManageChat/postChatToAll", {
+			method: "post",
+			headers: headers,
+			body: JSON.stringify(obj),
+		}).then((response) => {
+			if (response.status === 500) {
+				snackFunction("Error !!! contact administrator. Refreshing Data !");
+				document.getElementById("message1").value = "";
+				document.getElementById("sendername1").value = "";
+				refresh();
+			} else if (response.status === 200) {
+				snackFunction("Sending Geo Chat successful. Refreshing Data !");
+				document.getElementById("message1").value = "";
+				document.getElementById("sendername1").value = "";
+				refresh();
+			}
+		});
+	};
+
+	const postEmergency = () => {
+		if (document.getElementById("name2").value === "") {
+			snackFunction("Name field is mandatory");
+			return false;
+		} else if (document.getElementById("longitude2").value === "") {
+			snackFunction("Longitude field is mandatory");
+			return false;
+		} else if (document.getElementById("latitude2").value === "") {
+			snackFunction("Latitude field is mandatory");
+			return false;
+		}
+
+		let obj = {
+			name: document.getElementById("name2").value,
+			emergencyType: document.getElementById("emergencytype2").value,
+			longitude: +document.getElementById("longitude2").value,
+			latitude: +document.getElementById("latitude2").value,
+		};
+
+		headers = { "Content-Type": "application/json", Authorization: "{{apikey | safe}}" };
+		fetch("http://{{ip}}:{{port}}/ManageEmergency/postEmergency", {
+			method: "post",
+			headers: headers,
+			body: JSON.stringify(obj),
+		}).then((response) => {
+			if (response.status === 500) {
+				snackFunction("Error !!! contact administrator. Refreshing Data!");
+				document.getElementById("name2").value = "";
+				document.getElementById("longitude2").value = "";
+				document.getElementById("latitude2").value = "";
+				document.getElementById("emergencytype2").value = "In Contact";
+				refresh();
+			} else if (response.status === 200) {
+				snackFunction("Sending emergency message successful. Refreshing Data!");
+				document.getElementById("name2").value = "";
+				document.getElementById("longitude2").value = "";
+				document.getElementById("latitude2").value = "";
+				document.getElementById("emergencytype2").value = "In Contact";
+				refresh();
+			}
+		});
+	};
+
+	const postPresence = () => {
+		if (document.getElementById("name3").value === "") {
+			snackFunction("Name field is mandatory");
+			return false;
+		} else if (document.getElementById("longitude3").value === "") {
+			snackFunction("Longitude field is mandatory");
+			return false;
+		} else if (document.getElementById("latitude3").value === "") {
+			snackFunction("Latitude field is mandatory");
+			return false;
+		}
+
+		let obj = {
+			how: "nonCoT",
+			name: document.getElementById("name3").value,
+			role: document.getElementById("role3").value,
+			longitude: +document.getElementById("longitude3").value,
+			latitude: +document.getElementById("latitude3").value,
+			team: document.getElementById("team3").value,
+		};
+
+		headers = { "Content-Type": "application/json", Authorization: "{{apikey | safe}}" };
+		fetch("http://{{ip}}:{{port}}/ManagePresence/postPresence", {
+			method: "post",
+			headers: headers,
+			body: JSON.stringify(obj),
+		}).then((response) => {
+			if (response.status === 500) {
+				snackFunction("Error !!! contact administrator. Refreshing Data!");
+				document.getElementById("name3").value = "";
+				document.getElementById("longitude3").value = "";
+				document.getElementById("latitude3").value = "";
+				document.getElementById("team3").value = "Blue";
+				document.getElementById("role3").value = "Team Member";
+				refresh();
+			} else if (response.status === 200) {
+				snackFunction("Manage Presence successful. Refreshing Data!");
+				document.getElementById("name3").value = "";
+				document.getElementById("longitude3").value = "";
+				document.getElementById("latitude3").value = "";
+				document.getElementById("team3").value = "Blue";
+				document.getElementById("role3").value = "Team Member";
+				refresh();
+			}
+		});
+	};
+
+	$(document).ready(function () {
+		$(".row-class").on("click", function () {
+			$(".row-class").removeClass("rowselected");
+			$(this).toggleClass("rowselected");
+		});
+	});
+
+	function refresh() {
+		setTimeout(function () {
+			location.reload(true);
+		}, 3000);
+	}
+
+	function addEmergencyToggle() {
+		var x = document.getElementById("addEmergency");
+		if (x.style.display === "none") {
+			x.style.display = "block";
+			x.style.backgroundColor = "#1e1e2f";
+			x.style.padding = "16px 0px 0px 0px ";
+		} else {
+			x.style.display = "none";
+		}
+	}
+
+	function captureClick(param) {
+		emergencyArr[0] = param;
+	}
+
+	function deleteEmergency() {
+		let obj = {
+			uid: emergencyArr[0],
+		};
+
+		headers = { Authorization: "{{apikey | safe}}" };
+		fetch("http://{{ip}}:{{port}}/ManageEmergency/deleteEmergency", {
+			method: "DELETE",
+			headers: headers,
+			body: JSON.stringify(obj),
+		}).then((response) => {
+			console.log("delete response...");
+			response.json();
+			console.log("delete response...XX " + response.json());
+			snackFunction("Delete Successful. Refreshing data.");
+			refresh();
+		});
+	}
+
+	async function establishConnection() {
+		console.log("Make connection");
+		var socket = io.connect(`http://{{ip}}:{{port}}`);
+
+		console.log("Emit event authenticate...");
+
+		let isAuth = await authenticate(socket);
+
+		if (isAuth === "True") {
+			getEventsInfo(socket);
+		} else {
+			// throw error
+		}
+	}
+
+	const authenticate = (socket) => {
+		socket.emit("authenticate", JSON.stringify({ Authenticate: "{{websocketkey | safe}}" }));
+
+		return new Promise(function (resolve, reject) {
+			socket.on("authentication", function (data) {
+				let authenticateObject = JSON.parse(data);
+
+				if (authenticateObject.successful === "True") {
+					resolve("True");
+				} else {
+					reject("False");
+				}
+			});
+		});
+	};
+
+	const getEventsInfo = (socket) => {
+		socket.emit("events");
+		socket.on("eventsUpdate", function (data) {
+			let eventsArr = data.events;
+			if (eventsArr.lenght > 0) {
+				document.getElementById("notif").style.display = "block";
+			} else {
+				document.getElementById("notif").style.display = "none";
+			}
+
+			let ul = document.createElement("ul");
+			ul.className = "dropdown-menu dropdown-menu-right dropdown-navbar";
+			document.getElementById("events-info").appendChild(ul);
+
+			for (let [index, row] of eventsArr.entries()) {
+				var li = document.createElement("li");
+				li.className = "nav-link";
+
+				var a = document.createElement("a");
+				a.className = "nav-item dropdown-item";
+				a.innerHTML = row;
+
+				li.appendChild(a);
+				ul.appendChild(li);
+			}
+		});
+	};
+</script>
+<script>
+	establishConnection();
+</script>
+<script>
+	$(window).on("load", function () {
+		emergencyArr = [];
+	});
+</script>
+
+{% endblock javascripts %}

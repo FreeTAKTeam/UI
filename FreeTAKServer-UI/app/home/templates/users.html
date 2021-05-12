@@ -1,0 +1,443 @@
+{% extends "base-site.html" %} {% block title %} Users {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+<style>
+	.multiselect {
+		height: auto;
+		max-height: 400px;
+
+		background-color: #27293d;
+		padding: 20px;
+		margin: 20px 0px 20px 20px;
+		overflow: auto;
+	}
+
+	.multiselect label {
+		display: block;
+	}
+
+	.multiselect-on {
+		color: #ffffff;
+		background-color: #278aed;
+	}
+</style>
+{% endblock stylesheets %} {% block content %}
+
+<!-- ======= Header tools ======= -->
+
+<div style="width: 100%; display: grid; padding: 5px; margin: 0 auto; background-color: #27293d">
+	<div class="header-tools" style="justify-self: flex-end; font-size: 20px; padding-right: 20px; color: #278aed">[SYSTEM USERS]</div>
+</div>
+<div style="display: grid; grid-template-columns: 1fr">
+	<div id="loading" style="display: grid; place-self: center">
+		<img src="/static/assets/img/spinner1.svg" width="80px" height="80px" />
+	</div>
+	<div style="max-height: 300px; max-width: 100%; overflow-y: scroll; overflow-x: scroll; display: table-cell">
+	<div id="user-table-hdr"></div>
+	<div id="user-table"></div>
+</div>
+	<div
+		class="footer-tools"
+		style="background-color: #27293d; text-align: right; padding: 16px 20px 16px 50px; display: grid; grid-template-columns: 1fr"
+	>
+		<div>
+			<div
+				class="btn btn-simple btn-twitter"
+				id="user-delete"
+				onclick="removeUsers()"
+				style="color: #278aed; border-color: #278aed; display: inline-flex"
+			>
+				<span>DELETE</span> <span id="del-count">&nbsp;</span>
+			</div>
+			&nbsp;&nbsp;&nbsp;
+			<button class="btn btn-simple btn-twitter" onclick="addUserToggle()" style="color: #278aed; border-color: #278aed">ADD</button>
+		</div>
+	</div>
+
+	<div style="display: none" id="addUser">
+		<div class="user-add-section">
+			<div><input type="text" class="form-control" id="name1" value="" placeholder="Name" /></div>
+			<div><input type="text" class="form-control" id="group1" value="" placeholder="Group" /></div>
+			<div><input type="text" class="form-control" id="token1" value="" placeholder="Token" /></div>
+			<div><input type="text" class="form-control" id="password1" value="" placeholder="Password" /></div>
+
+			<div style="font-size: 16px; color: #b5b5b5; line-height: 40px">Certs</div>
+			<div class="select" style="width: 120px">
+				<select name="format" id="certbool">
+					<option selected value="true">True</option>
+					<option value="false">False</option>
+				</select>
+			</div>
+		</div>
+		<div style="background-color: #27293d; padding: 10px 20px; display: grid; justify-content: end">
+			<button class="btn btn-simple btn-twitter" onclick="addUser()" style="color: #278aed; border-color: #278aed">Submit</button>
+		</div>
+	</div>
+</div>
+<br /><br />
+<div style="width: 100%; display: grid; padding: 5px; margin: 0 auto; background-color: #27293d">
+	<div class="header-tools" style="justify-self: flex-end; font-size: 20px; padding-right: 20px; color: #278aed">[GROUP PERMISSIONS]</div>
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr">
+	<div style="display: grid; grid-template-columns: 1fr 1fr">
+		<div class="datatable-container" style="width: 100%">
+			<table class="datatable">
+				<thead>
+					<tr>
+						<th style="font-size: 16px; color: #b5b5b5">Name</th>
+						<th style="font-size: 16px; color: #b5b5b5">Description</th>
+					</tr>
+				</thead> 
+
+				<tbody>
+					<tr>
+						<td style="font-size: 14px; opacity: 0.8">Yellow</td>
+						<td style="font-size: 14px; opacity: 0.8">Admins</td>
+					</tr>
+
+					<tr>
+						<td style="font-size: 14px; opacity: 0.8">Green</td>
+						<td style="font-size: 14px; opacity: 0.8">Users</td>
+					</tr>
+					<tr>
+						<td style="font-size: 14px; opacity: 0.8">Blue</td>
+						<td style="font-size: 14px; opacity: 0.8">Morons</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div>
+			<div class="multiselect">
+				<label
+					><input type="checkbox" checked name="option[]" value="1" />
+					<span style="color: #fff; opacity: 0.8; padding: 0px 0px 0px 16px"> Enemy CoT </span></label
+				>
+				<label
+					><input type="checkbox" name="option[]" value="2" />
+					<span style="color: #fff; opacity: 0.8; padding: 0px 0px 0px 16px">Create Friendly CoT</span></label
+				>
+				<label
+					><input type="checkbox" name="option[]" value="3" /><span style="color: #fff; opacity: 0.8; padding: 0px 0px 0px 16px"
+						>Create EMS CoT</span
+					></label
+				>
+				<label
+					><input type="checkbox" checked name="option[]" value="4" /><span style="color: #fff; opacity: 0.8; padding: 0px 0px 0px 16px"
+						>Create Routes CoT</span
+					></label
+				>
+			</div>
+		</div>
+	</div>
+
+	<div
+		class="footer-tools"
+		style="background-color: #27293d; text-align: right; padding: 16px 16px 16px 50px; display: grid; grid-template-columns: 1fr"
+	>
+		<div>
+			<div class="btn btn-simple btn-twitter" style="color: #278aed80; border-color: #278aed80; display: inline-flex">
+				<span>DELETE</span> <span id="del-count">&nbsp;</span>
+			</div>
+			&nbsp;&nbsp;&nbsp;
+			<button class="btn btn-simple btn-twitter" style="color: #278aed80; border-color: #278aed80">ADD</button>
+		</div>
+	</div>
+</div>
+
+<div id="snackbar">&nbsp;</div>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<script>
+	// this gets current server data
+	async function establishConnection() {
+		console.log("Make connection");
+		var socket = io.connect(`http://{{ip}}:{{port}}`);
+
+		console.log("Emit event authenticate...");
+
+		let isAuth = await authenticate(socket);
+
+		if (isAuth === "True") {
+			getUserInfo(socket);
+			getEventsInfo(socket);
+		} else {
+			// throw error
+		}
+	}
+
+	const authenticate = (socket) => {
+		socket.emit("authenticate", JSON.stringify({ Authenticate: "{{websocketkey | safe}}" }));
+
+		return new Promise(function (resolve, reject) {
+			socket.on("authentication", function (data) {
+				let authenticateObject = JSON.parse(data);
+				console.log("object" + authenticateObject.successful);
+
+				if (authenticateObject.successful === "True") {
+					resolve("True");
+				} else {
+					reject("False");
+				}
+			});
+		});
+	};
+
+	const getUserInfo = (socket) => {
+		console.log("calling...");
+		socket.emit("systemUsers");
+		console.log("calling..emitted...");
+		socket.on("systemUsersUpdate", function (data) {
+			let userInfoObject = JSON.parse(data);
+			let tableArr = JSON.parse(data).SystemUsers;
+
+			// console.log("Print USER Response:" + JSON.stringify(userInfoObject));
+			document.getElementById("loading").style.display = "none";
+
+			//create a Table Object
+			let tablehdr = document.createElement("table");
+			tablehdr.className = "table-style-hdr";
+
+			let headerRow = tablehdr.insertRow();
+			let nameHdr = headerRow.insertCell();
+			nameHdr.textContent = "Name";
+			nameHdr.className = "user_c1";
+			let groupHdr = headerRow.insertCell();
+			groupHdr.textContent = "Group";
+			groupHdr.className = "user_c1";
+			let tokenHdr = headerRow.insertCell();
+			tokenHdr.textContent = "Token";
+			tokenHdr.className = "user_c1";
+			let passwordHdr = headerRow.insertCell();
+			passwordHdr.textContent = "Password";
+			passwordHdr.className = "user_c1";
+			let certsHdr = headerRow.insertCell();
+			certsHdr.textContent = "Certs";
+			certsHdr.className = "user_c1";
+
+			document.getElementById("user-table-hdr").appendChild(tablehdr);
+
+			let table = document.createElement("table");
+			table.className = "user-table-style";
+
+			if (tableArr.length == 0) {
+				let no_recs = table.insertRow();
+				no_recs.className = "row-color-nohover row-class";
+
+				let noRecsCell = no_recs.insertCell();
+				noRecsCell.textContent = "No Records";
+				noRecsCell.className = "user-cell-style-1";
+
+				document.getElementById("user-table").appendChild(table);
+			} else {
+				// removeUsers
+				for (let [index, row] of tableArr.entries()) {
+					let t_row = table.insertRow(index);
+					t_row.className = "row-color-nohover row-class";
+					t_row.setAttribute("data-myID", row.Uid);
+					// 			t_row.onclick = (function() {
+					//     console.log(this.getAttribute("data-myID"));
+					// });
+
+					t_row.onclick = function () {
+						$(this).toggleClass("rowselected");
+						captureClick(this.getAttribute("data-myID"));
+					};
+
+					let nameCell = t_row.insertCell();
+					nameCell.textContent = row.Name;
+					nameCell.className = "user-cell-style-1";
+
+					let groupCell = t_row.insertCell();
+					groupCell.textContent = row.Group;
+					groupCell.className = "user-cell-style-1";
+
+					let tokenCell = t_row.insertCell();
+					// tokenCell.textContent = row.Token;
+					tokenCell.textContent = "************";
+					tokenCell.className = "user-cell-style-1";
+
+					let passwordCell = t_row.insertCell();
+					passwordCell.textContent = "************";
+					// passwordCell.textContent = row.Password;
+					passwordCell.className = "user-cell-style-1";
+
+					let certsCell = t_row.insertCell();
+					certsCell.textContent = row.Certs;
+					certsCell.className = "user-cell-style-1";
+				}
+
+				document.getElementById("user-table").appendChild(table);
+			}
+		});
+	};
+
+	const getEventsInfo = (socket) => {
+		socket.emit("events");
+		socket.on("eventsUpdate", function (data) {
+			let eventsArr = data.events;
+			if (eventsArr.lenght > 0) {
+				document.getElementById("notif").style.display = "block";
+			} else {
+				document.getElementById("notif").style.display = "none";
+			}
+
+			let ul = document.createElement("ul");
+			ul.className = "dropdown-menu dropdown-menu-right dropdown-navbar";
+			document.getElementById("events-info").appendChild(ul);
+
+			for (let [index, row] of eventsArr.entries()) {
+				var li = document.createElement("li");
+				li.className = "nav-link";
+
+				var a = document.createElement("a");
+				a.className = "nav-item dropdown-item";
+				a.innerHTML = row;
+
+				li.appendChild(a);
+				ul.appendChild(li);
+			}
+		});
+	};
+
+	// missing FederationServerService
+
+	function addUserToggle() {
+		var x = document.getElementById("addUser");
+		if (x.style.display === "none") {
+			x.style.display = "block";
+			x.style.padding = "10px 0px";
+		} else {
+			x.style.display = "none";
+		}
+	}
+
+	var uArr;
+	var updatedGARR;
+	// var obj = {key1: "value1", key2: "value2"};
+	function captureClick(param) {
+		if (!uArr.some((item) => item.uid === param)) {
+			let vv = { uid: param };
+			uArr.push(vv);
+		} else {
+			uArr = uArr.filter((item) => item.uid !== param);
+		}
+
+		// classList
+		if (uArr.length > 0) {
+			document.getElementById("del-count").innerHTML = `&nbsp;[${uArr.length}]`;
+			document.getElementById("user-delete").classList.add("btn", "btn-simple", "btn-twitter", "enable-delete");
+		} else {
+			document.getElementById("del-count").innerHTML = ``;
+			document.getElementById("user-delete").classList.add("btn", "btn-simple", "btn-twitter", "disable-delete");
+		}
+	}
+
+	const removeUsers = async () => {
+		var socket = io.connect(`http://{{ip}}:{{port}}`);
+
+		let obj = {
+			systemUsers: uArr,
+		};
+
+		let isAuth = await authenticate(socket);
+
+		if (isAuth === "True") {
+			socket.emit("removeSystemUser", JSON.stringify(obj));
+			snackFunction("User Removed, refreshing data");
+			refresh();
+		}
+	};
+
+	const addUser = async () => {
+		if (document.getElementById("name1").value === "") {
+			snackFunction("Name field is mandatory");
+			return false;
+		} else if (document.getElementById("group1").value === "") {
+			snackFunction("Group field is mandatory");
+			return false;
+		} else if (document.getElementById("token1").value === "") {
+			snackFunction("Token field is mandatory");
+			return false;
+		} else if (document.getElementById("password1").value === "") {
+			snackFunction("Password field is mandatory");
+			return false;
+		} else if (document.getElementById("certbool").value === "") {
+			snackFunction("Certification field is mandatory");
+			return false;
+		}
+
+		let obj = {
+			systemUsers: [
+				{
+					Name: document.getElementById("name1").value,
+					Group: document.getElementById("group1").value,
+					Token: document.getElementById("token1").value,
+					Password: document.getElementById("password1").value,
+					Certs: document.getElementById("certbool").value,
+				},
+			],
+		};
+
+		var socket = io.connect(`http://{{ip}}:{{port}}`);
+
+		console.log("Emit event authenticate...");
+
+		let isAuth = await authenticate(socket);
+
+		if (isAuth === "True") {
+			socket.emit("addSystemUser", JSON.stringify(obj));
+			document.getElementById("name1").value = "";
+			document.getElementById("group1").value = "";
+			document.getElementById("token1").value = "";
+			document.getElementById("password1").value = "";
+			document.getElementById("certbool").value = "";
+			addUserToggle();
+
+			snackFunction("User Added, refreshing data");
+			refresh();
+			// check
+			document.getElementById("user-table-hdr").removeChild(tablehdr);
+			document.getElementById("user-table").removeChild(table);
+		} else {
+			// throw error
+		}
+	};
+
+	function snackFunction(message) {
+		// Get the snackbar DIV
+		var x = document.getElementById("snackbar");
+		document.getElementById("snackbar").textContent = message;
+
+		// Add the "show" class to DIV
+		x.className = "show";
+
+		// After 3 seconds, remove the show class from DIV
+		setTimeout(function () {
+			x.className = x.className.replace("show", "");
+		}, 3000);
+	}
+
+	function refresh() {
+		setTimeout(function () {
+			location.reload(true);
+		}, 3000);
+	}
+
+	$("#name1").keypress(function (e) {
+		if (e.which === 32) return false;
+	});
+</script>
+<script>
+	establishConnection();
+</script>
+<script>
+	$(window).on("load", function () {
+		uArr = [];
+	});
+</script>
+{% endblock javascripts %}

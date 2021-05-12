@@ -1,0 +1,762 @@
+{% extends "base-site.html" %}  {% block title %} Dashboard {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+
+{% block stylesheets %}{% endblock stylesheets %} {% block content %}
+
+<div class="row">
+	<!-- ... existing HTML ... -->
+
+	<!-- <div id="like_button_container"></div> -->
+	<div id="like1"></div>
+	<!-- ... existing HTML ... -->
+
+	<div class="system-status-lbl">[SYSTEM STATUS]</div>
+	<div class="status-info-section">
+		<div class="card circle-card" >
+			<div style="display: grid; grid-column: 1/-1; padding: 5px"><h3 class="card-title" style="color: #278aed">Data Package</h3></div>
+
+			<div id="loading-systemstatus1" style="display: grid; place-self: center">
+				<img src="/static/assets/img/spinner.svg" width="80px" height="80px" />
+			</div>
+			<div id="loading-systemstatus2" style="display: grid; place-self: center">
+				<img src="/static/assets/img/spinner.svg" width="80px" height="80px" />
+			</div>
+
+			<!-- Data Package -->
+			<div class="case_container" style="display: none" id="tcp_on">
+				<div class="e7">
+					<div class="semi_arc_3 e5_1">
+						<div class="semi_arc_3 e5_2">
+							<div class="semi_arc_3 e5_3">
+								<div class="semi_arc_3 e5_4"></div>
+							</div>
+						</div>
+					</div>
+					<div class="core2">TCP</div>
+				</div>
+			</div>
+
+			<div class="r_case_container" style="display: none" id="tcp_error">
+				<div class="r_e7">
+					<div class="r_semi_arc_3 r_e5_1">
+						<div class="r_semi_arc_3 r_e5_2">
+							<div class="r_semi_arc_3 r_e5_3">
+								<div class="r_semi_arc_3 r_e5_4"></div>
+							</div>
+						</div>
+					</div>
+					<div class="r_core2">TCP</div>
+				</div>
+			</div>
+
+			<div class="g_case_container" style="display: none" id="tcp_off">
+				<div class="g_e7">
+					<div class="g_semi_arc_3 g_e5_1">
+						<div class="g_semi_arc_3 g_e5_2">
+							<div class="g_semi_arc_3 g_e5_3">
+								<div class="g_semi_arc_3 g_e5_4"></div>
+							</div>
+						</div>
+					</div>
+					<div class="g_core2">TCP</div>
+				</div>
+			</div>
+
+			<!-- DATAPACKAGE SSL  -->
+			<div class="case_container" style="display: none" id="ssl_on">
+				<div class="e7">
+					<div class="semi_arc_3 e5_1">
+						<div class="semi_arc_3 e5_2">
+							<div class="semi_arc_3 e5_3">
+								<div class="semi_arc_3 e5_4"></div>
+							</div>
+						</div>
+					</div>
+					<div class="core2">SSL</div>
+				</div>
+			</div>
+
+			<div class="r_case_container" style="display: none" id="ssl_error">
+				<div class="r_e7">
+					<div class="r_semi_arc_3 r_e5_1">
+						<div class="r_semi_arc_3 r_e5_2">
+							<div class="r_semi_arc_3 r_e5_3">
+								<div class="r_semi_arc_3 r_e5_4"></div>
+							</div>
+						</div>
+					</div>
+					<div class="r_core2">SSL</div>
+				</div>
+			</div>
+
+			<div class="g_case_container" style="display: none" id="ssl_off">
+				<div class="g_e7">
+					<div class="g_semi_arc_3 g_e5_1">
+						<div class="g_semi_arc_3 g_e5_2">
+							<div class="g_semi_arc_3 g_e5_3">
+								<div class="g_semi_arc_3 g_e5_4"></div>
+							</div>
+						</div>
+					</div>
+					<div class="g_core2">SSL</div>
+				</div>
+			</div>
+
+			<!-- DATAPACKAGE SSL  END -->
+		</div>
+		<div class="card circle-card" >
+			<div style="display: grid; grid-column: 1/-1; padding: 5px"><h3 class="card-title" style="color: #278aed">API & Federations</h3></div>
+
+
+			<div id="loading-systemstatus3" style="display: grid; place-self: center">
+				<img src="/static/assets/img/spinner.svg" width="80px" height="80px" />
+			</div>
+			<div id="loading-systemstatus4" style="display: grid; place-self: center">
+				<img src="/static/assets/img/spinner.svg" width="80px" height="80px" />
+			</div>
+
+			<!-- REST TCP -->
+			<div class="case_container" style="display: none" id="rest_api_on">
+				<div class="e7">
+					<div class="semi_arc_3 e5_1">
+						<div class="semi_arc_3 e5_2">
+							<div class="semi_arc_3 e5_3">
+								<div class="semi_arc_3 e5_4"></div>
+							</div>
+						</div>
+					</div>
+					<div class="core2">API</div>
+				</div>
+			</div>
+
+			<div class="r_case_container" style="display: none" id="rest_api_error">
+				<div class="r_e7">
+					<div class="r_semi_arc_3 r_e5_1">
+						<div class="r_semi_arc_3 r_e5_2">
+							<div class="r_semi_arc_3 r_e5_3">
+								<div class="r_semi_arc_3 r_e5_4"></div>
+							</div>
+						</div>
+					</div>
+					<div class="r_core2">API</div>
+				</div>
+			</div>
+
+			<div class="g_case_container" style="display: none" id="rest_api_off">
+				<div class="g_e7">
+					<div class="g_semi_arc_3 g_e5_1">
+						<div class="g_semi_arc_3 g_e5_2">
+							<div class="g_semi_arc_3 g_e5_3">
+								<div class="g_semi_arc_3 g_e5_4"></div>
+							</div>
+						</div>
+					</div>
+					<div class="g_core2">API</div>
+				</div>
+			</div>
+
+			<!-- FEDERATION  TCP -->
+			<div class="case_container" style="display: none" id="fed_on">
+				<div class="e7">
+					<div class="semi_arc_3 e5_1">
+						<div class="semi_arc_3 e5_2">
+							<div class="semi_arc_3 e5_3">
+								<div class="semi_arc_3 e5_4"></div>
+							</div>
+						</div>
+					</div>
+					<div class="core2">FED</div>
+				</div>
+			</div>
+
+			<div class="r_case_container" style="display: none" id="fed_error">
+				<div class="r_e7">
+					<div class="r_semi_arc_3 r_e5_1">
+						<div class="r_semi_arc_3 r_e5_2">
+							<div class="r_semi_arc_3 r_e5_3">
+								<div class="r_semi_arc_3 r_e5_4"></div>
+							</div>
+						</div>
+					</div>
+					<div class="r_core2">FED</div>
+				</div>
+			</div>
+
+			<div class="g_case_container" style="display: none" id="fed_off">
+				<div class="g_e7">
+					<div class="g_semi_arc_3 g_e5_1">
+						<div class="g_semi_arc_3 g_e5_2">
+							<div class="g_semi_arc_3 g_e5_3">
+								<div class="g_semi_arc_3 g_e5_4"></div>
+							</div>
+						</div>
+					</div>
+					<div class="g_core2">FED</div>
+				</div>
+			</div>
+
+				<!-- COT SSL  END -->
+			</div>
+
+			<div class="card circle-card" >
+				<div style="display: grid; grid-column: 1/-1; padding: 5px"><h3 class="card-title" style="color: #278aed">COT</h3></div>
+
+				<div id="loading-systemstatus5" style="display: grid; place-self: center">
+					<img src="/static/assets/img/spinner.svg" width="80px" height="80px" />
+				</div>
+				<div id="loading-systemstatus6" style="display: grid; place-self: center">
+					<img src="/static/assets/img/spinner.svg" width="80px" height="80px" />
+				</div>
+
+				<!-- COT TCP -->
+				<div class="case_container" style="display: none" id="cot_tcp_on">
+					<div class="e7">
+						<div class="semi_arc_3 e5_1">
+							<div class="semi_arc_3 e5_2">
+								<div class="semi_arc_3 e5_3">
+									<div class="semi_arc_3 e5_4"></div>
+								</div>
+							</div>
+						</div>
+						<div class="core2">TCP</div>
+					</div>
+				</div>
+
+				<div class="r_case_container" style="display: none" id="cot_tcp_error">
+					<div class="r_e7">
+						<div class="r_semi_arc_3 r_e5_1">
+							<div class="r_semi_arc_3 r_e5_2">
+								<div class="r_semi_arc_3 r_e5_3">
+									<div class="r_semi_arc_3 r_e5_4"></div>
+								</div>
+							</div>
+						</div>
+						<div class="r_core2">TCP</div>
+					</div>
+				</div>
+
+				<div class="g_case_container" style="display: none" id="cot_tcp_off">
+					<div class="g_e7">
+						<div class="g_semi_arc_3 g_e5_1">
+							<div class="g_semi_arc_3 g_e5_2">
+								<div class="g_semi_arc_3 g_e5_3">
+									<div class="g_semi_arc_3 g_e5_4"></div>
+								</div>
+							</div>
+						</div>
+						<div class="g_core2">TCP</div>
+					</div>
+				</div>
+
+				<!-- COT  SSL -->
+				<div class="case_container" style="display: none" id="cot_ssl_on">
+					<div class="e7">
+						<div class="semi_arc_3 e5_1">
+							<div class="semi_arc_3 e5_2">
+								<div class="semi_arc_3 e5_3">
+									<div class="semi_arc_3 e5_4"></div>
+								</div>
+							</div>
+						</div>
+						<div class="core2">SSL</div>
+					</div>
+				</div>
+
+				<div class="r_case_container" style="display: none" id="cot_ssl_error">
+					<div class="r_e7">
+						<div class="r_semi_arc_3 r_e5_1">
+							<div class="r_semi_arc_3 r_e5_2">
+								<div class="r_semi_arc_3 r_e5_3">
+									<div class="r_semi_arc_3 r_e5_4"></div>
+								</div>
+							</div>
+						</div>
+						<div class="r_core2">SSL</div>
+					</div>
+				</div>
+
+				<div class="g_case_container" style="display: none" id="cot_ssl_off">
+					<div class="g_e7">
+						<div class="g_semi_arc_3 g_e5_1">
+							<div class="g_semi_arc_3 g_e5_2">
+								<div class="g_semi_arc_3 g_e5_3">
+									<div class="g_semi_arc_3 g_e5_4"></div>
+								</div>
+							</div>
+						</div>
+						<div class="g_core2">SSL</div>
+					</div>
+				</div>
+
+				<!-- COT SSL  END -->
+			</div>
+		</div>
+
+		<div class="connection-info-section">
+			<div>
+				<div class="card card-stats">
+					<div class="card-body">
+						<div style="display: grid; grid-template-columns: 1fr 3fr">
+							<div>
+								<div class="info-icon text-center icon-warning">
+									<i class="tim-icons icon-time-alarm" style="font-size: 40px; color: #278aed"></i>
+								</div>
+							</div>
+							<div>
+								<div class="numbers">
+									<p class="card-category" style="font-size: 0.8rem">[UP TIME]</p>
+									<h3 class="card-title index-elem-lbl" id="up-time">&nbsp;</h3>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div>
+				<div class="card card-stats">
+					<div class="card-body">
+						<div style="display: grid; grid-template-columns: 1fr 3fr">
+							<div>
+								<div class="info-icon text-center icon-warning">
+									<i class="tim-icons icon-user-run" style="font-size: 40px; color: #278aed"></i>
+								</div>
+							</div>
+							<div>
+								<div class="numbers">
+									<p class="card-category" style="font-size: 0.8rem">[START TIME]</p>
+									<h3 class="card-title index-elem-lbl" id="start-time">&nbsp;</h3>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div>
+				<div class="card card-stats">
+					<div class="card-body">
+						<div style="display: grid; grid-template-columns: 1fr 3fr">
+							<div>
+								<div class="info-icon text-center icon-warning">
+									<i class="tim-icons icon-support-17" style="font-size: 40px; color: #278aed"></i>
+								</div>
+							</div>
+							<div>
+								<div class="numbers">
+									<p class="card-category" style="font-size: 0.8rem">[CONNECTED CLIENTS]</p>
+									<h3 class="card-title index-elem-lbl" id="connected-users">&nbsp;</h3>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="health-log">
+			<div>
+				<div style="font-size: 20px; color: #278aed">[HEALTH]</div>
+				<div id="loading-systemstatus7" style="display: grid; place-self: center">
+					<img src="/static/assets/img/spinner1.svg" width="80px" height="80px" />
+				</div>
+				<div id="chart"></div>
+			</div>
+			<div>
+				<div style="font-size: 20px; color: #278aed">[LOGS]</div>
+				<div id="loading-systemstatus8" style="display: grid; place-self: end;">
+					<img src="/static/assets/img/spinner1.svg" width="80px" height="80px" />
+				</div>
+				<div id="log-table-hdr"></div>
+				<div id="log-table"></div>
+			</div>
+		</div>
+	</div>
+
+	<div id="snackbar">&nbsp;</div>
+	{% endblock content %}
+	
+	<!-- Specific Page JS goes HERE  -->
+	{% block javascripts %}
+	
+	<script>
+		//the ip or dns which the FTS instances REST api is accessible
+	
+		var now = moment();
+		
+		// this gets current server data
+		async function establishConnection() {
+			console.log("Make connection");
+			var socket = io.connect(`http://{{ip}}:{{port}}`);
+			// connect_timeout
+			socket.on('connect_error', function() {
+				   console.log("Sorry, there seems to be an issue with the connection!");
+				   snackFunction("Sorry, there seems to be an issue with the connection!");
+				   document.getElementById("loading-systemstatus1").style.display = "none";
+				document.getElementById("loading-systemstatus2").style.display = "none";
+				document.getElementById("loading-systemstatus3").style.display = "none";
+				document.getElementById("loading-systemstatus4").style.display = "none";
+				document.getElementById("loading-systemstatus5").style.display = "none";
+				document.getElementById("loading-systemstatus6").style.display = "none";
+
+				document.getElementById("tcp_error").style.display = "block";
+				document.getElementById("ssl_error").style.display = "block";
+				document.getElementById("rest_api_error").style.display = "block";
+				document.getElementById("fed_error").style.display = "block";
+				document.getElementById("cot_tcp_error").style.display = "block";
+				document.getElementById("cot_ssl_error").style.display = "block";
+			})
+
+
+			getConnectInfo(socket);
+
+			console.log("Emit event authenticate...");
+
+			let isAuth = await authenticate(socket);
+
+			if (isAuth === "True") {
+				getUsers(socket);
+				getLogs(socket);
+				getServiceInfo(socket);
+				getServerHealth(socket);
+				getSystemStatus(socket);
+				getEventsInfo(socket);
+				setInterval(() => {
+					getUsers(socket);
+				}, '{{userinterval}}'); // 3 minutes polling
+
+				setInterval(() => {
+					getServerHealth(socket);
+				}, '{{serverhealthinterval}}'); // 3 minutes polling
+
+				setInterval(() => {
+					refresh();
+					getSystemStatus(socket);
+				}, '{{sysstatusinterval}}'); // 10 minutes polling
+
+			} else {
+				// throw error
+			}
+
+
+		}
+
+		
+		const authenticate = (socket) => {
+			
+			socket.emit("authenticate", JSON.stringify({ Authenticate: "{{websocketkey | safe}}" }));
+
+			return new Promise(function (resolve, reject) {
+				socket.on("authentication", function (data) {
+					let authenticateObject = JSON.parse(data);
+
+					if (authenticateObject.successful === "True") {
+						resolve("True");
+					} else {
+						reject("False");
+					}
+				});
+			});
+		};
+
+		
+		const getConnectInfo = (socket) => {
+			
+			socket.on("connectUpdate", function (data) {
+				let connectObject = JSON.parse(data);
+
+				let now = moment();
+				let start_time = moment(connectObject.starttime);
+
+				let up_time = moment(moment().diff(moment(connectObject.starttime))).format("HH MM SS");
+
+				var durationX = moment.duration(now.diff(start_time));
+
+				var hours = Math.floor(durationX.asHours()); //hours instead of asHours
+				var minutes = durationX.minutes();
+				var seconds = durationX.seconds();
+
+				document.getElementById("start-time").innerText = moment(connectObject.starttime).format("DD/MM/YYYY HH:MM z");
+				document.getElementById("up-time").innerText = [hours + "H", minutes + "M", seconds + "S"].join(" ");
+
+				// console.log("Print 0 connectUpdate Response:" + JSON.stringify(connectObject));
+			});
+		};
+
+		const getEventsInfo = (socket) => {
+			
+			socket.emit("events");
+			socket.on("eventsUpdate", function (data) {
+     
+				let eventsArr = data.events;
+				if(eventsArr.lenght > 0) {
+				document.getElementById("notif").style.display = "block";
+				} else {
+				document.getElementById("notif").style.display = "none";
+				}
+
+				let ul = document.createElement("ul");
+				ul.className = "dropdown-menu dropdown-menu-right dropdown-navbar";
+				document.getElementById("events-info").appendChild(ul);
+				
+
+				for (let [index, row] of eventsArr.entries()) {
+					var li = document.createElement("li");  
+					li.className = "nav-link";
+
+					var a = document.createElement("a");
+					a.className = "nav-item dropdown-item";
+					a.innerHTML =  row ;
+
+					li.appendChild(a);
+					ul.appendChild(li);
+				}
+			});
+    	};
+
+		const getUsers = (socket) => {
+			socket.emit("users");
+			socket.on("userUpdate", function (data) {
+				let userObject = JSON.parse(data);
+				let len = userObject.Users.length;
+				
+				document.getElementById("connected-users").innerText = len;
+				
+			});
+		};
+
+		const getLogs = (socket) => {
+			// socket.emit("logs", '{ "time": "2020-12-29 18:08:40,328" }');
+			 let logdate = moment().format("YYYY-MM-DD HH:mm:ss,SSS");
+			 let obj = { "time": logdate }
+			
+			socket.emit("logs", JSON.stringify(obj));
+			socket.on("logUpdate", function (data) {
+				let logsObject = JSON.parse(data);
+				console.log(' received log data ' );
+				document.getElementById("loading-systemstatus8").style.display = "none";
+				let tableArr = JSON.parse(data).log_data;
+
+				//create a Table Object
+				let tablehdr = document.createElement("table");
+				tablehdr.className = "table-style-hdr";
+
+				let headerRow = tablehdr.insertRow();
+				let timeHdr = headerRow.insertCell();
+				timeHdr.textContent = "TIME";
+				timeHdr.className = "hdr_c1";
+				let typeHdr = headerRow.insertCell();
+				typeHdr.textContent = "TYPE";
+				typeHdr.className = "hdr_c2";
+				let fileHdr = headerRow.insertCell();
+				fileHdr.textContent = "FILE";
+				fileHdr.className = "hdr_c3";
+				let messageHdr = headerRow.insertCell();
+				messageHdr.textContent = "MESSAGE";
+				messageHdr.className = "hdr_c4";
+
+				document.getElementById("log-table-hdr").appendChild(tablehdr);
+
+				let table = document.createElement("table");
+				table.className = "table-style";
+
+				for (let [index, row] of tableArr.entries()) {
+					let t_row = table.insertRow(index);
+					t_row.className = "row-color-nohover";
+
+					let timeCell = t_row.insertCell();
+					timeCell.textContent = moment(row.time).format("HH:MM");
+					timeCell.className = "cell-style-1";
+
+					let typeCell = t_row.insertCell();
+					typeCell.textContent = row.type;
+					typeCell.className = "cell-style-2";
+
+					let fileCell = t_row.insertCell();
+					fileCell.textContent = row.file;
+					fileCell.className = "cell-style-3";
+
+					let messageCell = t_row.insertCell();
+					messageCell.textContent = row.message;
+					messageCell.className = "cell-style-4";
+				}
+
+				document.getElementById("log-table").appendChild(table);
+
+			});
+		};
+
+		const getServiceInfo = (socket) => {
+			
+			socket.emit("serviceInfo");
+			socket.on("serviceInfoUpdate", function (data) {
+				let serviceInfoObject = JSON.parse(data);
+				
+			});
+			
+		};
+
+		const getServerHealth = (socket) => {
+			var chart = new ApexCharts(document.querySelector("#chart"), options);
+			chart.render();
+			
+				socket.emit("serverHealth");
+				socket.on("serverHealthUpdate", function (data) {
+					let serverHealthObject = JSON.parse(data);
+					document.getElementById("loading-systemstatus7").style.display = "none";
+					
+					chart.updateOptions({ series: [serverHealthObject.CPU, serverHealthObject.memory, serverHealthObject.disk] });
+
+				});
+			
+		};
+
+		const getSystemStatus = (socket) => {
+			
+			socket.emit("systemStatus");
+			socket.on("systemStatusUpdate", function (data) {
+				let systemStatusObject = JSON.parse(data);
+				console.log('object >> print ' + JSON.stringify(systemStatusObject));
+				document.getElementById("loading-systemstatus1").style.display = "none";
+				document.getElementById("loading-systemstatus2").style.display = "none";
+				document.getElementById("loading-systemstatus3").style.display = "none";
+				document.getElementById("loading-systemstatus4").style.display = "none";
+				document.getElementById("loading-systemstatus5").style.display = "none";
+				document.getElementById("loading-systemstatus6").style.display = "none";
+
+				// Datapackage TCP (1)
+				if (
+					systemStatusObject.TCPDataPackageStatus == systemStatusObject.TCPDataPackageStatusExpected &&
+					systemStatusObject.TCPDataPackageStatus == "on"
+				) {
+					document.getElementById("tcp_on").style.display = "block";
+					document.getElementById("tcp_off").style.display = "none";
+					document.getElementById("tcp_error").style.display = "none";
+				} else if (
+					systemStatusObject.TCPDataPackageStatus == systemStatusObject.TCPDataPackageStatusExpected &&
+					systemStatusObject.TCPDataPackageStatus == "off"
+				) {
+					document.getElementById("tcp_on").style.display = "none";
+					document.getElementById("tcp_off").style.display = "block";
+					document.getElementById("tcp_error").style.display = "none";
+				} else if (systemStatusObject.TCPDataPackageStatus != systemStatusObject.TCPDataPackageStatusExpected) {
+					document.getElementById("tcp_on").style.display = "none";
+					document.getElementById("tcp_off").style.display = "none";
+					document.getElementById("tcp_error").style.display = "block";
+				}
+
+				// Datapackage SSL (2)
+				if (
+					systemStatusObject.SSLDataPackageStatus == systemStatusObject.SSLDataPackageStatusExpected &&
+					systemStatusObject.SSLDataPackageStatus == "on"
+				) {
+					document.getElementById("ssl_on").style.display = "block";
+					document.getElementById("ssl_off").style.display = "none";
+					document.getElementById("ssl_error").style.display = "none";
+				} else if (
+					systemStatusObject.SSLDataPackageStatus == systemStatusObject.SSLDataPackageStatusExpected &&
+					systemStatusObject.SSLDataPackageStatus == "off"
+				) {
+					document.getElementById("ssl_on").style.display = "none";
+					document.getElementById("ssl_off").style.display = "block";
+					document.getElementById("ssl_error").style.display = "none";
+				} else if (systemStatusObject.SSLDataPackageStatus != systemStatusObject.SSLDataPackageStatusExpected) {
+					document.getElementById("ssl_on").style.display = "none";
+					document.getElementById("ssl_off").style.display = "none";
+					document.getElementById("ssl_error").style.display = "block";
+				}
+
+				// REST TCP (3)
+				if (systemStatusObject.RestAPIStatus == systemStatusObject.RestAPIStatusExpected && systemStatusObject.RestAPIStatus == "on") {
+					document.getElementById("rest_api_on").style.display = "block";
+					document.getElementById("rest_api_off").style.display = "none";
+					document.getElementById("rest_api_error").style.display = "none";
+				} else if (systemStatusObject.RestAPIStatus == systemStatusObject.RestAPIStatusExpected && systemStatusObject.RestAPIStatus == "off") {
+					document.getElementById("rest_api_on").style.display = "none";
+					document.getElementById("rest_api_off").style.display = "block";
+					document.getElementById("rest_api_error").style.display = "none";
+				} else if (systemStatusObject.RestAPIStatus != systemStatusObject.RestAPIStatusExpected) {
+					document.getElementById("rest_api_on").style.display = "none";
+					document.getElementById("rest_api_off").style.display = "none";
+					document.getElementById("rest_api_error").style.display = "block";
+				}
+
+				// FED (4)
+				if (systemStatusObject.FederationServerStatus == systemStatusObject.FederationServerExpected && systemStatusObject.FederationServerStatus == "on") {
+					document.getElementById("fed_on").style.display = "block";
+					document.getElementById("fed_off").style.display = "none";
+					document.getElementById("fed_error").style.display = "none";
+				} else if (systemStatusObject.FederationServerStatus == systemStatusObject.FederationServerExpected && systemStatusObject.FederationServerStatus == "off") {
+					document.getElementById("fed_on").style.display = "none";
+					document.getElementById("fed_off").style.display = "block";
+					document.getElementById("fed_error").style.display = "none";
+				} else if (systemStatusObject.FederationServerStatus != systemStatusObject.FederationServerExpected) {
+					document.getElementById("fed_on").style.display = "none";
+					document.getElementById("fed_off").style.display = "none";
+					document.getElementById("fed_error").style.display = "block";
+				}
+
+				// COT TCP (5)
+				if (systemStatusObject.TCPCoTStatus == systemStatusObject.TCPCoTStatusExpected && systemStatusObject.TCPCoTStatus == "on") {
+					document.getElementById("cot_tcp_on").style.display = "block";
+					document.getElementById("cot_tcp_off").style.display = "none";
+					document.getElementById("cot_tcp_error").style.display = "none";
+				} else if (systemStatusObject.TCPCoTStatus == systemStatusObject.TCPCoTStatusExpected && systemStatusObject.TCPCoTStatus == "off") {
+					document.getElementById("cot_tcp_on").style.display = "none";
+					document.getElementById("cot_tcp_off").style.display = "block";
+					document.getElementById("cot_tcp_error").style.display = "none";
+				} else if (systemStatusObject.TCPCoTStatus != systemStatusObject.TCPCoTStatusExpected) {
+					document.getElementById("cot_tcp_on").style.display = "none";
+					document.getElementById("cot_tcp_off").style.display = "none";
+					document.getElementById("cot_tcp_error").style.display = "block";
+				}
+
+				// COT SSL (6)
+				if (systemStatusObject.SSLCoTStatus == systemStatusObject.SSLCoTStatusExpected && systemStatusObject.SSLCoTStatus == "on") {
+					document.getElementById("cot_ssl_on").style.display = "block";
+					document.getElementById("cot_ssl_off").style.display = "none";
+					document.getElementById("cot_ssl_error").style.display = "none";
+				} else if (
+					systemStatusObject.SSLCoTStatus == systemStatusObject.SSLCoTStatusExpected &&
+					systemStatusObject.SSLCoTStatus == "off"
+				) {
+					document.getElementById("cot_ssl_on").style.display = "none";
+					document.getElementById("cot_ssl_off").style.display = "block";
+					document.getElementById("cot_ssl_error").style.display = "none";
+				} else if (systemStatusObject.SSLCoTStatus != systemStatusObject.SSLCoTStatusExpected) {
+					document.getElementById("cot_ssl_on").style.display = "none";
+					document.getElementById("cot_ssl_off").style.display = "none";
+					document.getElementById("cot_ssl_error").style.display = "block";
+				}
+
+			});
+			
+		};
+
+		function snackFunction(message) {
+		// Get the snackbar DIV
+		var x = document.getElementById("snackbar");
+		document.getElementById("snackbar").textContent = message;
+
+		// Add the "show" class to DIV
+		x.className = "show";
+
+		// After 3 seconds, remove the show class from DIV
+		setTimeout(function () {
+			x.className = x.className.replace("show", "");
+		}, 3000);
+	}
+
+	function refresh() {
+		setTimeout(function () {
+			location.reload(true);
+		}, 3000);
+	}
+
+	</script>
+	<script>
+		establishConnection();
+	</script>
+
+	{% endblock javascripts %}
+</div>
+

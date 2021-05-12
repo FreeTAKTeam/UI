@@ -1,0 +1,969 @@
+{% extends "base-site.html" %} {% block title %} Mission {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %} {% block content %}
+
+<!-- mission code here -->
+
+<div style="width: 90%; display: grid; padding: 5px; margin: 0 auto; background-color: #27293d">
+	<div class="header-tools mission-dp-header-lbl" >[DATA PACKAGE]</div>
+
+	<div style="width: 100%; padding: 5px; display: contents;">
+		<div style="max-height: 300px; max-width: 100%; overflow-y: scroll; overflow-x: scroll; display: table-cell">
+		<div
+			style="
+				display: grid;
+				grid-template-columns: 240px 150px 50px 120px 100px 240px;
+				gap: 10px;
+				padding: 10px;
+				font-size: 16px;
+				color: #fff;
+				opacity: 0.9;
+			"
+		>
+			
+			<div style="color: #fff; font-weight: 600; padding: 5px">Name</div>
+			<div style="color: #fff; font-weight: 600; padding: 5px">Author</div>
+			<div style="color: #fff; font-weight: 600; padding: 5px">Index</div>
+			<div style="color: #fff; font-weight: 600; padding: 5px; text-align: center">Is Private</div>
+			<div style="color: #fff; font-weight: 600; padding: 5px">Size (KB)</div>
+			<div style="color: #fff; font-weight: 600; padding: 5px">Submitted</div>
+		</div>
+		<div >
+			{% for dict_items in json_data %} {% if loop.index == 1 %} {% endif %}
+
+			<div
+				class="row-color-nohover row-class"
+				style="display: grid; grid-template-columns: 240px 150px 50px 120px 100px 240px; gap: 10px; padding: 10px; color: #fff; opacity: 0.8; width: 1000px;"
+				onclick="captureClick('{{dict_items.Hash}}')"
+			>
+				
+				
+				<div >
+
+					<div onclick="downloadFile('{{dict_items.Hash}}', '{{dict_items.Name}}')" >
+						<span class="link-name" >
+							{{dict_items['Name']}}
+						</span>
+						
+					</div>
+					</div>
+				<div >
+					{{dict_items['SubmissionUser'] | replace("[", "") | replace("(", "") | replace("'", "") | replace("'", "") | replace(")", "") | replace("]",
+					"") | replace(",", "") }}
+				</div>
+				<div  style="text-align: center">{{dict_items['PrimaryKey']}}</div>
+
+				<div style="text-align: center">
+					<input style="padding: 3px;" onclick='handlePrivacy(this, "{{dict_items.PrimaryKey}}");' type="checkbox" {{'checked' if
+					dict_items['Privacy'] == 1 else ''}} />
+				</div>
+
+				<div  style="text-align: right; padding-right: 10px">{{dict_items['Size'] /1000}}</div>
+				<div >{{dict_items['SubmissionDateTime']}}</div>
+			</div>
+
+			{% endfor %}
+		</div>
+		</div>
+	</div>
+
+	<div class="mission-packagedata-footer-tools" >
+		<div>
+			<div
+				class="btn btn-simple btn-twitter"
+				id="data-package-delete"
+				onclick="deleteDataPackage()"
+				style="color: #278aed80; border-color: #278aed; color: #278aed; display: inline-flex"
+			>
+				<span>DELETE</span> <span id="del-count">&nbsp;</span>
+			</div>
+			&nbsp;&nbsp;&nbsp;
+			<button class="btn btn-simple btn-twitter" onclick="onSelectFile()" style="color: #278aed; border-color: #278aed">ADD</button>
+		</div>
+		<div style="display: grid; grid-template-columns: 1fr 40px">
+			<div><input type="text" id="filename" readonly class="form-control browse-box" value="" /></div>
+			<label for="fileinput" class="custom-file-upload"> ... </label>
+			<input id="fileinput" type="file" />
+		</div>
+	</div>
+</div>
+
+<br /><br />
+
+<div style="width: 90%; display: grid; padding: 5px; margin: 0 auto; background-color: #27293d">
+	<div class="header-tools" style="justify-self: flex-end; font-size: 20px; padding-right: 20px; color: #278aed">[MISSION]</div>
+ 
+	<div style="max-width: 100%; padding: 5px; display: contents">
+		<div style="max-height: 300px; max-width: 100%; overflow-y: scroll; overflow-x: scroll; display: table-cell">
+			<div
+			style="
+				display: grid;
+
+				grid-template-columns: 100px 240px 240px 240px 240px 240px;
+				padding: 10px;
+				font-size: 16px;
+				color: #fff;
+				opacity: 0.9;
+			"
+		>
+			<div style="color: #fff; font-weight: 600; padding: 5px">Name</div>
+			<div style="color: #fff; font-weight: 600; padding: 5px">Description</div>
+			<div style="color: #fff; font-weight: 600; padding: 5px">Keywords</div>
+
+			<div style="color: #fff; font-weight: 600; padding: 5px">Creator</div>
+			<div style="color: #fff; font-weight: 600; padding: 5px">Groups</div>
+
+			<div>Created</div>
+		</div>
+			{% if  mission_json_data | length == 0 %}
+		
+			<div style="padding: 10px; font-size: 14px;">No Records Found</div>
+			{% endif %}
+
+			{% for items in mission_json_data %} 
+			
+			
+
+			<div
+				class="row-color-nohover row-class"
+				style="display: grid; grid-template-columns: 100px 240px 240px 240px 240px 240px; padding: 10px; color: #fff; opacity: 0.8; width: 1300px;"
+			>
+				<div>{{items['name']}}</div>
+				<div>{{items['description']}}</div>
+				<div>{{items['keywords']}}</div>
+				<div>{{items['creatorUid']}}</div>
+				<div>{{items['groups']}}</div>
+				<div>{{items['createTime']}}</div>
+			</div>
+
+			{% endfor %}
+		</div>
+	</div>
+
+	<div class="footer-tools" style="background-color: #27293d; justify-items: end;
+	padding: 16px 16px 16px 50px; display: grid; grid-template-columns: 1fr">
+		<div>
+			<div class="btn btn-simple btn-twitter" id="data-package-delete" style="color: #278aed; border-color: #278aed; display: inline-flex">
+				<span>DELETE</span> <span id="del-count">&nbsp;</span>
+			</div>
+			&nbsp;&nbsp;&nbsp;
+			<button class="btn btn-simple btn-twitter" style="color: #278aed; border-color: #278aed">ADD</button>
+		</div>
+	</div>
+</div>
+<br /><br />
+<div style="width: 90%; display: grid; padding: 5px; margin: 0 auto; background-color: #27293d">
+	<div class="header-tools" style="justify-self: flex-end; font-size: 20px; padding-right: 20px; color: #278aed">[EXCHECK]</div>
+
+	<div style="max-width: 100%; padding: 5px; display: contents">
+		<div style="max-height: 300px; max-width: 100%; overflow-y: scroll; overflow-x: scroll; display: table-cell">
+			{% for items in excheck_json_data %} {% if loop.index == 1 %}
+			<div
+				style="
+					display: grid;
+
+					grid-template-columns: 200px 240px 240px 200px 200px 200px;
+					padding: 10px;
+					font-size: 16px;
+					color: #fff;
+					opacity: 0.9;
+				"
+			>
+				<div>Name</div>
+				<div>Submitter</div>
+				<div>Type</div>
+
+				<div>Size</div>
+				<div>Submitted</div>
+
+				<div>&nbsp;</div>
+			</div>
+			{% endif %}
+			<div
+				class="row-color-nohover row-class"
+				style="display: grid; grid-template-columns: 200px 240px 240px 200px 200px 200px; padding: 10px; color: #fff; opacity: 0.8; width: 1280px;"
+				onclick="captureExcheckClick('{{items.uid}}')"
+			>
+				<div>{{items['name']}}</div>
+				<div>{{items['submitter'] | replace("[", "") | replace("(", "") | replace("'", "") | replace("'", "") | replace(")", "") | replace("]",
+					"") | replace(",", "")}}</div>
+				<div>{{items['filename']}}</div>
+				<div>{{items['size']}}</div>
+				<div>{{items['submissionTime']}}</div>
+				<div>&nbsp;</div>
+			</div>
+
+			{% endfor %}
+		</div>
+	</div>
+	<div class="mission-excheck-footer-tools" >
+		<div>
+			<div
+				class="btn btn-simple btn-twitter"
+				id="excheck-delete"
+				onclick="deleteExcheck()"
+				style="color: #278aed80; border-color: #278aed; color: #278aed; display: inline-flex"
+			>
+				<span>DELETE</span> <span id="del-excheck-count">&nbsp;</span>
+			</div>
+			&nbsp;&nbsp;&nbsp;
+			<button class="btn btn-simple btn-twitter" onclick="onSelectExCheckFile()" style="color: #278aed; border-color: #278aed">ADD</button>
+		</div>
+		<div style="display: grid; grid-template-columns: 1fr 40px">
+			<div><input type="text" id="filenameExcheck" readonly class="form-control" value="" /></div>
+			<label for="fileinputExcheck" class="custom-file-upload"> ... </label>
+			<input id="fileinputExcheck" type="file" />
+		</div>
+	</div>
+
+
+</div>
+<br /><br />
+<div style="width: 90%; display: grid; padding: 5px; margin: 0 auto; background-color: #27293d">
+	<div class="header-tools" style="justify-self: flex-end; font-size: 20px; padding-right: 20px; color: #278aed">[OUTGOING FEDERATIONS]</div>
+	<div style="max-width: 100%; padding: 5px; display: contents"">
+		<div style="max-height: 300px; max-width: 100%; overflow-y: scroll; overflow-x: scroll; display: table-cell">
+
+			<div
+			style="
+				display: grid;
+
+				grid-template-columns: 200px 240px 240px 200px 200px 200px 200px 200px;
+				padding: 10px;
+				font-size: 16px;
+				color: #fff;
+				opacity: 0.9;
+			"
+		>
+			<div>Name</div>
+			<div>Address</div>
+			<div>Port</div>
+			<div>Fallback</div>
+
+			<div>Status</div>
+			<div>Rec. Interval</div>
+
+			<div>Max Retries</div>
+
+			<div>Last Error</div>
+		</div>
+		
+		{% if  outgoing_federation_json_data |count == 0 %}
+
+		<div style="font-size: 14px; padding: 10px;">No Records Found</div>
+
+{% endif %}
+
+			{% for items in outgoing_federation_json_data %}
+		
+			<div
+				class="row-color-nohover row-class"
+				style="display: grid; grid-template-columns: 200px 240px 240px 200px 200px 200px 200px 200px; padding: 10px; color: #fff; opacity: 0.8; width: 1680px;"
+				onclick="captureOFClick('{{items.id}}', '{{items.name}}', '{{items.address}}', '{{items.port}}',
+				'{{items.fallBack}}', '{{items.status}}', '{{items.reconnectInterval}}', '{{items.maxRetries}}', '{{items.lastError}}' );"
+			>
+				<div>{{items['name']}}</div>
+				<div>{{items['address']}}</div>
+				<div>{{items['port']}}</div>
+				<div>{{items['fallBack']}}</div>
+				<div>{{items['status']}}</div>
+				<div>{{items['reconnectInterval']}}</div>
+				<div>{{items['maxRetries']}}</div>
+				<div>{{items['lastError']}}</div>
+			</div>
+
+			{% endfor %}
+		</div>
+	</div>
+	<div class="footer-tools" style="background-color: #27293d; justify-items: end;
+	padding: 16px 16px 16px 50px; display: grid; grid-template-columns: 1fr">
+		<div>
+			<div class="btn btn-simple btn-twitter" id="data-of-edit" 
+			style="color: #278aed; border-color: #278aed; display: none"
+			
+			>
+				<span>EDIT</span> 
+			</div>
+
+			<div class="btn btn-simple btn-twitter" id="data-of-delete" 
+			style="color: #278aed; border-color: #278aed; display: inline-flex"
+			onclick="deleteOF()"
+			>
+				<span>DELETE</span> <span id="del-of-count">&nbsp;</span>
+			</div>
+			&nbsp;&nbsp;&nbsp;
+			<button class="btn btn-simple btn-twitter" onclick="addToggle('addOF')"
+			style="color: #278aed; border-color: #278aed">ADD</button>
+		</div>
+	</div>
+
+
+	<div style="display: none" id="editOF">
+		<div style="display: grid; width: 80%; padding: 10px 0px; margin: 0 auto; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px">
+			<div><input type="text" class="form-control" id="nameofedit" value="" placeholder="Name" /></div>
+			<div><input type="text" class="form-control" id="ipaddressofedit" value="" placeholder="IP Address" /></div>
+			<div><input type="text" class="form-control" id="portofedit" value="" placeholder="Port" /></div>
+			<div>&nbsp;</div>
+			<input type="hidden" value="" id="idedit"/>
+
+			<div style="font-size: 16px; color: #b5b5b5; line-height: 40px">Fallback Server</div>
+			<div class="select" style="width: 200px">
+				<select name="format" id="fallbackserverofedit">
+					{% for items in outgoing_federation_json_data %} 
+						<option >{{items['name']}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div style="font-size: 16px; color: #b5b5b5; line-height: 40px; 
+			    display: grid; grid-column: 3/-1;"
+			>
+			<div style="display: flex; align-items: center;">
+				<div>Status&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				<div class="select" style="width: 120px">
+					<select name="format" id="statusofedit">
+						<option selected value="Enabled">Enabled</option>
+						<option value="Disabled">Disabled</option>
+					</select>
+				</div>
+			</div>
+			
+			</div>
+			
+
+			<div><input type="text" class="form-control" id="maxretriesofedit" value="" placeholder="Max Retries" /></div>
+			<div><input type="text" class="form-control" id="recintervalofedit" value="" placeholder="Rec Interval" /></div>
+			<div>&nbsp;</div>
+			<div>&nbsp;</div>
+
+		</div>
+		<div style="background-color: #27293d; padding: 10px 20px; display: grid; justify-content: end">
+			<button class="btn btn-simple btn-twitter" onclick="editOFPut()" style="color: #278aed; border-color: #278aed">Submit</button>
+		</div>
+	</div>
+
+
+	<div style="display: none" id="addOF">
+		<div class="outgoing-fed-add">
+			<div><input type="text" class="form-control" id="nameof" value="" placeholder="Name" /></div>
+			<div><input type="text" class="form-control" id="ipaddressof" value="" placeholder="IP Address" /></div>
+			<div><input type="text" class="form-control" id="portof" value="" placeholder="Port" /></div>
+			<div>&nbsp;</div>
+			
+
+			<div style="font-size: 16px; color: #b5b5b5; line-height: 40px">Fallback Server</div>
+			<div class="select" style="width: 200px">
+				<select name="format" id="fallbackserverof">
+					{% for items in outgoing_federation_json_data %} 
+						<option >{{items['name']}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div class="outgoing-fed-status"
+			style=""
+			>
+			<div style="display: flex; align-items: center;">
+				<div>Status&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				<div class="select" style="width: 120px">
+					<select name="format" id="statusof">
+						<option selected value="Enabled">Enabled</option>
+						<option value="Disabled">Disabled</option>
+					</select>
+				</div>
+			</div>
+			
+			</div>
+			
+
+			<div><input type="text" class="form-control" id="maxretriesof" value="" placeholder="Max Retries" /></div>
+			<div><input type="text" class="form-control" id="recintervalof" value="" placeholder="Rec Interval" /></div>
+			<div>&nbsp;</div>
+			<div>&nbsp;</div>
+
+		</div>
+		<div style="background-color: #27293d; padding: 10px 20px; display: grid; justify-content: end">
+			<button class="btn btn-simple btn-twitter" onclick="addOF()" style="color: #278aed; border-color: #278aed">Submit</button>
+		</div>
+	</div>
+
+
+</div>
+
+<div id="snackbar">&nbsp;</div>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<script>
+
+var socket = io.connect(`http://{{ip}}:{{port}}`);
+
+var tcpip;
+var tcpport;
+
+async function establishConnection() {
+	console.log("Emit event authenticate...");
+
+	let isAuth = await authenticate(socket);
+
+	if (isAuth === "True") {
+		getServiceInfo(socket);
+		getEventsInfo(socket);
+		
+	} else {
+		// throw error
+	}
+}
+
+const authenticate = (socket) => {
+			
+			socket.emit("authenticate", JSON.stringify({ Authenticate: "{{websocketkey | safe}}" }));
+
+			return new Promise(function (resolve, reject) {
+				socket.on("authentication", function (data) {
+					let authenticateObject = JSON.parse(data);
+
+					if (authenticateObject.successful === "True") {
+						resolve("True");
+					} else {
+						reject("False");
+					}
+				});
+			});
+		};
+
+	// this is a global variable
+	var gArr;
+	
+	function captureClick(param) {
+		if (!gArr.some((item) => item.hash === param)) {
+			let vv = { hash: param };
+			gArr.push(vv);
+		} else {
+			gArr = gArr.filter((item) => item.hash !== param);
+		}
+
+		// classList
+		if (gArr.length > 0) {
+			document.getElementById("del-count").innerHTML = `&nbsp;[${gArr.length}]`;
+			document.getElementById("data-package-delete").classList.add("btn", "btn-simple", "btn-twitter", "enable-delete");
+		} else {
+			document.getElementById("del-count").innerHTML = ``;
+			document.getElementById("data-package-delete").classList.add("btn", "btn-simple", "btn-twitter", "disable-delete");
+		}
+	}
+
+
+	var excheckArr;
+
+	function captureExcheckClick(param) {
+		
+		if (!excheckArr.some((item) => item.uid === param)) {
+			let vv = { uid: param };
+			excheckArr.push(vv);
+		} else {
+			excheckArr = excheckArr.filter((item) => item.uid !== param);
+		}
+
+		// classListß
+		if (excheckArr.length > 0) {
+			document.getElementById("del-excheck-count").innerHTML = `&nbsp;[${excheckArr.length}]`;
+			document.getElementById("excheck-delete").classList.add("btn", "btn-simple", "btn-twitter", "enable-delete");
+		} else {
+			document.getElementById("del-excheck-count").innerHTML = ``;
+			document.getElementById("excheck-delete").classList.add("btn", "btn-simple", "btn-twitter", "disable-delete");
+		}
+	}	
+
+	// this is a global variable
+	var ofDelArr;
+	var ofEditArr;
+	
+	function captureOFClick(id, name, address, port, fallBack, status, reconnectInterval, maxRetries, lastError ) {
+		
+		if (!ofDelArr.some((item) => item.id === id)) {
+
+		
+
+			let vv = { "id" : id };
+
+			let eArr = {
+				"id": id,
+				"name": name,
+				"address": address,
+				"port": port,
+				"fallBack": fallBack,
+				"status": status,
+				"reconnectInterval": reconnectInterval,
+				"maxRetries": maxRetries
+			}
+		
+			ofDelArr.push(vv);
+			ofEditArr.push(eArr);
+		} else {
+			ofDelArr = ofDelArr.filter((item) => item.id !== id);
+			ofEditArr = ofEditArr.filter((item) => item.id !== id);
+
+		}
+
+		// classList
+		if (ofDelArr.length > 0) {
+			document.getElementById("del-of-count").innerHTML = `&nbsp;[${ofDelArr.length}]`;
+			document.getElementById("data-of-delete").classList.add("btn", "btn-simple", "btn-twitter", "enable-delete");
+		} else {
+			document.getElementById("del-of-count").innerHTML = ``;
+			document.getElementById("data-of-delete").classList.add("btn", "btn-simple", "btn-twitter", "disable-delete");
+		}
+
+		if(ofDelArr.length === 1) {
+			document.getElementById("data-of-edit").style.display = "inline-flex";
+			document.getElementById("editOF").style.display = "block";
+			document.getElementById("addOF").style.display = "none";
+
+		} else {
+			document.getElementById("data-of-edit").style.display = "none";
+			document.getElementById("editOF").style.display = "none";
+		}
+
+		
+		document.getElementById("idedit").value = ofEditArr[0].id;
+		document.getElementById("nameofedit").value = ofEditArr[0].name;
+		document.getElementById("ipaddressofedit").value = ofEditArr[0].address;
+		document.getElementById("portofedit").value = ofEditArr[0].port;
+		document.getElementById("fallbackserverofedit").value = ofEditArr[0].fallBack;
+		document.getElementById("statusofedit").value = ofEditArr[0].status;
+		document.getElementById("recintervalofedit").value = ofEditArr[0].reconnectInterval;
+		document.getElementById("maxretriesofedit").value = ofEditArr[0].maxRetries;
+
+	}
+
+
+	function downloadFile(param, name) {
+		
+		let url = `http://${tcpip}:${tcpport}/Marti/api/sync/metadata/${param}/tool`;
+		headers = { Authorization: "{{apikey | safe}}", Connection: "Keep-Alive" };
+
+		
+		fetch(url, {
+			method: "GET",
+			headers: headers,
+		})
+			.then(resp => resp.blob())
+			.then(blob => {
+				const url = window.URL.createObjectURL(blob);
+				const a = document.createElement('a');
+				a.style.display = 'none';
+				a.href = url;
+				// the filename you want
+				a.download = name;
+				document.body.appendChild(a);
+				a.click();
+				window.URL.revokeObjectURL(url);
+				snackFunction("File Downloaded Successfully!");
+				// alert('your file has downloaded!'); // or you know, something with better UX...
+			})
+			.catch(() => {
+				snackFunction("File downloaded Failed! Contact Administrator.");
+			});
+
+	}
+
+	const getServiceInfo = (socket) => {
+    
+    socket.emit("serviceInfo");
+    socket.on("serviceInfoUpdate", function (data) {
+        let serviceInfoObject = JSON.parse(data);
+        console.log("Print CONFIGURE serviceInfoUpdate Response:" + JSON.stringify(serviceInfoObject));
+    
+        tcpport = serviceInfoObject.services.TCP_DataPackage_service.port;
+    
+        tcpip  = serviceInfoObject.ip;
+    });
+    
+};
+
+	function snackFunction(message) {
+		// Get the snackbar DIV
+		var x = document.getElementById("snackbar");
+		document.getElementById("snackbar").textContent = message;
+
+		// Add the "show" class to DIV
+		x.className = "show";
+
+		// After 3 seconds, remove the show class from DIV
+		setTimeout(function () {
+			x.className = x.className.replace("show", "");
+		}, 3000);
+	}
+
+	// Select your input type file and store it in a variable
+	const input = document.getElementById("fileinput");
+
+	// Select your input type file and store it in a variable
+	const inputExcheck = document.getElementById("fileinputExcheck");
+
+	// This will upload the file after having read it
+	const upload = (file) => {
+		if (file === undefined) {
+			snackFunction("Select a file to Add");
+			return false;
+		}
+
+		if (document.getElementById("filename").value == "") {
+			snackFunction("Select a file to Add");
+			return false;
+		}
+
+		if (!checkExtn(file.name)) {
+			return false;
+		}
+
+		if(file.size > '{{datapackagesizelimit}}') {
+			snackFunction("Upload Max Allowed File Size Exceeded");
+			return false;
+		}
+		
+
+		var formData = new FormData();
+		formData.append("assetfile", file);
+
+		headers = { Authorization: "{{apikey | safe}}", Connection: "Keep-Alive" };
+
+		fetch(`http://{{ip}}:{{port}}/DataPackageTable?filename=${file.name}&creator={{current_user.name}}`, {
+			method: "POST",
+			headers: headers,
+			body: formData,
+		})
+			.then(
+				(response) => {
+				
+				if(response.status === 200) {
+					snackFunction("Add Datapackage Success. Refreshing data!");
+				document.getElementById("filename").value = "";
+				refresh();
+				} else {
+					snackFunction("Add Datapackage Failed. Contact Adminstrator!");
+					document.getElementById("filename").value = "";
+					refresh();
+				}
+				
+				}
+				
+			)
+			.catch((error) => {
+				console.log("log error.." + error);
+				snackFunction("Add Datapackage Failed. Contact Administrator!");
+				document.getElementById("filename").value = "";
+				refresh();
+			});
+	};
+
+
+		// This will upload the file after having read it
+		const uploadExcheck = (file) => {
+			
+		if (file === undefined) {
+			snackFunction("Select a file to Add");
+			return false;
+		}
+
+		if (document.getElementById("filenameExcheck").value == "") {
+			snackFunction("Select a file to Add");
+			return false;
+		}
+
+		// if (!checkExtn(file.name)) {
+		// 	return false;
+		// }
+
+		if(file.size > '{{datapackagesizelimit}}') {
+			snackFunction("Upload Max Allowed File Size Exceeded");
+			return false;
+		}
+		
+
+
+		headers = { Authorization: "{{apikey | safe}}", Connection: "Keep-Alive" };
+		
+		fetch(`http://{{ip}}:{{port}}/ExCheckTable`, {
+			method: "POST",
+			headers: headers,
+			body: inputExcheck.files[0],
+		})
+			.then(
+				(response) => {
+				
+				if(response.status === 200) {
+					snackFunction("Add Excheck Success. Refreshing data!");
+				document.getElementById("filename").value = "";
+				refresh();
+				} else {
+					snackFunction("Add Excheck Failed. Contact Adminstrator!");
+					document.getElementById("filename").value = "";
+					refresh();
+				}
+				
+				}
+				
+			)
+			.catch((error) => {
+				console.log("log error.." + error);
+				snackFunction("Add Datapackage Failed. Contact Administrator!");
+				document.getElementById("filename").value = "";
+				refresh();
+			});
+	};
+
+
+
+	// Event handler executed when a file is selected
+	const onSelectFile = () => upload(input.files[0]);
+
+	const onSelectExCheckFile = () => uploadExcheck(inputExcheck.files[0]);
+
+	
+
+	// Add a listener on your input
+	// It will be triggered when a file will be selected
+	// input.addEventListener('change', onSelectFile, false);
+
+	document.getElementById("fileinput").addEventListener("change", function () {
+		document.getElementById("filename").value = input.files[0].name;
+		// checkExtn(input.files[0].name);
+	});
+
+
+	document.getElementById("fileinputExcheck").addEventListener("change", function () {
+		document.getElementById("filenameExcheck").value = inputExcheck.files[0].name;
+		// checkExtn(input.files[0].name);
+	});
+
+	function checkExtn(filename) {
+		let extn = filename.substring(filename.lastIndexOf(".") + 1, filename.length) || filename;
+
+		if (extn === "zip" || extn === "gz" || extn === "rar") {
+			return true;
+		} else {
+			snackFunction("Only Zip files allowed.");
+			return false;
+		}
+	}
+
+	function deleteDataPackage() {
+		
+		headers = { Authorization: "{{apikey | safe}}" };
+		fetch("http://{{ip}}:{{port}}/DataPackageTable", {
+			method: "DELETE",
+			headers: headers,
+			body: JSON.stringify({
+				DataPackages: gArr,
+			}),
+		}).then((response) => {
+			console.log("delete response...");
+			response.json();
+			console.log("delete response...XX " + response.json());
+			snackFunction("Delete Successful. Refreshing data.");
+			refresh();
+		});
+	}
+
+	function deleteExcheck() {
+
+		let obj = {
+				"ExCheck":{
+					"Checklists":[],
+					"Templates" : excheckArr
+				}
+		}
+
+		
+		headers = { Authorization: "{{apikey | safe}}" };
+		fetch("http://{{ip}}:{{port}}/ExCheckTable", {
+			method: "DELETE",
+			headers: headers,
+			body: JSON.stringify(obj),
+		}).then((response) => {
+			
+			response.json();
+			
+			snackFunction("ExCheck Delete Successful. Refreshing data.");
+			refresh();
+		});
+	}
+
+	function deleteOF() {
+		let obj = {
+			"federations": ofDelArr
+		}
+
+		headers = { Authorization: "{{apikey | safe}}" };
+		fetch("http://{{ip}}:{{port}}/FederationTable", {
+			method: "DELETE",
+			headers: headers,
+			body: JSON.stringify(obj),
+			
+		}).then((response) => {
+			console.log("delete OF response... " );
+			snackFunction("Delete Successful. Refreshing data.");
+			refresh();
+		});
+	}
+
+
+	function addOF() {
+		let obj =  {
+		outgoingFederations:[{
+				name: document.getElementById("nameof").value,
+				address: document.getElementById("ipaddressof").value,
+				port: document.getElementById("portof").value,
+				fallBack: document.getElementById("fallbackserverof").value,
+				status: document.getElementById("statusof").value,
+				reconnectInterval: document.getElementById("recintervalof").value,
+				maxRetries: document.getElementById("maxretriesof").value,
+			}]
+		} 
+
+		headers = { Authorization: "{{apikey | safe}}" };
+		fetch("http://{{ip}}:{{port}}/FederationTable", {
+			method: "POST",
+			headers: headers,
+			body: JSON.stringify(obj),
+		}).then((response) => {
+			
+			snackFunction("Add Outgoing Federation Successful. Refreshing data.");
+			refresh();
+		});
+
+	}
+
+	function editOFPut(id) {
+		let obj =  {
+			federations:[{
+				id: document.getElementById("idedit").value,
+				name: document.getElementById("nameofedit").value,
+				address: document.getElementById("ipaddressofedit").value,
+				port: document.getElementById("portofedit").value,
+				fallBack: document.getElementById("fallbackserverofedit").value,
+				status: document.getElementById("statusofedit").value,
+				reconnectInterval: document.getElementById("recintervalofedit").value,
+				maxRetries: document.getElementById("maxretriesofedit").value,
+			}]
+		} 
+
+		headers = { Authorization: "{{apikey | safe}}" };
+		fetch("http://{{ip}}:{{port}}/FederationTable", {
+			method: "PUT",
+			headers: headers,
+			body: JSON.stringify(obj),
+		}).then((response) => {
+			
+			snackFunction("Edit Outgoing Federation Successful. Refreshing data.");
+			refresh();
+		});
+
+	}
+
+
+	$(document).ready(function () {
+		
+		$(".row-class").on("click", function () {
+			$(this).toggleClass("rowselected");
+		});
+	});
+
+	function refresh() {
+		setTimeout(function () {
+			location.reload(true);
+		}, 3000);
+	}
+
+	function jsfunction() {
+		//you code
+		return false;
+	}
+
+	function handlePrivacy(cb, primarykey) {
+		
+		let obj = {
+			DataPackages: [{ PrimaryKey: primarykey, Privacy: cb.checked === true ? "1" : "0" }],
+		};
+		
+		headers = { Authorization: "{{apikey | safe}}" };
+		fetch("http://{{ip}}:{{port}}/DataPackageTable", {
+			method: "PUT",
+			headers: headers,
+			body: JSON.stringify(obj),
+		}).then((response) => {
+			response.json();
+			console.log("privacy updated " + response.json());
+			snackFunction("Privacy updated. Refreshing data.");
+			refresh();
+		});
+	}
+
+
+	function addToggle(param) {
+		var x = document.getElementById(param);
+		if (x.style.display === "none") {
+			document.getElementById("editOF").style.display = "none";
+			x.style.display = "block";
+			x.style.padding = "10px 0px";
+			
+		} else {
+			x.style.display = "none";
+		}
+	}
+
+	const getEventsInfo = (socket) => {
+			
+		socket.emit("events");
+		socket.on("eventsUpdate", function (data) {
+	
+			let eventsArr = data.events;
+			if(eventsArr.lenght > 0) {
+			document.getElementById("notif").style.display = "block";
+			} else {
+			document.getElementById("notif").style.display = "none";
+			}
+
+			let ul = document.createElement("ul");
+			ul.className = "dropdown-menu dropdown-menu-right dropdown-navbar";
+			document.getElementById("events-info").appendChild(ul);
+			
+
+			for (let [index, row] of eventsArr.entries()) {
+				var li = document.createElement("li");  
+				li.className = "nav-link";
+
+				var a = document.createElement("a");
+				a.className = "nav-item dropdown-item";
+				a.innerHTML =  row ;
+
+				li.appendChild(a);
+				ul.appendChild(li);
+			}
+		});
+    };
+
+	
+
+</script>
+<script>
+	$(window).on("load", function () {
+		
+		gArr = [];
+		ofDelArr = [];
+		ofEditArr = [];
+		excheckArr = [];
+	});
+</script>
+
+<script>
+    establishConnection();
+</script>
+
+
+{% endblock javascripts %}

@@ -1,0 +1,75 @@
+{% extends "base-site.html" %} {% block title %} Page User {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %} {% block content %}
+
+<div class="row">
+	<div class="col-md-8">
+		<div class="card">
+			<div class="card-header">
+				<h5 class="title" style="font-size: 14px; color: #278aed">[EDIT PROFILE]</h5>
+			</div>
+			<div class="card-body">
+				<form role="form" method="post" action="">
+					<div class="row">
+						<div class="col-md-5 pr-md-1">
+							<div class="form-group">
+								<label>Name (disabled)</label>
+								<input type="text" class="form-control" disabled="" value="{{ current_user.name }}" />
+							</div>
+						</div>
+						<div class="col-md-7 px-md-1">
+							<div class="form-group">
+								<label>Group</label>
+								{{ form.group(class="form-control", value=current_user.group) }}
+							</div>
+						</div>
+					</div>
+					<p>{{current_user.password}}</p>
+					<div class="row">
+						<div class="col-md-6 pr-md-1">
+							<div class="form-group">
+								<label>Token</label>
+								{{ form.token(class="form-control", value=current_user.token, type="password", placeholder="token", onclick="myFunction('token')", id="token") }}
+							</div>
+						</div>
+						<div class="col-md-6 pl-md-1">
+							<div class="form-group">
+								<label>Password</label>
+								{{ form.password(class="form-control", value=current_user.password, type="password", placeholder="Password", onclick="myFunction('password')", id="password") }}
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12 pr-md-1">
+							<div class="form-group">
+								<label>Certs</label>
+								<input type="text" class="form-control" placeholder="Certs" value="{{ current_user.certificate_package_name}}" />
+							</div>
+						</div>
+					</div>
+					<div class="card-footer">
+						<button type="submit" class="btn btn-fill btn-primary" name="update">Save</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script>
+	function myFunction(param) {
+		var x = document.getElementById(param);
+		if (x.type === "password") {
+			x.type = "text";
+		} else {
+			x.type = "password";
+		}
+	}
+</script>
+{% endblock javascripts %}
