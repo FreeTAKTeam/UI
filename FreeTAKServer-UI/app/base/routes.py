@@ -39,7 +39,11 @@ def login():
         password = request.form['password']
 
         # Locate user
-        user = requests.get(f"http://{app.config['IP']}:{app.config['PORT']}/AuthenticateUser", params={"username": username, "password": password}, headers={"Authorization": f"{app.config['APIKEY']}"}).json()
+        user = requests.get(f"http://{app.config['IP']}:{app.config['PORT']}/AuthenticateUser", params={"username": username, "password": password}, headers={"Authorization": f"{app.config['APIKEY']}"})
+        try:
+            user = user.json()
+        except:
+            return render_template('login/login.html', msg='Wrong user or password', form=login_form)
         
         # Check the password
         if user:
