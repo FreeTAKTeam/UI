@@ -1,17 +1,16 @@
 # FTS Web UI
 
-FTS webUI allows administrators to easily manage the FTS server.
-This component requires a working backend.
-This video, based on a pre-production version,  provides an overview of most features described in the manual
-https://www.youtube.com/watch?v=q4BpolzIDLw&ab_channel=%2aDA-B6%2a 
-The WebUI is a completely separate application connecting to  the FTS backend. 
+FTS webUI allows administrators to easily manage the [FTS](https://github.com/FreeTAKTeam/FreeTakServer) server.
+This component requires a working backend. The WebUI is a completely separate application connecting to  the FTS backend. 
 It uses an API to seamless query server functions. Depending on his deployment, may or may not be  seen from remote machines.
-
+This [video](https://www.youtube.com/watch?v=q4BpolzIDLw&ab_channel=%2aDA-B6%2a), based on a pre-production version,  provides an overview of most features described in the [user manual
+](https://github.com/FreeTAKTeam/FreeTakServer/blob/master/docs/FTS%20UI%20Documention.pdf)
+ 
 
 FTS, also offers a separate Command Line Interface (CLI). Follow this lik for his documentation https://freetakteam.github.io/FreeTAKServer-User-Docs/CLI/. 
 
-Installation and configuration
-This section provides an overview of the installation process. Refer to the online documentation for details. 
+## Installation and configuration
+This section provides an overview of the installation process. Refer to the online [documentation](https://freetakteam.github.io/FreeTAKServer-User-Docs/Installation/PyPi/Linux/Install/) for details. 
 
 To install FTS and the UI type in a console
 ```
@@ -41,7 +40,6 @@ Start the WebUI
  
 - **MIT License**
  
-#
-## How to use it
+
 
 `
