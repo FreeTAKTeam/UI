@@ -14,7 +14,7 @@ class Config(object):
     SECRET_KEY = 'key'
 
     # This will connect to the FTS db
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + r'C:\Users\natha\PycharmProjects\UI_git\example.db'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + '/opt/FTSServer-UI.db'
 
     # certificates path
     certpath = "/usr/local/lib/python3.8/dist-packages/FreeTAKServer/certs/"
@@ -35,7 +35,7 @@ class Config(object):
     APPIP = '127.0.0.1'
 
     # webmap IP
-    WEBMAPIP = "204.48.30.216"
+    WEBMAPIP = "127.0.0.1"
 
     # webmap port
     WEBMAPPORT = 8000
