@@ -105,6 +105,7 @@ def webmapApi():
 @blueprint.route('/page-user', methods=['GET', 'POST'])
 @login_required
 def page_user():
+    import copy
     update_account_form = UpdateAccountForm(request.form)
     y = request.form
     if "update" in request.form:
@@ -120,7 +121,8 @@ def page_user():
         return render_template('page-user.html', form=update_account_form)
 
     else:
-        return render_template('page-user.html', form=update_account_form)
+        uid = copy.copy(current_user.uid)
+        return render_template('page-user.html', form=update_account_form, ip=app.config["IP"], port=app.config["PORT"], websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], user_id=uid)
 
 
 

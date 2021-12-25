@@ -372,11 +372,17 @@ const getServiceInfo = (socket) => {
 		let serviceInfoObject = JSON.parse(data);
 
 		orig_tcp_cot_status = serviceInfoObject.services.TCP_CoT_service.status;
+		orig_tcp_cot_port = serviceInfoObject.services.TCP_CoT_service.port;
 		orig_ssl_cot_status = serviceInfoObject.services.SSL_CoT_service.status;
+		orig_ssl_cot_port = serviceInfoObject.services.SSL_CoT_service.port;
 		orig_tcp_dp_status = serviceInfoObject.services.TCP_DataPackage_service.status;
+		orig_tcp_dp_port = serviceInfoObject.services.TCP_DataPackage_service.port;
 		orig_ssl_dp_status = serviceInfoObject.services.SSL_DataPackage_service.status;
+		orig_ssl_dp_port = serviceInfoObject.services.SSL_DataPackage_service.port;
 		orig_api_cot_status = serviceInfoObject.services.Rest_API_service.status;
+		orig_api_cot_port = serviceInfoObject.services.Rest_API_service.port;
 		orig_fed_cot_status = serviceInfoObject.services.Federation_server_service.status;
+		orig_fed_cot_port = serviceInfoObject.services.Federation_server_service.port;
 
 		console.log("Print CONFIGURE serviceInfoUpdate Response:" + JSON.stringify(serviceInfoObject));
 
@@ -466,29 +472,29 @@ let obj =	{
    },
    ip: document.getElementById("ip").value
 }
+	var status_mapper = {"on": true, "off": false}
 
-
-	if(orig_tcp_cot_status === "on" && (document.getElementById("TCPCoTOnOffSwitch").checked === true)) {
+	if((status_mapper[orig_tcp_cot_status] === document.getElementById("TCPCoTOnOffSwitch").checked) && (String(orig_tcp_cot_port) === document.getElementById("tcp_cot_port").value)) {
 		delete obj.services.TCP_CoT_service;
 	}
 
-	if(orig_ssl_cot_status === "on" && (document.getElementById("SSLCoTOnOffSwitch").checked === true)) {
+	if((status_mapper[orig_ssl_cot_status] === document.getElementById("SSLCoTOnOffSwitch").checked) && (String(orig_ssl_cot_port) === document.getElementById("ssl_cot_port").value)) {
 		delete obj.services.SSL_CoT_service;
 	}
 
-	if(orig_tcp_dp_status === "on" && (document.getElementById("HTTPDPOnOffSwitch").checked === true)) {
+	if((status_mapper[orig_tcp_dp_status] === document.getElementById("HTTPDPOnOffSwitch").checked) && (String(orig_tcp_dp_port) === document.getElementById("http_dp_port").value)) {
 		delete obj.services.TCP_DataPackage_service;
 	}
 
-	if(orig_ssl_dp_status === "on" && (document.getElementById("SSLDPOnOffSwitch").checked === true)) {
+	if((status_mapper[orig_ssl_dp_status] === document.getElementById("SSLDPOnOffSwitch").checked) && (String(orig_ssl_dp_port) === document.getElementById("ssl_dp_port").value)) {
 		delete obj.services.SSL_DataPackage_service;
 	}
 
-	if(orig_api_cot_status === "on" && (document.getElementById("APIOnOffSwitch").checked === true)) {
+	if((status_mapper[orig_api_cot_status] === document.getElementById("APIOnOffSwitch").checked) && (String(orig_api_cot_port) === document.getElementById("api_port").value)) {
 		delete obj.services.Rest_API_service;
 	}
 
-	if(orig_fed_cot_status === "on" && (document.getElementById("FEDOnOffSwitch").checked === true)) {
+	if((status_mapper[orig_fed_cot_status] === document.getElementById("FEDOnOffSwitch").checked) && (String(orig_fed_cot_port) === document.getElementById("fed_port").value)) {
 		delete obj.services.Federation_server_service;
 	}
 
