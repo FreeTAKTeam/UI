@@ -28,7 +28,7 @@ class Config(object):
     # this IP will be used to connect with the FTS API
     IP = '127.0.0.1'
 
-    # Port the  UI uses to communicate with the API
+    # Port the UI uses to communicate with the API
     PORT = '19023'
 
     # the public IP your server is exposing
