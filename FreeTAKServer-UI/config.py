@@ -40,6 +40,13 @@ class Config(object):
     # webmap port
     WEBMAPPORT = 8000
 
+    # the IP used by voice Client
+    MUMBLEIP = "127.0.0.1"
+
+    #the port used by voice Client
+    MUMBLEPORT = 
+
+
     # this port will be used to listen
     APPPort = 5000
 
