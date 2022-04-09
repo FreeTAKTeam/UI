@@ -22,12 +22,22 @@ MainConfig.py for FTS
 ```
 
 ### Start FTS
-```nohup sudo python3 -m FreeTAKServer.controllers.services.FTS -DataPackageIP [YourIP] -AutoStart True nohup sudo python3 -m 
+
+```
+nohup sudo python3 -m FreeTAKServer.controllers.services.FTS 
 ```
 
 ## Start the WebUI
-```nohup  sudo FLASK_APP=/usr/local/lib/python3.8/dist-packages/FreeTAKServer-UI/run.py python3 
+in the console type navigate to the installation path
+
 ```
+cd /usr/local/lib/python3.8/dist-packages/FreeTAKServer-UI
+```
+
+```
+nohup   sudo python3 run.py
+```
+
 ## Dashboard Features
 
 - SQLite,  
