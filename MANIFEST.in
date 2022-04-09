@@ -1,1 +1,1 @@
-recursive-include app *
+recursive-include FreeTAKServer-UI/app *

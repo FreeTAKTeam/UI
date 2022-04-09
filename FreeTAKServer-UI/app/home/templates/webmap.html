@@ -1,0 +1,23 @@
+{% extends "base-site.html" %} {% block title %} webmap {% endblock %}
+{% block stylesheets %}
+<style type="text/css">
+        body, html
+        {
+            margin: 0; padding-left: 8%; height: 100%; overflow: hidden;
+        }
+
+        #content
+        {
+            position:absolute; left: 0; right: 0; padding-top: 3%; bottom: 0; top: 0px;
+        }
+</style>
+{% endblock stylesheets %}
+{% block content %}
+
+<!-- ======= Header tools ======= -->
+<body>
+    <div id="content">
+        <iframe src= "http://{{ webmapip }}:{{ webmapport }}/tak-map" title="webmap" width="100%" height="100%"></iframe>
+    </div>
+</body>
+{% endblock content %}
