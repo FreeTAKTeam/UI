@@ -9138,3 +9138,14 @@ MANIFEST.in
 requirements.txt
 setup.py
 FreeTAKServer-UI/config.py
+.vscode/launch.json
+FreeTAKServer-UI/config.py
+FreeTAKServer-UI/__pycache__/config.cpython-38.pyc
+FreeTAKServer-UI/app/__pycache__/__init__.cpython-38.pyc
+FreeTAKServer-UI/app/base/__pycache__/__init__.cpython-38.pyc
+FreeTAKServer-UI/app/base/__pycache__/forms.cpython-38.pyc
+FreeTAKServer-UI/app/base/__pycache__/models.cpython-38.pyc
+FreeTAKServer-UI/app/base/__pycache__/routes.cpython-38.pyc
+FreeTAKServer-UI/app/base/__pycache__/util.cpython-38.pyc
+FreeTAKServer-UI/app/home/__pycache__/__init__.cpython-38.pyc
+FreeTAKServer-UI/app/home/__pycache__/routes.cpython-38.pyc
