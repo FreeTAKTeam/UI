@@ -62,11 +62,18 @@
 			<div><input type="text" class="form-control" id="token1" value="" placeholder="Token" /></div>
 			<div><input type="text" class="form-control" id="password1" value="" placeholder="Password" /></div>
 
-			<div style="font-size: 16px; color: #b5b5b5; line-height: 40px">Certs</div>
+			<div style="font-size: 16px; color: #b5b5b5; line-height: 40px; text-align: right;">Certs</div>
 			<div class="select" style="width: 120px">
 				<select name="format" id="certbool">
 					<option selected value="true">True</option>
 					<option value="false">False</option>
+				</select>
+			</div>
+			<div style="font-size: 16px; color: #b5b5b5; line-height: 40px; text-align: right;">Device Type</div>
+			<div class="select" style="width: 120px">
+				<select name="format" id="deviceType">
+					<option selected value="mobile">Mobile</option>
+					<option value="wintak">WinTAK</option>
 				</select>
 			</div>
 		</div>
@@ -218,6 +225,9 @@
 			let certsHdr = headerRow.insertCell();
 			certsHdr.textContent = "Certs";
 			certsHdr.className = "user_c1";
+			let deviceTypeHdr = headerRow.insertCell();
+			deviceTypeHdr.textContent = "Device Type";
+			deviceTypeHdr.className = "user_c1";
 
 			document.getElementById("user-table-hdr").appendChild(tablehdr);
 
@@ -269,6 +279,12 @@
 					let certsCell = t_row.insertCell();
 					certsCell.textContent = row.Certs;
 					certsCell.className = "user-cell-style-1";
+					
+					let deviceTypeCell = t_row.insertCell();
+					deviceTypeCell.textContent = row.DeviceType;
+					deviceTypeCell.className = "user-cell-style-1";
+					
+
 				}
 
 				document.getElementById("user-table").appendChild(table);
@@ -370,6 +386,10 @@
 			snackFunction("Certification field is mandatory");
 			return false;
 		}
+		else if (document.getElementById("deviceType").value === "") {
+			snackFunction("device type field is mandatory");
+			return false;
+		}
 
 		let obj = {
 			systemUsers: [
@@ -379,6 +399,7 @@
 					Token: document.getElementById("token1").value,
 					Password: document.getElementById("password1").value,
 					Certs: document.getElementById("certbool").value,
+					DeviceType: document.getElementById("deviceType").value
 				},
 			],
 		};
@@ -396,6 +417,7 @@
 			document.getElementById("token1").value = "";
 			document.getElementById("password1").value = "";
 			document.getElementById("certbool").value = "";
+			document.getElementById("deviceType").value = "";
 			addUserToggle();
 
 			snackFunction("User Added, refreshing data");
