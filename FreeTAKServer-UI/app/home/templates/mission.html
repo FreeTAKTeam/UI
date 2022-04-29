@@ -35,7 +35,7 @@
 			<div
 				class="row-color-nohover row-class"
 				style="display: grid; grid-template-columns: 240px 150px 50px 120px 100px 240px; gap: 10px; padding: 10px; color: #fff; opacity: 0.8; width: 1000px;"
-				onclick="captureClick('{{dict_items.Hash}}')"
+				onclick="captureClick('{{dict_items.Hash}}', '{{dict_items.PrimaryKey}}')"
 			>
 				
 				
@@ -77,6 +77,15 @@
 				style="color: #278aed80; border-color: #278aed; color: #278aed; display: inline-flex"
 			>
 				<span>DELETE</span> <span id="del-count">&nbsp;</span>
+			</div>
+			&nbsp;&nbsp;&nbsp;
+			<div
+				class="btn btn-simple btn-twitter"
+				id="data-package-qr"
+				onclick="openQR()"
+				style="color: #278aed80; border-color: #278aed; color: #278aed; display: inline-flex"
+			>
+				<span>QR</span>
 			</div>
 			&nbsp;&nbsp;&nbsp;
 			<button class="btn btn-simple btn-twitter" onclick="onSelectFile()" style="color: #278aed; border-color: #278aed">ADD</button>
@@ -438,9 +447,9 @@ const authenticate = (socket) => {
 	// this is a global variable
 	var gArr;
 	
-	function captureClick(param) {
+	function captureClick(param, index) {
 		if (!gArr.some((item) => item.hash === param)) {
-			let vv = { hash: param };
+			let vv = { hash: param, index: index };
 			gArr.push(vv);
 		} else {
 			gArr = gArr.filter((item) => item.hash !== param);
@@ -540,6 +549,12 @@ const authenticate = (socket) => {
 
 	}
 
+	function openQR() {
+		for (let i = 0; i < gArr.length; i++) {
+			window.open(window.location.origin+"/mission/"+gArr.at(i).index+"/qr")
+		}
+		
+	}
 
 	function downloadFile(param, name) {
 		

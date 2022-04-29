@@ -614,8 +614,8 @@ div::-webkit-scrollbar-thumb {
 
 
 	.user-add-section {
-		display: grid; width: 80%; padding: 20px; margin: 0 auto; 
-		grid-template-columns: 1fr 120px 120px 180px 50px 1fr; gap: 20px
+		display: grid; width: 80%; padding: 10px; margin: 0 auto; 
+		grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px
 	}
 
 	.about-version-section {
