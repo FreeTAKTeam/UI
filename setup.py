@@ -7,7 +7,7 @@ setup(
     url='https://github.com/FreeTAKTeam/FreeTakServer',
     license='Eclipse License',
     author='Ghost, C0rv0',
-    author_email='your.email@domain.com',
+    author_email='freetakteam@gmail.com',
     description='an optional UI for FreeTAKServer',
     install_requires = [
         "flask",
