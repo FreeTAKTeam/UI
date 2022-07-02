@@ -1,6 +1,7 @@
 # FTS Web UI
+![image](https://user-images.githubusercontent.com/60719165/177003787-c1322f17-a55e-4d81-a0a1-25c6178cb42e.png)
 
-FTS webUI allows administrators to easily manage the [FTS](https://github.com/FreeTAKTeam/FreeTakServer) server.
+FTS Web UI allows administrators to easily manage the [FTS](https://github.com/FreeTAKTeam/FreeTakServer) server.
 This component requires a working backend. The WebUI is a completely separate application connecting to  the FTS backend. 
 It uses an API to seamless query server functions. Depending on his deployment, may or may not be  seen from remote machines.
 
