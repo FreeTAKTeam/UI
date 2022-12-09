@@ -14,10 +14,10 @@ class Config(object):
     SECRET_KEY = 'key'
 
     # This will connect to the FTS db
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + '/opt/FTSServer-UI.db'
+    SQLALCHEMY_DATABASE_URI = os.environ.get('FTS_UI_DB_PATH', 'sqlite:///' + '/home/ariel/Workspace/FTAK/FTSServer-UI.db')
 
     # certificates path
-    certpath = "/usr/local/lib/python3.8/dist-packages/FreeTAKServer/certs/"
+    certpath = os.environ.get('FTS_UI_CERTS_PATH', "/usr/local/lib/python3.8/dist-packages/FreeTAKServer/certs/")
 
     # crt file path
     crtfilepath = f"{certpath}pubserver.pem"
