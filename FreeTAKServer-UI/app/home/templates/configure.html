@@ -296,7 +296,7 @@
 <script>
 
 
-var socket = io.connect(`http://{{ip}}:{{port}}`);
+var socket = io.connect(`{{protocol}}://{{ip}}:{{port}}`);
 
 var orig_tcp_cot_status;
 var orig_ssl_cot_status;
@@ -518,7 +518,7 @@ function addOF() {
 		} 
 
 		headers = { Authorization: "{{apikey | safe}}" };
-		fetch("http://{{ip}}:{{port}}/FederationTable", {
+		fetch("{{protocol}}://{{ip}}:{{port}}/FederationTable", {
 			method: "POST",
 			headers: headers,
 			body: JSON.stringify(obj),

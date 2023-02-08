@@ -28,22 +28,28 @@ class Config(object):
     # this IP will be used to connect with the FTS API
     IP = '127.0.0.1'
 
-    # Port the  UI uses to communicate with the API
+    # Port the UI uses to communicate with the API
     PORT = '19023'
+
+    # Protocol the UI uses to communicate with the API
+    PROTOCOL = 'http'
 
     # the public IP your server is exposing
     APPIP = '127.0.0.1'
 
     # webmap IP
-    WEBMAPIP = "127.0.0.1"
+    WEBMAPIP = '127.0.0.1'
 
     # webmap port
     WEBMAPPORT = 8000
 
+    # webmap protocol
+    WEBMAPPROTOCOL = 'http'
+
     # this port will be used to listen
     APPPort = 5000
 
-    # the webSocket  key used by the UI to communicate with FTS.
+    # the webSocket key used by the UI to communicate with FTS.
     WEBSOCKETKEY = 'YourWebsocketKey'
 
     # the API key used by the UI to comunicate with FTS. generate a new system user and then set it
