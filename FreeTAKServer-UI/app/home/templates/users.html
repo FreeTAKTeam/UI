@@ -163,7 +163,7 @@
 	// this gets current server data
 	async function establishConnection() {
 		console.log("Make connection");
-		var socket = io.connect(`http://{{ip}}:{{port}}`);
+		var socket = io.connect(`{{protocol}}://{{ip}}:{{port}}`);
 
 		console.log("Emit event authenticate...");
 
@@ -354,7 +354,7 @@
 	}
 
 	const removeUsers = async () => {
-		var socket = io.connect(`http://{{ip}}:{{port}}`);
+		var socket = io.connect(`{{protocol}}://{{ip}}:{{port}}`);
 
 		let obj = {
 			systemUsers: uArr,
@@ -404,7 +404,7 @@
 			],
 		};
 
-		var socket = io.connect(`http://{{ip}}:{{port}}`);
+		var socket = io.connect(`{{protocol}}://{{ip}}:{{port}}`);
 
 		console.log("Emit event authenticate...");
 

@@ -408,7 +408,7 @@
 
 <script>
 
-var socket = io.connect(`http://{{ip}}:{{port}}`);
+var socket = io.connect(`{{protocol}}://{{ip}}:{{port}}`);
 
 var tcpip;
 var tcpport;
@@ -558,7 +558,7 @@ const authenticate = (socket) => {
 
 	function downloadFile(param, name) {
 		
-		let url = `http://${tcpip}:${tcpport}/Marti/api/sync/metadata/${param}/tool`;
+		let url = `${protocol}://${tcpip}:${tcpport}/Marti/api/sync/metadata/${param}/tool`;
 		headers = { Authorization: "{{apikey | safe}}", Connection: "Keep-Alive" };
 
 		
@@ -647,7 +647,7 @@ const authenticate = (socket) => {
 
 		headers = { Authorization: "{{apikey | safe}}", Connection: "Keep-Alive" };
 
-		fetch(`http://{{ip}}:{{port}}/DataPackageTable?filename=${file.name}&creator={{current_user.name}}`, {
+		fetch(`{{protocol}}://{{ip}}:{{port}}/DataPackageTable?filename=${file.name}&creator={{current_user.name}}`, {
 			method: "POST",
 			headers: headers,
 			body: formData,
@@ -703,7 +703,7 @@ const authenticate = (socket) => {
 
 		headers = { Authorization: "{{apikey | safe}}", Connection: "Keep-Alive" };
 		
-		fetch(`http://{{ip}}:{{port}}/ExCheckTable`, {
+		fetch(`{{protocol}}://{{ip}}:{{port}}/ExCheckTable`, {
 			method: "POST",
 			headers: headers,
 			body: inputExcheck.files[0],
@@ -770,7 +770,7 @@ const authenticate = (socket) => {
 	function deleteDataPackage() {
 		
 		headers = { Authorization: "{{apikey | safe}}" };
-		fetch("http://{{ip}}:{{port}}/DataPackageTable", {
+		fetch("{{protocol}}://{{ip}}:{{port}}/DataPackageTable", {
 			method: "DELETE",
 			headers: headers,
 			body: JSON.stringify({
@@ -796,7 +796,7 @@ const authenticate = (socket) => {
 
 		
 		headers = { Authorization: "{{apikey | safe}}" };
-		fetch("http://{{ip}}:{{port}}/ExCheckTable", {
+		fetch("{{protocol}}://{{ip}}:{{port}}/ExCheckTable", {
 			method: "DELETE",
 			headers: headers,
 			body: JSON.stringify(obj),
@@ -815,7 +815,7 @@ const authenticate = (socket) => {
 		}
 
 		headers = { Authorization: "{{apikey | safe}}" };
-		fetch("http://{{ip}}:{{port}}/FederationTable", {
+		fetch("{{protocol}}://{{ip}}:{{port}}/FederationTable", {
 			method: "DELETE",
 			headers: headers,
 			body: JSON.stringify(obj),
@@ -842,7 +842,7 @@ const authenticate = (socket) => {
 		} 
 
 		headers = { Authorization: "{{apikey | safe}}" };
-		fetch("http://{{ip}}:{{port}}/FederationTable", {
+		fetch("{{protocol}}://{{ip}}:{{port}}/FederationTable", {
 			method: "POST",
 			headers: headers,
 			body: JSON.stringify(obj),
@@ -869,7 +869,7 @@ const authenticate = (socket) => {
 		} 
 
 		headers = { Authorization: "{{apikey | safe}}" };
-		fetch("http://{{ip}}:{{port}}/FederationTable", {
+		fetch("{{protocol}}://{{ip}}:{{port}}/FederationTable", {
 			method: "PUT",
 			headers: headers,
 			body: JSON.stringify(obj),
@@ -907,7 +907,7 @@ const authenticate = (socket) => {
 		};
 		
 		headers = { Authorization: "{{apikey | safe}}" };
-		fetch("http://{{ip}}:{{port}}/DataPackageTable", {
+		fetch("{{protocol}}://{{ip}}:{{port}}/DataPackageTable", {
 			method: "PUT",
 			headers: headers,
 			body: JSON.stringify(obj),

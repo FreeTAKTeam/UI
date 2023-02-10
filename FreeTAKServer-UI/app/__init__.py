@@ -6,6 +6,7 @@ go to line 77+ for configuring the FTS UI
 """
 
 from flask import Flask, url_for
+from flask_cors import CORS
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy_utils.functions import database_exists
@@ -76,6 +77,12 @@ def apply_themes(app):
 def create_app(config, selenium=False):
     app = Flask(__name__, static_folder='base/static')
     app.config.from_object(config)
+    
+    # apply cors only for api route and webmap route
+    api_uri = f"{app.config['PROTOCOL']}://{app.config['IP']}:{app.config['PORT']}"
+    webmap_uri = f"{app.config['WEBMAPPROTOCOL']}://{app.config['WEBMAPIP']}:{app.config['WEBMAPPORT']}"
+    CORS(app, origins=[api_uri, webmap_uri])
+    
     #if database_exists(app.config['SQLALCHEMY_DATABASE_URI']) == False:
     #    raise Exception("Database does not exist, check your DataBase path and ensure that you've started FTS")
     # UI configuration

@@ -66,11 +66,28 @@ app = create_app( app_config )
         '-i', '--ip_address', type=str, help='ip address of the target host'
         , required=False)
     parser.add_argument(
+        '-ap', '--api_port', type=int, help='Port of the target host'
+        , required=False)
+    parser.add_argument(
+        '-ac', '--api_protocol', type=str, help='Protocol of the target host'
+        , required=False)
+    parser.add_argument(
         '-k', '--key', type=str, help='Web Socket key for the UI'
         , required=False)
     parser.add_argument(
         '-p', '--port', type=int, help='Port for the Web UI HTTP'
         , required=False)
+    parser.add_argument(
+        '-c', '--protocol', type=str, help='Protocol serving the Web UI HTTP'
+        , required=False)
+    parser.add_argument(
+        '-wi', '--webmap_ip', type=str, help='ip address of the webmap host'
+        , required=False)
+    parser.add_argument(
+        '-wc', '--webmap_protocol', type=str, help='protocol of the webmap host'
+        , required=False)
+    parser.add_argument(
+        '-wp', '--webmap_port', type=int, help='port of the webmap host'
     parser.add_argument(
         '-d','--debug', default=False, dest='debug',action='store_true'
         ,help='Enable Debug mode')
@@ -85,6 +102,21 @@ app = create_app( app_config )
     if arguments.ip_address:
         print("IP Address override: " + str(arguments.ip_address))
         app.config['IP'] = arguments.ip_address
+    if arguments.api_port:
+        print("API Port override: " + str(arguments.api_port))
+        app.config['PORT'] = arguments.api_port
+    if arguments.api_protocol:
+        print("API Protocol override: " + str(arguments.api_protocol))
+        app.config['PROTOCOL'] = arguments.api_protocol
+    if arguments.webmap_ip:
+        print("Web Map IP override: " + str(arguments.webmap_ip))
+        app.config['WEBMAPIP'] = arguments.webmap_ip
+    if arguments.webmap_protocol:
+        print("Web Map Protocol override: " + str(arguments.webmap_protocol))
+        app.config['WEBMAPPROTOCOL'] = arguments.webmap_protocol
+    if arguments.webmap_port:
+        print("Web Map Port override: " + str(arguments.webmap_port))
+        app.config['WEBMAPPORT'] = arguments.webmap_port
     if arguments.key:
         print("Web Socket Key override: " + str(arguments.key))
         app.config['WEBSOCKETKEY'] = arguments.key

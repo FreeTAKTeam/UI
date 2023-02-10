@@ -39,7 +39,7 @@ def login():
         password = request.form['password']
 
         # Locate user
-        user = requests.get(f"http://{app.config['IP']}:{app.config['PORT']}/AuthenticateUser", params={"username": username, "password": password}, headers={"Authorization": f"{app.config['APIKEY']}"})
+        user = requests.get(f"{app.config['PROTOCOL']}://{app.config['IP']}:{app.config['PORT']}/AuthenticateUser", params={"username": username, "password": password}, headers={"Authorization": f"{app.config['APIKEY']}"})
         try:
             user = user.json()
         except:

@@ -120,7 +120,7 @@
      document.getElementById("ui-ip").innerText = self.location.host ;
 
 	 async function establishConnection() {
-		var socket = io.connect(`http://{{ip}}:{{port}}`);
+		var socket = io.connect(`{{protocol}}://{{ip}}:{{port}}`);
 		getConnectInfo(socket);
 		let isAuth = await authenticate(socket);
 
@@ -194,5 +194,3 @@
 </script>
 
 {% endblock javascripts %}
-
-

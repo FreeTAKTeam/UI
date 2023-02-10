@@ -330,7 +330,7 @@
 		};
 
 		headers = { "Content-Type": "application/json", Authorization: "{{apikey | safe}}" };
-		fetch("http://{{ip}}:{{port}}/ManageGeoObject/postGeoObject", {
+		fetch("{{protocol}}://{{ip}}:{{port}}/ManageGeoObject/postGeoObject", {
 			method: "post",
 			headers: headers,
 			body: JSON.stringify(obj),
@@ -372,7 +372,7 @@
 		};
 
 		headers = { "Content-Type": "application/json", Authorization: "{{apikey | safe}}" };
-		fetch("http://{{ip}}:{{port}}/ManageChat/postChatToAll", {
+		fetch("{{protocol}}://{{ip}}:{{port}}/ManageChat/postChatToAll", {
 			method: "post",
 			headers: headers,
 			body: JSON.stringify(obj),
@@ -411,7 +411,7 @@
 		};
 
 		headers = { "Content-Type": "application/json", Authorization: "{{apikey | safe}}" };
-		fetch("http://{{ip}}:{{port}}/ManageEmergency/postEmergency", {
+		fetch("{{protocol}}://{{ip}}:{{port}}/ManageEmergency/postEmergency", {
 			method: "post",
 			headers: headers,
 			body: JSON.stringify(obj),
@@ -456,7 +456,7 @@
 		};
 
 		headers = { "Content-Type": "application/json", Authorization: "{{apikey | safe}}" };
-		fetch("http://{{ip}}:{{port}}/ManagePresence/postPresence", {
+		fetch("{{protocol}}://{{ip}}:{{port}}/ManagePresence/postPresence", {
 			method: "post",
 			headers: headers,
 			body: JSON.stringify(obj),
@@ -515,7 +515,7 @@
 		};
 
 		headers = { Authorization: "{{apikey | safe}}" };
-		fetch("http://{{ip}}:{{port}}/ManageEmergency/deleteEmergency", {
+		fetch("{{protocol}}://{{ip}}:{{port}}/ManageEmergency/deleteEmergency", {
 			method: "DELETE",
 			headers: headers,
 			body: JSON.stringify(obj),
@@ -530,7 +530,7 @@
 
 	async function establishConnection() {
 		console.log("Make connection");
-		var socket = io.connect(`http://{{ip}}:{{port}}`);
+		var socket = io.connect(`{{protocol}}://{{ip}}:{{port}}`);
 
 		console.log("Emit event authenticate...");
 
