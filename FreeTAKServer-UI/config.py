@@ -16,14 +16,17 @@ class Config(object):
     # This will connect to the FTS db
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + '/opt/FTSServer-UI.db'
 
+"""
+    experimental SSL support in the UI
+"""
     # certificates path
-    certpath = "/usr/local/lib/python3.8/dist-packages/FreeTAKServer/certs/"
+      # certpath = "/usr/local/lib/python3.8/dist-packages/FreeTAKServer/certs/"
 
     # crt file path
-    crtfilepath = f"{certpath}pubserver.pem"
+      # crtfilepath = f"{certpath}pubserver.pem"
 
     # key file path
-    keyfilepath = f"{certpath}pubserver.key.unencrypted"
+      # keyfilepath = f"{certpath}pubserver.key.unencrypted"
 
     # this IP will be used to connect with the FTS API
     IP = '127.0.0.1'
