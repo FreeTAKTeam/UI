@@ -194,12 +194,12 @@
 				style="display: grid; grid-template-columns: 200px 240px 240px 200px 200px 200px; padding: 10px; color: #fff; opacity: 0.8; width: 1280px;"
 				onclick="captureExcheckClick('{{items.uid}}')"
 			>
-				<div>{{items['name']}}</div>
-				<div>{{items['submitter'] | replace("[", "") | replace("(", "") | replace("'", "") | replace("'", "") | replace(")", "") | replace("]",
+				<div>{{items['data']['keywords'][0]}}</div>
+				<div>{{items['creatorUid'] | replace("[", "") | replace("(", "") | replace("'", "") | replace("'", "") | replace(")", "") | replace("]",
 					"") | replace(",", "")}}</div>
-				<div>{{items['filename']}}</div>
-				<div>{{items['size']}}</div>
-				<div>{{items['submissionTime']}}</div>
+				<div>{{items['data']['filename']}}</div>
+				<div>{{items['data']['size']}}</div>
+				<div>{{items['data']['submissionTime']}}</div>
 				<div>&nbsp;</div>
 			</div>
 

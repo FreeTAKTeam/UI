@@ -1,3 +1,4 @@
+venv/
 error.log
 MANIFEST.in
 requirements.txt

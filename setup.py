@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='FreeTAKServer-UI',
-    version='1.9.9.5',
+    version='2.0.69.6',
     packages=['FreeTAKServer-UI', 'FreeTAKServer-UI.app', 'FreeTAKServer-UI.app.base', 'FreeTAKServer-UI.app.home', 'FreeTAKServer-UI.tests'],
     url='https://github.com/FreeTAKTeam/FreeTakServer',
     license='Eclipse License',
@@ -14,6 +14,7 @@ setup(
         "flask_login",
         "flask_migrate",
         "flask_wtf",
+        "WTForms == 2.3.3",
         "flask_sqlalchemy",
         "email_validator",
         "gunicorn",

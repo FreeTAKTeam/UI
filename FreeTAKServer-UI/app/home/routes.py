@@ -50,7 +50,7 @@ def missionApi():
    
     return render_template('mission.html', json_data = json_data['json_list'], 
     mission_json_data = mission_json_data['data'],
-    excheck_json_data = excheck_json_data['ExCheck']['Templates'],
+    excheck_json_data = excheck_json_data['data'][0]['contents'],
     outgoing_federation_json_data = outgoing_federation_json_data['federations'],
     segment = "mission",
     websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], port=app.config['PORT'], ip=app.config['IP'],
