@@ -189,6 +189,7 @@
 				<div>&nbsp;</div>
 			</div>
 			{% endif %}
+            {% if items['data'].get('keywords') is not none %}
 			<div
 				class="row-color-nohover row-class"
 				style="display: grid; grid-template-columns: 200px 240px 240px 200px 200px 200px; padding: 10px; color: #fff; opacity: 0.8; width: 1280px;"
@@ -202,7 +203,7 @@
 				<div>{{items['data']['submissionTime']}}</div>
 				<div>&nbsp;</div>
 			</div>
-
+            {% endif %}
 			{% endfor %}
 		</div>
 	</div>
@@ -477,7 +478,7 @@ const authenticate = (socket) => {
 			excheckArr = excheckArr.filter((item) => item.uid !== param);
 		}
 
-		// classListß
+		// classList
 		if (excheckArr.length > 0) {
 			document.getElementById("del-excheck-count").innerHTML = `&nbsp;[${excheckArr.length}]`;
 			document.getElementById("excheck-delete").classList.add("btn", "btn-simple", "btn-twitter", "enable-delete");
