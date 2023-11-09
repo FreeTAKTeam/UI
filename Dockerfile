@@ -1,18 +1,25 @@
 FROM python:3.11
 
 RUN groupadd -r freetak && useradd -m -r -g freetak freetak
+
+RUN mkdir -p /home/freetak/data && chown -R freetak:freetak /home/freetak/data
+
 USER freetak
-
-WORKDIR app/
-
-COPY --chown=freetak:freetak . ./
+WORKDIR /usr/src/app
 
 # Install pre-reqs then the base FTS
 ENV PATH /home/freetak/.local/bin:/home/freetak/.local/lib:$PATH
-RUN pip3 install -r requirements.txt
-RUN pip3 install /app
+
+COPY --chown=freetak:freetak --chmod=774 . ./
+RUN ls
+RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install .
+
+
+# Get a way to edit the configuration from outside the container
 WORKDIR /home/freetak/.local/lib/python3.11/site-packages/FreeTAKServer-UI/
+RUN mv config.py config.bak
 
-expose 5000
-
-ENTRYPOINT ["python", "run.py"]
+EXPOSE 5000/tcp
+VOLUME /home/freetak/data
+CMD ["/usr/src/app/docker-run.sh"]

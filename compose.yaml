@@ -1,0 +1,9 @@
+services:
+  FTS-UI:
+    image: localhost/fts-ui:latest
+    pull_policy: build
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./config:/home/freetak/data:Z
