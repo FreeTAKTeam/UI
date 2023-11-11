@@ -1,9 +1,11 @@
 services:
-  FTS-UI:
-    image: localhost/fts-ui:latest
-    pull_policy: build
+  ftsui:
+    image: freetakserver-ui:latest
     build:
-      context: .
+      context: ../UI/.
       dockerfile: Dockerfile
+#    ports:
+#      - 5000:5000
     volumes:
-      - ./config:/home/freetak/data:Z
+      - ./ui-config:/home/freetak/data:Z
+    network_mode: "host"
