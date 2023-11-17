@@ -1,18 +1,41 @@
-name: Create Container Image for Tags
+name: Tag-triggered Containerization
 
 on:
   push:
     tags:
       - "*"
 
+env:
+  IMAGE_NAME: ${{ github.repository }}:${{ github.ref_name }}
+
 jobs:
 
   build:
 
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Build the container image
-      run: docker build . --file Dockerfile --tag FTS-UI:${{ github.ref_name }}
-      
+      # can this be converted to podman at some point to be more foss?
+      run: docker build . --file Dockerfile --tag $IMAGE_NAME --label "runnumber=${GITHUB_RUN_ID}"
+
+    - name: Log in to registry
+      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
+
+    - name: Push image to ghcr.io
+      run: |
+        IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
+
+        # This changes all uppercase characters to lowercase.
+        IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
+        # This uses the Docker `latest` tag convention.
+        [ "$VERSION" == "main" ] && VERSION=latest
+        echo IMAGE_ID=$IMAGE_ID
+        echo VERSION=$VERSION
+        docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
+        docker push $IMAGE_ID:$VERSION
+
