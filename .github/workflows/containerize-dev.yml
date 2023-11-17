@@ -4,7 +4,7 @@ on:
   push:
 
 env:
-  IMAGE_NAME: ftsui:${{ github.sha }}
+  IMAGE_NAME: freetakteam/ui:${{ github.sha }}
 
 jobs:
 
@@ -26,7 +26,7 @@ jobs:
 
     - name: Push image to ghcr.io
       run: |
-        IMAGE_ID=docker.io/library/${{ github.repository_owner }}/$IMAGE_NAME
+        IMAGE_ID=${{ github.repository_owner }}/$IMAGE_NAME
         # This changes all uppercase characters to lowercase.
         IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
         echo IMAGE_ID=$IMAGE_ID
