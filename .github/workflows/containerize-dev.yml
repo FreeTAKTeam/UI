@@ -26,9 +26,6 @@ jobs:
 
     - name: Push image to ghcr.io
       run: |
-        IMAGE_ID=$IMAGE_NAME
-        # This changes all uppercase characters to lowercase.
-        IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
-        echo IMAGE_ID=$IMAGE_ID
-        docker push $IMAGE_ID
+        echo IMAGE_NAME=$IMAGE_NAME
+        docker push $IMAGE_NAME ghcr.io/$IMAGE_NAME
 
