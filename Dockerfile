@@ -2,7 +2,7 @@ FROM python:3.11
 
 RUN groupadd -r freetak && useradd -m -r -g freetak freetak
 
-RUN mkdir -p /home/freetak/data && chown -R freetak:freetak /home/freetak/data
+RUN mkdir -p /home/freetak/data && chown -R freetak:freetak /home/freetak/data && chmod 777 -R /home/freetak/data && chmod g+s /home/freetak/data
 RUN ln -s /opt/FTSServer-UI.db /home/freetak/data/FTSServer-UI.db
 
 USER freetak
