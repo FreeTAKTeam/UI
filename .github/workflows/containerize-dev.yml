@@ -27,5 +27,5 @@ jobs:
     - name: Push image to ghcr.io
       run: |
         echo IMAGE_NAME=$IMAGE_NAME
-        docker push $IMAGE_NAME ghcr.io/$IMAGE_NAME
+        docker push ghcr.io/$IMAGE_NAME
 
