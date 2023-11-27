@@ -39,14 +39,29 @@ def missionApi():
     
     headers = {'Authorization': app.config['APIKEY']}
 
-    json_data = requests.get(f"{app.config['PROTOCOL']}://{app.config['IP']}:{app.config['PORT']}/DataPackageTable", headers= headers).json()
+    try:
+        json_data = requests.get(f"{app.config['PROTOCOL']}://{app.config['IP']}:{app.config['PORT']}/DataPackageTable", headers= headers).json()
+    except Exception as e:
+        print(e)
+        json_data = {'json_list': []}
     
-    mission_json_data = requests.get(f"{app.config['PROTOCOL']}://{app.config['IP']}:{app.config['PORT']}/MissionTable", headers= headers).json()
+    try:
+        mission_json_data = requests.get(f"{app.config['PROTOCOL']}://{app.config['IP']}:{app.config['PORT']}/MissionTable", headers= headers).json()
+    except Exception as e:
+        print(e)
+        mission_json_data = {'data': []}
 
-    excheck_json_data = requests.get(f"{app.config['PROTOCOL']}://{app.config['IP']}:{app.config['PORT']}/ExCheckTable", headers= headers).json()
+    try:
+        excheck_json_data = requests.get(f"{app.config['PROTOCOL']}://{app.config['IP']}:{app.config['PORT']}/ExCheckTable", headers= headers).json()
+    except Exception as e:
+        print(e)
+        excheck_json_data = {'data': []}
 
-    outgoing_federation_json_data = requests.get(f"{app.config['PROTOCOL']}://{app.config['IP']}:{app.config['PORT']}/FederationTable", headers= headers).json()
-    
+    try:
+        outgoing_federation_json_data = requests.get(f"{app.config['PROTOCOL']}://{app.config['IP']}:{app.config['PORT']}/FederationTable", headers= headers).json()
+    except Exception as e:
+        print(e)
+        outgoing_federation_json_data = {'federations': []}
    
     return render_template('mission.html', json_data = json_data['json_list'], 
     mission_json_data = mission_json_data['data'],
