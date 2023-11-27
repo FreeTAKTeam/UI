@@ -1,0 +1,32 @@
+name: Developer container builds
+
+on:
+  push:
+
+env:
+  IMAGE_NAME: freetakteam/ui:${{ github.sha }}
+  OC_REGISTRY: ghcr.io
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the container image
+      # can this be converted to podman at some point to be more foss?
+      run: docker build . --file Dockerfile --tag $OC_REGISTRY/$IMAGE_NAME --label "runnumber=${GITHUB_RUN_ID}"
+
+    - name: Log in to registry
+      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login $OC_REGISTRY -u $ --password-stdin
+
+    - name: Push image to registry
+      run: |
+        echo IMAGE_NAME=$IMAGE_NAME
+        docker push $OC_REGISTRY/$IMAGE_NAME
+

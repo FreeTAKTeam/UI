@@ -10,16 +10,19 @@ setup(
     author_email='freetakteam@gmail.com',
     description='an optional UI for FreeTAKServer',
     install_requires = [
-        "flask",
+        "flask < 2.3",
         "flask_login",
         "flask_migrate",
         "flask_wtf",
         "WTForms == 2.3.3",
+        "sqlalchemy < 1.4",
         "flask_sqlalchemy",
         "email_validator",
         "gunicorn",
         "python-decouple",
-        "sqlalchemy-utils"
+        "sqlalchemy-utils",
+        "requests",
+        "eventlet"
     ],
     include_package_data=True
 )
