@@ -6,26 +6,34 @@ Copyright (c) 2019 - present AppSeed.us
 
 import os
 from os import environ
+# from sysconfig import get_path
+from pathlib import Path
 
 
 class Config(object):
     basedir = os.path.abspath(os.path.dirname(__file__))
+    # purelib_path = Path(get_path('purelib'))
+    purelib_path = Path(basedir).parent
 
     SECRET_KEY = 'key'
 
     # This will connect to the FTS db
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + '/opt/FTSServer-UI.db'
+    # SQLALCHEMY_DATABASE_URI = 'sqlite:///' +
+    #               str(purelib_path / 'FreeTAKServer' / 'FTSDataBase.db')
 
     # experimental SSL support in the UI
 
     # certificates path
-    # certpath = "/usr/local/lib/python3.8/dist-packages/FreeTAKServer/certs/"
+    # cert_path = Path("/usr/local/lib/python3.8/dist-packages/FreeTAKServer/certs/")
+    # or platform independently
+    # cert_path = purelib_path / 'FreeTAKServer' / 'certs'
 
     # crt file path
-    # crtfilepath = f"{certpath}pubserver.pem"
+    # crtfilepath = str(cert_path / "pubserver.pem")
 
     # key file path
-    # keyfilepath = f"{certpath}pubserver.key.unencrypted"
+    # keyfilepath = str(cert_path / "pubserver.key.unencrypted")
 
     # this IP will be used to connect with the FTS API
     IP = '127.0.0.1'
@@ -54,7 +62,8 @@ class Config(object):
     # the webSocket key used by the UI to communicate with FTS.
     WEBSOCKETKEY = 'YourWebsocketKey'
 
-    # the API key used by the UI to comunicate with FTS. generate a new system user and then set it
+    # the API key used by the UI to communicate with FTS.
+    # generate a new system user and then set it.
     APIKEY = 'Bearer token'
 
     # For 'in memory' database, please use:
