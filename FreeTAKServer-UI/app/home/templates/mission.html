@@ -559,7 +559,7 @@ const authenticate = (socket) => {
 
 	function downloadFile(param, name) {
 		
-		let url = `${protocol}://${tcpip}:${tcpport}/Marti/api/sync/metadata/${param}/tool`;
+		let url = `{{protocol}}://{{ip}}:8080/Marti/api/sync/metadata/${param}/tool`;
 		headers = { Authorization: "{{apikey | safe}}", Connection: "Keep-Alive" };
 
 		
