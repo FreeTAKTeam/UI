@@ -4,8 +4,10 @@ on:
   push:
 
 env:
-  IMAGE_NAME: freetakteam/ui:${{ github.sha }}
+  IMAGE_TAG: ${{ github.ref_name }}
+  IMAGE_SHA: ${{ github.sha }}
   OC_REGISTRY: ghcr.io
+  REGISTRY_URL: "ghcr.io/freetakteam/ui"
 
 jobs:
 
@@ -20,13 +22,15 @@ jobs:
     - uses: actions/checkout@v4
     - name: Build the container image
       # can this be converted to podman at some point to be more foss?
-      run: docker build . --file Dockerfile --tag $OC_REGISTRY/$IMAGE_NAME --label "runnumber=${GITHUB_RUN_ID}"
-
+      run: |
+        SANITIZED_TAG="$(echo ${IMAGE_TAG//[^[:alnum:]]/_} | tr '[:upper:]' '[:lower:]' )"
+        docker build . --file Dockerfile --tag $REGISTRY_URL:$SANITIZED_TAG --tag $REGISTRY_URL:$IMAGE_SHA --label "runnumber=${GITHUB_RUN_ID}"
     - name: Log in to registry
       run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login $OC_REGISTRY -u $ --password-stdin
 
     - name: Push image to registry
       run: |
-        echo IMAGE_NAME=$IMAGE_NAME
-        docker push $OC_REGISTRY/$IMAGE_NAME
+        SANITIZED_TAG="$(echo ${IMAGE_TAG//[^[:alnum:]]/_} | tr '[:upper:]' '[:lower:]' )"
+        docker push $REGISTRY_URL:$SANITIZED_TAG
+        docker push $REGISTRY_URL:$IMAGE_SHA
 
