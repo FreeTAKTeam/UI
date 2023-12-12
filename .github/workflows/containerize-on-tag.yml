@@ -1,6 +1,7 @@
 name: Tag-triggered Containerization
 
 on:
+  workflow_dispatch:
   push:
     tags:
       - "*"
