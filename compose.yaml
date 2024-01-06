@@ -1,11 +1,31 @@
 services:
-  ftsui:
+
+  # tak-server:
+  #     image: freetakserver:v2.1
+  #     ports:
+  #       - 8080:8080
+  #       - 8087:8087
+  #       - 8089:8089
+  #       - 8443:8443
+  #       - 9000:9000
+  #       - 19023:19023
+
+  tak-server-ui:
     image: freetakserver-ui:latest
     build:
       context: ../UI/.
       dockerfile: Dockerfile
-#    ports:
-#      - 5000:5000
-    volumes:
-      - ./ui-config:/home/freetak/data:Z
-    network_mode: "host"
+    ports:
+      - 5000:5000
+    environment:
+      FTS_IP: 'tak-server'
+      FTS_API_PORT: 19023
+      FTS_API_PROTO: 'http'
+      FTS_UI_EXPOSED_IP: 'tak-server-ui'
+      FTS_MAP_EXPOSED_IP: 'tak-server-ui'
+      FTS_MAP_PORT: 8000
+      FTS_MAP_PROTO: 'http'
+      FTS_UI_PORT: 5000
+      FTS_UI_WSKEY: 'YourWebsocketKey'
+      FTS_API_KEY: 'Bearer token'
+      FTS_UI_SQLALCHEMY_DATABASE_URI: 'sqlite:////home/freetak/data/FTSServer-UI.db'
