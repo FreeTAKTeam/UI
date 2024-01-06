@@ -3,10 +3,12 @@ error.log
 MANIFEST.in
 requirements.txt
 setup.py
+.idea/.gitignore
 .idea/codestream.xml
 .idea/dataSources.local.xml
 .idea/dataSources.xml
 .idea/deployment.xml
+.idea/*.iml
 .idea/misc.xml
 .idea/modules.xml
 .idea/sshConfigs.xml
@@ -15,6 +17,7 @@ setup.py
 .idea/workspace.xml
 .idea/dataSources/d2683b90-b3df-414a-a758-2bb47305f676.xml
 .idea/inspectionProfiles/Project_Default.xml
+.idea/inspectionProfiles/profiles_settings.xml
 .idea/sonarlint/issuestore/index.pb
 .idea/sonarlint/issuestore/1/a/1a1b9769344cb239f2e540e1e6ee1efa2d3034ea
 .idea/sonarlint/issuestore/3/d/3d01a26b2d15866ee22d2d43f4cbbf769ab0d414
