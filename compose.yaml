@@ -1,7 +1,7 @@
 services:
 
-  # tak-server:
-  #     image: freetakserver:v2.1
+  # free-tak-server:
+  #     image: freetakserver:latest
   #     ports:
   #       - 8080:8080
   #       - 8087:8087
@@ -10,7 +10,7 @@ services:
   #       - 9000:9000
   #       - 19023:19023
 
-  tak-server-ui:
+  free-tak-server-ui:
     image: freetakserver-ui:latest
     build:
       dockerfile: Dockerfile
@@ -19,11 +19,11 @@ services:
     volumes:
       - ./FTSServer-UI.db:/home/freetak/data/FTSServer-UI.db:rw
     environment:
-      FTS_IP: 'tak-server'
+      FTS_IP: 'free-tak-server'
       FTS_API_PORT: 19023
       FTS_API_PROTO: 'http'
-      FTS_UI_EXPOSED_IP: 'tak-server-ui'
-      FTS_MAP_EXPOSED_IP: 'tak-server-ui'
+      FTS_UI_EXPOSED_IP: 'free-tak-server-ui'
+      FTS_MAP_EXPOSED_IP: 'free-tak-server-ui'
       FTS_MAP_PORT: 8000
       FTS_MAP_PROTO: 'http'
       FTS_UI_PORT: 5000
