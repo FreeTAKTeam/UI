@@ -14,7 +14,7 @@ class Config(object):
     SECRET_KEY = 'key'
 
     # This will connect to the FTS db
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + '/opt/FTSServer-UI.db'
+    SQLALCHEMY_DATABASE_URI = environ.get('FTS_UI_SQLALCHEMY_DATABASE_URI', 'sqlite:///' + '/opt/FTSServer-UI.db')
 
     # experimental SSL support in the UI
 
@@ -28,34 +28,34 @@ class Config(object):
     # keyfilepath = f"{certpath}pubserver.key.unencrypted"
 
     # this IP will be used to connect with the FTS API
-    IP = '127.0.0.1'
+    IP = environ.get('FTS_IP', '127.0.0.1')
 
     # Port the UI uses to communicate with the API
-    PORT = '19023'
+    PORT = environ.get('FTS_API_PORT', '19023')
 
     # Protocol the UI uses to communicate with the API
-    PROTOCOL = 'http'
+    PROTOCOL = environ.get('FTS_API_PROTO', 'http')
 
     # the public IP your server is exposing
-    APPIP = '127.0.0.1'
+    APPIP = environ.get('FTS_UI_EXPOSED_IP', '127.0.0.1')
 
     # webmap IP
-    WEBMAPIP = '127.0.0.1'
+    WEBMAPIP = environ.get('FTS_MAP_EXPOSED_IP', '127.0.0.1')
 
     # webmap port
-    WEBMAPPORT = 8000
+    WEBMAPPORT = int(environ.get('FTS_MAP_PORT', 8000))
 
     # webmap protocol
-    WEBMAPPROTOCOL = 'http'
+    WEBMAPPROTOCOL = environ.get('FTS_MAP_PROTO', 'http')
 
     # this port will be used to listen
-    APPPort = 5000
+    APPPort = int(environ.get('FTS_UI_PORT', 5000))
 
     # the webSocket key used by the UI to communicate with FTS.
-    WEBSOCKETKEY = 'YourWebsocketKey'
+    WEBSOCKETKEY = environ.get('FTS_UI_WSKEY', 'YourWebsocketKey')
 
     # the API key used by the UI to comunicate with FTS. generate a new system user and then set it
-    APIKEY = 'Bearer token'
+    APIKEY = environ.get('FTS_API_KEY', 'Bearer token')
 
     # For 'in memory' database, please use:
     # SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'
