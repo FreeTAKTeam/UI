@@ -1,16 +1,5 @@
 version: "3.8"
 services:
-
-  # free-tak-server:
-  #     image: freetakserver:v2.1
-  #     ports:
-  #       - 8080:8080
-  #       - 8087:8087
-  #       - 8089:8089
-  #       - 8443:8443
-  #       - 9000:9000
-  #       - 19023:19023
-
   free-tak-server-ui:
     image: freetakserver-ui:latest
     pull_policy: build
@@ -19,7 +8,7 @@ services:
     ports:
       - 5000:5000
     volumes:
-      - free-tak-ui-db:/home/freetak/FTSServer-UI.db
+      - free-tak-ui-db:/home/freetak/data/
     environment:
       FTS_IP: 'free-tak-server'
       FTS_API_PORT: 19023
