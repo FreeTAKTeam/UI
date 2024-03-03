@@ -1,4 +1,5 @@
 venv/
+*.pyc
 error.log
 MANIFEST.in
 requirements.txt
