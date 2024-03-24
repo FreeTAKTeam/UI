@@ -1,23 +1,14 @@
+version: "3.8"
 services:
-
-  # free-tak-server:
-  #     image: freetakserver:v2.1
-  #     ports:
-  #       - 8080:8080
-  #       - 8087:8087
-  #       - 8089:8089
-  #       - 8443:8443
-  #       - 9000:9000
-  #       - 19023:19023
-
   free-tak-server-ui:
     image: freetakserver-ui:latest
+    pull_policy: build
     build:
       dockerfile: Dockerfile
     ports:
       - 5000:5000
     volumes:
-      - ./FTSServer-UI.db:/home/freetak/data/FTSServer-UI.db:Z
+      - free-tak-ui-db:/home/freetak/data/
     environment:
       FTS_IP: 'free-tak-server'
       FTS_API_PORT: 19023
@@ -30,3 +21,6 @@ services:
       FTS_UI_WSKEY: 'YourWebsocketKey'
       FTS_API_KEY: 'Bearer token'
       FTS_UI_SQLALCHEMY_DATABASE_URI: 'sqlite:////home/freetak/data/FTSServer-UI.db'
+
+volumes:
+  free-tak-ui-db:
