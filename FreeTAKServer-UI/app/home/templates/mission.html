@@ -552,7 +552,7 @@ const authenticate = (socket) => {
 
 	function openQR() {
 		for (let i = 0; i < gArr.length; i++) {
-			window.open(window.location.origin+"/mission/"+gArr.at(i).index+"/qr")
+			window.open(window.location.origin+"/mission/"+gArr.at(i).hash+"/qr")
 		}
 		
 	}

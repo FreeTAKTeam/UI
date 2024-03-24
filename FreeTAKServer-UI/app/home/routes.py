@@ -140,9 +140,9 @@ def page_user():
         uid = copy.copy(current_user.uid)
         return render_template('page-user.html', form=update_account_form, ip=app.config["IP"], port=app.config["PORT"], websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], user_id=uid)
 
-@blueprint.route('/mission/<id>/qr')
-def qr(id):
-    qr_link = 'http://' + app.config['IP'] + ':' + app.config['PORT'] + '/GenerateQR'+ '?datapackage_id=' + id
+@blueprint.route('/mission/<hash>/qr')
+def qr(hash):
+    qr_link = 'http://' + app.config['IP'] + ':' + app.config['PORT'] + '/GenerateQR'+ '?datapackage_hash=' + hash
     return render_template('qr.html', qr_link=qr_link)
 
 @blueprint.route('/<template>')
