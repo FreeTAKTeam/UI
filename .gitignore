@@ -3,6 +3,7 @@ error.log
 MANIFEST.in
 requirements.txt
 setup.py
+*.pyc
 .idea/codestream.xml
 .idea/dataSources.local.xml
 .idea/dataSources.xml
