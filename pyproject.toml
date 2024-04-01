@@ -8,6 +8,9 @@ version = "2.1.2"
 description = "an optional UI for FreeTAKServer"
 authors = ["FreeTAKTeam <FreeTakTeam@gmail.com>"]
 readme= "README.md"
+packages = [
+    {include = "FreeTAKServer-UI"}
+    ]
 
 [tool.poetry.dependencies]
 python="^3.11"
