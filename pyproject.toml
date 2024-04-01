@@ -3,7 +3,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
-name = "FreeTAKServer-UI"
+name = "freetakserver-ui"
 version = "2.1.2"
 description = "an optional UI for FreeTAKServer"
 authors = ["FreeTAKTeam <FreeTakTeam@gmail.com>"]
