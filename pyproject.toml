@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "freetakserver-ui"
-version = "2.1.2"
+version = "2.1.2.1"
 description = "an optional UI for FreeTAKServer"
 authors = ["FreeTAKTeam <FreeTakTeam@gmail.com>"]
 readme= "README.md"
@@ -45,7 +45,6 @@ typing-extensions="4.10.0"
 urllib3="2.2.1"
 Werkzeug="3.0.1"
 WTForms="2.3.3"
-python-decouple="^3.8"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
