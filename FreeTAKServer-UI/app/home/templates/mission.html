@@ -13,7 +13,7 @@
 		<div
 			style="
 				display: grid;
-				grid-template-columns: 240px 150px 50px 120px 100px 240px;
+				grid-template-columns: 500px 150px 200px 50px 100px 220px;
 				gap: 10px;
 				padding: 10px;
 				font-size: 16px;
@@ -34,7 +34,7 @@
 
 			<div
 				class="row-color-nohover row-class"
-				style="display: grid; grid-template-columns: 240px 150px 50px 120px 100px 240px; gap: 10px; padding: 10px; color: #fff; opacity: 0.8; width: 1000px;"
+				style="display: grid; grid-template-columns: 500px 150px 200px 50px 100px 220px; gap: 10px; padding: 10px; color: #fff; opacity: 0.8; width: 1000px;"
 				onclick="captureClick('{{dict_items.Hash}}', '{{dict_items.PrimaryKey}}')"
 			>
 				
@@ -401,7 +401,7 @@
 
 </div>
 
-<div id="snackbar">&nbsp;</div>
+<div id="snackbar" {{'class=show' if msg is defined else ''}}>{{ msg if msg is defined else '&nbsp;' }}</div>
 {% endblock content %}
 
 <!-- Specific Page JS goes HERE  -->
@@ -552,14 +552,14 @@ const authenticate = (socket) => {
 
 	function openQR() {
 		for (let i = 0; i < gArr.length; i++) {
-			window.open(window.location.origin+"/mission/"+gArr.at(i).index+"/qr")
+			window.open(window.location.origin+"/mission/"+gArr.at(i).hash+"/qr")
 		}
 		
 	}
 
 	function downloadFile(param, name) {
 		
-		let url = `${protocol}://${tcpip}:${tcpport}/Marti/api/sync/metadata/${param}/tool`;
+		let url = `{{protocol}}://{{ip}}:8080/Marti/api/sync/metadata/${param}/tool`;
 		headers = { Authorization: "{{apikey | safe}}", Connection: "Keep-Alive" };
 
 		

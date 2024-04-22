@@ -286,7 +286,7 @@
 
 
 </div>
-<div id="snackbar">&nbsp;</div>
+<div id="snackbar" {{'class=show' if msg is defined else ''}}>{{ msg if msg is defined else '&nbsp;' }}</div>
 {% endblock content %}
 
 <!-- Specific Page JS goes HERE  -->

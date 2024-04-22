@@ -18,6 +18,7 @@ from app.base.forms import LoginForm, CreateAccountForm
 from app.base.models import User
 from flask import current_app as app
 from app.base.util import verify_pass
+from requests.exceptions import ConnectionError
 
 @blueprint.route('/')
 def route_default():
@@ -39,7 +40,10 @@ def login():
         password = request.form['password']
 
         # Locate user
-        user = requests.get(f"{app.config['PROTOCOL']}://{app.config['IP']}:{app.config['PORT']}/AuthenticateUser", params={"username": username, "password": password}, headers={"Authorization": f"{app.config['APIKEY']}"})
+        try:
+            user = requests.get(f"{app.config['PROTOCOL']}://{app.config['IP']}:{app.config['PORT']}/AuthenticateUser", params={"username": username, "password": password}, headers={"Authorization": f"{app.config['APIKEY']}"})
+        except ConnectionError:
+            return render_template('login/login.html', msg=f'FTS Server is not reachable at {app.config.get("IP", "IP NOT SET!")}', form=login_form)
         try:
             user = user.json()
         except:

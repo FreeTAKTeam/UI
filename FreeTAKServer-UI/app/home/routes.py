@@ -15,6 +15,7 @@ from flask import current_app as app
 from app.base.forms import UpdateAccountForm
 from app.base.models import User
 from app import db
+from requests.exceptions import ConnectionError
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -63,6 +64,16 @@ def missionApi():
         print(e)
         outgoing_federation_json_data = {'federations': []}
    
+    try:
+        requests.get(f"{app.config['PROTOCOL']}://{app.config['IP']}:{app.config['PORT']}", headers= headers)
+    except ConnectionError:
+        return render_template('mission.html', msg=f'FTS Server is not reachable at {app.config.get("IP", "IP NOT SET!")}', segment="mission", 
+                                json_data = {},
+                                mission_json_data = {'data': []},
+                                excheck_json_data = {},
+                                outgoing_federation_json_data = {'federations': []},
+                                websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], port=app.config['PORT'], protocol=app.config['PROTOCOL'], ip=app.config['IP'])
+
     return render_template('mission.html', json_data = json_data['json_list'], 
     mission_json_data = mission_json_data['data'],
     excheck_json_data = excheck_json_data['data'][0]['contents'],
@@ -81,7 +92,12 @@ def missionApi():
 @login_required
 def connectApi():
     headers = {'Authorization': app.config['APIKEY']}
-    json_data = requests.get(f"{app.config['PROTOCOL']}://{app.config['IP']}:{app.config['PORT']}/ManageEmergency/getEmergency", headers= headers)
+    try:
+        json_data = requests.get(f"{app.config['PROTOCOL']}://{app.config['IP']}:{app.config['PORT']}/ManageEmergency/getEmergency", headers= headers)
+    except ConnectionError:
+        return render_template('connect.html', msg=f'FTS Server is not reachable at {app.config.get("IP", "IP NOT SET!")}', segment="connect", 
+                                json_data = {'json_list': []},
+                                websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], port=app.config['PORT'], protocol=app.config['PROTOCOL'], ip=app.config['IP'])
     json_data = json_data.json()
     
     return render_template('connect.html', json_data = json_data['json_list'], segment="connect",
@@ -92,7 +108,12 @@ def connectApi():
 @login_required
 def configureApi():
     headers = {'Authorization': app.config['APIKEY']}
-    outgoing_federation_json_data = requests.get(f"{app.config['PROTOCOL']}://{app.config['IP']}:{app.config['PORT']}/FederationTable", headers= headers).json()
+    try:
+        outgoing_federation_json_data = requests.get(f"{app.config['PROTOCOL']}://{app.config['IP']}:{app.config['PORT']}/FederationTable", headers= headers).json()
+    except ConnectionError:
+        return render_template('configure.html', msg=f'FTS Server is not reachable at {app.config.get("IP", "IP NOT SET!")}', segment="configure", 
+                                outgoing_federation_json_data = {'federations': []},
+                                websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], port=app.config['PORT'], protocol=app.config['PROTOCOL'], ip=app.config['IP'])
 
     return render_template('configure.html', segment="configure", 
     outgoing_federation_json_data = outgoing_federation_json_data['federations'],
@@ -140,9 +161,9 @@ def page_user():
         uid = copy.copy(current_user.uid)
         return render_template('page-user.html', form=update_account_form, ip=app.config["IP"], port=app.config["PORT"], websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], user_id=uid)
 
-@blueprint.route('/mission/<id>/qr')
-def qr(id):
-    qr_link = 'http://' + app.config['IP'] + ':' + app.config['PORT'] + '/GenerateQR'+ '?datapackage_id=' + id
+@blueprint.route('/mission/<hash>/qr')
+def qr(hash):
+    qr_link = 'http://' + app.config['IP'] + ':' + app.config['PORT'] + '/GenerateQR'+ '?datapackage_hash=' + hash
     return render_template('qr.html', qr_link=qr_link)
 
 @blueprint.route('/<template>')

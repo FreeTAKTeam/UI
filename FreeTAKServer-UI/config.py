@@ -4,28 +4,27 @@ License: MIT
 Copyright (c) 2019 - present AppSeed.us
 """
 
-import os
 from os import environ
-# from sysconfig import get_path
 from pathlib import Path
 
 
 class Config(object):
-    basedir = os.path.abspath(os.path.dirname(__file__))
+    basedir = Path(__file__).parent.absolute()
     # purelib_path = Path(get_path('purelib'))
-    purelib_path = Path(basedir).parent
+    purelib_path = basedir.parent
 
     SECRET_KEY = 'key'
 
     # This will connect to the FTS db
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + '/opt/FTSServer-UI.db'
+    SQLALCHEMY_DATABASE_URI = environ.get('FTS_UI_SQLALCHEMY_DATABASE_URI',
+                                          'sqlite:///' + '/opt/fts/FTSServer-UI.db')
     # SQLALCHEMY_DATABASE_URI = 'sqlite:///' +
     #               str(purelib_path / 'FreeTAKServer' / 'FTSDataBase.db')
 
     # experimental SSL support in the UI
 
     # certificates path
-    # cert_path = Path("/usr/local/lib/python3.8/dist-packages/FreeTAKServer/certs/")
+    # cert_path = Path("/opt/fts.venv/lib/python3.11/site-packages/FreeTAKServer/certs/")
     # or platform independently
     # cert_path = purelib_path / 'FreeTAKServer' / 'certs'
 
@@ -36,35 +35,35 @@ class Config(object):
     # keyfilepath = str(cert_path / "pubserver.key.unencrypted")
 
     # this IP will be used to connect with the FTS API
-    IP = '127.0.0.1'
+    IP = environ.get('FTS_IP', '127.0.0.1')
 
     # Port the UI uses to communicate with the API
-    PORT = '19023'
+    PORT = environ.get('FTS_API_PORT', '19023')
 
     # Protocol the UI uses to communicate with the API
-    PROTOCOL = 'http'
+    PROTOCOL = environ.get('FTS_API_PROTO', 'http')
 
     # the public IP your server is exposing
-    APPIP = '127.0.0.1'
+    APPIP = environ.get('FTS_UI_EXPOSED_IP', '127.0.0.1')
 
     # webmap IP
-    WEBMAPIP = '127.0.0.1'
+    WEBMAPIP = environ.get('FTS_MAP_EXPOSED_IP', '127.0.0.1')
 
     # webmap port
-    WEBMAPPORT = 8000
+    WEBMAPPORT = int(environ.get('FTS_MAP_PORT', 8000))
 
     # webmap protocol
-    WEBMAPPROTOCOL = 'http'
+    WEBMAPPROTOCOL = environ.get('FTS_MAP_PROTO', 'http')
 
     # this port will be used to listen
-    APPPort = 5000
+    APPPort = int(environ.get('FTS_UI_PORT', 5000))
 
     # the webSocket key used by the UI to communicate with FTS.
-    WEBSOCKETKEY = 'YourWebsocketKey'
+    WEBSOCKETKEY = environ.get('FTS_UI_WSKEY', 'YourWebsocketKey')
 
     # the API key used by the UI to communicate with FTS.
     # generate a new system user and then set it.
-    APIKEY = 'Bearer token'
+    APIKEY = environ.get('FTS_API_KEY', 'Bearer token')
 
     # For 'in memory' database, please use:
     # SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'
