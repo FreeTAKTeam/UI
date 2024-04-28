@@ -28,8 +28,10 @@ def register_blueprints(app):
 
 def configure_database(app):
 
-    @app.before_first_request
+    @app.before_request
     def initialize_database():
+        # Only run this once, and then remove the funtion. 
+        app.before_request_funcs[None].remove(initialize_database)
         db.create_all()
 
     @app.teardown_request
