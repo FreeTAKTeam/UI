@@ -1,4 +1,5 @@
 # .dockerignore
 *.md
+!README.md
 .gitignore
 .github
