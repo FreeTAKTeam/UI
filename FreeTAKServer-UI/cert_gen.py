@@ -61,7 +61,7 @@ def generate_certificates() -> tuple[pathlib.Path, pathlib.Path]:
         BASE_PATH.mkdir(parents=True, exist_ok=True)
 
     if cert_path.exists() and key_path.exists():
-        return pathlib.Path(CERT_NAME), pathlib.Path(KEY_NAME)
+        return cert_path, key_path
 
     private_key, public_key = generate_rsa_key_pair()
 
