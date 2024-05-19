@@ -34,6 +34,7 @@ from flask_migrate import Migrate
 from os import environ
 from sys import exit
 from decouple import config
+from cert_gen import generate_certificates
 
 from config import config_dict
 from app import create_app, db
@@ -136,6 +137,7 @@ Migrate(app, db)
 if __name__ == "__main__":
     import eventlet
     from eventlet import wsgi, wrap_ssl
-    wsgi.server(sock = eventlet.listen((app_config.APPIP, app_config.APPPort)), site=app)
+    cert, key = generate_certificates()
+    wsgi.server(sock = wrap_ssl(eventlet.listen((app_config.APPIP, app_config.APPPort)), serverside=True, keyfile=key, certfile=cert), site=app)
     #app.run(debug=True)
     # app.run()
