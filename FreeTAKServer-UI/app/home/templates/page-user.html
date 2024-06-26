@@ -92,10 +92,10 @@
 	const changeUserDetail = () => {
 		console.log('running Change User detail')
 		var updatedUserDetails = {}
-		updatedUserDetails.password = document.getElementById('password').value;
-		updatedUserDetails.token = document.getElementById('token').value;
+		updatedUserDetails.Password = document.getElementById('password').value;
+		updatedUserDetails.Token = document.getElementById('token').value;
 		if (document.getElementById('group') !== null) {
-			updatedUserDetails.group = document.getElementById('group').value;
+			updatedUserDetails.Group = document.getElementById('group').value;
 		}
 		updatedUserDetails.uid = "{{ user_id }}"
 		socket.emit("updateSystemUser", JSON.stringify({"systemUsers": [updatedUserDetails]}))
