@@ -1,6 +1,8 @@
 # FTS Web UI
 ![image](https://user-images.githubusercontent.com/60719165/177003787-c1322f17-a55e-4d81-a0a1-25c6178cb42e.png)
 
+This FreeTAKServer UI repository hosts the web user interface for the FreeTAKServer project. It's built using Python with Flask, employing additional technologies such as SQLite for database management, Alembic for database schema migrations, and Flask_Login for session-based authentication. The UI supports various features like modular design through Flask Blueprints, forms validation, and provides a dashboard for server management. The front-end utilizes HTML, CSS, SCSS, and JavaScript, making it a comprehensive tool for administrators to manage the FreeTAKServer. The project is licensed under the EPL/MIT License.
+
 FTS Web UI allows administrators to easily manage the [FTS](https://github.com/FreeTAKTeam/FreeTakServer) server.
 This component requires a working backend. The WebUI is a completely separate application connecting to  the FTS backend. 
 It uses an API to seamless query server functions. Depending on his deployment, may or may not be  seen from remote machines.
